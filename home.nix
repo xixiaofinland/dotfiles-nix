@@ -12,6 +12,10 @@
     ".alacritty.toml".source = ./.alacritty.toml;
     ".ignore".source = ./.ignore;
     ".tmux.conf".source = ./.tmux.conf;
+    ".config/nvim" = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
   programs.home-manager.enable = true;
 }
