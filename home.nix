@@ -6,5 +6,12 @@
     pkgs.cowsay
     pkgs.nixpkgs-fmt
   ];
+  home.file = {
+    ".zshrc".source = ./.zshrc;
+    ".gitconfig".source = ./.gitconfig;
+    ".alacritty.toml".source = ./.alacritty.toml;
+    ".ignore".source = ./.ignore;
+    ".tmux.conf".source = ./.tmux.conf;
+  };
   programs.home-manager.enable = true;
 }

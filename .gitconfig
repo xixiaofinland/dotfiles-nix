@@ -1,0 +1,17 @@
+[user]
+	email = tdxiaoxi2@gmail.com
+	name = xi xiao
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+[mergetool "nvim"]
+	  cmd = nvim -c \"DiffviewOpen\"
+[merge]
+	  tool = nvim
+[mergetool]
+	  prompt = false
+	keepBackup = false
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main

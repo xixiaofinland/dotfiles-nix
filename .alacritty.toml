@@ -1,0 +1,112 @@
+live_config_reload = true
+
+# Colors (Kanagawa Wave)
+# Source https//github.com/rebelot/kanagawa.nvim
+
+[colors.cursor]
+cursor = '#ffffff'
+text = 'CellBackground'
+
+[colors.primary]
+background = '#1f1f28'
+foreground = '#dcd7ba'
+
+[colors.normal]
+black   = '#090618'
+red     = '#c34043'
+green   = '#76946a'
+yellow  = '#c0a36e'
+blue    = '#7e9cd8'
+magenta = '#957fb8'
+cyan    = '#6a9589'
+white   = '#c8c093'
+
+[colors.bright]
+black   = '#727169'
+red     = '#e82424'
+green   = '#98bb6c'
+yellow  = '#e6c384'
+blue    = '#7fb4ca'
+magenta = '#938aa9'
+cyan    = '#7aa89f'
+white   = '#dcd7ba'
+
+[colors.selection]
+background = '#2d4f67'
+foreground = '#c8c093'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#ffa066'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ff5d62'
+
+[cursor]
+style = "Block"
+unfocused_hollow = false
+vi_mode_style = "Beam"
+
+# [key_bindings]
+#   { key = "H", mods = "Alt", action = "SendString", chars = "\x1bh" }
+#   { key = "J", mods = "Alt", action = "SendString", chars = "\x1bj" }
+#   { key = "K", mods = "Alt", action = "SendString", chars = "\x1bk" }
+#   { key = "L", mods = "Alt", action = "SendString", chars = "\x1bl" }
+
+[font]
+size = 18.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 2
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+# [[keyboard.bindings]]
+# action = "SpawnNewInstance"
+# key = "N"
+# mods = "Command"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "Buttonless"
+blur = true
+option_as_alt = "OnlyLeft"
+dynamic_padding = true
+
+[window.padding]
+x = 10
+y = 5
+
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+[bell]
+animation = "EaseOutExpo"
+duration = 0
