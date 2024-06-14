@@ -71,14 +71,6 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
 
-# Load extra setting files
-if [ -f ~/.config/zsh/.zsh_alias ]; then
-    source ~/.config/zsh/.zsh_alias
-else
-    print "404: ~/.config/zsh/.zsh_alias not found."
-
-fi
-
 ZSH_THEME=""
 # manually install pure theme by:
 # mkdir -p "$HOME/.zsh"
