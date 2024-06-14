@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  programs.home-manager.enable = true;
+
   home.username = "finxxi";
   home.homeDirectory = "/home/finxxi";
   home.stateVersion = "24.05";
@@ -21,5 +23,9 @@
       recursive = true;
     };
   };
-  programs.home-manager.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    # Additional Zsh-specific configurations can go here
+  };
 }

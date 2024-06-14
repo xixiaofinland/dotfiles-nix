@@ -45,8 +45,8 @@ plugins=(git nvm npm fzf z zsh-autosuggestions)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --no-ignore'
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # esp32
 export IDF_PATH="$HOME/esp/esp-idf"
