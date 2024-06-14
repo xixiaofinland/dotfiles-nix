@@ -33,18 +33,6 @@ case `uname` in
 
         # brew
         . $(brew --prefix)/etc/profile.d/z.sh
-
-        # Python
-        # export PATH=/Users/xixiao/Library/Python/3.8/bin:$PATH
-        # export PATH="$PATH:/usr/local/bin/phantomjs"
-        # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-        # eval "$(pyenv init -)"
-
-        #Ruby
-        # source /usr/local/opt/chruby/share/chruby/chruby.sh
-        # source /usr/local/opt/chruby/share/chruby/auto.sh
-        # chruby ruby-3.1.2
-        # export PATH="/usr/local/opt/mysql-client/bin:$PATH"
     ;;
     Linux)
         alias fd="fdfind"
