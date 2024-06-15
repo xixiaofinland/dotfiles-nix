@@ -11,28 +11,17 @@
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
-      let
-        # pkgs = import nixpkgs { inherit system; };
-        # user = builtins.getEnv "USER";
-      in
-      {
-      # homeConfigurations = {
-      #       "your.username" = home-manager.lib.homeManagerConfiguration {
-      #           # Note: I am sure this could be done better with flake-utils or something
-      #           pkgs = import nixpkgs { system = "x86_64-darwin"; };
-      #
-      #           modules = [ ./home.nix ]; # Defined later
-      #       };
-      #   };
+    let
+      pkgs = import nixpkgs { system = "x86_64-linux"; };
+    in
+    {
+      homeConfigurations = {
+        "finxxi" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
 
-        homeConfigurations = {
-            "finxxi" = home-manager.lib.homeManagerConfiguration {
-                # Note: I am sure this could be done better with flake-utils or something
-                pkgs = import nixpkgs { system = "x86_64-linux"; };
-
-                modules = [ ./home.nix ]; # Defined later
-            };
+          modules = [ ./home.nix ]; # Defined later
         };
       };
+    };
 }
 
