@@ -16,10 +16,14 @@
     in
     {
       homeConfigurations = {
+        "xixiao" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        };
+
         "finxxi" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-
-          modules = [ ./home.nix ]; # Defined later
+          modules = [ ./home.nix ];
         };
       };
     };
