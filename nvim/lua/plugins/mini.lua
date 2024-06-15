@@ -40,10 +40,32 @@ return {
         }
       })
 
-      -- show line num in mini.files;
+      local map_split = function(buf_id, lhs, direction)
+        local rhs = function()
+          -- Make new window and set it as target
+          local new_target_window
+          vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
+            vim.cmd(direction .. ' split')
+            new_target_window = vim.api.nvim_get_current_win()
+          end)
+
+          MiniFiles.set_target_window(new_target_window)
+        end
+
+        local desc = 'Split ' .. direction
+        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+      end
+
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesWindowUpdate',
         callback = function(args)
+          local buf_id = args.data.buf_id
+
+          -- open in new window;
+          map_split(buf_id, 'gs', 'belowright horizontal')
+          map_split(buf_id, '<C-v>', 'belowright vertical')
+
+          -- show line num in mini.files;
           vim.wo[args.data.win_id].number = true
           vim.wo[args.data.win_id].relativenumber = true
         end,
@@ -95,8 +117,8 @@ return {
         -- diagnostic = { suffix = 'd', options = { severity = vim.diagnostic.severity.ERROR } },
 
         -- disabled ones which I don't use;
-        undo       = { suffix = '', options = {} },
-        window     = { suffix = '', options = {} },
+        undo   = { suffix = '', options = {} },
+        window = { suffix = '', options = {} },
 
       })
 
@@ -115,7 +137,7 @@ return {
         silent = true,
       })
 
-      nmap('<leader>b', require'mini.bufremove'.delete, 'buffer delete')
+      nmap('<leader>b', require 'mini.bufremove'.delete, 'buffer delete')
       nmap('<leader>ts', MiniTrailspace.trim, 'trim space')
       nmap('<leader>te', MiniTrailspace.trim_last_lines, 'trim end-line')
 
