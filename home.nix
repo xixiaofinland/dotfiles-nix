@@ -1,8 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: let user = "finxxi";
+in{
   programs.home-manager.enable = true;
 
-  home.username = "finxxi";
-  home.homeDirectory = "/home/finxxi";
+  home.username = user;
+  home.homeDirectory = "/home/{user}";
   home.stateVersion = "24.05";
   home.packages = [
     pkgs.cowsay
