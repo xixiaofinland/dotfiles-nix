@@ -62,7 +62,6 @@ return {
           local buf_id = args.data.buf_id
 
           -- open in new window;
-          map_split(buf_id, 'gs', 'belowright horizontal')
           map_split(buf_id, '<C-v>', 'belowright vertical')
 
           -- show line num in mini.files;
