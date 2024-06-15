@@ -3,7 +3,7 @@ in{
   programs.home-manager.enable = true;
 
   home.username = user;
-  home.homeDirectory = "/home/{user}";
+  home.homeDirectory = "/home/${user}";
   home.stateVersion = "24.05";
   home.packages = [
     pkgs.cowsay

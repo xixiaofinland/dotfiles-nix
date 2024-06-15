@@ -39,9 +39,6 @@ return {
 
     -- Enable the following language servers in Mason
     local servers = {
-      nixpkgs-fmt = {},
-      rnix-lsp = {},
-
       rust_analyzer = {},
       lua_ls = {
         Lua = {
