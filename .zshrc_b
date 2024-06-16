@@ -20,7 +20,7 @@ PATH="$HOME/.cargo/bin/:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
 
 # Add oh-my-zsh to path
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 
 # OS specific
@@ -41,7 +41,7 @@ case `uname` in
 esac
 
 # Load plugins
-plugins=(git nvm npm fzf z zsh-autosuggestions)
+# plugins=(git nvm npm fzf z zsh-autosuggestions)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --no-ignore'
@@ -55,11 +55,11 @@ export PATH="$PATH:$IDF_PATH/tools"
 alias get_idf='. $IDF_PATH/export.sh'
 
 # Load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
 
-ZSH_THEME=""
+# ZSH_THEME=""
 # manually install pure theme by:
 # mkdir -p "$HOME/.zsh"
 # git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
