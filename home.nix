@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     clang
     libgcc
-    cowsay
     nixpkgs-fmt
     fzf
     ripgrep
