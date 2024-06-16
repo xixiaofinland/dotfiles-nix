@@ -15,6 +15,7 @@
     ripgrep
     zoxide
     fd
+    tree
   ];
 
   home.file = {
