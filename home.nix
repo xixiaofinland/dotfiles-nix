@@ -55,8 +55,8 @@
       ];
     };
     shellAliases = {
-      gs="git status"
-      e="exit"
+      gs="git status";
+      e="exit";
     };
   };
 
