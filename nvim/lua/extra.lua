@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- personal notes;
-
 local note_path = vim.fn.expand("~/notes/")
 vim.keymap.set("n", "<leader>no", ":vs " .. note_path .. "personal.md<CR>", { desc = "open personal note" })
 vim.keymap.set("n", "<leader>nw", ":vs " .. note_path .. "work.md<CR>", { desc = "open work note" })
