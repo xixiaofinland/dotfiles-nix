@@ -54,6 +54,10 @@
            "z"
       ];
     };
+    shellAliases = {
+      gs="git status"
+      e="exit"
+    };
   };
 
   programs.neovim = {
