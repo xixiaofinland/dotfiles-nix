@@ -36,6 +36,10 @@
     LC_ALL = "en_US.UTF-8";
   };
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
