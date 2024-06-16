@@ -57,6 +57,8 @@
     shellAliases = {
       gs="git status";
       e="exit";
+      c="clear";
+      n="nvim";
     };
   };
 
