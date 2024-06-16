@@ -77,15 +77,15 @@ return {
     }
 
     -- `mason_lspconfig.setup_handlers` doesn't handle apex_ls automaticlally (why not?), we need to manually attach below actions
-    local lspconfig = require 'lspconfig'
-    lspconfig.apex_ls.setup {
-      apex_enable_semantic_errors = false,
-      apex_enable_completion_statistics = false,
-      filetypes = { 'apex' },
-      root_dir = lspconfig.util.root_pattern('sfdx-project.json'),
-
-      on_attach = on_attach,
-      capabilities = capabilities,
-    }
+    -- local lspconfig = require 'lspconfig'
+    -- lspconfig.apex_ls.setup {
+    --   apex_enable_semantic_errors = false,
+    --   apex_enable_completion_statistics = false,
+    --   filetypes = { 'apex' },
+    --   root_dir = lspconfig.util.root_pattern('sfdx-project.json'),
+    --
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
   end
 }
