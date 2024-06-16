@@ -35,10 +35,6 @@
     LC_ALL = "en_US.UTF-8";
   };
 
-  programs.tmux = {
-    enable = true;
-  };
-
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
