@@ -51,22 +51,10 @@
       tmuxPlugins.cpu
     ];
     extraConfig = ''
-      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
-      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
-      set-option -sa terminal-overrides ",xterm*:Tc"
+set-option -sa terminal-overrides ",xterm*:Tc"
 set -g mouse on
 
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
-
 set -g history-limit 10000
-
-# pane actions
-# bind h select-pane -L
-# bind j select-pane -D
-# bind k select-pane -U
-# bind l select-pane -R
 
 bind-key x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
@@ -83,38 +71,22 @@ bind M-k resize-pane -U
 bind M-h resize-pane -L
 bind M-l resize-pane -R
 
+# Automatically set window title
+set-option -g allow-rename on
+set-window-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
+
 # Start windows and panes at 1, not 0
 set -g base-index 1
 set -g pane-base-index 1
 set-window-option -g pane-base-index 1
 set-option -g renumber-windows on
 
-# Use Alt-arrow keys without prefix key to switch panes
-# bind -n M-Left select-pane -L
-# bind -n M-Right select-pane -R
-# bind -n M-Up select-pane -U
-# bind -n M-Down select-pane -D
-
-# Shift arrow to switch windows
-# bind -n S-Left  previous-window
-# bind -n S-Right next-window
-
-# bind j previous-window
-# bind h next-window
-
 set -g @catppuccin_flavour 'mocha'
-
-# set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'tmux-plugins/tmux-sensible'
-# set -g @plugin 'christoomey/vim-tmux-navigator'
-# set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
-# set -g @plugin 'tmux-plugins/tmux-yank'
-# set -g @plugin 'thewtex/tmux-mem-cpu-load'
-
-# run '~/.tmux/plugins/tpm/tpm'
 
 # set vi-mode
 set-window-option -g mode-keys vi
+
 # keybindings
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
@@ -134,7 +106,6 @@ set -sg escape-time 0
 bind r source-file ~/.tmux.conf
 
 # THEME
-# default statusbar colors
 set -g status-fg white
 set -g status-bg black
 set -g status-style bright
@@ -152,13 +123,9 @@ set-window-option -g window-status-current-style bright
 set -g status-interval 5
 set -g status-left-length 35
 set -g status-left '[#S] '
-# set -g status-right '#[fg=yellow]#($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load -v -i 3 -m 2 -a 0 -g 5) | %H:%M %d-%m'
 set -g status-justify centre
-
-# Automatically set window title
-set-option -g allow-rename on
-set-window-option -g automatic-rename on
-set-option -g automatic-rename-format '#{b:pane_current_path}'
+set -g status-right '#[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
+run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };
 
