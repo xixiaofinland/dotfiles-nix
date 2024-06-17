@@ -51,7 +51,7 @@
       tmuxPlugins.cpu
     ];
     extraConfig = ''
-      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M %d-%m'
+      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
       set-option -sa terminal-overrides ",xterm*:Tc"
 set -g mouse on
