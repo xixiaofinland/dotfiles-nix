@@ -33,7 +33,8 @@
 
     darwinConfigurations = {
       "Xis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-        modules = [ ./configuration.nix ];
+        modules = [ ./mac-config.nix ];
       };
     };
+  };
 }
