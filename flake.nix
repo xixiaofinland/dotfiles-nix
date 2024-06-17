@@ -14,10 +14,26 @@
     };
   };
 
-  outputs = { self, home-manager, nixpkgs, nixos-wsl, nix-darwin }@inputs: {
+  outputs = { self, home-manager, nixpkgs, nixos-wsl, nix-darwin }@inputs:
+let
+    nixos-uname = "nixos";
+    nixos-hostname = "nixos";
+    nixos-sys = "x86_64-linux";
+
+    mac-uname = "xixiao";
+    mac-hostname = "Xis-MacBook-Pro";
+    mac-sys = "x86_64-darwin";
+
+    specialArgs =
+      inputs
+      // {
+        inherit nixos-uname nixos-sys mac-uname mac-sys;
+      };
+  in
+  {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
+        system = "${nixos-sys}";
         modules = [
           ./modules/common-config.nix
 	  ./modules/nixos/config.nix
@@ -26,18 +42,24 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.nixos = import ./home.nix;
+            home-manager.users."${nixos-uname}" = import ./home.nix;
           }
         ];
       };
     };
 
     darwinConfigurations = {
-      "Xis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
+        inherit specialArgs;
+        system = "${mac-sys}";
         modules = [
                 ./modules/common-config.nix
                 ./modules/mac/config.nix ];
       };
     };
+
+    # nix code formatter
+    formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
+    formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
   };
 }
