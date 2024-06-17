@@ -52,43 +52,43 @@
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
     forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
   in {
-    # nixosConfigurations = {
-    #   "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
-    #     system = "${nixos-sys}";
-    #     modules = [
-    #       ./modules/common-config.nix
-    #       ./modules/nixos/config.nix
-    #       nixos-wsl.nixosModules.wsl
-    #       home-manager.nixosModules.home-manager
-    #       {
-    #         home-manager.useGlobalPkgs = true;
-    #         home-manager.useUserPackages = true;
-    #         home-manager.users."${nixos-user}" = import ./home.nix;
-    #       }
-    #     ];
-    #   };
-    # };
-
-    nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: let
-      user = "nixos";
-    in
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs;
+    nixosConfigurations = {
+      "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
+        system = "${nixos-sys}";
         modules = [
           ./modules/common-config.nix
           ./modules/nixos/config.nix
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = import ./home.nix;
-            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${nixos-user}" = import ./home.nix;
           }
         ];
-      });
+      };
+    };
+
+    # nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: let
+    #   user = "nixos";
+    # in
+    #   nixpkgs.lib.nixosSystem {
+    #     inherit system;
+    #     specialArgs = inputs;
+    #     modules = [
+    #       ./modules/common-config.nix
+    #       ./modules/nixos/config.nix
+    #       nixos-wsl.nixosModules.wsl
+    #       home-manager.nixosModules.home-manager
+    #       {
+    #         home-manager = {
+    #           useGlobalPkgs = true;
+    #           useUserPackages = true;
+    #           users.${user} = import ./home.nix;
+    #         };
+    #       }
+    #     ];
+    #   });
 
     darwinConfigurations = {
       "${mac-hostname}" = nix-darwin.lib.darwinSystem {
