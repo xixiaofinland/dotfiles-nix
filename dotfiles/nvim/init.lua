@@ -23,10 +23,10 @@ require('lazy').setup({
 
   'tpope/vim-sleuth',
 
-  -- { 'folke/which-key.nvim',  opts = {} },
-
-  -- other plugins that require setups
   { import = 'plugins' },
+},
+{
+  lockfile = "~/.lazy-lock.json",
 })
 
 -- [[ my own custom settings ]]
