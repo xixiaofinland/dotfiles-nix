@@ -19,7 +19,7 @@
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  ./configuration.nix
+	  ./modules/nixos/config.nix
           nixos-wsl.nixosModules.wsl
 	  home-manager.nixosModules.home-manager
           {
@@ -33,7 +33,7 @@
 
     darwinConfigurations = {
       "Xis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-        modules = [ ./mac-config.nix ];
+        modules = [ ./modules/mac/config.nix ];
       };
     };
   };
