@@ -16,6 +16,7 @@
   ];
 
   home.file = {
+    ".lazy-lock.json".source = ./dotfiles/.lazy-lock.json;
     ".gitconfig".source = ./dotfiles/.gitconfig;
     ".alacritty.toml".source = ./dotfiles/.alacritty.toml;
     ".ignore".source = ./dotfiles/.ignore;
