@@ -7,8 +7,7 @@
   # home.homeDirectory = "/home/${user}";
 
   home.packages = with pkgs; [
-    tmux
-    clang
+   
     libgcc
     nixpkgs-fmt
     fzf
@@ -42,6 +41,17 @@
   home.sessionPath = [
     "$HOME/.cargo/bin"
   ];
+
+  programs.tmux ={
+    enable = true;
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.catppuccin
+      tmuxPlugins.yank
+      tmuxPlugins.cpu
+    ];
+  };
 
   programs.zsh = {
     enable = true;
