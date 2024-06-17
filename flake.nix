@@ -14,8 +14,13 @@
     };
   };
 
-  outputs = { self, home-manager, nixpkgs, nixos-wsl, nix-darwin }@inputs:
-let
+  outputs = {
+    self,
+    home-manager,
+    nixpkgs,
+    nixos-wsl,
+    nix-darwin,
+  } @ inputs: let
     nixos-uname = "nixos";
     nixos-hostname = "nixos";
     nixos-sys = "x86_64-linux";
@@ -29,16 +34,15 @@ let
       // {
         inherit nixos-uname nixos-sys mac-uname mac-sys;
       };
-  in
-  {
+  in {
     nixosConfigurations = {
       "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
         system = "${nixos-sys}";
         modules = [
           ./modules/common-config.nix
-	  ./modules/nixos/config.nix
+          ./modules/nixos/config.nix
           nixos-wsl.nixosModules.wsl
-	  home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -53,8 +57,9 @@ let
         inherit specialArgs;
         system = "${mac-sys}";
         modules = [
-                ./modules/common-config.nix
-                ./modules/mac/config.nix ];
+          ./modules/common-config.nix
+          ./modules/mac/config.nix
+        ];
       };
     };
 
