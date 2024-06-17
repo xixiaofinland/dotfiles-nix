@@ -20,16 +20,20 @@
 
   home.file = {
     #".zshrc".source = ./.zshrc;
-    ".gitconfig".source = ./.gitconfig;
-    ".alacritty.toml".source = ./.alacritty.toml;
-    ".ignore".source = ./.ignore;
-    ".tmux.conf".source = ./.tmux.conf;
-    ".config/nvim" = {
-      source = ./nvim;
-      recursive = true;
-    };
+    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/.gitconfig;
+    ".alacritty.toml".source = ./dotfiles/.alacritty.toml;
+    ".ignore".source = ./dotfiles/.ignore;
+    ".tmux.conf".source = ./dotfiles/.tmux.conf;
+    # ".config/nvim" = {
+    #   source = ./nvim;
+    #   recursive = true;
+    # };
   };
 
+  xdg.configFile."nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/nvim;
+    recursive = true;
+  };
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
@@ -65,6 +69,7 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
   };
 
   programs.git = {
