@@ -72,6 +72,12 @@
           ./modules/common-config.nix
           ./modules/mac/config.nix
           home-manager.darwinModules.home-manager
+          {
+            # home-manager.users.${mac-user}.home = "/Users/xixiao";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${mac-user}" = import ./mac-home.nix;
+          }
           # nix-homebrew.darwinModules.nix-homebrew
           # {
           #   nix-homebrew = {
