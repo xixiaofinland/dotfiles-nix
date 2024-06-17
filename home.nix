@@ -19,19 +19,22 @@
   ];
 
   home.file = {
-    #".zshrc".source = ./.zshrc;
-    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/.gitconfig;
+    ".gitconfig".source = ./dotfiles/.gitconfig;
     ".alacritty.toml".source = ./dotfiles/.alacritty.toml;
     ".ignore".source = ./dotfiles/.ignore;
     ".tmux.conf".source = ./dotfiles/.tmux.conf;
+
+    #".zshrc".source = ./.zshrc;
+    # ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/.gitconfig";
     # ".config/nvim" = {
     #   source = ./nvim;
     #   recursive = true;
     # };
   };
 
+  # accept impure for nvim configuration!!
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/nvim;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim";
     recursive = true;
   };
 
