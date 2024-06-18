@@ -59,7 +59,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${nixos-user}" = import ./home.nix;
+            home-manager.users."${nixos-user}" = import ./modules/nixos/hm.nix;
           }
         ];
       };
@@ -69,29 +69,16 @@
       "${mac-hostname}" = nix-darwin.lib.darwinSystem {
         system = "${mac-sys}";
         modules = [
-          ./modules/common-config.nix
           ./modules/mac/config.nix
+          {
+            users.users.${mac-user}.home = "/Users/${mac-user}";
+          }
           home-manager.darwinModules.home-manager
           {
-            # home-manager.users.${mac-user}.home = "/Users/xixiao";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${mac-user}" = import ./mac-home.nix;
+            home-manager.users."${mac-user}" = import ./modules/mac/hm.nix;
           }
-          # nix-homebrew.darwinModules.nix-homebrew
-          # {
-          #   nix-homebrew = {
-          #     user = "${mac-user}";
-          #     enable = true;
-          #     taps = {
-          #       "homebrew/homebrew-core" = homebrew-core;
-          #       "homebrew/homebrew-cask" = homebrew-cask;
-          #       "homebrew/homebrew-bundle" = homebrew-bundle;
-          #     };
-          #     mutableTaps = false;
-          #     autoMigrate = true;
-          #   };
-          # }
         ];
       };
     };
