@@ -8,6 +8,8 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    git
+    curl
   ];
 
   environment.shells = with pkgs; [zsh];
