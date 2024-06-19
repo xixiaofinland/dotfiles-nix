@@ -21,16 +21,16 @@
     ".gitconfig".source = ../../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../../dotfiles/.alacritty.toml;
     ".ignore".source = ../../dotfiles/.ignore;
-    ".config/nvim" = {
-      source = ../../dotfiles/nvim;
-      recursive = true;
-    };
+    # ".config/nvim" = {
+    #   source = ../../dotfiles/nvim;
+    #   recursive = true;
+    # };
   };
 
-  # xdg.configFile."nvim" = {
-  #   source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim";
-  #   recursive = true;
-  # };
+  xdg.configFile."nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim";
+    recursive = true;
+  };
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
