@@ -36,22 +36,26 @@ return {
             end, 'format file')
         end
 
-        local servers = {
-            apex_ls = {},
+        local default_setup_servers = {
+            -- apex_ls = {},
+            -- lua_ls = {},
             rust_analyzer = {},
-            lua_ls = {},
         }
-
         local zero = require('lsp-zero')
         zero.extend_lspconfig()
         zero.on_attach(on_attach)
-        zero.setup_servers(vim.tbl_keys(servers))
+        zero.setup_servers(vim.tbl_keys(default_setup_servers))
 
         local lua_opts = zero.nvim_lua_ls()
         require('lspconfig').lua_ls.setup(lua_opts)
 
+        local apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar')
         require('lspconfig').apex_ls.setup({
-            apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar'),
+            cmd = {
+                "java",
+                "-jar",
+                apex_jar_path,
+            },
             apex_enable_semantic_errors = false,
             apex_enable_completion_statistics = false,
             filetypes = { 'apex' },
