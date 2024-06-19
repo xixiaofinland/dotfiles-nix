@@ -65,12 +65,6 @@ return {
         lsp.on_attach(on_attach)
         lsp.setup()
 
-        require 'cmp'.setup {
-            sources = {
-                { name = 'nvim_lsp' }
-            }
-        }
-
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
