@@ -69,6 +69,7 @@
       "${mac-hostname}" = nix-darwin.lib.darwinSystem {
         system = "${mac-sys}";
         modules = [
+          ./modules/common-config.nix
           ./modules/mac/config.nix
           {
             users.users.${mac-user}.home = "/Users/${mac-user}";
