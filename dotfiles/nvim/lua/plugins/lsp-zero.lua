@@ -3,7 +3,7 @@ return {
 
     dependencies = {
         'neovim/nvim-lspconfig',
-        { "hrsh7th/cmp-nvim-lsp", opt = {} },
+        "hrsh7th/cmp-nvim-lsp",
     },
 
     config = function()

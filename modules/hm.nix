@@ -4,7 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    nixpkgs-fmt
     fzf
     ripgrep
     zoxide
@@ -13,9 +12,9 @@
   ];
 
   home.file = {
-    ".gitconfig".source = ../../dotfiles/.gitconfig;
-    ".alacritty.toml".source = ../../dotfiles/.alacritty.toml;
-    ".ignore".source = ../../dotfiles/.ignore;
+    ".gitconfig".source = ../dotfiles/.gitconfig;
+    ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
+    ".ignore".source = ../dotfiles/.ignore;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
     #   recursive = true;
@@ -32,10 +31,6 @@
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
   };
-
-  home.sessionPath = [
-    "$HOME/.cargo/bin"
-  ];
 
   programs.tmux = {
     enable = true;

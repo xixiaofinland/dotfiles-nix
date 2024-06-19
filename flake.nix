@@ -59,7 +59,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${nixos-user}" = import ./modules/nixos/hm.nix;
+            home-manager.users."${nixos-user}" = import ./modules/hm.nix;
           }
         ];
       };
@@ -78,7 +78,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${mac-user}" = import ./modules/mac/hm.nix;
+            home-manager.users."${mac-user}" = import ./modules/hm.nix;
           }
         ];
       };
