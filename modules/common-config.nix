@@ -14,9 +14,14 @@
   programs.zsh.enable = true;
 
   nix.settings.auto-optimise-store = true;
+
   nix.gc = {
     automatic = true;
-    interval = "weekly";
-    options = "--delete-older-than 1w";
+    interval = {
+      Weekday = 0;
+      Hour = 0;
+      Minute = 0;
+    };
+    options = "--delete-older-than 30d";
   };
 }
