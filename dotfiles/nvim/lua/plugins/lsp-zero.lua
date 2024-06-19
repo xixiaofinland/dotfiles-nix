@@ -7,14 +7,6 @@ return {
     },
 
     config = function()
-        local lsp_zero_config = {
-            call_servers = 'global',
-        }
-
-        local servers = {
-            'lua_ls',
-        }
-
         local on_attach = function(_, bufnr)
             local toggleInlay = function()
                 local current_value = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
@@ -44,6 +36,30 @@ return {
             end, 'format file')
         end
 
+        local servers = {
+            apex_ls = {},
+            rust_analyzer = {},
+            lua_ls = {
+                Lua = {
+                    workspace = {
+                        checkThirdParty = false,
+                        library = vim.api.nvim_get_runtime_file("", true)
+                    },
+                    telemetry = { enable = false },
+                    runtime = { version = 'LuaJIT' },
+                    diagnostics = {
+                        globals = { 'vim' },
+                        -- disable = { 'missing-fields' }
+                    }
+                },
+            },
+        }
+
+        local zero = require('lsp-zero')
+        zero.set_preferences({ call_servers = 'global' })
+        zero.extend_lspconfig()
+        zero.on_attach(on_attach)
+
         local lua_ls_config = {
             settings = {
                 Lua = {
@@ -58,19 +74,17 @@ return {
             },
         }
 
-        local lsp = require('lsp-zero')
-        lsp.set_preferences(lsp_zero_config)
-        lsp.configure('lua_ls', lua_ls_config)
-        lsp.setup_servers(servers)
-        lsp.on_attach(on_attach)
-        lsp.setup()
+        zero.configure('lua_ls', lua_ls_config)
+        zero.setup_servers(vim.tbl_keys(servers))
 
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        -- zero.setup()
+
+        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
-        require('lspconfig').clangd.setup {
-            capabilities = capabilities,
-        }
+        -- require('lspconfig').clangd.setup {
+        --     capabilities = capabilities,
+        -- }
 
         --   function(server_name)
         --     require('lspconfig')[server_name].setup {
