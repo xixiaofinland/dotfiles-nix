@@ -24,9 +24,6 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   { import = 'plugins' },
-},
-{
-  lockfile = "~/.lazy-lock.json",
 })
 
 -- [[ my own custom settings ]]
