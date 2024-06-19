@@ -50,6 +50,12 @@ return {
         local lua_opts = zero.nvim_lua_ls()
         require('lspconfig').lua_ls.setup(lua_opts)
 
+        require('lspconfig').apex_ls.setup {
+            apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar'),
+            apex_enable_semantic_errors = false,
+            apex_enable_completion_statistics = false,
+        }
+
         -- zero.setup()
 
         -- local capabilities = require('cmp_nvim_lsp').default_capabilities()

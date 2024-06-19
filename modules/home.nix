@@ -9,6 +9,7 @@
     zoxide
     fd
     tree
+    pmd
   ];
 
   home.file = {
