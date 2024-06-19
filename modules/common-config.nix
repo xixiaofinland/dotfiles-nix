@@ -17,5 +17,4 @@
   programs.zsh.enable = true;
 
   nix.settings.auto-optimise-store = true;
-
 }

@@ -27,6 +27,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -39,6 +43,7 @@
     homebrew-bundle,
     homebrew-core,
     homebrew-cask,
+    rust-overlay,
   } @ inputs: let
     nixos-user = "nixos";
     nixos-hostname = "nixos";
@@ -47,7 +52,36 @@
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
     mac-sys = "x86_64-darwin";
+    overlays = [
+      rust-overlay.overlays.default
+      (final: prev: {
+        rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
+      })
+    ];
+    supportedSystems = ["x86_64-linux" "x86_64-darwin"];
+    forEachSupportedSystem = f:
+      nixpkgs.lib.genAttrs supportedSystems (system:
+        f {
+          pkgs = import nixpkgs {inherit overlays system;};
+        });
   in {
+    devShells = forEachSupportedSystem ({pkgs}: {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          rustToolchain
+          rust-analyzer
+        ];
+
+        env = {
+          RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+        };
+
+        shellHook = ''
+          echo "hello rust!"
+        '';
+      };
+    });
+
     nixosConfigurations = {
       "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
         system = "${nixos-sys}";
