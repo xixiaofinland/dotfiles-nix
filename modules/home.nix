@@ -4,12 +4,14 @@
   ...
 }: {
   home.packages = with pkgs; [
+    jq
     fzf
     ripgrep
     zoxide
     fd
     tree
     pmd
+    # nodePackages."@salesforce/cli"
   ];
 
   home.file = {
