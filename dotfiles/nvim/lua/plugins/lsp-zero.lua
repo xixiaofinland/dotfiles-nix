@@ -54,6 +54,7 @@ return {
             apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar'),
             apex_enable_semantic_errors = false,
             apex_enable_completion_statistics = false,
+            filetypes = { 'apex' },
         })
 
         -- zero.setup()
