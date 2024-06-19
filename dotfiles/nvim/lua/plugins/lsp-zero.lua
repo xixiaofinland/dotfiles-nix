@@ -37,45 +37,18 @@ return {
         end
 
         local servers = {
-            apex_ls = {},
+            -- apex_ls = {},
             rust_analyzer = {},
-            lua_ls = {
-                Lua = {
-                    workspace = {
-                        checkThirdParty = false,
-                        library = vim.api.nvim_get_runtime_file("", true)
-                    },
-                    telemetry = { enable = false },
-                    runtime = { version = 'LuaJIT' },
-                    diagnostics = {
-                        globals = { 'vim' },
-                        -- disable = { 'missing-fields' }
-                    }
-                },
-            },
+            lua_ls = {},
         }
 
         local zero = require('lsp-zero')
-        zero.set_preferences({ call_servers = 'global' })
         zero.extend_lspconfig()
         zero.on_attach(on_attach)
-
-        local lua_ls_config = {
-            settings = {
-                Lua = {
-                    workspace = {
-                        checkThirdParty = false,
-                        library = vim.api.nvim_get_runtime_file("", true)
-                    },
-                    diagnostics = { globals = { 'vim' } },
-                    runtime = { version = 'LuaJIT' },
-                    telemetry = { enable = false },
-                },
-            },
-        }
-
-        zero.configure('lua_ls', lua_ls_config)
         zero.setup_servers(vim.tbl_keys(servers))
+
+        local lua_opts = zero.nvim_lua_ls()
+        require('lspconfig').lua_ls.setup(lua_opts)
 
         -- zero.setup()
 
