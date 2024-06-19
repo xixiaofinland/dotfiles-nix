@@ -2,33 +2,8 @@ return {
     'VonHeikemen/lsp-zero.nvim',
 
     dependencies = {
-        { 'neovim/nvim-lspconfig' },
-
-        {
-            "hrsh7th/cmp-nvim-lsp",
-            -- config = function()
-            --     require 'cmp'.setup {
-            --         sources = {
-            --             { name = 'nvim_lsp' }
-            --         }
-            --     }
-            --
-            --     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            --
-            --     -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
-            --     require('lspconfig').clangd.setup {
-            --         capabilities = capabilities,
-            --     }
-            --
-            --     --   function(server_name)
-            --     --     require('lspconfig')[server_name].setup {
-            --     --       capabilities = capabilities,
-            --     --       on_attach = on_attach,
-            --     --       settings = servers[server_name],
-            --     --     }
-            --     --   end,
-            -- end
-        },
+        'neovim/nvim-lspconfig',
+        "hrsh7th/cmp-nvim-lsp",
     },
 
     config = function()
@@ -89,5 +64,26 @@ return {
         lsp.setup_servers(servers)
         lsp.on_attach(on_attach)
         lsp.setup()
+
+        require 'cmp'.setup {
+            sources = {
+                { name = 'nvim_lsp' }
+            }
+        }
+
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
+        require('lspconfig').clangd.setup {
+            capabilities = capabilities,
+        }
+
+        --   function(server_name)
+        --     require('lspconfig')[server_name].setup {
+        --       capabilities = capabilities,
+        --       on_attach = on_attach,
+        --       settings = servers[server_name],
+        --     }
+        --   end,
     end,
 }
