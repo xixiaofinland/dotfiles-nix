@@ -23,6 +23,8 @@ require('lazy').setup({
 
   'tpope/vim-sleuth',
 
+  { 'j-hui/fidget.nvim', opts = {} },
+
   { import = 'plugins' },
 })
 
