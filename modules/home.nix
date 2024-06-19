@@ -150,6 +150,7 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       lua-language-server
+      rust-analyzer
     ];
   };
 
