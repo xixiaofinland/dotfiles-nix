@@ -31,6 +31,7 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sfdx-nix.url = "github:rfaulhaber/sfdx-nix";
   };
 
   outputs = {
@@ -44,6 +45,7 @@
     homebrew-core,
     homebrew-cask,
     rust-overlay,
+    sfdx-nix
   } @ inputs: let
     nixos-user = "nixos";
     nixos-hostname = "nixos";
@@ -67,6 +69,10 @@
   in {
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
+        nativeBuildInputs = [
+          sfdx-nix.packages.${nixos-sys}.sf
+        ];
+
         packages = with pkgs; [
           rustToolchain
         ];
@@ -77,6 +83,16 @@
 
         shellHook = ''
           echo "hello rust!"
+        '';
+      };
+
+      sf = pkgs.mkShell {
+        nativeBuildInputs = [
+          sfdx-nix.packages.${nixos-sys}.sf
+        ];
+
+        shellHook = ''
+          echo "hello sf!"
         '';
       };
     });
