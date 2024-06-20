@@ -86,7 +86,7 @@
         system = "${nixos-sys}";
         modules = [
           ./modules/common-config.nix
-          ./modules/nixos/config.nix
+          ./modules/nixos-config.nix
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
@@ -103,7 +103,7 @@
         system = "${mac-sys}";
         modules = [
           ./modules/common-config.nix
-          ./modules/mac/config.nix
+          ./modules/mac-config.nix
           {
             users.users.${mac-user}.home = "/Users/${mac-user}";
           }
