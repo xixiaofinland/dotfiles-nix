@@ -13,7 +13,7 @@
   "hardtime.nvim": { "branch": "main", "commit": "9a4e24fb40482dc85a93bf6cf344a030b9bf9a39" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
   "kanagawa.nvim": { "branch": "master", "commit": "fe5b2c9e2549862c3dc3f3c8e9cf7ddece0f40c2" },
-  "lazy.nvim": { "branch": "main", "commit": "bc620783663ab09d16bff9fdecc07da65b2a1528" },
+  "lazy.nvim": { "branch": "main", "commit": "c501b429cf995c645454539b924aaefae45bb9eb" },
   "lazydev.nvim": { "branch": "main", "commit": "6184ebbbc8045d70077659b7d30c705a588dc62f" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "16de3b18c5f7b6230d89b8e64ce9a4801b6f8d08" },
   "lspkind.nvim": { "branch": "master", "commit": "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf" },
