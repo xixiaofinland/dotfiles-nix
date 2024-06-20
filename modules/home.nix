@@ -11,7 +11,7 @@
     fd
     tree
     nh
-    # nodePackages."@salesforce/cli"
+    devenv
   ];
 
   home.file = {
@@ -24,7 +24,7 @@
     # };
   };
 
-  # trade impurity for convenience!
+  # trade impurity for convenience as I need to update nvim config quite frequently!
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim";
     recursive = true;
