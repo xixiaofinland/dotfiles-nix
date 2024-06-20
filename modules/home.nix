@@ -50,6 +50,10 @@
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g mouse on
 
+      unbind C-b
+      set -g prefix C-a
+      bind C-a send-prefix
+
       set -g history-limit 10000
 
       bind-key x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
