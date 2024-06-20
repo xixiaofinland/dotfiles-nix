@@ -88,7 +88,7 @@
 
       sf = pkgs.mkShell {
         nativeBuildInputs = [
-          sfdx-nix.packages.${nixos-sys}.sf
+          sfdx-nix.packages.${pkgs.system}.sf
         ];
 
         shellHook = ''
