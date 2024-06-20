@@ -10,7 +10,7 @@
     zoxide
     fd
     tree
-    pmd
+    nh
     # nodePackages."@salesforce/cli"
   ];
 
