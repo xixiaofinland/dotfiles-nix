@@ -5,7 +5,11 @@ return {
     {
       'nvim-treesitter/nvim-treesitter-context',
       config = function()
-        vim.keymap.set('n', '\\c', require'treesitter-context'.toggle, { noremap = true, silent = true, desc = 'toggle treesitter-context' })
+        require("treesitter-context").setup({
+          max_lines = 2,
+        })
+        vim.keymap.set('n', '\\c', require 'treesitter-context'.toggle,
+          { noremap = true, silent = true, desc = 'toggle treesitter-context' })
       end
 
     },
