@@ -70,7 +70,7 @@
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
         nativeBuildInputs = [
-          sfdx-nix.packages.${nixos-sys}.sf
+          sfdx-nix.packages.${pkgs.system}.sf
         ];
 
         packages = with pkgs; [
