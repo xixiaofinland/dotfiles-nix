@@ -13,8 +13,8 @@
     curl
   ];
 
-  environment.shells = with pkgs; [zsh];
   programs.zsh.enable = true;
+  environment.shells = with pkgs; [zsh];
 
   nix.settings.auto-optimise-store = true;
 }
