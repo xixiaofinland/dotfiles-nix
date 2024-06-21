@@ -86,7 +86,7 @@
       sf = pkgs.mkShell {
         packages = [
           sfdx-nix.packages.${pkgs.system}.sf
-          pmd
+          pkgs.pmd
         ];
 
         shellHook = ''

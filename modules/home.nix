@@ -36,6 +36,12 @@
     LC_ALL = "en_US.UTF-8";
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.tmux = {
     enable = true;
     shortcut = "a";
