@@ -12,6 +12,7 @@
     tree
     nh
     devenv
+    eza
   ];
 
   home.file = {
@@ -149,6 +150,7 @@
       e = "exit";
       c = "clear";
       n = "nvim";
+      ls = "eza";
     };
   };
 
