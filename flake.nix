@@ -67,12 +67,9 @@
           pkgs = import nixpkgs {inherit overlays system;};
         });
   in {
-    devShells = forEachSupportedSystem ({pkgs}: {
-      default = pkgs.mkShell {
-        nativeBuildInputs = [
-          sfdx-nix.packages.${pkgs.system}.sf
-        ];
-
+    devShells = forEachSupportedSystem ({pkgs}: rec {
+      default = rust;
+      rust = pkgs.mkShell {
         packages = with pkgs; [
           rustToolchain
         ];
@@ -82,17 +79,18 @@
         };
 
         shellHook = ''
-          echo "hello rust!"
+          echo "🦀🦀🦀🦀 hello Rust!"
         '';
       };
 
       sf = pkgs.mkShell {
-        nativeBuildInputs = [
+        packages = [
           sfdx-nix.packages.${pkgs.system}.sf
+          pmd
         ];
 
         shellHook = ''
-          echo "hello sf!"
+          echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
         '';
       };
     });
