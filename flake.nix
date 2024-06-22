@@ -45,7 +45,7 @@
     homebrew-core,
     homebrew-cask,
     rust-overlay,
-    sfdx-nix
+    sfdx-nix,
   } @ inputs: let
     nixos-user = "nixos";
     nixos-hostname = "nixos";
