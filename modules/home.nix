@@ -36,6 +36,7 @@ in {
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
     ".ignore".source = ../dotfiles/.ignore;
+    ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
     #   recursive = true;
