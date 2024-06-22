@@ -5,16 +5,13 @@
 }: let
   finter = pkgs.rustPlatform.buildRustPackage rec {
     pname = "finter";
-    version = "0.1.9"; # Replace with the version you want to use
-
-    src = pkgs.fetchcrate {
+    version = "0.1.10";
+    src = pkgs.fetchCrate {
       inherit pname version;
-      sha256 = "sha256-1lshzwkadrw0ckckbk8zqd5g3y2sccvc419c29mq1wvn8mz84lr4"; # You need to get the correct hash for the version
+      sha256 = "1gdv5jq9njwyb9jxiyfs6prda6mxdvml22m1ny7smpqdgpv19ppb"; # You need to get the correct hash for the version
     };
-
-    cargoSha256 = "";
-
-    meta = with pkgs.stdenv.lib; {
+    cargoSha256 = "voy3DURsnSRrv5s45Zdy69dRSWe8xjPY/SeeJhg09Fs=";
+    meta = with pkgs.lib; {
       description = "A CLI tool for finter";
       license = licenses.mit; # Replace with the correct license if needed
       maintainers = with maintainers; ["xixiaofinland"];
