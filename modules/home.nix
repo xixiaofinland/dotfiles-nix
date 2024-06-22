@@ -8,12 +8,12 @@
     version = "0.1.10";
     src = pkgs.fetchCrate {
       inherit pname version;
-      sha256 = "1gdv5jq9njwyb9jxiyfs6prda6mxdvml22m1ny7smpqdgpv19ppb"; # You need to get the correct hash for the version
+      sha256 = "1gdv5jq9njwyb9jxiyfs6prda6mxdvml22m1ny7smpqdgpv19ppb";
     };
     cargoSha256 = "voy3DURsnSRrv5s45Zdy69dRSWe8xjPY/SeeJhg09Fs=";
     meta = with pkgs.lib; {
-      description = "A CLI tool for finter";
-      license = licenses.mit; # Replace with the correct license if needed
+      description = "A Tmux plugin to quickly create session for folders in configured paths.";
+      license = licenses.mit;
       maintainers = with maintainers; ["xixiaofinland"];
     };
   };
