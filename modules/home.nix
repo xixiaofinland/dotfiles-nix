@@ -29,6 +29,7 @@ in {
     devenv
     eza
     finter
+    alejandra
   ];
 
   home.file = {

@@ -18,4 +18,7 @@
     };
     options = "--delete-older-than 14d";
   };
+
+  # bug: https://github.com/NixOS/nix/issues/7273
+  nix.settings.auto-optimise-store = false;
 }
