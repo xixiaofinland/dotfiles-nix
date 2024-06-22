@@ -32,6 +32,7 @@ in {
   ];
 
   home.file = {
+    ".finter".source = ../dotfiles/.finter;
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
     ".ignore".source = ../dotfiles/.ignore;
