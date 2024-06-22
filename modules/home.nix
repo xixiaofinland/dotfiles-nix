@@ -26,7 +26,6 @@ in {
     fd
     tree
     nh
-    devenv
     eza
     finter
     alejandra
@@ -183,8 +182,6 @@ in {
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      lua-language-server
-      rust-analyzer
     ];
   };
 

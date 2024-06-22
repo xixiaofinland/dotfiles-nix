@@ -73,11 +73,9 @@
         packages = with pkgs; [
           rustToolchain
         ];
-
         env = {
           RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
         };
-
         shellHook = ''
           echo "🦀🦀🦀🦀 hello Rust!"
         '';
@@ -91,6 +89,24 @@
 
         shellHook = ''
           echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
+        '';
+      };
+
+      lua = pkgs.mkShell {
+        packages = with pkgs; [
+          lua-language-server
+        ];
+        shellHook = ''
+          echo "🔮🔮🔮🔮 hello Lua!"
+        '';
+      };
+
+      Nix = pkgs.mkShell {
+        packages = with pkgs; [
+          lua-language-server
+        ];
+        shellHook = ''
+          echo "❄️❄️❄️❄️ hello Nix!"
         '';
       };
     });
