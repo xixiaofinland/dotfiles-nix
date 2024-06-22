@@ -103,7 +103,10 @@
 
       Nix = pkgs.mkShell {
         packages = with pkgs; [
-          lua-language-server
+          nil
+          cachix
+          statix
+          vulnix
         ];
         shellHook = ''
           echo "❄️❄️❄️❄️ hello Nix!"
