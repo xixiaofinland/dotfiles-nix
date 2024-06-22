@@ -101,7 +101,7 @@
         '';
       };
 
-      Nix = pkgs.mkShell {
+      nix = pkgs.mkShell {
         packages = with pkgs; [
           nil
           cachix
