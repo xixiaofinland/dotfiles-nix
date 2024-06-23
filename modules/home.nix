@@ -175,6 +175,7 @@ in {
       c = "clear";
       n = "nvim";
       ls = "eza";
+      t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'git pull' Enter; tmux attach -t 0:win";
     };
   };
 
