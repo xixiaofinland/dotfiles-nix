@@ -109,7 +109,7 @@
           vulnix
         ];
         shellHook = ''
-          echo "❄️❄️❄️❄️ hello Nix!"
+          echo "💠💠💠💠 hello Nix!"
         '';
       };
 
@@ -122,7 +122,7 @@
           vulnix
         ];
         shellHook = ''
-          echo "🗂️ 🗂️ 🗂️ 🗂️ hello Dotfiles!"
+          echo "🗂️ 🗂️ hello Dotfiles!"
         '';
       };
     });
