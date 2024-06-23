@@ -46,7 +46,24 @@ return {
         zero.on_attach(on_attach)
         zero.setup_servers(vim.tbl_keys(default_setup_servers))
 
-        local lua_opts = zero.nvim_lua_ls()
+        -- local lua_opts = zero.nvim_lua_ls()
+        local lua_opts = {
+            settings = {
+                Lua = {
+                    workspace = {
+                        checkThirdParty = false,
+                        library = vim.api.nvim_get_runtime_file("", true),
+                        ignoreDir = { '.direnv' }
+                    },
+                    telemetry = { enable = false },
+                    diagnostics = {
+                        globals = { 'vim' },
+                        -- disable = { 'missing-fields' }
+                    }
+                }
+            }
+        };
+
         require('lspconfig').lua_ls.setup(lua_opts)
 
         local apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar')

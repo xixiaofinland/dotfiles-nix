@@ -1,3 +1,4 @@
 node_modules
 *-meta.xml
 !package.xml
+.direnv
