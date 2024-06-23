@@ -122,7 +122,7 @@
           vulnix
         ];
         shellHook = ''
-          echo "🗂️🗂️🗂️🗂️ hello Dotfiles!"
+          echo "🗂️ 🗂️ 🗂️ 🗂️ hello Dotfiles!"
         '';
       };
     });
