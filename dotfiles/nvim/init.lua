@@ -25,6 +25,8 @@ require('lazy').setup({
 
   { 'j-hui/fidget.nvim', opts = {} },
 
+  { "actionshrimp/direnv.nvim", opts = {} },
+
   { import = 'plugins' },
 })
 
