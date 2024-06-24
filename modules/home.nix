@@ -37,6 +37,10 @@ in {
 
     # lua
     lua-language-server
+
+    # salesforce
+    # sfdx-nix.packages.${system}.sf
+    # pmd
   ];
 
   home.file = {
