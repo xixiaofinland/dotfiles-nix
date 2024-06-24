@@ -70,8 +70,7 @@
         })
       ];
       pkgs = import nixpkgs {
-        inherit system overlays;
-        sf = sfdx-nix.packages.${system}.sf;
+        inherit system overlays sfdx-nix;
       };
     in {
       nixosConfigurations = {
@@ -126,7 +125,7 @@
 
         sf = pkgs.mkShell {
           packages = with pkgs; [
-            sf
+            sfdx-nix.packages.${system}.sf
             pmd
           ];
 
@@ -135,25 +134,25 @@
           '';
         };
 
-        lua = pkgs.mkShell {
-          packages = with pkgs; [
-            lua-language-server
-          ];
-          shellHook = ''
-            echo "🔮🔮🔮🔮 hello Lua!"
-          '';
-        };
+        # lua = pkgs.mkShell {
+        #   packages = with pkgs; [
+        #     lua-language-server
+        #   ];
+        #   shellHook = ''
+        #     echo "🔮🔮🔮🔮 hello Lua!"
+        #   '';
+        # };
 
-        nix = pkgs.mkShell {
-          packages = with pkgs; [
-            nil
-            statix
-            vulnix
-          ];
-          shellHook = ''
-            echo "💠💠💠💠 hello Nix!"
-          '';
-        };
+        # nix = pkgs.mkShell {
+        #   packages = with pkgs; [
+        #     nil
+        #     statix
+        #     vulnix
+        #   ];
+        #   shellHook = ''
+        #     echo "💠💠💠💠 hello Nix!"
+        #   '';
+        # };
       };
 
       # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
