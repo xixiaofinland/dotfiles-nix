@@ -67,6 +67,42 @@
           pkgs = import nixpkgs {inherit overlays system;};
         });
   in {
+    nixosConfigurations = {
+      "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
+        system = "${nixos-sys}";
+        modules = [
+          ./modules/common-config.nix
+          ./modules/nixos-config.nix
+          nixos-wsl.nixosModules.wsl
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${nixos-user}" = import ./modules/home.nix;
+          }
+        ];
+      };
+    };
+
+    darwinConfigurations = {
+      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
+        system = "${mac-sys}";
+        modules = [
+          ./modules/common-config.nix
+          ./modules/mac-config.nix
+          {
+            users.users.${mac-user}.home = "/Users/${mac-user}";
+          }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${mac-user}" = import ./modules/home.nix;
+          }
+        ];
+      };
+    };
+
     devShells = forEachSupportedSystem ({pkgs}: rec {
       default = rust;
       rust = pkgs.mkShell {
@@ -126,41 +162,6 @@
       # };
     });
 
-    nixosConfigurations = {
-      "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "${nixos-sys}";
-        modules = [
-          ./modules/common-config.nix
-          ./modules/nixos-config.nix
-          nixos-wsl.nixosModules.wsl
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${nixos-user}" = import ./modules/home.nix;
-          }
-        ];
-      };
-    };
-
-    darwinConfigurations = {
-      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
-        system = "${mac-sys}";
-        modules = [
-          ./modules/common-config.nix
-          ./modules/mac-config.nix
-          {
-            users.users.${mac-user}.home = "/Users/${mac-user}";
-          }
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${mac-user}" = import ./modules/home.nix;
-          }
-        ];
-      };
-    };
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
     # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
