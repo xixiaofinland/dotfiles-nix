@@ -66,6 +66,7 @@
       overlays = [
         rust-overlay.overlays.default
         (final: prev: {
+          sf = sfdx-nix.packages.${final.system}.sf;
           rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
         })
       ];
@@ -75,7 +76,7 @@
     in {
       nixosConfigurations = {
         "${nixos-hostname}" = pkgs.lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [
             ./modules/common-config.nix
             ./modules/nixos-config.nix
@@ -92,7 +93,7 @@
 
       darwinConfigurations = {
         "${mac-hostname}" = nix-darwin.lib.darwinSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [
             ./modules/common-config.nix
             ./modules/mac-config.nix
@@ -123,16 +124,16 @@
           '';
         };
 
-        sf = pkgs.mkShell {
-          packages = with pkgs; [
-            sfdx-nix.packages.${system}.sf
-            pmd
-          ];
-
-          shellHook = ''
-            echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
-          '';
-        };
+        # sf = pkgs.mkShell {
+        #   packages = with pkgs; [
+        #     sfdx-nix.packages.${system}.sf
+        #     pmd
+        #   ];
+        #
+        #   shellHook = ''
+        #     echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
+        #   '';
+        # };
 
         # lua = pkgs.mkShell {
         #   packages = with pkgs; [
