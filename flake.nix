@@ -92,14 +92,14 @@
         '';
       };
 
-      lua = pkgs.mkShell {
-        packages = with pkgs; [
-          lua-language-server
-        ];
-        shellHook = ''
-          echo "🔮🔮🔮🔮 hello Lua!"
-        '';
-      };
+      # lua = pkgs.mkShell {
+      #   packages = with pkgs; [
+      #     lua-language-server
+      #   ];
+      #   shellHook = ''
+      #     echo "🔮🔮🔮🔮 hello Lua!"
+      #   '';
+      # };
 
       nix = pkgs.mkShell {
         packages = with pkgs; [
@@ -113,18 +113,18 @@
         '';
       };
 
-      dotfiles = pkgs.mkShell {
-        packages = with pkgs; [
-          lua-language-server
-          nil
-          cachix
-          statix
-          vulnix
-        ];
-        shellHook = ''
-          echo "🗂️ 🗂️ hello Dotfiles!"
-        '';
-      };
+      # dotfiles = pkgs.mkShell {
+      #   packages = with pkgs; [
+      #     lua-language-server
+      #     nil
+      #     cachix
+      #     statix
+      #     vulnix
+      #   ];
+      #   shellHook = ''
+      #     echo "🗂️ 🗂️ hello Dotfiles!"
+      #   '';
+      # };
     });
 
     nixosConfigurations = {

@@ -19,16 +19,23 @@
   };
 in {
   home.packages = with pkgs; [
-    jq
-    fzf
-    ripgrep
-    zoxide
-    fd
-    tree
-    nh
     eza
+    fd
+    fzf
+    jq
+    nh
+    ripgrep
+    tree
+    zoxide
+
+    # custom
     finter
+
+    # nix
     alejandra
+
+    # lua
+    lua-language-server
   ];
 
   home.file = {
