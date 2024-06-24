@@ -46,6 +46,7 @@
 
   outputs = {
     self,
+    flake-utils,
     home-manager,
     nixpkgs,
     nixos-wsl,
