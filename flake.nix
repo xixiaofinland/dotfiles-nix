@@ -147,21 +147,7 @@
       #     echo "💠💠💠💠 hello Nix!"
       #   '';
       # };
-
-      # dotfiles = pkgs.mkShell {
-      #   packages = with pkgs; [
-      #     lua-language-server
-      #     nil
-      #     cachix
-      #     statix
-      #     vulnix
-      #   ];
-      #   shellHook = ''
-      #     echo "🗂️ 🗂️ hello Dotfiles!"
-      #   '';
-      # };
     });
-
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
     # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
