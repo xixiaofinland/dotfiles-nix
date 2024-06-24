@@ -36,64 +36,48 @@ return {
             end, 'format file')
         end
 
-        local default_setup_servers = {
-            -- apex_ls = {},
-            -- lua_ls = {},
-            rust_analyzer = {},
-        }
         local zero = require('lsp-zero')
         zero.extend_lspconfig()
         zero.on_attach(on_attach)
-        zero.setup_servers(vim.tbl_keys(default_setup_servers))
 
-        -- local lua_opts = zero.nvim_lua_ls()
-        local lua_opts = {
-            settings = {
-                Lua = {
-                    workspace = {
-                        checkThirdParty = false,
-                        -- Setting changes. Ref: https://www.reddit.com/r/neovim/comments/1dmvou4/lua_lang_server_scans_too_many_files/
-                        -- library = vim.api.nvim_get_runtime_file("", true),
-                        -- ignoreDir = { '.direnv' }
-                    },
-                    telemetry = { enable = false },
-                    diagnostics = {
-                        globals = { 'vim' },
-                        -- disable = { 'missing-fields' }
-                    }
-                }
-            }
-        };
-
-        require('lspconfig').lua_ls.setup(lua_opts)
-
-        local apex_jar_path = vim.fn.expand('$HOME/apex-jorje-lsp.jar')
-        require('lspconfig').apex_ls.setup({
-            cmd = {
-                "java",
-                "-jar",
-                apex_jar_path,
+        local lang_servers = {
+            apex_ls = {
+                cmd = {
+                    "java",
+                    "-jar",
+                    vim.fn.expand('$HOME/apex-jorje-lsp.jar'),
+                },
+                apex_enable_semantic_errors = false,
+                apex_enable_completion_statistics = false,
+                filetypes = { 'apex' },
             },
-            apex_enable_semantic_errors = false,
-            apex_enable_completion_statistics = false,
-            filetypes = { 'apex' },
-        })
+            lua_ls = zero.nvim_lua_ls(),
+            nil_ls = {},
+            rust_analyzer = {},
+        }
 
-        -- zero.setup()
+        for _, lsp in ipairs(vim.tbl_keys(lang_servers)) do
+            require('lspconfig')[lsp].setup(lang_servers[lsp])
+        end
 
         -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-        -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
-        -- require('lspconfig').clangd.setup {
-        --     capabilities = capabilities,
-        -- }
-
-        --   function(server_name)
-        --     require('lspconfig')[server_name].setup {
-        --       capabilities = capabilities,
-        --       on_attach = on_attach,
-        --       settings = servers[server_name],
+        -- local lua_opts = {
+        --     settings = {
+        --         Lua = {
+        --             workspace = {
+        --                 checkThirdParty = false,
+        --                 -- Setting changes. Ref: https://www.reddit.com/r/neovim/comments/1dmvou4/lua_lang_server_scans_too_many_files/
+        --                 -- library = vim.api.nvim_get_runtime_file("", true),
+        --                 -- ignoreDir = { '.direnv' }
+        --             },
+        --             telemetry = { enable = false },
+        --             diagnostics = {
+        --                 globals = { 'vim' },
+        --                 -- disable = { 'missing-fields' }
+        --             }
+        --         }
         --     }
-        --   end,
+        -- };
     end,
 }
