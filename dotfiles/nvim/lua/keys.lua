@@ -26,6 +26,8 @@ vim.keymap.set('n', '[<Space>', ':<C-u>put!=repeat(nr2char(10),v:count)<Bar>exec
 
 -- My own habit;
 
+vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
+
 vim.keymap.set('n', '<leader>fn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
