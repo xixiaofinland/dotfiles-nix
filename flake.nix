@@ -162,7 +162,7 @@
       };
     };
 
-    formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
-    formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
+    # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
+    # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
   };
 }
