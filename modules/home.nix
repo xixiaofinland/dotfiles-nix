@@ -33,6 +33,7 @@ in {
 
     # nix
     alejandra
+    nil
 
     # lua
     lua-language-server

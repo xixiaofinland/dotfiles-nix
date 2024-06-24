@@ -101,17 +101,16 @@
       #   '';
       # };
 
-      nix = pkgs.mkShell {
-        packages = with pkgs; [
-          nil
-          cachix
-          statix
-          vulnix
-        ];
-        shellHook = ''
-          echo "💠💠💠💠 hello Nix!"
-        '';
-      };
+      # nix = pkgs.mkShell {
+      #   packages = with pkgs; [
+      #     nil
+      #     statix
+      #     vulnix
+      #   ];
+      #   shellHook = ''
+      #     echo "💠💠💠💠 hello Nix!"
+      #   '';
+      # };
 
       # dotfiles = pkgs.mkShell {
       #   packages = with pkgs; [

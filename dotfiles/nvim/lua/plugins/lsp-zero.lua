@@ -52,6 +52,7 @@ return {
                 filetypes = { 'apex' },
             },
             lua_ls = zero.nvim_lua_ls(),
+            -- statix = {},
             nil_ls = {},
             rust_analyzer = {},
         }
