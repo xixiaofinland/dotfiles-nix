@@ -3,7 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/nixos-wsl";
+    flake-utils.url = "github:numtide/flake-utils";
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +24,7 @@
     sfdx-nix = {
       url = "github:rfaulhaber/sfdx-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     # nix-homebrew = {
     #   url = "github:zhaofengli-wip/nix-homebrew";
