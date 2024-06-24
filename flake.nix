@@ -57,110 +57,106 @@
     # homebrew-bundle,
     # homebrew-core,
     # homebrew-cask,
-  } @ inputs: let
-    nixos-user = "nixos";
-    nixos-hostname = "nixos";
-    nixos-sys = "x86_64-linux";
-
-    mac-user = "xixiao";
-    mac-hostname = "Xis-MacBook-Pro";
-    mac-sys = "x86_64-darwin";
-    overlays = [
-      rust-overlay.overlays.default
-      (final: prev: {
-        rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
-      })
-    ];
-    supportedSystems = ["x86_64-linux" "x86_64-darwin"];
-    forEachSupportedSystem = f:
-      nixpkgs.lib.genAttrs supportedSystems (system:
-        f {
-          pkgs = import nixpkgs {inherit overlays system;};
-        });
-  in {
-    nixosConfigurations = {
-      "${nixos-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "${nixos-sys}";
-        modules = [
-          ./modules/common-config.nix
-          ./modules/nixos-config.nix
-          nixos-wsl.nixosModules.wsl
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${nixos-user}" = import ./modules/home.nix;
-          }
-        ];
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      nixos-user = "nixos";
+      nixos-hostname = "nixos";
+      mac-user = "xixiao";
+      mac-hostname = "Xis-MacBook-Pro";
+      overlays = [
+        rust-overlay.overlays.default
+        (final: prev: {
+          rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
+        })
+      ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        sf = sfdx-nix.packages.${system}.sf;
       };
-    };
-
-    darwinConfigurations = {
-      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
-        system = "${mac-sys}";
-        modules = [
-          ./modules/common-config.nix
-          ./modules/mac-config.nix
-          {
-            users.users.${mac-user}.home = "/Users/${mac-user}";
-          }
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${mac-user}" = import ./modules/home.nix;
-          }
-        ];
-      };
-    };
-
-    devShells = forEachSupportedSystem ({pkgs}: rec {
-      default = rust;
-      rust = pkgs.mkShell {
-        packages = with pkgs; [
-          rustToolchain
-        ];
-        env = {
-          RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+    in {
+      nixosConfigurations = {
+        "${nixos-hostname}" = pkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./modules/common-config.nix
+            ./modules/nixos-config.nix
+            nixos-wsl.nixosModules.wsl
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${nixos-user}" = import ./modules/home.nix;
+            }
+          ];
         };
-        shellHook = ''
-          echo "🦀🦀🦀🦀 hello Rust!"
-        '';
       };
 
-      sf = pkgs.mkShell {
-        packages = [
-          sfdx-nix.packages.${pkgs.system}.sf
-          pkgs.pmd
-        ];
-
-        shellHook = ''
-          echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
-        '';
+      darwinConfigurations = {
+        "${mac-hostname}" = nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            ./modules/common-config.nix
+            ./modules/mac-config.nix
+            {
+              users.users.${mac-user}.home = "/Users/${mac-user}";
+            }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${mac-user}" = import ./modules/home.nix;
+            }
+          ];
+        };
       };
 
-      # lua = pkgs.mkShell {
-      #   packages = with pkgs; [
-      #     lua-language-server
-      #   ];
-      #   shellHook = ''
-      #     echo "🔮🔮🔮🔮 hello Lua!"
-      #   '';
-      # };
+      devShells = rec {
+        default = rust;
+        rust = pkgs.mkShell {
+          packages = with pkgs; [
+            rustToolchain
+          ];
+          env = {
+            RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+          };
+          shellHook = ''
+            echo "🦀🦀🦀🦀 hello Rust!"
+          '';
+        };
 
-      # nix = pkgs.mkShell {
-      #   packages = with pkgs; [
-      #     nil
-      #     statix
-      #     vulnix
-      #   ];
-      #   shellHook = ''
-      #     echo "💠💠💠💠 hello Nix!"
-      #   '';
-      # };
+        sf = pkgs.mkShell {
+          packages = with pkgs; [
+            sf
+            pmd
+          ];
+
+          shellHook = ''
+            echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
+          '';
+        };
+
+        lua = pkgs.mkShell {
+          packages = with pkgs; [
+            lua-language-server
+          ];
+          shellHook = ''
+            echo "🔮🔮🔮🔮 hello Lua!"
+          '';
+        };
+
+        nix = pkgs.mkShell {
+          packages = with pkgs; [
+            nil
+            statix
+            vulnix
+          ];
+          shellHook = ''
+            echo "💠💠💠💠 hello Nix!"
+          '';
+        };
+      };
+
+      # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
+      # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
     });
-
-    # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
-    # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
-  };
 }
