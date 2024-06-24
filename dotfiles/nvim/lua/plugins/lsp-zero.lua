@@ -54,8 +54,7 @@ return {
                         checkThirdParty = false,
                         -- Setting changes. Ref: https://www.reddit.com/r/neovim/comments/1dmvou4/lua_lang_server_scans_too_many_files/
                         -- library = vim.api.nvim_get_runtime_file("", true),
-                        useGitIgnore = true,
-                        ignoreDir = { '.direnv' }
+                        -- ignoreDir = { '.direnv' }
                     },
                     telemetry = { enable = false },
                     diagnostics = {
