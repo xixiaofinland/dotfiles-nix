@@ -27,6 +27,7 @@ in {
     ripgrep
     tree
     zoxide
+    pure-prompt
 
     # custom
     finter
@@ -172,7 +173,7 @@ in {
     autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "";
       plugins = [
         "git"
         "nvm"
@@ -181,6 +182,10 @@ in {
         "z"
       ];
     };
+    initExtra = ''
+      autoload -U promptinit; promptinit
+      prompt pure
+    '';
     shellAliases = {
       gs = "git status";
       e = "exit";
