@@ -9,6 +9,8 @@
 
   users.defaultUserShell = pkgs.zsh;
 
+  time.timeZone = "Europe/Helsinki";
+
   system.stateVersion = "24.05";
 
   boot.loader.systemd-boot.configurationLimit = 10;
