@@ -101,8 +101,11 @@
     };
 
     darwinConfigurations = {
-      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
+      "${mac-hostname}" = nix-darwin.lib.darwinSystem rec {
         system = "${mac-sys}";
+        pkgs = import nixpkgs {
+          inherit system overlays sfdx-nix;
+        };
         modules = [
           ./modules/common-config.nix
           ./modules/mac-config.nix
