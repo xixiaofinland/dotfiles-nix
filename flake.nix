@@ -135,6 +135,16 @@
           echo "🦀🦀🦀🦀 hello Rust!"
         '';
       };
+
+      front = pkgs.mkShell {
+        packages = with pkgs; [
+          node
+          pmd
+        ];
+        shellHook = ''
+          echo "📜📜📜📜 hello front-end!"
+        '';
+      };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
