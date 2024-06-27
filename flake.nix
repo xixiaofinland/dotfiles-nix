@@ -127,6 +127,7 @@
       rust = pkgs.mkShell {
         packages = with pkgs; [
           rustToolchain
+          rust-analyzer
         ];
         env = {
           RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
