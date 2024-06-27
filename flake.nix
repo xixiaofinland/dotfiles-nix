@@ -52,26 +52,26 @@
     nix-darwin,
     rust-overlay,
     sfdx-nix,
-    systems
+    systems,
     # nix-homebrew,
     # homebrew-bundle,
     # homebrew-core,
     # homebrew-cask,
   }: let
-      nixos-user = "nixos";
-      nixos-hostname = "nixos";
-      nixos-sys = "x86_64-linux";
-      mac-user = "xixiao";
-      mac-hostname = "Xis-MacBook-Pro";
-      mac-sys = "x86_64-darwin";
-      overlays = [
-        rust-overlay.overlays.default
-        (final: prev: {
-          sf = sfdx-nix.packages.${final.system}.sf;
-          rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
-        })
-      ];
-      forAllSystems = function:
+    nixos-user = "nixos";
+    nixos-hostname = "nixos";
+    nixos-sys = "x86_64-linux";
+    mac-user = "xixiao";
+    mac-hostname = "Xis-MacBook-Pro";
+    mac-sys = "x86_64-darwin";
+    overlays = [
+      rust-overlay.overlays.default
+      (final: prev: {
+        sf = sfdx-nix.packages.${final.system}.sf;
+        rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
+      })
+    ];
+    forAllSystems = function:
       nixpkgs.lib.genAttrs [
         "${nixos-sys}"
         "${mac-sys}"
@@ -79,62 +79,62 @@
         function (import nixpkgs {
           inherit system overlays sfdx-nix;
         }));
-    in {
-      nixosConfigurations = {
-        "${nixos-hostname}" = nixpkgs.lib.nixosSystem rec {
-          system = "${nixos-sys}";
-      pkgs = import nixpkgs {
-        inherit system overlays sfdx-nix;
-      };
-          modules = [
-            ./modules/common-config.nix
-            ./modules/nixos-config.nix
-            nixos-wsl.nixosModules.wsl
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${nixos-user}" = import ./modules/home.nix;
-            }
-          ];
+  in {
+    nixosConfigurations = {
+      "${nixos-hostname}" = nixpkgs.lib.nixosSystem rec {
+        system = "${nixos-sys}";
+        pkgs = import nixpkgs {
+          inherit system overlays sfdx-nix;
         };
+        modules = [
+          ./modules/common-config.nix
+          ./modules/nixos-config.nix
+          nixos-wsl.nixosModules.wsl
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${nixos-user}" = import ./modules/home.nix;
+          }
+        ];
       };
-
-      darwinConfigurations = {
-        "${mac-hostname}" = nix-darwin.lib.darwinSystem {
-          system = "${mac-sys}";
-          modules = [
-            ./modules/common-config.nix
-            ./modules/mac-config.nix
-            {
-              users.users.${mac-user}.home = "/Users/${mac-user}";
-            }
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${mac-user}" = import ./modules/home.nix;
-            }
-          ];
-        };
-      };
-
-      devShells = forAllSystems (pkgs: rec {
-        default = rust;
-        rust = pkgs.mkShell {
-          packages = with pkgs; [
-            rustToolchain
-          ];
-          env = {
-            RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
-          };
-          shellHook = ''
-            echo "🦀🦀🦀🦀 hello Rust!"
-          '';
-        };
-      });
-
-      # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
-      # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
     };
+
+    darwinConfigurations = {
+      "${mac-hostname}" = nix-darwin.lib.darwinSystem {
+        system = "${mac-sys}";
+        modules = [
+          ./modules/common-config.nix
+          ./modules/mac-config.nix
+          {
+            users.users.${mac-user}.home = "/Users/${mac-user}";
+          }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${mac-user}" = import ./modules/home.nix;
+          }
+        ];
+      };
+    };
+
+    devShells = forAllSystems (pkgs: rec {
+      default = rust;
+      rust = pkgs.mkShell {
+        packages = with pkgs; [
+          rustToolchain
+        ];
+        env = {
+          RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+        };
+        shellHook = ''
+          echo "🦀🦀🦀🦀 hello Rust!"
+        '';
+      };
+    });
+
+    # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
+    # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
+  };
 }
