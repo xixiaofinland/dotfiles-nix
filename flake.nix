@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl";
       inputs.flake-utils.follows = "flake-utils";
@@ -53,16 +52,18 @@
     nix-darwin,
     rust-overlay,
     sfdx-nix,
+    systems
     # nix-homebrew,
     # homebrew-bundle,
     # homebrew-core,
     # homebrew-cask,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
+  }: let
       nixos-user = "nixos";
       nixos-hostname = "nixos";
+      nixos-sys = "x86_64-linux";
       mac-user = "xixiao";
       mac-hostname = "Xis-MacBook-Pro";
+      mac-sys = "x86_64-darwin";
       overlays = [
         rust-overlay.overlays.default
         (final: prev: {
@@ -70,13 +71,21 @@
           rustToolchain = final.rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
         })
       ];
+      forAllSystems = function:
+      nixpkgs.lib.genAttrs [
+        "${nixos-sys}"
+        "${mac-sys}"
+      ] (system:
+        function (import nixpkgs {
+          inherit system overlays sfdx-nix;
+        }));
+    in {
+      nixosConfigurations = {
+        "${nixos-hostname}" = nixpkgs.lib.nixosSystem rec {
+          system = "${nixos-sys}";
       pkgs = import nixpkgs {
         inherit system overlays sfdx-nix;
       };
-    in {
-      nixosConfigurations = {
-        "${nixos-hostname}" = pkgs.lib.nixosSystem {
-          inherit system pkgs;
           modules = [
             ./modules/common-config.nix
             ./modules/nixos-config.nix
@@ -93,7 +102,7 @@
 
       darwinConfigurations = {
         "${mac-hostname}" = nix-darwin.lib.darwinSystem {
-          inherit system pkgs;
+          system = "${mac-sys}";
           modules = [
             ./modules/common-config.nix
             ./modules/mac-config.nix
@@ -110,7 +119,7 @@
         };
       };
 
-      devShells = rec {
+      devShells = forAllSystems (pkgs: rec {
         default = rust;
         rust = pkgs.mkShell {
           packages = with pkgs; [
@@ -123,40 +132,9 @@
             echo "🦀🦀🦀🦀 hello Rust!"
           '';
         };
-
-        # sf = pkgs.mkShell {
-        #   packages = with pkgs; [
-        #     sfdx-nix.packages.${system}.sf
-        #     pmd
-        #   ];
-        #
-        #   shellHook = ''
-        #     echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
-        #   '';
-        # };
-
-        # lua = pkgs.mkShell {
-        #   packages = with pkgs; [
-        #     lua-language-server
-        #   ];
-        #   shellHook = ''
-        #     echo "🔮🔮🔮🔮 hello Lua!"
-        #   '';
-        # };
-
-        # nix = pkgs.mkShell {
-        #   packages = with pkgs; [
-        #     nil
-        #     statix
-        #     vulnix
-        #   ];
-        #   shellHook = ''
-        #     echo "💠💠💠💠 hello Nix!"
-        #   '';
-        # };
-      };
+      });
 
       # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
       # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
-    });
+    };
 }
