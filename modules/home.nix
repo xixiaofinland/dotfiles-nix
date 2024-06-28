@@ -87,6 +87,7 @@ in {
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g mouse on
+      set-option -g detach-on-destroy off
 
       unbind C-b
       set -g prefix C-a
