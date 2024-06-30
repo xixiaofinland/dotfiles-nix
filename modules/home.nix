@@ -41,7 +41,6 @@ in {
 
     # salesforce
     sf
-    pmd
   ];
 
   home.file = {
