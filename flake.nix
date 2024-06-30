@@ -137,13 +137,14 @@
         '';
       };
 
-      front = pkgs.mkShell {
+      sf = pkgs.mkShell {
         packages = with pkgs; [
           node
           pmd
+          universal-ctags
         ];
         shellHook = ''
-          echo "📜📜📜📜 hello front-end!"
+          echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
         '';
       };
     });
