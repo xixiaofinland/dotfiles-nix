@@ -139,6 +139,7 @@
 
       sf = pkgs.mkShell {
         packages = with pkgs; [
+          jdk
           nodejs_22
           pmd
           universal-ctags
