@@ -53,12 +53,6 @@ return {
             nmap('<leader>gC', fzf.git_bcommits, 'git commits this buffer')
             nmap('<leader>gb', fzf.git_branches, 'git branches')
 
-            nmap('<leader>ft', function()
-                create_ctags()
-                fzf.tags()
-            end, 'ctag in project')
-
-
             -- need to install zoxide
             nmap('<leader>z', function()
                 fzf.fzf_exec("zoxide query -ls", {
