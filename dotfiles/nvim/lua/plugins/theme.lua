@@ -9,10 +9,13 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  opts = {
-    -- day_brightness = 0.9, -- not work?
-  },
   config = function()
+    require("tokyonight").setup({
+      style = "strom",
+      day_brightness = 0.1,
+      dim_inactive = true,
+      transparent = true,
+    })
     vim.cmd [[colorscheme tokyonight-storm]]
     -- colorscheme tokyonight-night
     -- colorscheme tokyonight-storm
