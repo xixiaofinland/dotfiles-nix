@@ -49,7 +49,7 @@ vim.keymap.set("n", "\\v",
     vim.diagnostic.config({
       virtual_text = not curr
     })
-  end, { desc = "toggle virtual text" })
+  end, { desc = "virtual text" })
 
 -- toggle ending ; and ,
 
@@ -67,8 +67,8 @@ local toggle = function(character)
     return api.nvim_set_current_line(line .. character)
   end
 end
-vim.keymap.set('n', '<leader>,', function() toggle(',') end, { noremap = true, silent = true, desc = 'toggle ","' })
-vim.keymap.set('n', '<leader>;', function() toggle(';') end, { noremap = true, silent = true, desc = 'toggle ";"' })
+vim.keymap.set('n', '<leader>,', function() toggle(',') end, { noremap = true, silent = true, desc = '","' })
+vim.keymap.set('n', '<leader>;', function() toggle(';') end, { noremap = true, silent = true, desc = '";"' })
 
 -- toggle diagnostics;
 
@@ -83,7 +83,7 @@ local toggleDiagnostics = function()
     print("Diagnostics disabled")
   end
 end
-vim.keymap.set('n', '\\d', toggleDiagnostics, { noremap = true, silent = true, desc = 'toggle diagnostics' })
+vim.keymap.set('n', '\\d', toggleDiagnostics, { noremap = true, silent = true, desc = 'diagnostics' })
 
 -- toggle line num;
 
@@ -97,7 +97,19 @@ local toggleLineNum = function ()
     vim.wo.relativenumber = true
   end
 end
-vim.keymap.set('n', '\\n', toggleLineNum, { noremap = true, silent = true, desc = 'toggle lineNum' })
+vim.keymap.set('n', '\\n', toggleLineNum, { noremap = true, silent = true, desc = 'lineNum' })
+
+-- toggle background;
+
+function toggleBackground()
+    if vim.o.background == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
+end
+vim.keymap.set('n', '\\t', toggleLineNum, { noremap = true, silent = true, desc = 'theme dark/light' })
+
 
 local opts = { noremap = true, silent = true }
 
