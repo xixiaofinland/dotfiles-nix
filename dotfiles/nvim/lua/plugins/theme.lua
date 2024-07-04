@@ -9,8 +9,11 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
+  opts = {
+    -- day_brightness = 0.9, -- not work?
+  },
   config = function()
-    vim.cmd[[colorscheme tokyonight-storm]]
+    vim.cmd [[colorscheme tokyonight-storm]]
     -- colorscheme tokyonight-night
     -- colorscheme tokyonight-storm
     -- colorscheme tokyonight-day
