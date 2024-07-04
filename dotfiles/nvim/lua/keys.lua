@@ -108,7 +108,7 @@ function toggleBackground()
         vim.o.background = "dark"
     end
 end
-vim.keymap.set('n', '\\t', toggleLineNum, { noremap = true, silent = true, desc = 'theme dark/light' })
+vim.keymap.set('n', '\\B', toggleBackground, { noremap = true, silent = true, desc = 'background light/dark' })
 
 
 local opts = { noremap = true, silent = true }

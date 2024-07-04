@@ -21,7 +21,7 @@ return {
                 vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
             end
 
-            nmap('\\i', toggleInlay, 'toggle inlay hint')
+            nmap('\\i', toggleInlay, 'inlay hint')
             nmap('<leader>rn', vim.lsp.buf.rename, 'rename')
             nmap('<leader>ca', vim.lsp.buf.code_action, 'code action')
             nmap('K', vim.lsp.buf.hover, 'hover doc')

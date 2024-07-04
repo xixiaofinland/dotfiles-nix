@@ -11,6 +11,6 @@ return {
         }
       }
     })
-    vim.keymap.set('n', '\\m', require('render-markdown').toggle, { desc = 'toggle markdown' })
+    vim.keymap.set('n', '\\m', require('render-markdown').toggle, { desc = 'markdown' })
   end,
 }

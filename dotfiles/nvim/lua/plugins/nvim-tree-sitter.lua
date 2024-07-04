@@ -9,7 +9,7 @@ return {
           max_lines = 4,
         })
         vim.keymap.set('n', '\\c', require 'treesitter-context'.toggle,
-          { noremap = true, silent = true, desc = 'toggle treesitter-context' })
+          { noremap = true, silent = true, desc = 'treesitter-context' })
       end
 
     },

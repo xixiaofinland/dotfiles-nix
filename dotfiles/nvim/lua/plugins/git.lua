@@ -39,7 +39,7 @@ return {
         vim.keymap.set('n', '<leader>hS', require('gitsigns').stage_buffer,
           { buffer = bufnr, desc = 'stage buffer' })
         vim.keymap.set('n', '\\b', require('gitsigns').toggle_current_line_blame,
-          { buffer = bufnr, desc = 'toggle blame' })
+          { buffer = bufnr, desc = 'blame' })
       end,
     },
   }
