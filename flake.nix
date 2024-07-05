@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl";
-      # inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -45,6 +45,7 @@
 
   outputs = {
     self,
+    flake-utils,
     home-manager,
     nixpkgs,
     nixos-wsl,
