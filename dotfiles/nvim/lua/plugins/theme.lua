@@ -12,7 +12,7 @@ return {
   config = function()
     require("tokyonight").setup({
       style = "strom",
-      terminal_colors = false,
+      terminal_colors = true,
       day_brightness = 0.2,
       dim_inactive = true,
       -- transparent = true,
