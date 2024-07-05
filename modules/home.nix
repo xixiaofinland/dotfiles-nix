@@ -48,6 +48,7 @@ in {
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
     ".ignore".source = ../dotfiles/.ignore;
+    ".update_apex_lsp.sh".source = ../dotfiles/.update_apex_lsp.sh;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
