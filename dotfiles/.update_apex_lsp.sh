@@ -4,7 +4,7 @@ FILE_URL="https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/deve
 
 SAVE_PATH="$HOME/apex-jorje-lsp.jar"
 
-LAST_MODIFIED_FILE=".apex_lsp_etag" # Etag also defines the resource version as "last modified date" doesn't present in the response
+LAST_MODIFIED_FILE="$HOME/.apex_lsp_etag" # Etag also defines the resource version as "last modified date" doesn't present in the response
 
 get_last_modified() {
     curl -sI "$FILE_URL" | grep -i "ETag" | awk '{print $2}'
