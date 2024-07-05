@@ -45,14 +45,12 @@
 
   outputs = {
     self,
-    flake-utils,
     home-manager,
     nixpkgs,
     nixos-wsl,
     nix-darwin,
     rust-overlay,
     sfdx-nix,
-    systems,
     # nix-homebrew,
     # homebrew-bundle,
     # homebrew-core,
@@ -139,7 +137,7 @@
       };
 
       sf = pkgs.mkShell {
-        name = "Salesforce";
+        name = "Sf";
         packages = with pkgs; [
           jdk
           nodejs_22
