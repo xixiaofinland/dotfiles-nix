@@ -6,14 +6,16 @@ return {
       'nvim-treesitter/nvim-treesitter-context',
       config = function()
         require("treesitter-context").setup({
+          enable = false,
           max_lines = 4,
+          trim_scope = 'inner',
         })
         vim.keymap.set('n', '\\c', require 'treesitter-context'.toggle,
           { noremap = true, silent = true, desc = 'treesitter-context' })
       end
-
     },
   },
+
   build = ':TSUpdate',
   config = function()
     require("nvim-treesitter.configs").setup({
