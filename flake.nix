@@ -125,6 +125,7 @@
     devShells = forAllSystems (pkgs: rec {
       default = rust;
       rust = pkgs.mkShell {
+        name = "Rust";
         packages = with pkgs; [
           rustToolchain
           rust-analyzer
@@ -138,6 +139,7 @@
       };
 
       sf = pkgs.mkShell {
+        name = "Salesforce";
         packages = with pkgs; [
           jdk
           nodejs_22
