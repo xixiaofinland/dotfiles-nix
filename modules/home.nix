@@ -129,7 +129,8 @@ in {
       # keybindings
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+      bind-key -T copy-mode-vi V send -X select-line
+      bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
       bind \' split-window -h -c "#{pane_current_path}"
       bind \\ split-window -h -c "#{pane_current_path}"
