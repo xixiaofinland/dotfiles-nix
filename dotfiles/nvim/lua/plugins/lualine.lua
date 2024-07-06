@@ -3,7 +3,7 @@ return {
   opts = {
     options = {
       icons_enabled = false,
-      theme = 'tokyonight-storm',
+      -- theme = 'tokyonight-storm',
       component_separators = '|',
       section_separators = '',
     },

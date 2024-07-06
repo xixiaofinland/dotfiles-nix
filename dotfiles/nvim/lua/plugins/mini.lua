@@ -27,7 +27,8 @@ return {
       require('mini.doc').setup()
       require('mini.cursorword').setup()
       require('mini.icons').setup()
-      vim.cmd('hi! MiniCursorwordCurrent guifg=NONE guibg=NONE gui=NONE cterm=NONE') -- disable highlight of the word under the cursor
+      vim.cmd('hi! MiniCursorwordCurrent guifg=NONE gui=NONE cterm=NONE') -- disable highlight of the word under the cursor
+      -- vim.cmd('hi! MiniCursorwordCurrent guifg=NONE guibg=NONE gui=NONE cterm=NONE') -- disable highlight of the word under the cursor
 
       require('mini.misc').setup()
       nmap('<leader>l', MiniMisc.zoom, 'toggle large/zoom')
