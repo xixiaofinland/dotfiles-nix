@@ -48,7 +48,7 @@ in {
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
     ".ignore".source = ../dotfiles/.ignore;
-    ".update_apex_lsp.sh".source = ../dotfiles/.update_apex_lsp.sh;
+    ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
@@ -194,7 +194,7 @@ in {
       c = "clear";
       n = "nvim";
       ls = "eza";
-      t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.update_apex_lsp.sh; git pull' Enter; tmux attach -t 0:win";
+      t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
       cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";

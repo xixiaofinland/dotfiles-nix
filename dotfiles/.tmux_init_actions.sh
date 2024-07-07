@@ -23,10 +23,16 @@ else
     last_modified=""
 fi
 
+NC='\033[0m' # No Color
 if [ "$current_modified" != "$last_modified" ]; then
-    echo -e "apex-jorje-lsp.jar has been updated in github. Downloading new version...\n"
+    RED='\033[0;31m'
+    echo -e "${RED}apex-jorje-lsp.jar: downloading new version...${NC}\n"
     download_file
     echo "$current_modified" > "$LAST_MODIFIED_FILE"
 else
-    echo "apex-jorje-lsp.jar no change detected."
+    GREEN='\033[0;32m'
+    echo -e "${GREEN}apex-jorje-lsp.jar: no change detected.${NC}\n"
 fi
+
+git -C $HOME/dotfiles-nix/ pull
+# echo "$(git -C $HOME/dotfiles-nix/ pull)"
