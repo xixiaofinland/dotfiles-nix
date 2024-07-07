@@ -25,9 +25,8 @@ return {
       require('mini.surround').setup()
       require('mini.trailspace').setup()
       require('mini.doc').setup()
-      require('mini.cursorword').setup()
       require('mini.icons').setup()
-      vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {})
+      require('mini.cursorword').setup()
 
       require('mini.misc').setup()
       nmap('<leader>l', MiniMisc.zoom, 'toggle large/zoom')

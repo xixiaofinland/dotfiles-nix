@@ -1,5 +1,9 @@
 -- vim.cmd('packadd cfilter')
 
+-- Delay this setting as it doesn't work consistently when it's in mini.lua
+-- Need to remember removing this when mini.cursorline is not in use anymore
+vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {})
+
 vim.diagnostic.config({
   virtual_text = false,
 })
