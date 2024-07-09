@@ -37,6 +37,7 @@ return {
           { name = '- Nvim', action = '', section = '' },
         },
         footer = '',
+        query_updaters = '',
       })
 
       require('mini.indentscope').gen_animation.none()
