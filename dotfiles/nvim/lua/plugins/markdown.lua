@@ -3,14 +3,15 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
     require('render-markdown').setup({
-      headings = { '🌟', '🎉 ', '⚡ ', '💡 ', '🔔 ', '🔮 ' },
-      bullets = { '🔸', '🔹', '✅', '☑️' },
-      highlights = {
-        heading = {
-          backgrounds = {},
-        }
-      }
+      heading = {
+        icons = { '🌟', '🎉 ', '⚡ ', '💡 ', '🔔 ', '🔮 ' },
+        signs = { '' },
+        backgrounds = { 'DiffAdd', 'DiffChange', 'DiffDelete' },
+        foregrounds = { 'markdownH1' },
+      },
+      bullet = { icons = { '🔸', '🔹', '✅', '☑️' } },
     })
+
     vim.keymap.set('n', '\\m', require('render-markdown').toggle, { desc = 'markdown' })
   end,
 }
