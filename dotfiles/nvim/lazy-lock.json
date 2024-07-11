@@ -35,6 +35,7 @@
   "rust-tools.nvim": { "branch": "master", "commit": "676187908a1ce35ffcd727c654ed68d851299d3e" },
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "screenkey.nvim": { "branch": "dev", "commit": "c7c94b0e2f2f9bf1a2370e47348c42b378347298" },
+  "sf.nvim": { "branch": "dev", "commit": "b4ec00de89bf0478cb7ad7e2b4192d46fea16eb4" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "035d92eab05ac1390afef7204e3fcad9a50fa443" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "vim-fugitive": { "branch": "master", "commit": "d0c1a437536778bcc8174b7cb2ffdf98f611e6fe" },
