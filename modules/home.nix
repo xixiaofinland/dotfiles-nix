@@ -50,7 +50,6 @@ in {
     ".ignore".source = ../dotfiles/.ignore;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
-    ".zenquotes.sh".source = ../dotfiles/.zenquotes.sh;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
     #   recursive = true;
@@ -161,11 +160,11 @@ in {
       set-window-option -g window-status-current-style bg=default
       set-window-option -g window-status-current-style bright
 
-      set -g status-interval 5
+      set -g status-interval 60
       set -g status-left-length 35
-      set -g status-left '[#S] '
+      set -g status-left '%d-%m #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M | #[fg=white] [#S]'
       set -g status-justify centre
-      set -g status-right '#(sh $HOME/.zenquotes.sh) | #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
+      set -g status-right '#(cat ~/.quote)'
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };

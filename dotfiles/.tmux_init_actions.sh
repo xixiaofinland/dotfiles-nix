@@ -36,3 +36,7 @@ fi
 
 git -C $HOME/dotfiles-nix/ pull
 # echo "$(git -C $HOME/dotfiles-nix/ pull)"
+
+# daily quote :)
+curl -s https://zenquotes.io/api/random | jq -r '.[0] | "\(.q) - \(.a)"' > "$HOME/.quote"
+
