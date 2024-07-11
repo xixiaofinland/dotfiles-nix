@@ -165,7 +165,7 @@ in {
       set -g status-left-length 35
       set -g status-left '[#S] '
       set -g status-justify centre
-      set -g status-right '#($HOME/.zenquotes.sh)' | #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
+      set -g status-right '#(sh $HOME/.zenquotes.sh) | #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };
