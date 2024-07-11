@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# 1. daily quote
+
+curl -s https://zenquotes.io/api/random | jq -r '.[0] | "\(.q) - \(.a)"' > "$HOME/.quote"
+
+# 2. Apex LSP update
+
 FILE_URL="https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/develop/packages/salesforcedx-vscode-apex/out/apex-jorje-lsp.jar"
 
 SAVE_PATH="$HOME/apex-jorje-lsp.jar"
@@ -34,9 +40,6 @@ else
     echo -e "${GREEN}apex-jorje-lsp.jar: no change detected.${NC}\n"
 fi
 
+# 3. dotfile update
+
 git -C $HOME/dotfiles-nix/ pull
-# echo "$(git -C $HOME/dotfiles-nix/ pull)"
-
-# daily quote :)
-curl -s https://zenquotes.io/api/random | jq -r '.[0] | "\(.q) - \(.a)"' > "$HOME/.quote"
-
