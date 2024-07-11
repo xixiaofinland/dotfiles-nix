@@ -48,8 +48,9 @@ in {
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".alacritty.toml".source = ../dotfiles/.alacritty.toml;
     ".ignore".source = ../dotfiles/.ignore;
-    ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
+    ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
+    ".zenquotes.sh".source = ../dotfiles/.zenquotes.sh;
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
     #   recursive = true;
@@ -164,7 +165,7 @@ in {
       set -g status-left-length 35
       set -g status-left '[#S] '
       set -g status-justify centre
-      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
+      set -g status-right '#($HOME/.zenquotes.sh)' | #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M %d-%m'
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };
