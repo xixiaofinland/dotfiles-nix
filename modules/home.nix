@@ -160,7 +160,7 @@ in {
       set-window-option -g window-status-current-style bg=default
       set-window-option -g window-status-current-style bright
 
-      set -g status-interval 60
+      set -g status-interval 5
       set -g status-left-length 35
       set -g status-left '%d-%m #[fg=black,bg=color15] #{cpu_percentage} | #{ram_percentage}  %H:%M | #[fg=white] [#S]'
       set -g status-justify centre
