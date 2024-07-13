@@ -161,7 +161,7 @@ in {
       set-window-option -g window-status-current-style bright
 
       set -g status-interval 5
-      set -g status-left-length 35
+      set -g status-left-length 47
       set -g status-left '#[fg=green]%d-%m #[fg=purple] #{cpu_percentage} | #{ram_percentage} #[fg=blue]  %H:%M #[fg=orange] [#S]'
       set -g status-justify centre
       set -g status-right '#(cat ~/.quote)'
