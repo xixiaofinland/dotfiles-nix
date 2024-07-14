@@ -33,8 +33,8 @@ return {
           lookahead = true,
 
           keymaps = {
-            -- ["la"] = { query = "@assignment.lhs", desc = "ts: left assignment" },
-            -- ["ra"] = { query = "@assignment.rhs", desc = "ts: right assignment" },
+            ["la"] = { query = "@assignment.lhs", desc = "ts: left assignment" },
+            ["ra"] = { query = "@assignment.rhs", desc = "ts: right assignment" },
             -- ["aa"] = { query = "@parameter.outer", desc = "ts: outer parameter" },
             -- ["ia"] = { query = "@parameter.inner", desc = "ts: inner parameter" },
             -- ["am"] = { query = "@function.outer", desc = "ts: outer function" },
