@@ -162,7 +162,7 @@ in {
 
       set -g status-interval 5
       set -g status-left-length 47
-      set -g status-left '#[fg=blue] ⏰ %H:%M #[fg=purple] #{cpu_percentage} | #{ram_percentage} #[fg=green] 📅 %d-%m #[fg=orange] [#S]'
+      set -g status-left '#[fg=blue] 🕒 %H:%M #[fg=purple] #{cpu_percentage} | #{ram_percentage} #[fg=green] 🗓️ %d-%m #[fg=orange] [#S]'
       set -g status-justify centre
       set -g status-right '#(cat ~/.quote)'
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
