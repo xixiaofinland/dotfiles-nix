@@ -2,6 +2,8 @@
 
 This repository contains my personal configuration files (dotfiles) managed using Nix Flakes. It supports both macOS and NixOS on a WSL2 subsystem in Windows.
 
+⚠️ It's important to understand what the code does before applying to your own system. It has a learning curve to use Nix, take action rigorously!
+
 ## Features
 
 - **Nix Flakes**: Manage dependencies and configurations.
@@ -10,7 +12,7 @@ This repository contains my personal configuration files (dotfiles) managed usin
 
 ## Installation
 1. **Prerequistes**:
-    - Nix: [recommend] [Use this 3rd party script](https://zero-to-nix.com/concepts/nix-installer) or follow the [official Nix installation guide](https://nixos.org/download.html).
+    - Nix: [Use this 3rd party script](https://zero-to-nix.com/concepts/nix-installer) (recommended) or follow the [official Nix installation guide](https://nixos.org/download.html).
     - Home manager: [Github repo](https://github.com/nix-community/home-manager)
     - Nix-darwin (for MacOS): [Github repo](https://github.com/LnL7/nix-darwin)
    
@@ -20,8 +22,8 @@ This repository contains my personal configuration files (dotfiles) managed usin
     cd ~/dotfiles-nix
     ```
 3. **Activate Flakes**:
-   If you used the official Nix installation guide, make sure to enable flakes by adding `experimental-features = nix-command flakes` to your `~/.config/nix/nix.conf`, or whatever way to enable the the `flake` feature.
-   If you used the 3rd party script, `flake` should have been auto-enabled for you.
+   - If you used the official Nix installation guide, make sure to enable flakes by adding `experimental-features = nix-command flakes` to your `~/.config/nix/nix.conf`, or whatever way to enable the the `flake` feature.
+   - If you used the 3rd party script, `flake` should have been auto-enabled for you.
 
 6. **Apply Configurations**:
    In NixOS:
