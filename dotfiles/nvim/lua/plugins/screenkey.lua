@@ -3,6 +3,6 @@ return {
     lazy = false,
     branch = 'dev',
     config = function()
-        vim.keymap.set('n', '\\s', ':Screenkey<CR>', { noremap = true, silent = true, desc = 'screenkey' })
+        vim.keymap.set('n', '\\k', ':Screenkey<CR>', { noremap = true, silent = true, desc = 'screenkey' })
     end
 }
