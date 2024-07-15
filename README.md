@@ -10,9 +10,9 @@ This repository contains my personal configuration files (dotfiles) managed usin
 
 ## Installation
 1. **Prerequistes**:
-    Nix: [recommend] [Use this 3rd party script](https://zero-to-nix.com/concepts/nix-installer) or follow the [official Nix installation guide](https://nixos.org/download.html).
-    Home manager: [Github repo](https://github.com/nix-community/home-manager)
-    Nix-darwin (for MacOS): [Github repo](https://github.com/LnL7/nix-darwin)
+    - Nix: [recommend] [Use this 3rd party script](https://zero-to-nix.com/concepts/nix-installer) or follow the [official Nix installation guide](https://nixos.org/download.html).
+    - Home manager: [Github repo](https://github.com/nix-community/home-manager)
+    - Nix-darwin (for MacOS): [Github repo](https://github.com/LnL7/nix-darwin)
    
 2. **Clone the Repository**:
     ```bash
