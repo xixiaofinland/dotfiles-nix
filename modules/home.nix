@@ -190,7 +190,6 @@ in {
     '';
     shellAliases = {
       gs = "git status";
-      gitp = "git pull";
       e = "exit";
       c = "clear";
       n = "nvim";
