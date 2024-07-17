@@ -14,11 +14,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- personal notes;
+
 local note_path = vim.fn.expand("~/notes/")
-vim.keymap.set("n", "<leader>no", ":vs " .. note_path .. "personal.md<CR>", { desc = "open personal note" })
-vim.keymap.set("n", "<leader>nO", ":sp " .. note_path .. "personal.md<CR>", { desc = "open personal note" })
-vim.keymap.set("n", "<leader>nw", ":vs " .. note_path .. "work.md<CR>", { desc = "open work note" })
-vim.keymap.set("n", "<leader>nW", ":sp " .. note_path .. "work.md<CR>", { desc = "open work note" })
+
+local function open_note(name)
+  -- local buffers = vim.fn.getbufinfo({ bufloaded = true })
+  -- if (#buffers == 1 and buffers[1].name == "") or (#buffers == 2 and string.find(buffers[1].name, "Starter") and string.find(buffers[1].name, "")) then
+
+  local buffers = vim.fn.getbufinfo({ bufloaded = true, buflisted = true })
+  if #buffers == 0 or (#buffers == 1 and buffers[1].name == "") then
+    vim.cmd("e " .. note_path .. name)
+  else
+    vim.cmd("vs " .. note_path .. name)
+  end
+end
+
+vim.keymap.set("n", "<leader>no", function() open_note("personal.md") end, { desc = "open personal note" })
+vim.keymap.set("n", "<leader>nw", function() open_note("work.md") end, { desc = "open work note" })
 
 if vim.loop.fs_stat(note_path) ~= nil then
   local push_cmd = "cd " .. note_path .. "; git commit -am \"+\"; git push;"
