@@ -38,6 +38,7 @@ in {
 
     # lua
     lua-language-server
+    #luajitPackages.luarocks
 
     # salesforce
     sf
