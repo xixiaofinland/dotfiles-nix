@@ -1,6 +1,6 @@
 return {
     'xixiaofinland/sf.nvim',
-    branch = 'dev',
+    branch = 'pre-release',
     -- dir = '~/projects/sf.nvim',
 
     dependencies = {
