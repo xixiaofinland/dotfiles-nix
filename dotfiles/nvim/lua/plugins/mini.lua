@@ -139,7 +139,7 @@ return {
         -- disabled ones which I don't use;
         undo   = { suffix = '', options = {} },
         window = { suffix = '', options = {} },
-        comment = { suffix = '', options = {} },
+        comment = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
       })
 
       local hipatterns = require('mini.hipatterns')
