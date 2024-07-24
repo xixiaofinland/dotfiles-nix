@@ -149,6 +149,17 @@
           echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
         '';
       };
+
+      tree = pkgs.mkShell {
+        name = "tree-sitter";
+        packages = with pkgs; [
+          tree-sitter
+          nodejs_22
+        ];
+        shellHook = ''
+          echo "🌳🌳🌳🌳 hello Tree-sitter!"
+        '';
+      };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
