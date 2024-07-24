@@ -32,9 +32,11 @@ return {
       })
 
       local starter = require('mini.starter')
+      local v = vim.version()
+      local ver = string.format('v%s.%s.%s', v.major, v.minor, v.patch)
       starter.setup({
         items = {
-          { name = '- Nvim', action = '', section = '' },
+          { name = '- Nvim ' .. ver, action = '', section = '' },
         },
         footer = '',
         query_updaters = '',
