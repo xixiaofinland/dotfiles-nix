@@ -139,7 +139,7 @@ return {
         -- disabled ones which I don't use;
         undo   = { suffix = '', options = {} },
         window = { suffix = '', options = {} },
-
+        comment = { suffix = '', options = {} },
       })
 
       local hipatterns = require('mini.hipatterns')
