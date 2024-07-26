@@ -160,6 +160,16 @@
           echo "🌳🌳🌳🌳 hello Tree-sitter!"
         '';
       };
+
+      nvim = pkgs.mkShell {
+        name = "Nvim";
+        packages = with pkgs; [
+          gnumake
+        ];
+        shellHook = ''
+          echo "🅽 🅽 🅽 🅽 hello Nvim!"
+        '';
+      };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
