@@ -9,7 +9,9 @@ return {
     },
 
     config = function()
-        require('sf').setup()
+        require('sf').setup({
+            fetch_org_list_at_nvim_start = false,
+        })
 
         vim.keymap.set('n', '<leader>e', '<CMD>e ~/.config/nvim/lua/plugins/sf.lua<CR>',
             { desc = 'Open sf config' })
