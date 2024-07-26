@@ -167,7 +167,7 @@
           gnumake
         ];
         shellHook = ''
-          echo "🅽 🅽 🅽 🅽 hello Nvim!"
+          echo "🅽 🅽 🅽 🅽  hello Nvim!"
         '';
       };
     });
