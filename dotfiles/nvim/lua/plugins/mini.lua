@@ -2,16 +2,6 @@ return {
   {
     'echasnovski/mini.nvim',
     version = false,
-    dependencies = {
-      "folke/drop.nvim",
-      opts = {
-        max = 5,                                      -- maximum number of drops on the screen
-        interval = 100,                                -- every 150ms we update the drops
-        screensaver = false,                   -- show after 5 minutes. Set to false, to disable
-        filetypes = { "ministarter" }, -- will enable/disable automatically for the following filetypes
-        winblend = 100,                                -- winblend for the drop window
-      }
-    },
     config = function()
       local nmap = function(keys, func, desc)
         if desc then
