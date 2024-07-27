@@ -3,11 +3,28 @@ return {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
+            local actions = require "fzf-lua.actions"
             require("fzf-lua").setup({
                 defaults = {
+                    file_icons = "mini",
                     formatter = "path.filename_first",
                     path_shorten = 5,
+                },
+                actions = {
+                    files = {
+                        ["ctrl-w"] = actions.file_vsplit,
+                    },
+                    buffers = {
+                        ["ctrl-w"] = actions.buf_vsplit,
+                    }
+                },
+                bcommits = {
+                    actions = {
+                        ["ctrl-w"] = actions.git_buf_vsplit,
+                    }
                 }
+
+
             })
 
             local nmap = function(keys, func, desc)
