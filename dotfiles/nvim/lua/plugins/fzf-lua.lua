@@ -10,21 +10,6 @@ return {
                     formatter = "path.filename_first",
                     path_shorten = 5,
                 },
-                actions = {
-                    files = {
-                        ["ctrl-w"] = actions.file_vsplit,
-                    },
-                    buffers = {
-                        ["ctrl-w"] = actions.buf_vsplit,
-                    }
-                },
-                bcommits = {
-                    actions = {
-                        ["ctrl-w"] = actions.git_buf_vsplit,
-                    }
-                }
-
-
             })
 
             local nmap = function(keys, func, desc)
