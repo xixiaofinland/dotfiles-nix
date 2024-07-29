@@ -17,7 +17,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  'nvim-tree/nvim-web-devicons',
+  -- 'nvim-tree/nvim-web-devicons',
 
   'christoomey/vim-tmux-navigator',
 
