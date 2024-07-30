@@ -18,14 +18,33 @@ return {
 
   build = ':TSUpdate',
   config = function()
+    vim.filetype.add({
+      extension = {
+        sflog = "sflog",
+      },
+    })
+
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.sflog = {
+      install_info = {
+        url = "/home/nixos/projects/tree-sitter-sflog",
+        files = { "src/parser.c" },
+        branch = "main",
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+      filetype = "sflog",
+    }
+
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
+      ensure_installed = { "sflog", "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
       auto_install = true,
 
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
       },
+      debug = true,
 
       textobjects = {
         select = {
