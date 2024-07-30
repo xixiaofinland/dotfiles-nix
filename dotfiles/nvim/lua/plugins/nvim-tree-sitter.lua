@@ -24,6 +24,7 @@ return {
       },
     })
 
+    vim.opt.rtp:append("~/projects/tree-sitter-sflog")
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
     parser_config.sflog = {
       install_info = {
@@ -36,14 +37,11 @@ return {
       filetype = "sflog",
     }
 
-    -- Append custom parser path to runtimepath
-    vim.opt.runtimepath:append("/home/nixos/projects/tree-sitter-sflog")
-
     -- Manually ensure the parser is installed
-    require 'nvim-treesitter.install'.ensure_installed("sflog")
+    -- require 'nvim-treesitter.install'.ensure_installed("sflog")
 
     -- Debugging step: Print the parser configuration
-    print(vim.inspect(parser_config.sflog))
+    -- print(vim.inspect(parser_config.sflog))
 
     -- Increase logging level
     vim.lsp.set_log_level("debug")
