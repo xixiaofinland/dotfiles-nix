@@ -33,7 +33,6 @@ return {
         footer = daily_quote,
         query_updaters = '',
       })
-      vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = "#FFA500" })
 
       require('mini.indentscope').gen_animation.none()
       require('mini.surround').setup()
