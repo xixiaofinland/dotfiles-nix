@@ -22,16 +22,17 @@ return {
       })
 
       local quote_file = vim.fn.expand("~") .. "/.quote"
-      local content = table.concat(vim.fn.readfile(quote_file), "\n")
+      local daily_quote = table.concat(vim.fn.readfile(quote_file), "\n") -- daily_quote is refreshed by my Tmux initalization script
       local v = vim.version()
       local ver = string.format('v%s.%s.%s', v.major, v.minor, v.patch)
 
       local starter = require('mini.starter')
+      vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = "#FFA500" })
       starter.setup({
         items = {
           { name = '- Nvim ' .. ver, action = '', section = '' },
         },
-        footer = content,
+        footer = daily_quote,
         query_updaters = '',
       })
 
