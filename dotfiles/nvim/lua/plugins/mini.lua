@@ -21,14 +21,17 @@ return {
         }
       })
 
-      local starter = require('mini.starter')
+      local quote_file = vim.fn.expand("~") .. "/.quote"
+      local content = table.concat(vim.fn.readfile(quote_file), "\n")
       local v = vim.version()
       local ver = string.format('v%s.%s.%s', v.major, v.minor, v.patch)
+
+      local starter = require('mini.starter')
       starter.setup({
         items = {
           { name = '- Nvim ' .. ver, action = '', section = '' },
         },
-        footer = '',
+        footer = content,
         query_updaters = '',
       })
 
@@ -128,8 +131,8 @@ return {
         -- diagnostic = { suffix = 'd', options = { severity = vim.diagnostic.severity.ERROR } },
 
         -- disabled ones which I don't use;
-        undo   = { suffix = '', options = {} },
-        window = { suffix = '', options = {} },
+        undo    = { suffix = '', options = {} },
+        window  = { suffix = '', options = {} },
         comment = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
       })
 
