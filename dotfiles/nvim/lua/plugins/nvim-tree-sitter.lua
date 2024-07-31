@@ -24,7 +24,6 @@ return {
       },
     })
 
-    vim.opt.rtp:append("~/projects/tree-sitter-sflog")
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
     parser_config.sflog = {
       install_info = {
@@ -36,15 +35,6 @@ return {
       },
       filetype = "sflog",
     }
-
-    -- Manually ensure the parser is installed
-    -- require 'nvim-treesitter.install'.ensure_installed("sflog")
-
-    -- Debugging step: Print the parser configuration
-    -- print(vim.inspect(parser_config.sflog))
-
-    -- Increase logging level
-    vim.lsp.set_log_level("debug")
 
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "sflog", "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
