@@ -20,7 +20,7 @@ return {
   config = function()
     vim.filetype.add({
       extension = {
-        sflog = "sflog",
+        log = "sflog",
       },
     })
 
