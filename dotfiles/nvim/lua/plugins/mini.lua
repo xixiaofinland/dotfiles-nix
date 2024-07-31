@@ -25,9 +25,7 @@ return {
       local daily_quote = table.concat(vim.fn.readfile(quote_file), "\n") -- daily_quote is refreshed by my Tmux initalization script
       local v = vim.version()
       local ver = string.format('v%s.%s.%s', v.major, v.minor, v.patch)
-
       local starter = require('mini.starter')
-      vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = "#FFA500" })
       starter.setup({
         items = {
           { name = '- Nvim ' .. ver, action = '', section = '' },
@@ -35,6 +33,7 @@ return {
         footer = daily_quote,
         query_updaters = '',
       })
+      vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = "#FFA500" })
 
       require('mini.indentscope').gen_animation.none()
       require('mini.surround').setup()
