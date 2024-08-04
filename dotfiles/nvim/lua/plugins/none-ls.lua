@@ -1,5 +1,5 @@
 return {
-  "nvimtools/none-ls.nvim", -- configure formatters & linters
+  "nvimtools/none-ls.nvim",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local none_ls = require("null-ls")
@@ -8,11 +8,11 @@ return {
         none_ls.builtins.formatting.prettier.with({
           filetypes = { "apex" },
           extra_args = { "--plugin=prettier-plugin-apex", "--write" },
-        },
+        }),
 
-        -- none_ls.builtins.formatting.prettier.with({
-        --   filetypes = { "javascript" },
-        -- }),
+        none_ls.builtins.formatting.prettierd.with({
+          filetypes = { "javascript" },
+        }),
 
         none_ls.builtins.diagnostics.pmd.with({
           -- pmd v6

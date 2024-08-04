@@ -155,6 +155,7 @@
         packages = with pkgs; [
           tree-sitter
           nodejs_22
+          prettierd
         ];
         shellHook = ''
           echo "🌳🌳🌳🌳 hello Tree-sitter!"
