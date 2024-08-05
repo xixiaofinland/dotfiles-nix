@@ -10,7 +10,7 @@
       inherit pname version;
       sha256 = "sha256-J0EXZTHhGNAQBK1CPX7XmQqhI1t4jfmqlD3n2jrqHP8=";
     };
-    cargoSha256 = "OIfRxDPX/kFbdlHYkf583k+BqRre1s8IxBBT3stZFLA=";
+    cargoHash = "sha256-OIfRxDPX/kFbdlHYkf583k+BqRre1s8IxBBT3stZFLA=";
     meta = with pkgs.lib; {
       description = "A Tmux plugin to quickly create session for folders in configured paths.";
       license = licenses.mit;
