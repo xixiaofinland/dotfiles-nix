@@ -123,54 +123,66 @@
 
     devShells = forAllSystems (pkgs: rec {
       default = rust;
-      rust = pkgs.mkShell {
-        name = "Rust";
+      rust = let
         packages = with pkgs; [
           rustToolchain
           rust-analyzer
         ];
-        env = {
-          RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+      in
+        pkgs.mkShell {
+          name = "Rust";
+          env = {
+            RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+          };
+          shellHook = ''
+            echo "🦀🦀🦀🦀 hello Rust!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
         };
-        shellHook = ''
-          echo "🦀🦀🦀🦀 hello Rust!"
-        '';
-      };
 
-      sf = pkgs.mkShell {
-        name = "Sf";
+      sf = let
         packages = with pkgs; [
           jdk
           nodejs_22
           pmd
           universal-ctags
         ];
-        shellHook = ''
-          echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
-        '';
-      };
+      in
+        pkgs.mkShell {
+          name = "Sf";
+          shellHook = ''
+            echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
 
-      tree = pkgs.mkShell {
-        name = "tree-sitter";
+      tree = let
         packages = with pkgs; [
           tree-sitter
           nodejs_22
           prettierd
         ];
-        shellHook = ''
-          echo "🌳🌳🌳🌳 hello Tree-sitter!"
-        '';
-      };
+      in
+        pkgs.mkShell {
+          name = "tree-sitter";
+          shellHook = ''
+            echo "🌳🌳🌳🌳 hello Tree-sitter!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
 
-      nvim = pkgs.mkShell {
-        name = "Nvim";
+      nvim = let
         packages = with pkgs; [
           gnumake
         ];
-        shellHook = ''
-          echo "🅽 🅽 🅽 🅽  hello Nvim!"
-        '';
-      };
+      in
+        pkgs.mkShell {
+          name = "Nvim";
+          shellHook = ''
+            echo "🅽 🅽 🅽 🅽  hello Nvim!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;

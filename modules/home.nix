@@ -59,8 +59,9 @@ in {
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim_config";
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim_config";
     recursive = true;
   };
 
