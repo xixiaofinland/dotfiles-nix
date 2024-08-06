@@ -131,6 +131,7 @@
       in
         pkgs.mkShell {
           name = "Rust";
+          packages = packages;
           env = {
             RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
           };
@@ -145,12 +146,12 @@
           jdk
           nodejs_22
           pmd
-          prettier
           universal-ctags
         ];
       in
         pkgs.mkShell {
           name = "Sf";
+          packages = packages;
           shellHook = ''
             echo "☁️ ☁️ ☁️ ☁️  hello Salesforce!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
@@ -166,6 +167,7 @@
       in
         pkgs.mkShell {
           name = "tree-sitter";
+          packages = packages;
           shellHook = ''
             echo "🌳🌳🌳🌳 hello Tree-sitter!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
@@ -179,6 +181,7 @@
       in
         pkgs.mkShell {
           name = "Nvim";
+          packages = packages;
           shellHook = ''
             echo "🅽 🅽 🅽 🅽  hello Nvim!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
