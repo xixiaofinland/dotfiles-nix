@@ -145,6 +145,7 @@
           jdk
           nodejs_22
           pmd
+          prettier
           universal-ctags
         ];
       in
