@@ -41,6 +41,7 @@ return {
       require('mini.icons').setup()
       require('mini.cursorword').setup()
       require('mini.test').setup()
+      require('mini.jump').setup()
 
       require('mini.misc').setup()
       nmap('<leader>l', MiniMisc.zoom, 'toggle large/zoom')
