@@ -24,18 +24,6 @@ return {
       },
     })
 
-    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-    parser_config.sflog = {
-      install_info = {
-        url = "~/projects/tree-sitter-sflog",
-        files = { "src/parser.c" },
-        -- branch = "main",
-        generate_requires_npm = false,
-        requires_generate_from_grammar = false,
-      },
-      filetype = "sflog",
-    }
-
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "sflog", "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
       auto_install = true,
