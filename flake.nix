@@ -210,7 +210,6 @@
 
       tree = let
         packages = with pkgs; [
-          Stable
           tree-sitter
           nodejs_22
           prettierd
