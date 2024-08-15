@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sfdx-nix = {
-      url = "github:rfaulhaber/sfdx-nix";
+      url = "github:xixiaofinland/sfdx-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
