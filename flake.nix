@@ -161,7 +161,7 @@
         ];
       in
         pkgs.mkShell {
-          name = "Rust";
+          name = "Rust-nightly";
           packages = packages;
           env = {
             RUST_SRC_PATH = "${pkgs.rust-bin.nightly.latest.default}/lib/rustlib/src/rust/library";
@@ -177,6 +177,7 @@
           (rust-bin.nightly."2024-06-25".default.override {
             extensions = ["rust-src" "rustc-dev"];
           })
+          rust-analyzer
         ];
       in
         pkgs.mkShell {
