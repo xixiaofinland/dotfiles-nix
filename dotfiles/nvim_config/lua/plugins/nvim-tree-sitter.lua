@@ -18,12 +18,6 @@ return {
 
   build = ':TSUpdate',
   config = function()
-    vim.filetype.add({
-      extension = {
-        log = "sflog",
-      },
-    })
-
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "sflog", "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
       auto_install = true,
