@@ -174,7 +174,7 @@
 
       rust-fmt = let
         packages = with pkgs; [
-          (rust-bin.nightly."2024-06-25".default.override {
+          (rust-bin.nightly."2024-08-17".default.override {
             extensions = ["rust-src" "rustc-dev"];
           })
           rust-analyzer
