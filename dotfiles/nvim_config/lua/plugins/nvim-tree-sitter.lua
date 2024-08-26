@@ -18,6 +18,14 @@ return {
 
   build = ':TSUpdate',
   config = function()
+    -- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    -- parser_config.apex = {
+    --   install_info = {
+    --     url = "/home/nixos/projects/tree-sitter-sfapex/apex",
+    --     files = { "src/parser.c" },
+    --   },
+    -- }
+
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "sflog", "apex", "bash", "haskell", "nix", "rust", "soql", "sosl", "lua", "vim", "vimdoc", "markdown" },
       auto_install = true,
