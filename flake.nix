@@ -238,6 +238,21 @@
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
           '';
         };
+
+      haskell = let
+        packages = with pkgs; [
+          # stack
+          ghc
+        ];
+      in
+        pkgs.mkShell {
+          name = "Haskell";
+          packages = packages;
+          shellHook = ''
+            echo "📘📘📘 hello Haskell!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
