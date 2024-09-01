@@ -249,7 +249,7 @@
           name = "Haskell";
           packages = packages;
           shellHook = ''
-            echo "📘📘📘 hello Haskell!"
+            echo "📘📘📘📘 hello Haskell!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
           '';
         };
