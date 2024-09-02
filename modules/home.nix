@@ -19,6 +19,7 @@
   };
 in {
   home.packages = with pkgs; [
+    # cachix
     eza
     fd
     fzf
@@ -70,10 +71,10 @@ in {
     LC_ALL = "en_US.UTF-8";
   };
 
-  programs.cachix = {
-    enable = true;
-    caches = [ "xixiaofinland" "cachix" "nixpkgs" ];
-  };
+  # programs.cachix = {
+  #   enable = true;
+  #   caches = [ "xixiaofinland" "cachix" "nixpkgs" ];
+  # };
 
   programs.direnv = {
     enable = true;
