@@ -19,7 +19,7 @@
   };
 in {
   home.packages = with pkgs; [
-    # cachix
+    cachix
     eza
     fd
     fzf
