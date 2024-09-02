@@ -1,6 +1,19 @@
 {
   description = "A simple NixOS flake";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://xixiaofinland.cachix.org"
+      "https://cachix.cachix.org"
+      "nixpkgs.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
