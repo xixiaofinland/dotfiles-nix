@@ -30,6 +30,9 @@ in {
     zoxide
     pure-prompt
 
+    # git
+    jujutsu
+
     # custom
     finter
 
