@@ -134,6 +134,10 @@ return {
         window  = { suffix = '', options = {} },
         comment = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
       })
+      local severity_error = vim.diagnostic.severity.ERROR
+      nmap(']e', function() MiniBracketed.diagnostic('forward', { severity = severity_error }) end, 'next error')
+      nmap('[e', function() MiniBracketed.diagnostic('backward', { severity = severity_error }) end, 'last error')
+
 
       local hipatterns = require('mini.hipatterns')
       hipatterns.setup({
