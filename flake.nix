@@ -13,6 +13,7 @@
       "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
+    trusted-users = [ "root" "xixiao" ];
   };
 
   inputs = {
@@ -138,6 +139,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${mac-user}" = import ./modules/home.nix;
+          }
+          {
+            nix = {
+              extraOptions = ''
+                trusted-users = root xixiao;
+              '';
+            };
           }
         ];
       };
