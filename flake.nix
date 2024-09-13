@@ -13,7 +13,7 @@
       "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
-    trusted-users = ["root" "nixos"];
+    trusted-users = ["root" "nixos" "xixiao"];
   };
 
   inputs = {
@@ -156,6 +156,7 @@
               };
               extraOptions = ''
                 trusted-users = root xixiao;
+                trusted-users = ["root" "nixos" "xixiao"];
               '';
             };
           }
