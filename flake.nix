@@ -13,7 +13,7 @@
       "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
-    trusted-users = [ "root" "xixiao" ];
+    trusted-users = ["root" "nixos"];
   };
 
   inputs = {
@@ -142,6 +142,18 @@
           }
           {
             nix = {
+              settings = {
+                substituters = [
+                  "https://xixiaofinland.cachix.org"
+                  "https://cachix.cachix.org"
+                  "https://nixpkgs.cachix.org"
+                ];
+                trusted-public-keys = [
+                  "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+                  "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+                  "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+                ];
+              };
               extraOptions = ''
                 trusted-users = root xixiao;
               '';
