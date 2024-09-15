@@ -54,21 +54,21 @@ return {
         }
       })
 
-      local map_split = function(buf_id, lhs, direction)
-        local rhs = function()
-          -- Make new window and set it as target
-          local new_target_window
-          vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
-            vim.cmd(direction .. ' split')
-            new_target_window = vim.api.nvim_get_current_win()
-          end)
-
-          MiniFiles.set_target_window(new_target_window)
-        end
-
-        local desc = 'Split ' .. direction
-        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
-      end
+      -- local map_split = function(buf_id, lhs, direction)
+      --   local rhs = function()
+      --     -- Make new window and set it as target
+      --     local new_target_window
+      --     vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
+      --       vim.cmd(direction .. ' split')
+      --       new_target_window = vim.api.nvim_get_current_win()
+      --     end)
+      --
+      --     MiniFiles.set_target_window(new_target_window)
+      --   end
+      --
+      --   local desc = 'Split ' .. direction
+      --   vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+      -- end
 
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesWindowUpdate',
@@ -76,7 +76,7 @@ return {
           local buf_id = args.data.buf_id
 
           -- open in new window;
-          map_split(buf_id, '<C-v>', 'belowright vertical')
+          -- map_split(buf_id, '<C-v>', 'belowright vertical')
 
           -- show line num in mini.files;
           vim.wo[args.data.win_id].number = true
