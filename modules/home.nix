@@ -55,6 +55,20 @@ in {
     ".ignore".source = ../dotfiles/.ignore;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
+    # by pass this direnv bug: https://github.com/direnv/direnv/issues/73
+    ".direnvrc".text = ''
+      export_alias() {
+        local name=$1
+        shift
+        local alias_dir=$PWD/.direnv/aliases
+        local target="$alias_dir/$name"
+        mkdir -p "$alias_dir"
+        PATH_add "$alias_dir"
+        echo "#!/etc/profiles/per-user/nixos/bin/zsh -e" > "$target"
+        echo "$@" >> "$target"
+        chmod +x "$target"
+      }
+    '';
     # ".config/nvim" = {
     #   source = ../../dotfiles/nvim;
     #   recursive = true;
