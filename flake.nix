@@ -194,6 +194,7 @@
           })
           rust-analyzer
           nodejs_22
+          jdk
         ];
       in
         pkgs.mkShell {
