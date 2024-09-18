@@ -187,6 +187,27 @@
           '';
         };
 
+      afmt = let
+        packages = with pkgs; [
+          (rust-bin.stable.latest.default.override {
+            extensions = ["rust-src"];
+          })
+          rust-analyzer
+          nodejs_22
+        ];
+      in
+        pkgs.mkShell {
+          name = "Afmt";
+          packages = packages;
+          env = {
+            RUST_SRC_PATH = "${pkgs.rust-bin.stable.latest.default}/lib/rustlib/src/rust/library";
+          };
+          shellHook = ''
+            echo "🚀🚀🚀🚀 Hello Afmt!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
+
       rust-nightly = let
         packages = with pkgs; [
           (rust-bin.nightly.latest.default.override {
