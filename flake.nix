@@ -208,8 +208,8 @@
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
 
             export_alias tt "cargo t"
-            export_alias tp "cargo t --test prettier"
-            export_alias ts "cargo t --test static"
+            export_alias tp "cargo t prettier"
+            export_alias tm "cargo t manual"
           '';
         };
 
