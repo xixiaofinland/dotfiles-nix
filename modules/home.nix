@@ -64,7 +64,7 @@ in {
         local target="$alias_dir/$name"
         mkdir -p "$alias_dir"
         PATH_add "$alias_dir"
-        echo "#!/etc/profiles/per-user/nixos/bin/zsh -e" > "$target"
+        echo "#!/etc/profiles/per-user/$USER/bin/zsh -e" > "$target"
         echo "$@" >> "$target"
         chmod +x "$target"
       }
