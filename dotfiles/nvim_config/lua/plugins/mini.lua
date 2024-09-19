@@ -48,70 +48,70 @@ return {
         ignore_filetype = { "gitcommit", "gitrebase", "SFTerm", "fzf" }
       })
 
-      require('mini.files').setup({
-        windows = {
-          width_focus = 40,
-        }
-      })
+      -- require('mini.files').setup({
+      --   windows = {
+      --     width_focus = 40,
+      --   }
+      -- })
 
-      local map_split = function(buf_id, lhs, direction)
-        local rhs = function()
-          local cur_target = MiniFiles.get_explorer_state().target_window
-          local new_target = vim.api.nvim_win_call(cur_target, function()
-            vim.cmd(direction .. ' split')
-            return vim.api.nvim_get_current_win()
-          end)
-
-          MiniFiles.set_target_window(new_target)
-        end
-
-        local desc = 'Split ' .. direction
-        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
-      end
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MiniFilesBufferCreate',
-        callback = function(args)
-          local buf_id = args.data.buf_id
-          map_split(buf_id, '<C-s>', 'belowright horizontal')
-          map_split(buf_id, '<C-v>', 'belowright vertical')
-        end,
-      })
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MiniFilesWindowUpdate',
-        callback = function(args)
-          vim.wo[args.data.win_id].number = true
-          vim.wo[args.data.win_id].relativenumber = true
-        end,
-      })
-
-      local minifiles_toggle = function()
-        if not MiniFiles.close() then
-          MiniFiles.open(vim.api.nvim_buf_get_name(0))
-          MiniFiles.reveal_cwd()
-        end
-      end
-      nmap('<leader>o', minifiles_toggle, 'open/close explorer')
-
-      -- toggle hidden files in mini.files;
-      local show_dotfiles = true
-      local filter_show = function(fs_entry) return true end
-      local filter_hide = function(fs_entry)
-        return not vim.startswith(fs_entry.name, '.')
-      end
-      local toggle_dotfiles = function()
-        show_dotfiles = not show_dotfiles
-        local new_filter = show_dotfiles and filter_show or filter_hide
-        MiniFiles.refresh({ content = { filter = new_filter } })
-      end
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MiniFilesBufferCreate',
-        callback = function(args)
-          local buf_id = args.data.buf_id
-          vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
-        end,
-      })
+      -- local map_split = function(buf_id, lhs, direction)
+      --   local rhs = function()
+      --     local cur_target = MiniFiles.get_explorer_state().target_window
+      --     local new_target = vim.api.nvim_win_call(cur_target, function()
+      --       vim.cmd(direction .. ' split')
+      --       return vim.api.nvim_get_current_win()
+      --     end)
+      --
+      --     MiniFiles.set_target_window(new_target)
+      --   end
+      --
+      --   local desc = 'Split ' .. direction
+      --   vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+      -- end
+      --
+      -- vim.api.nvim_create_autocmd('User', {
+      --   pattern = 'MiniFilesBufferCreate',
+      --   callback = function(args)
+      --     local buf_id = args.data.buf_id
+      --     map_split(buf_id, '<C-s>', 'belowright horizontal')
+      --     map_split(buf_id, '<C-v>', 'belowright vertical')
+      --   end,
+      -- })
+      --
+      -- vim.api.nvim_create_autocmd('User', {
+      --   pattern = 'MiniFilesWindowUpdate',
+      --   callback = function(args)
+      --     vim.wo[args.data.win_id].number = true
+      --     vim.wo[args.data.win_id].relativenumber = true
+      --   end,
+      -- })
+      --
+      -- local minifiles_toggle = function()
+      --   if not MiniFiles.close() then
+      --     MiniFiles.open(vim.api.nvim_buf_get_name(0))
+      --     MiniFiles.reveal_cwd()
+      --   end
+      -- end
+      -- nmap('<leader>o', minifiles_toggle, 'open/close explorer')
+      --
+      -- -- toggle hidden files in mini.files;
+      -- local show_dotfiles = true
+      -- local filter_show = function(fs_entry) return true end
+      -- local filter_hide = function(fs_entry)
+      --   return not vim.startswith(fs_entry.name, '.')
+      -- end
+      -- local toggle_dotfiles = function()
+      --   show_dotfiles = not show_dotfiles
+      --   local new_filter = show_dotfiles and filter_show or filter_hide
+      --   MiniFiles.refresh({ content = { filter = new_filter } })
+      -- end
+      -- vim.api.nvim_create_autocmd('User', {
+      --   pattern = 'MiniFilesBufferCreate',
+      --   callback = function(args)
+      --     local buf_id = args.data.buf_id
+      --     vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
+      --   end,
+      -- })
 
       local gen_spec = require("mini.ai").gen_spec;
       require("mini.ai").setup({
