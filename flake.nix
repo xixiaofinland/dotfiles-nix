@@ -212,7 +212,7 @@
             export_alias tt "cargo t"
             export_alias tp "cargo t prettier"
             export_alias tm "cargo t manual"
-            export_alias aa "git commit -am '+'"
+            export_alias aa "git add .; git commit -am '+'"
             export_alias app "git push"
             export_alias ap "git push"
           '';
