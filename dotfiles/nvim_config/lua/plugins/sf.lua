@@ -1,6 +1,6 @@
 return {
     'xixiaofinland/sf.nvim',
-    branch = 'main',
+    -- branch = 'feature/logs',
     -- dir = '~/projects/sf.nvim',
 
     dependencies = {
