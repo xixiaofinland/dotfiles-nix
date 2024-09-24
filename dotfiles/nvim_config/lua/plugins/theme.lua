@@ -1,13 +1,13 @@
 return {
-    -- "hardselius/warlock",
-    -- config = function()
-    --   vim.cmd('colorscheme warlock')
-    -- end
-
-    'romainl/Apprentice',
+    "hardselius/warlock",
     config = function()
-      vim.cmd('colorscheme apprentice')
+      vim.cmd('colorscheme warlock')
     end
+
+    -- 'romainl/Apprentice',
+    -- config = function()
+    --   vim.cmd('colorscheme apprentice')
+    -- end
 
   -- "romainl/Apprentice",
   -- "folke/tokyonight.nvim",
