@@ -92,7 +92,7 @@ return {
           MiniFiles.reveal_cwd()
         end
       end
-      nmap('<leader>o', minifiles_toggle, 'open/close explorer')
+      nmap('<leader>-', minifiles_toggle, 'open/close explorer')
 
       -- toggle hidden files in mini.files;
       local show_dotfiles = true
