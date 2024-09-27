@@ -210,7 +210,7 @@
             export_alias dr "RUST_LOG=debug cargo r"
             export_alias rr "cargo r"
             export_alias tt "cargo t"
-            export_alias tp "cargo t prettier"
+            export_alias tp "cargo t prettier1"
             export_alias tpp "cargo t prettier2"
             export_alias tm "cargo t manual"
             export_alias aa "git add .; git commit -am '+'"
