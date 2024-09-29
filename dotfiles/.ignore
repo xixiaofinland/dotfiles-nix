@@ -3,3 +3,6 @@ node_modules
 !package.xml
 .direnv
 sf_cache
+*.cpp
+*.h
+*.c
