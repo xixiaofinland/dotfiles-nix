@@ -51,6 +51,8 @@ return {
       require('mini.files').setup({
         windows = {
           width_focus = 40,
+          preview = true,
+          width_preview = 55,
         }
       })
 
