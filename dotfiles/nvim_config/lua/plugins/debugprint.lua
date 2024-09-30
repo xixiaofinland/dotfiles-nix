@@ -23,5 +23,6 @@ return {
             toggle_comment_debug_prints = "ToggleCommentDebugPrints",
             delete_debug_prints = "DeleteDebugPrints",
         },
+        print_tag = 'gopro'
     },
 }
