@@ -23,6 +23,19 @@ return {
             toggle_comment_debug_prints = "ToggleCommentDebugPrints",
             delete_debug_prints = "DeleteDebugPrints",
         },
-        print_tag = 'gopro'
+        print_tag = 'gopro',
+
+    -- System.debug("gopro[1]: 1.cls:11: MY_INT=" .. MY_INT .. "");
+
+        filetypes = {
+            apex = {
+                left = "System.debug('",
+                left_var = "System.debug('",
+                right = "');",
+                mid_var = "' + ",
+                right_var = ");",
+                -- right_var = " + '');",
+            },
+        }
     },
 }
