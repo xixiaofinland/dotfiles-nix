@@ -24,9 +24,6 @@ return {
             delete_debug_prints = "DeleteDebugPrints",
         },
         print_tag = 'gopro',
-
-    -- System.debug("gopro[1]: 1.cls:11: MY_INT=" .. MY_INT .. "");
-
         filetypes = {
             apex = {
                 left = "System.debug('",
