@@ -195,6 +195,7 @@
           rust-analyzer
           nodejs_22
           jdk
+          parallel
         ];
       in
         pkgs.mkShell {
