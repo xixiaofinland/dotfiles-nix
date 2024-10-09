@@ -40,8 +40,10 @@ else
     echo -e "${GREEN}apex-jorje-lsp.jar: no change detected.${NC}\n"
 fi
 
-# 3. dotfile update
+# 3. repos pull
 
+echo -e "pull dotfiles... \n"
 git -C $HOME/dotfiles-nix/ pull
 
+echo -e "pull afmt... \n"
 git -C $HOME/projects/afmt/ pull
