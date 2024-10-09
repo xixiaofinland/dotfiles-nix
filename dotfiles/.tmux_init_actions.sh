@@ -43,3 +43,5 @@ fi
 # 3. dotfile update
 
 git -C $HOME/dotfiles-nix/ pull
+
+git -C $HOME/projects/afmt/ pull
