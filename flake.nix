@@ -196,7 +196,6 @@
           nodejs_22
           jdk
           parallel
-          samply
         ];
       in
         pkgs.mkShell {
