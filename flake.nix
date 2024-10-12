@@ -196,6 +196,8 @@
           nodejs_22
           jdk
           parallel
+          gnuplot
+          mdbook
         ];
       in
         pkgs.mkShell {
