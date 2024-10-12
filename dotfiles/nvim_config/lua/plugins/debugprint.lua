@@ -24,15 +24,14 @@ return {
             delete_debug_prints = "DeleteDebugPrints",
         },
         print_tag = 'gopro',
-        filetypes = {
-            apex = {
-                left = "System.debug('",
-                left_var = "System.debug('",
-                right = "');",
-                mid_var = "' + ",
-                right_var = ");",
-                -- right_var = " + '');",
-            },
-        }
+        -- filetypes = {
+        --     apex = {
+        --         left = "System.debug('",
+        --         left_var = "System.debug('",
+        --         right = "');",
+        --         mid_var = "' + ",
+        --         right_var = ");",
+        --     },
+        -- }
     },
 }
