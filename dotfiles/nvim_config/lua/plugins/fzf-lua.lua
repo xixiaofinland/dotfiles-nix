@@ -54,6 +54,13 @@ return {
             nmap('<leader>gc', fzf.git_commits, 'git commits')
             nmap('<leader>gC', fzf.git_bcommits, 'git commits this buffer')
             nmap('<leader>gb', fzf.git_branches, 'git branches')
+            nmap("<leader>gr", function()
+                fzf.lsp_references({
+                    jump_to_single_result = true,
+                    ignore_current_line = true,
+                    ignoreDecleration = true,
+                })
+            end, 'reference')
 
             -- need to install zoxide
             nmap('<leader>z', function()
