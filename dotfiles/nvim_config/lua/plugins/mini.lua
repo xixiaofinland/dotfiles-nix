@@ -34,6 +34,13 @@ return {
         query_updaters = '',
       })
 
+      require('mini.splitjoin').setup(
+        {
+          mappings = {
+            toggle = '<leader>gs',
+          }
+        }
+      )
       require('mini.indentscope').gen_animation.none()
       require('mini.surround').setup()
       require('mini.trailspace').setup()
