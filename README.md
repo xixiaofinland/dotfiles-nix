@@ -44,6 +44,20 @@ This repository contains my personal configuration files (dotfiles) managed usin
 - **modules/**: Contains custom Nix modules.
 - **dotfiles/**: Holds individual dotfiles for various applications.
 
+## Debug
+
+### In MacOS Darwin
+
+"warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user"
+
+Make sure `/etc/nix/nix.conf` has correct content especially no duplicate entries, for example:
+
+```
+trusted-users = root xixiao
+trusted-substituters = https://xixiaofinland.cachix.org https://cachix.cachix.org https://nixpkgs.cachix.org
+trusted-public-keys = xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM= nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+```
+
 ## Contributing
 
 Feel free to open issues or submit pull requests. Contributions are welcome!
