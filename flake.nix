@@ -242,25 +242,25 @@
           '';
         };
 
-      rust-fmt = let
-        packages = with pkgs; [
-          (rust-bin.nightly."2024-08-17".default.override {
-            extensions = ["rust-src" "rustc-dev"];
-          })
-          rust-analyzer
-        ];
-      in
-        pkgs.mkShell {
-          name = "Rust-Fmt";
-          packages = packages;
-          env = {
-            RUST_SRC_PATH = "${pkgs.rust-bin.nightly."2024-06-25".default}/lib/rustlib/src/rust/library";
-          };
-          shellHook = ''
-            echo "🦀🦀🦀🦀 hello Rust Nightly (0625)!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # rust-fmt = let
+      #   packages = with pkgs; [
+      #     (rust-bin.nightly."2024-08-17".default.override {
+      #       extensions = ["rust-src" "rustc-dev"];
+      #     })
+      #     rust-analyzer
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Rust-Fmt";
+      #     packages = packages;
+      #     env = {
+      #       RUST_SRC_PATH = "${pkgs.rust-bin.nightly."2024-06-25".default}/lib/rustlib/src/rust/library";
+      #     };
+      #     shellHook = ''
+      #       echo "🦀🦀🦀🦀 hello Rust Nightly (0625)!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
 
       sf = let
         packages = with pkgs; [
