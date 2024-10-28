@@ -15,7 +15,7 @@ This repository contains my personal configuration files (dotfiles) managed usin
     - Nix: [Use this 3rd party script](https://zero-to-nix.com/concepts/nix-installer) (recommended) or follow the [official Nix installation guide](https://nixos.org/download.html).
     - Home manager: [Github repo](https://github.com/nix-community/home-manager)
     - Nix-darwin (for MacOS): [Github repo](https://github.com/LnL7/nix-darwin)
-   
+
 2. **Clone the Repository**:
     ```bash
     git clone https://github.com/xixiaofinland/dotfiles-nix.git ~/dotfiles-nix
@@ -34,7 +34,9 @@ This repository contains my personal configuration files (dotfiles) managed usin
    In MacOS:
     ```bash
     nix run nix-darwin -- switch --flake ~/dotfiles-nix/
-    ```   
+    darwin-rebuild --list-generations # list previous builds
+    darwin-rebuild switch --switch-generation 124 # roll back to the number 124 from the above list
+    ```
 
 ## Structure
 
