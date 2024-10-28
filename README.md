@@ -25,7 +25,14 @@ This repository contains my personal configuration files (dotfiles) managed usin
    - If you used the official Nix installation guide, make sure to enable flakes by adding `experimental-features = nix-command flakes` to your `~/.config/nix/nix.conf`, or whatever way to enable the the `flake` feature.
    - If you used the 3rd party script, `flake` should have been auto-enabled for you.
 
-6. **Apply Configurations**:
+6. **Commands**:
+
+   Nix update with `flake.lock`:
+   ```bash
+   nix flake update # update everything
+   nix flake lock --update-input sfdx-nix --update-input rust-overlay # update only specified packages
+
+   ```
    In NixOS:
     ```bash
     sudo nixos-rebuild switch --flake ~/dotfiles-nix/
