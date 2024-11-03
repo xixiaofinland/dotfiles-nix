@@ -87,7 +87,7 @@ vim.keymap.set('n', '\\d', toggleDiagnostics, { noremap = true, silent = true, d
 
 -- toggle line num;
 
-local toggleLineNum = function ()
+local toggleLineNum = function()
   local current = vim.wo.number
   if current then
     vim.wo.number = false
@@ -102,12 +102,13 @@ vim.keymap.set('n', '\\n', toggleLineNum, { noremap = true, silent = true, desc 
 -- toggle background;
 
 function toggleBackground()
-    if vim.o.background == "dark" then
-        vim.o.background = "light"
-    else
-        vim.o.background = "dark"
-    end
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
 end
+
 vim.keymap.set('n', '\\B', toggleBackground, { noremap = true, silent = true, desc = 'background light/dark' })
 
 
