@@ -242,6 +242,7 @@ in {
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
+      fixrepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
     };
   };
 
