@@ -211,6 +211,7 @@
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
 
             export_alias dr "RUST_LOG=debug cargo r"
+            export_alias tr "RUST_BACKTRACE=1 cargo r"
             export_alias rr "cargo r"
             export_alias tt "cargo test --test test --  --show-output"
             export_alias tp "cargo test prettier --  --show-output"
