@@ -215,6 +215,7 @@
             export_alias rr "cargo r"
             export_alias tt "cargo test --test test --  --show-output"
             export_alias tp "cargo test prettier --  --show-output"
+            export_alias dtp "RUST_LOG=debug cargo test prettier --  --show-output"
             export_alias te "cargo test extra --  --show-output"
             export_alias tm "cargo test manual --  --show-output"
             export_alias aa "git add .; git commit -am '+'"
