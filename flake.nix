@@ -209,18 +209,6 @@
           shellHook = ''
             echo "🚀🚀🚀🚀 Hello Afmt!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-
-            export_alias dr "RUST_LOG=debug cargo r"
-            export_alias tr "RUST_BACKTRACE=1 cargo r"
-            export_alias rr "cargo r"
-            export_alias tt "cargo test --test test --  --show-output"
-            export_alias tp "cargo test prettier --  --show-output"
-            export_alias dtp "RUST_BACKTRACE=1 cargo test prettier --  --show-output"
-            export_alias te "cargo test extra --  --show-output"
-            export_alias tm "cargo test manual --  --show-output"
-            export_alias aa "git add .; git commit -am '+'"
-            export_alias app "git push"
-            export_alias ap "git push"
           '';
         };
 

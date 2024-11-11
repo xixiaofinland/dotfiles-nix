@@ -244,6 +244,17 @@ in {
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
       fixrepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
       fixzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
+
+      dr="RUST_LOG=debug cargo r";
+      tr="RUST_BACKTRACE=1 cargo r";
+      rr="cargo r";
+      tt="cargo test --test test --  --show-output";
+      tp="cargo test prettier --  --show-output";
+      dtp="RUST_BACKTRACE=1 cargo test prettier --  --show-output";
+      te="cargo test extra --  --show-output";
+      tm="cargo test manual --  --show-output";
+      aa="git add .; git commit -am '+'";
+      app="git push";
     };
   };
 
