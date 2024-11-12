@@ -104,6 +104,7 @@ return {
           -- set_mark('c', vim.fn.stdpath('config'), 'Config') -- path
           -- set_mark('w', vim.fn.getcwd, 'Working directory') -- callable
           set_mark('a', '~/projects/afmt/tests/prettier80_/', 'afmt prettier test directory')
+          set_mark('b', '~/projects/afmt/tests/prettier80/', 'afmt prettier test directory')
           -- set_mark('b', '~/projects/afmt/tests/static/', 'afmt manual test directory')
           -- set_mark('c', '~/projects/afmt/tests/prettier10000/', 'afmt extra test directory')
         end,
