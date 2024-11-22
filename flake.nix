@@ -85,12 +85,12 @@
         rustToolchainStable = final.rust-bin.stable.latest.default.override {
           extensions = ["rust-src"];
         };
-        rustToolchainNightly = final.rust-bin.nightly.latest.default.override {
-          extensions = ["rust-src"];
-        };
-        rustToolchain0625 = final.rust-bin.nightly."2024-06-25".default.override {
-          extensions = ["rust-src" "rustc-dev"];
-        };
+        # rustToolchainNightly = final.rust-bin.nightly.latest.default.override {
+        #   extensions = ["rust-src"];
+        # };
+        # rustToolchain0625 = final.rust-bin.nightly."2024-06-25".default.override {
+        #   extensions = ["rust-src" "rustc-dev"];
+        # };
       })
     ];
     forAllSystems = function:
@@ -212,25 +212,25 @@
           '';
         };
 
-      rust-nightly = let
-        packages = with pkgs; [
-          (rust-bin.nightly.latest.default.override {
-            extensions = ["rust-src"];
-          })
-          rust-analyzer
-        ];
-      in
-        pkgs.mkShell {
-          name = "Rust-nightly";
-          packages = packages;
-          env = {
-            RUST_SRC_PATH = "${pkgs.rust-bin.nightly.latest.default}/lib/rustlib/src/rust/library";
-          };
-          shellHook = ''
-            echo "🦀🦀🦀🦀 hello Rust Nightly!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # rust-nightly = let
+      #   packages = with pkgs; [
+      #     (rust-bin.nightly.latest.default.override {
+      #       extensions = ["rust-src"];
+      #     })
+      #     rust-analyzer
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Rust-nightly";
+      #     packages = packages;
+      #     env = {
+      #       RUST_SRC_PATH = "${pkgs.rust-bin.nightly.latest.default}/lib/rustlib/src/rust/library";
+      #     };
+      #     shellHook = ''
+      #       echo "🦀🦀🦀🦀 hello Rust Nightly!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
 
       # rust-fmt = let
       #   packages = with pkgs; [
@@ -299,20 +299,20 @@
           '';
         };
 
-      haskell = let
-        packages = with pkgs; [
-          # stack
-          ghc
-        ];
-      in
-        pkgs.mkShell {
-          name = "Haskell";
-          packages = packages;
-          shellHook = ''
-            echo "📘📘📘📘 hello Haskell!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # haskell = let
+      #   packages = with pkgs; [
+      #     # stack
+      #     ghc
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Haskell";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "📘📘📘📘 hello Haskell!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
     });
 
     # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
