@@ -40,7 +40,7 @@ return {
             nmap('<leader>ff', fzf.files, 'files')
             nmap('<leader>fr', fzf.resume, 'resume')
             nmap('<leader>fd', fzf.diagnostics_document, 'diagnostics')
-            nmap('<leader>fD', function() fzf.files({ cwd = vim.fn.stdpath 'config' }) end, 'dotfiles')
+            -- nmap('<leader>fD', function() fzf.files({ cwd = vim.fn.stdpath 'config' }) end, 'dotfiles')
             nmap('<leader>fb', fzf.buffers, 'buffers')
             nmap('<leader>.', fzf.oldfiles, 'recent files')
             nmap('<leader>fg', fzf.grep, 'grep')
