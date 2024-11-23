@@ -67,9 +67,14 @@ trusted-substituters = https://xixiaofinland.cachix.org https://cachix.cachix.or
 trusted-public-keys = xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM= nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 ```
 
-## Other Useful Tips
+### NixOS in Win WSL2
 
-- `sudo chmod 4755 /run/wrappers/bin/sudo` (in Windows WSL2, sometimes the sudo permission is gone...)
+Sometimes the sudo permission is gone mysteriously
+
+- `wsl --list --verbose`
+- `wls -d NixOS -u root`
+- `ls -l /run/wrappers/bin/sudo`
+- `sudo chmod 4755 /run/wrappers/bin/sudo` 
 
 ## Contributing
 
