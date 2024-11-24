@@ -250,9 +250,9 @@ in {
       rr="cargo r";
       tt="cargo test --test test --  --show-output";
       tp="cargo test prettier --  --show-output";
-      dtp="RUST_BACKTRACE=1 cargo test prettier --  --show-output";
+      td="cargo test diverged --  --show-output";
       te="cargo test extra --  --show-output";
-      tm="cargo test manual --  --show-output";
+      dtp="RUST_BACKTRACE=1 cargo test prettier --  --show-output";
       aa="git add .; git commit -am '+'";
       app="git push";
     };
