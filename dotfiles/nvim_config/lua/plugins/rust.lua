@@ -1,12 +1,12 @@
 return {
-  {
-    'rust-lang/rust.vim',
-    ft = "rust",
-    init = function()
-      -- autoformat in save
-      vim.g.rustfmt_autosave = 1
-    end
-  },
+  -- {
+  --   'rust-lang/rust.vim',
+  --   ft = "rust",
+  --   init = function()
+  --     -- autoformat in save
+  --     vim.g.rustfmt_autosave = 1
+  --   end
+  -- },
 
   {
     'mrcjkb/rustaceanvim',
