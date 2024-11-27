@@ -1,20 +1,20 @@
 {
   description = "A simple NixOS flake";
 
-  nixConfig = {
-    trusted-substituters = [
-      "https://xixiaofinland.cachix.org"
-      "https://cachix.cachix.org"
-      "https://nixpkgs.cachix.org"
-    ];
-    trusted-public-keys = [
-      "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-    trusted-users = ["root" "nixos"];
-  };
+  # nixConfig = {
+  #   trusted-substituters = [
+  #     "https://xixiaofinland.cachix.org"
+  #     "https://cachix.cachix.org"
+  #     "https://nixpkgs.cachix.org"
+  #   ];
+  #   trusted-public-keys = [
+  #     "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+  #     "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+  #     "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+  #     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+  #   ];
+  #   trusted-users = ["root" "nixos"];
+  # };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -97,6 +97,21 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${nixos-user}" = import ./modules/home.nix;
+          }
+          {
+            nix.settings = {
+              substituters = [
+                "https://xixiaofinland.cachix.org"
+                "https://cachix.cachix.org"
+                "https://nixpkgs.cachix.org"
+              ];
+              trusted-public-keys = [
+                "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+                "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+                "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+              ];
+              trusted-users = ["nixos"];
+            };
           }
         ];
       };
