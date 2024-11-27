@@ -210,8 +210,10 @@ in {
             set -g status-right '#[fg=blue]#{cpu_percentage} - #[fg=green]#{ram_percentage}'
             run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
 
+            # because the tmux 3.5a bug; this can be removed after sensible script is fixed
+            # https://github.com/nix-community/home-manager/issues/5952
             set -gu default-command
-      set -g default-shell "$SHELL"
+            set -g default-shell "$SHELL"
     '';
   };
 
