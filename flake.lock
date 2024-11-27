@@ -154,11 +154,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731859809,
-        "narHash": "sha256-Wma4RzRG6tb7c+eEfjSjehYJsWnqifXA1/dmPbvk4Ic=",
+        "lastModified": 1732423957,
+        "narHash": "sha256-mHKSf6e0rOO3d9w8e8BfcFYwMXwj4BXVK6wJ9Vx8h7Q=",
         "owner": "xixiaofinland",
         "repo": "sfdx-nix",
-        "rev": "ea3069490973be781c922cba49f48f4579438c66",
+        "rev": "2a6295083869a347f41f26200f32da7d74123667",
         "type": "github"
       },
       "original": {

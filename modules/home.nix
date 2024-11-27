@@ -138,7 +138,7 @@ in {
 
       set -g history-limit 10000
 
-      bind-key x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
+      bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
       bind C-u switch-client -l
       bind C-o display-popup -E "finter"
@@ -170,10 +170,10 @@ in {
       set-window-option -g mode-keys vi
 
       # keybindings
-      bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind-key -T copy-mode-vi V send -X select-line
-      bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind -T copy-mode-vi V send -X select-line
+      bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
       bind \' split-window -h -c "#{pane_current_path}"
       bind \\ split-window -h -c "#{pane_current_path}"
@@ -245,16 +245,16 @@ in {
       frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
       fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
 
-      dr="RUST_LOG=debug cargo r";
-      tr="RUST_BACKTRACE=1 cargo r";
-      rr="cargo r";
-      tt="cargo test --test test --  --show-output";
-      tp="cargo test prettier --  --show-output";
-      tm="cargo test manual --  --show-output";
-      te="cargo test extra --  --show-output";
-      dtp="RUST_BACKTRACE=1 cargo test prettier --  --show-output";
-      aa="git add .; git commit -am '+'";
-      app="git push";
+      dr = "RUST_LOG=debug cargo r";
+      tr = "RUST_BACKTRACE=1 cargo r";
+      rr = "cargo r";
+      tt = "cargo test --test test --  --show-output";
+      tp = "cargo test prettier --  --show-output";
+      tm = "cargo test manual --  --show-output";
+      te = "cargo test extra --  --show-output";
+      dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
+      aa = "git add .; git commit -am '+'";
+      app = "git push";
     };
   };
 
