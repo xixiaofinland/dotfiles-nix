@@ -128,87 +128,90 @@ in {
       tmuxPlugins.cpu
     ];
     extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
-      set -g mouse on
-      set-option -g detach-on-destroy off
+            set-option -sa terminal-overrides ",xterm*:Tc"
+            set -g mouse on
+            set-option -g detach-on-destroy off
 
-      unbind C-b
-      set -g prefix C-a
-      bind C-a send-prefix
+            unbind C-b
+            set -g prefix C-a
+            bind C-a send-prefix
 
-      set -g history-limit 10000
+            set -g history-limit 10000
 
-      bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
+            bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
-      bind C-u switch-client -l
-      bind C-o display-popup -E "finter"
+            bind C-u switch-client -l
+            bind C-o display-popup -E "finter"
 
-      bind J resize-pane -D 10
-      bind K resize-pane -U 10
-      bind H resize-pane -L 10
-      bind L resize-pane -R 10
+            bind J resize-pane -D 10
+            bind K resize-pane -U 10
+            bind H resize-pane -L 10
+            bind L resize-pane -R 10
 
-      bind M-j resize-pane -D
-      bind M-k resize-pane -U
-      bind M-h resize-pane -L
-      bind M-l resize-pane -R
+            bind M-j resize-pane -D
+            bind M-k resize-pane -U
+            bind M-h resize-pane -L
+            bind M-l resize-pane -R
 
-      # Automatically set window title
-      set-option -g allow-rename on
-      set-window-option -g automatic-rename on
-      set-option -g automatic-rename-format '#{b:pane_current_path}'
+            # Automatically set window title
+            set-option -g allow-rename on
+            set-window-option -g automatic-rename on
+            set-option -g automatic-rename-format '#{b:pane_current_path}'
 
-      # Start windows and panes at 1, not 0
-      set -g base-index 1
-      set -g pane-base-index 1
-      set-window-option -g pane-base-index 1
-      set-option -g renumber-windows on
+            # Start windows and panes at 1, not 0
+            set -g base-index 1
+            set -g pane-base-index 1
+            set-window-option -g pane-base-index 1
+            set-option -g renumber-windows on
 
-      set -g @catppuccin_flavour 'mocha'
+            set -g @catppuccin_flavour 'mocha'
 
-      # set vi-mode
-      set-window-option -g mode-keys vi
+            # set vi-mode
+            set-window-option -g mode-keys vi
 
-      # keybindings
-      bind -T copy-mode-vi v send-keys -X begin-selection
-      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind -T copy-mode-vi V send -X select-line
-      bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+            # keybindings
+            bind -T copy-mode-vi v send-keys -X begin-selection
+            bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+            bind -T copy-mode-vi V send -X select-line
+            bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
-      bind \' split-window -h -c "#{pane_current_path}"
-      bind \\ split-window -h -c "#{pane_current_path}"
-      bind - split-window -v -c "#{pane_current_path}"
-      bind = split-window -v -c "#{pane_current_path}"
-      bind c new-window -c "#{pane_current_path}"
-      bind q killp
+            bind \' split-window -h -c "#{pane_current_path}"
+            bind \\ split-window -h -c "#{pane_current_path}"
+            bind - split-window -v -c "#{pane_current_path}"
+            bind = split-window -v -c "#{pane_current_path}"
+            bind c new-window -c "#{pane_current_path}"
+            bind q killp
 
-      # No delay for escape key press
-      set -sg escape-time 0
+            # No delay for escape key press
+            set -sg escape-time 0
 
-      # Reload tmux config
-      bind r source-file ~/.tmux.conf
+            # Reload tmux config
+            bind r source-file ~/.tmux.conf
 
-      # THEME
-      set -g status-fg white
-      set -g status-bg black
-      set -g status-style bright
+            # THEME
+            set -g status-fg white
+            set -g status-bg black
+            set -g status-style bright
 
-      # default window title colors
-      set-window-option -g window-status-style fg=white
-      set-window-option -g window-status-style bg=default
-      set-window-option -g window-status-style dim
+            # default window title colors
+            set-window-option -g window-status-style fg=white
+            set-window-option -g window-status-style bg=default
+            set-window-option -g window-status-style dim
 
-      # active window title colors
-      set-window-option -g window-status-current-style fg=white
-      set-window-option -g window-status-current-style bg=default
-      set-window-option -g window-status-current-style bright
+            # active window title colors
+            set-window-option -g window-status-current-style fg=white
+            set-window-option -g window-status-current-style bg=default
+            set-window-option -g window-status-current-style bright
 
-      set -g status-interval 5
-      set -g status-left-length 47
-      set -g status-left '#[fg=blue]%H:%M | #[fg=green]%d-%m | #[fg=orange][#S]'
-      set -g status-justify centre
-      set -g status-right '#[fg=blue]#{cpu_percentage} - #[fg=green]#{ram_percentage}'
-      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+            set -g status-interval 5
+            set -g status-left-length 47
+            set -g status-left '#[fg=blue]%H:%M | #[fg=green]%d-%m | #[fg=orange][#S]'
+            set -g status-justify centre
+            set -g status-right '#[fg=blue]#{cpu_percentage} - #[fg=green]#{ram_percentage}'
+            run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+
+            set -gu default-command
+      set -g default-shell "$SHELL"
     '';
   };
 
