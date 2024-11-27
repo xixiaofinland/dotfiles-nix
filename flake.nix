@@ -40,22 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    # nix-homebrew = {
-    #   url = "github:zhaofengli-wip/nix-homebrew";
-    #   inputs.nix-darwin.follows = "nix-darwin";
-    # };
-    # homebrew-bundle = {
-    #   url = "github:homebrew/homebrew-bundle";
-    #   flake = false;
-    # };
-    # homebrew-core = {
-    #   url = "github:homebrew/homebrew-core";
-    #   flake = false;
-    # };
-    # homebrew-cask = {
-    #   url = "github:homebrew/homebrew-cask";
-    #   flake = false;
-    # };
   };
 
   outputs = {
@@ -67,10 +51,6 @@
     nix-darwin,
     rust-overlay,
     sfdx-nix,
-    # nix-homebrew,
-    # homebrew-bundle,
-    # homebrew-core,
-    # homebrew-cask,
   }: let
     nixos-user = "nixos";
     nixos-hostname = "nixos";
@@ -141,24 +121,24 @@
             home-manager.users."${mac-user}" = import ./modules/home.nix;
           }
           {
-            nix = {
-              settings = {
-                substituters = [
-                  "https://xixiaofinland.cachix.org"
-                  "https://cachix.cachix.org"
-                  "https://nixpkgs.cachix.org"
-                ];
-                trusted-public-keys = [
-                  "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-                  "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-                  "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-                ];
-              };
-              extraOptions = ''
-                trusted-users = root xixiao;
-                trusted-users = ["root" "nixos" "xixiao"];
-              '';
-            };
+            # nix = {
+            #   settings = {
+            #     substituters = [
+            #       "https://xixiaofinland.cachix.org"
+            #       "https://cachix.cachix.org"
+            #       "https://nixpkgs.cachix.org"
+            #     ];
+            #     trusted-public-keys = [
+            #       "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+            #       "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+            #       "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+            #     ];
+            #   };
+            #   extraOptions = ''
+            #     trusted-users = root xixiao;
+            #     trusted-users = ["root" "nixos" "xixiao"];
+            #   '';
+            # };
           }
         ];
       };
