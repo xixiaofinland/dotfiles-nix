@@ -5,6 +5,8 @@ return {
     local none_ls = require("null-ls")
     none_ls.setup({
       sources = {
+        none_ls.builtins.formatting.alejandra,
+
         none_ls.builtins.formatting.prettier.with({
           filetypes = { "apex" },
           extra_args = { "--plugin=prettier-plugin-apex", "--write" },
