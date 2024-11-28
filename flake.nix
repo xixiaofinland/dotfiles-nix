@@ -1,21 +1,5 @@
 {
   description = "A simple NixOS flake";
-
-  # nixConfig = {
-  #   trusted-substituters = [
-  #     "https://xixiaofinland.cachix.org"
-  #     "https://cachix.cachix.org"
-  #     "https://nixpkgs.cachix.org"
-  #   ];
-  #   trusted-public-keys = [
-  #     "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-  #     "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-  #     "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-  #     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  #   ];
-  #   trusted-users = ["root" "nixos"];
-  # };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
@@ -60,18 +44,14 @@
     mac-sys = "x86_64-darwin";
     overlays = [
       rust-overlay.overlays.default
-      (final: prev: {
-        sf = sfdx-nix.packages.${final.system}.sf;
-        rustToolchainStable = final.rust-bin.stable.latest.default.override {
-          extensions = ["rust-src"];
-        };
-        rustToolchainNightly = final.rust-bin.nightly.latest.default.override {
-          extensions = ["rust-src"];
-        };
-        rustToolchain0625 = final.rust-bin.nightly."2024-06-25".default.override {
-          extensions = ["rust-src" "rustc-dev"];
-        };
-      })
+      (
+        final: prev: {
+          sf = sfdx-nix.packages.${final.system}.sf;
+          rustToolchainStable = final.rust-bin.stable.latest.default;
+          rustToolchainNightly = final.rust-bin.nightly.latest.default;
+          rustToolchain0625 = final.rust-bin.nightly."2024-06-25".default;
+        }
+      )
     ];
     forAllSystems = function:
       nixpkgs.lib.genAttrs [
@@ -164,18 +144,13 @@
 
       rust = let
         packages = with pkgs; [
-          (rust-bin.stable.latest.default.override {
-            extensions = ["rust-src"];
-          })
+          rust-bin.stable.latest.default
           rust-analyzer
         ];
       in
         pkgs.mkShell {
           name = "Rust";
           packages = packages;
-          env = {
-            RUST_SRC_PATH = "${pkgs.rust-bin.stable.latest.default}/lib/rustlib/src/rust/library";
-          };
           shellHook = ''
             echo "🦀🦀🦀🦀 hello Rust Stable!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
@@ -184,9 +159,7 @@
 
       afmt = let
         packages = with pkgs; [
-          (rust-bin.stable.latest.default.override {
-            extensions = ["rust-src"];
-          })
+          rust-bin.stable.latest.default
           rust-analyzer
           nodejs_22
           jdk
@@ -198,9 +171,6 @@
         pkgs.mkShell {
           name = "Afmt";
           packages = packages;
-          env = {
-            RUST_SRC_PATH = "${pkgs.rust-bin.stable.latest.default}/lib/rustlib/src/rust/library";
-          };
           shellHook = ''
             echo "🚀🚀🚀🚀 Hello Afmt!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
@@ -209,43 +179,18 @@
 
       rust-nightly = let
         packages = with pkgs; [
-          (rust-bin.nightly.latest.default.override {
-            extensions = ["rust-src"];
-          })
+          rust-bin.nightly.latest.default
           rust-analyzer
         ];
       in
         pkgs.mkShell {
           name = "Rust-nightly";
           packages = packages;
-          env = {
-            RUST_SRC_PATH = "${pkgs.rust-bin.nightly.latest.default}/lib/rustlib/src/rust/library";
-          };
           shellHook = ''
             echo "🦀🦀🦀🦀 hello Rust Nightly!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
           '';
         };
-
-      # rust-fmt = let
-      #   packages = with pkgs; [
-      #     (rust-bin.nightly."2024-08-17".default.override {
-      #       extensions = ["rust-src" "rustc-dev"];
-      #     })
-      #     rust-analyzer
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "Rust-Fmt";
-      #     packages = packages;
-      #     env = {
-      #       RUST_SRC_PATH = "${pkgs.rust-bin.nightly."2024-06-25".default}/lib/rustlib/src/rust/library";
-      #     };
-      #     shellHook = ''
-      #       echo "🦀🦀🦀🦀 hello Rust Nightly (0625)!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
 
       sf = let
         packages = with pkgs; [
