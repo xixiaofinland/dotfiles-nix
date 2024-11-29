@@ -23,6 +23,8 @@ in {
   home.packages = with pkgs; [
     cachix
     eza
+    tldr
+    bat
     fd
     fzf
     jq
