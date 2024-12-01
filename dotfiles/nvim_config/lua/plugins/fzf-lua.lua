@@ -46,7 +46,7 @@ return {
             nmap('<leader>fg', fzf.grep, 'grep')
             nmap('<leader>fw', fzf.grep_cword, 'word in project')
             nmap('<leader>fW', fzf.grep_cWORD, 'word in current')
-            nmap("<leader>fm", fzf.lsp_document_symbols, 'method list')
+            nmap("<leader>fm", function() fzf.lsp_document_symbols({ regex_filter = { "Field", exclude = true } }) end, 'lsp docs')
             nmap('<leader>/', fzf.grep_curbuf, 'search current buffer')
             nmap('<leader>fc', fzf.command_history, 'command history')
             nmap('<leader>fh', fzf.helptags, 'help')
