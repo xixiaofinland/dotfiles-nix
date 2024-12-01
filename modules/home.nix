@@ -112,6 +112,12 @@ in {
   #   caches = [ "xixiaofinland" "cachix" "nixpkgs" ];
   # };
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
