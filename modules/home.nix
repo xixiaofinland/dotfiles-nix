@@ -237,7 +237,7 @@ in {
         "nvm"
         "npm"
         "fzf"
-        "z"
+        # "z"  # conflicts with zoxide
       ];
     };
     initExtra = ''
