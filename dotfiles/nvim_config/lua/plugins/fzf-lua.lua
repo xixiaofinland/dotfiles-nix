@@ -47,17 +47,8 @@ return {
             nmap("<leader>fm", function()
                     fzf.lsp_document_symbols({
                         regex_filter = function(item, _)
-                            if item.kind:match('Struct') or item.kind:match('Enum') or item.kind:match('Method') then
-                                return true
-                            else
-                                return false
-                            end
-                            -- if item.kind:match('Variable') or item.kind:match('Field')
-                            -- then
-                            --     return false
-                            -- else
-                            --     return true
-                            -- end
+                            local kind = item.kind
+                            return kind == "Struct" or kind == "Enum" or kind == "Method"
                         end
                     })
                 end,
