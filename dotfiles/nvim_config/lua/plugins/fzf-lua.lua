@@ -35,8 +35,6 @@ return {
 
             local fzf = require('fzf-lua')
 
-            -- fzf.register_ui_select()
-
             nmap('<leader>ff', fzf.files, 'files')
             nmap('<leader>fr', fzf.resume, 'resume')
             nmap('<leader>fd', fzf.diagnostics_document, 'diagnostics')
@@ -46,7 +44,25 @@ return {
             nmap('<leader>fg', fzf.grep, 'grep')
             nmap('<leader>fw', fzf.grep_cword, 'word in project')
             nmap('<leader>fW', fzf.grep_cWORD, 'word in current')
-            nmap("<leader>fm", function() fzf.lsp_document_symbols({ regex_filter = { "Field", exclude = true } }) end, 'lsp docs')
+            nmap("<leader>fm", function()
+                    fzf.lsp_document_symbols({
+                        regex_filter = function(item, _)
+                            if item.kind:match('Struct') or item.kind:match('Enum') or item.kind:match('Method') then
+                                return true
+                            else
+                                return false
+                            end
+                            -- if item.kind:match('Variable') or item.kind:match('Field')
+                            -- then
+                            --     return false
+                            -- else
+                            --     return true
+                            -- end
+                        end
+                    })
+                end,
+                'core lsp docs')
+            nmap("<leader>fM", fzf.lsp_document_symbols, 'lsp docs')
             nmap('<leader>/', fzf.grep_curbuf, 'search current buffer')
             nmap('<leader>fc', fzf.command_history, 'command history')
             nmap('<leader>fh', fzf.helptags, 'help')
