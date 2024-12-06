@@ -122,3 +122,6 @@ vim.keymap.set('i', '<M-l>', '<Right>', opts)
 
 -- insert mode <C-e> delete till end of word;
 vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
+
+-- Duplicate a line and comment out the first line
+vim.keymap.set("n", "yc", "yygccp")
