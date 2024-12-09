@@ -72,7 +72,7 @@ trusted-public-keys = xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5bt
 Sometimes the sudo permission is gone mysteriously
 
 - `wsl --list --verbose`
-- `wls -d NixOS -u root`
+- `wsl -d NixOS -u root`
 - `ls -l /run/wrappers/bin/sudo`
 - `sudo chmod 4755 /run/wrappers/bin/sudo` 
 
