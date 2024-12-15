@@ -260,7 +260,7 @@ in {
 
       dr = "RUST_LOG=debug cargo r";
       tr = "RUST_BACKTRACE=1 cargo r";
-      rr = "cargo r";
+      rr = "cargo r -- ./hello.cls";
       tt = "cargo test --test test --  --show-output";
       tp = "cargo test prettier --  --show-output";
       tm = "cargo test manual --  --show-output";
