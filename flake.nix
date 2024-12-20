@@ -167,6 +167,7 @@
           gnuplot
           mdbook
           wasm-bindgen-cli
+          wasm-pack
         ];
       in
         pkgs.mkShell {
