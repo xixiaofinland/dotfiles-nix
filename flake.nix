@@ -159,7 +159,11 @@
 
       afmt = let
         packages = with pkgs; [
-          rust-bin.stable.latest.default
+          # rust-bin.stable.latest.default
+          (rust-bin.stable.latest.default.override {
+            extensions = ["rust-src"];
+            targets = ["wasm32-unknown-unknown"];
+          })
           rust-analyzer
           nodejs_22
           jdk
