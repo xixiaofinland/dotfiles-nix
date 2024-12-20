@@ -166,6 +166,7 @@
           parallel
           gnuplot
           mdbook
+          wasm-bindgen-cli
         ];
       in
         pkgs.mkShell {
