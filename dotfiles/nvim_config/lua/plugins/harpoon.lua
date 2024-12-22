@@ -25,13 +25,5 @@ return {
       end, { desc = name .. "move to #" .. index })
     end
 
-    -- bug: https://github.com/ThePrimeagen/harpoon/pull/533
-    vim.api.nvim_create_autocmd({ "QuitPre" }, {
-      pattern = "*",
-      callback = function()
-        -- Do this for all your lists
-        Harpoon:list():sync_cursor()
-      end,
-    })
   end
 }
