@@ -104,6 +104,7 @@ return {
           set_mark('a', '~/projects/afmt/tests/prettier80/', 'afmt prettier test directory')
           set_mark('b', '~/projects/afmt/tests/static/', 'afmt static test directory')
           set_mark('c', '~/projects/afmt/tests/to-do/', 'afmt static todo directory')
+          set_mark('d', '~/projects/afmt/tests/comments/', 'afmt comment directory')
         end,
       })
 
