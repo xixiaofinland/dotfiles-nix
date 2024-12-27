@@ -48,7 +48,7 @@ return {
                     fzf.lsp_document_symbols({
                         regex_filter = function(item, _)
                             local kind = item.kind
-                            return kind == "Struct" or kind == "Enum" or kind == "Method"
+                            return kind == "Struct" or kind == "Enum" or kind == "Method" or kind == "Function"
                         end
                     })
                 end,
