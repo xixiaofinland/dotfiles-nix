@@ -168,8 +168,6 @@
           nodejs_22
           jdk
           parallel
-          gnuplot
-          mdbook
           wasm-bindgen-cli
           wasm-pack
         ];
