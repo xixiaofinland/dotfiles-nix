@@ -170,6 +170,7 @@
           parallel
           wasm-bindgen-cli
           wasm-pack
+          simple-http-server
         ];
       in
         pkgs.mkShell {
