@@ -219,6 +219,7 @@
           tree-sitter
           nodejs_22
           prettierd
+          emscripten
         ];
       in
         pkgs.mkShell {
