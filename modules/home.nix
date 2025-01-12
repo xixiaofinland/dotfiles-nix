@@ -268,7 +268,7 @@ in {
       dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
       aa = "git add .; git commit -am '+'";
       app = "git push";
-      serve = "simple-http-server -i -p 9999 ~/projects/afmt/";
+      serve = "simple-http-server -i -p 9999 ./";
     };
   };
 
