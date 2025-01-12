@@ -171,6 +171,7 @@
           wasm-bindgen-cli
           wasm-pack
           simple-http-server
+          prettierd
         ];
       in
         pkgs.mkShell {

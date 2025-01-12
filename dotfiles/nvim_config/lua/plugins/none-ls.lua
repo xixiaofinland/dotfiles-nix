@@ -13,7 +13,7 @@ return {
         }),
 
         none_ls.builtins.formatting.prettierd.with({
-          filetypes = { "javascript" },
+          filetypes = { "html", "javascript" },
         }),
 
         none_ls.builtins.diagnostics.pmd.with({
