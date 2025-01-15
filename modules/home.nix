@@ -263,8 +263,8 @@ in {
       rr = "cargo r -- tests/battle_test/hello.cls";
       tt = "cargo test --test test --  --show-output";
       tp = "cargo test prettier --  --show-output";
-      tm = "cargo test manual --  --show-output";
-      te = "cargo test extra --  --show-output";
+      tm = "cargo test static --  --show-output";
+      te = "cargo test comments --  --show-output";
       dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
       aa = "git add .; git commit -am '+'";
       app = "git push";
