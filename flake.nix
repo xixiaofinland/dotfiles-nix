@@ -164,7 +164,11 @@
             extensions = ["rust-src"];
             targets = ["wasm32-unknown-unknown"];
           })
+          cargo-audit
+          cargo-deny
+          cargo-tarpaulin
           rust-analyzer
+
           nodejs_22
           jdk
           parallel
