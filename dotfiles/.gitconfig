@@ -17,3 +17,15 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+[alias]
+    cleanup = "!f() { \
+        current_branch=$(git branch --show-current); \
+        if [ \"$current_branch\" = \"main\" ] || [ \"$current_branch\" = \"master\" ]; then \
+            echo \"You are on the main branch. No feature branch to delete.\"; \
+            exit 1; \
+        fi; \
+        git checkout main && \
+        git pull && \
+        git branch -d \"$current_branch\"; \
+    }; f"
+
