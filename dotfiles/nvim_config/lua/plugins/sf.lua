@@ -27,7 +27,7 @@ return {
             local view = vim.fn.winsaveview()
             vim.cmd('write')
 
-            local afmt_cmd = string.format("~/afmt -w \"%s\"", filepath)
+            local afmt_cmd = string.format("~/.local/bin/afmt -w \"%s\"", filepath)
             local result = vim.fn.system(afmt_cmd)
 
             if vim.v.shell_error == 0 then
