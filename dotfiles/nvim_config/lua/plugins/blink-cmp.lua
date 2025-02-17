@@ -34,6 +34,11 @@ return {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
+
+    -- Disable cmdline
+    cmdline = {
+      enabled = false
+    },
   },
   opts_extend = { "sources.default" }
 }
