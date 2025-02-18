@@ -7,11 +7,12 @@
   finter = pkgs.rustPlatform.buildRustPackage rec {
     pname = "finter";
     version = "0.1.14";
+    useFetchCargoVendor = true;
     src = pkgs.fetchCrate {
       inherit pname version;
       sha256 = "sha256-J0EXZTHhGNAQBK1CPX7XmQqhI1t4jfmqlD3n2jrqHP8=";
     };
-    cargoHash = "sha256-f+TzZ+mhduLt9mE8egq8N17Ch1sCUmwfiYU2CAKIKew=";
+    cargoHash = "sha256-HKMpbqadqCM9Y752T+1YS/U7BboWn48/K7OLcn1oDB8=";
     meta = with pkgs.lib; {
       description = "A Tmux plugin to quickly create session for folders in configured paths.";
       license = licenses.mit;
