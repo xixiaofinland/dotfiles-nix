@@ -7,3 +7,4 @@ sf_cache
 *.h
 *.c
 tags
+.sfdx/
