@@ -6,3 +6,4 @@ sf_cache
 *.cpp
 *.h
 *.c
+tags
