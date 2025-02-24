@@ -187,6 +187,21 @@
           '';
         };
 
+      blog = let
+        packages = with pkgs; [
+          rust-bin.stable.latest.default
+          rust-analyzer
+        ];
+      in
+        pkgs.mkShell {
+          name = "Blog";
+          packages = packages;
+          shellHook = ''
+            echo "📝📝📝📝 hello Blog!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
+
       rust-nightly = let
         packages = with pkgs; [
           rust-bin.nightly.latest.default
