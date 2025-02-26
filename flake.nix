@@ -191,6 +191,7 @@
         packages = with pkgs; [
           rust-bin.stable.latest.default
           rust-analyzer
+          mdbook
         ];
       in
         pkgs.mkShell {
