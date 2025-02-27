@@ -266,6 +266,45 @@
           '';
         };
 
+      llm = let
+        packages = with pkgs; [
+          (python311.withPackages (ps:
+            with ps; [
+              pip
+              virtualenv
+              # numpy
+              # pandas
+              # scikit-learn
+            ]))
+          cmake
+          gcc
+          nodejs_22 # Often useful for visualization or web interfaces
+        ];
+      in
+        pkgs.mkShell {
+          name = "LLM";
+          packages = packages;
+          shellHook = ''
+            echo "🧠🤖🧠🤖 hello LLM development!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+
+            # Create/activate venv if it doesn't exist
+            if [ ! -d ".venv" ]; then
+              echo "Creating new Python virtual environment in .venv..."
+              python -m venv .venv
+            fi
+
+            # Activate the virtual environment
+            source .venv/bin/activate
+
+            # Update pip
+            pip install --upgrade pip
+
+            echo ""
+            echo "Virtual environment activated."
+          '';
+        };
+
       # haskell = let
       #   packages = with pkgs; [
       #     # stack
