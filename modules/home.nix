@@ -280,6 +280,32 @@ in {
     ];
   };
 
+  programs.jujutsu = {
+    enable = true;
+    ediff = true;
+    settings = {
+      user = {
+        email = "xi.xiao007@gmail.com";
+        name = "Xi Xiao";
+      };
+      ui = {
+        paginate = "never";
+        editor = "nvim";
+        default-command = ["log" "--limit" "5"];
+      };
+      git = {
+        push-bookmark-prefix = "xx/push-";
+        # git.private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
+      };
+      aliases = {
+        l = ["log" "-r" "(main..@):: | (main..@)-"];
+        ll = ["log" "-r" "(master..@):: | (master..@)-"];
+        lm = ["log" "-r" "mine()"];
+        bto = ["bookmark" "track" "glob:*@origin"];
+      };
+    };
+  };
+
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
   # nix.settings.trusted-users = ["nixos" "xixiao"];
