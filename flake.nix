@@ -271,7 +271,7 @@
           (python311.withPackages (ps:
             with ps; [
               pip
-              virtualenv
+              # virtualenv
               # numpy
               # pandas
               # scikit-learn
@@ -320,8 +320,5 @@
       #     '';
       #   };
     });
-
-    # formatter.${mac-sys} = nixpkgs.legacyPackages.${mac-sys}.alejandra;
-    # formatter.${nixos-sys} = nixpkgs.legacyPackages.${nixos-sys}.alejandra;
   };
 }
