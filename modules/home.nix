@@ -165,7 +165,11 @@ in {
       # Automatically set window title
       set-option -g allow-rename on
       set-window-option -g automatic-rename on
-      set-option -g automatic-rename-format '#{b:pane_current_path##*/}'
+      set-option -g automatic-rename-format '#{b:pane_current_path}'
+
+      # This ensures window naming uses the basename while preserving existing formatting
+      set-window-option -g window-status-format '#I:#{b:pane_current_path}#F'
+      set-window-option -g window-status-current-format '#I:#{b:pane_current_path}#F'
 
       # Start windows and panes at 1, not 0
       set -g base-index 1
@@ -195,7 +199,7 @@ in {
       set -sg escape-time 0
 
       # Reload tmux config
-      bind r source-file ~/.tmux.conf
+      bind r source-file ~/.config/tmux/.tmux.conf
 
       # THEME
       set -g status-fg white
