@@ -165,7 +165,7 @@ in {
       # Automatically set window title
       set-option -g allow-rename on
       set-window-option -g automatic-rename on
-      set-option -g automatic-rename-format '#{b:pane_current_path}'
+      set-option -g automatic-rename-format '#{b:pane_current_path##*/}'
 
       # Start windows and panes at 1, not 0
       set -g base-index 1
