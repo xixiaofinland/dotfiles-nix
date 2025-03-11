@@ -178,8 +178,8 @@ in {
       set-window-option -g window-status-current-style bright
 
       # BUG: the above defined styles are gone due to the 2 lines below. why?
-      set-window-option -g window-status-format '#I) #{b:pane_current_path}'
-      set-window-option -g window-status-current-format '#I) #{b:pane_current_path}'
+      set-window-option -g window-status-format '#I_#{b:pane_current_path}'
+      set-window-option -g window-status-current-format '#I_#{b:pane_current_path}'
 
       # Start windows and panes at 1, not 0
       set -g base-index 1
