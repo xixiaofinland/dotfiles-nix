@@ -31,6 +31,7 @@ end
 
 vim.keymap.set("n", "<leader>no", function() open_note("personal.md") end, { desc = "open personal note" })
 vim.keymap.set("n", "<leader>nw", function() open_note("work.md") end, { desc = "open work note" })
+vim.keymap.set("n", "<leader>nb", function() open_note("backup.md") end, { desc = "open backup note" })
 
 if vim.loop.fs_stat(note_path) ~= nil then
   local push_cmd = "cd " .. note_path .. "; git commit -am \"+\"; git push;"
