@@ -274,6 +274,8 @@ in {
       aa = "git add .; git commit -am '+'";
       app = "git push";
       serve = "simple-http-server -i -p 9999 ./";
+
+      d-bms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
     };
   };
 
