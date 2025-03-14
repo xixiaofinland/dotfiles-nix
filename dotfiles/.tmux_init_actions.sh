@@ -29,6 +29,7 @@ else
     last_modified=""
 fi
 
+echo -e "-- Check jorje..."
 NC='\033[0m' # No Color
 if [ "$current_modified" != "$last_modified" ]; then
     RED='\033[0;31m'
