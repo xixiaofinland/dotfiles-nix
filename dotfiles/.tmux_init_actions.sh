@@ -42,8 +42,11 @@ fi
 
 # 3. repos pull
 
-echo -e "pull dotfiles... \n"
+echo -e "-- Pull dotfiles..."
 git -C $HOME/dotfiles-nix/ pull
 
-echo -e "pull afmt... \n"
-git -C $HOME/projects/afmt/ pull
+echo -e "\n-- Updating afmt repository with jj..."
+(
+    cd "$HOME/projects/afmt/" || exit 1
+    jj bto
+)
