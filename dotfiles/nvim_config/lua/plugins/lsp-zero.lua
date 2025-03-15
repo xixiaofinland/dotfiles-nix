@@ -54,7 +54,6 @@ return {
             lua_ls = zero.nvim_lua_ls(),
             -- statix = {},
             nil_ls = {},
-            -- rust_analyzer = {},
         }
 
         for _, lsp in ipairs(vim.tbl_keys(lang_servers)) do

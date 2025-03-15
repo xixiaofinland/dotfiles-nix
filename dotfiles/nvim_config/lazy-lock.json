@@ -29,6 +29,7 @@
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "precognition.nvim": { "branch": "main", "commit": "24f2cc51dccecec4cf3de04bfbd14f5b9e79df0b" },
   "rustaceanvim": { "branch": "master", "commit": "2b0f0b7e03751cf8ed123322f9b02d8f73fa9df7" },
+  "rustowl": { "branch": "main", "commit": "332c65d2ad9a6778ad0eb61e936294915d806cad" },
   "screenkey.nvim": { "branch": "dev", "commit": "a2f9f29519f5d1d7309e6ef8f21dc9cdb0cd0866" },
   "sf.nvim": { "branch": "main", "commit": "d7cecced6b1e5337e23ff48efd1603e8c2b665ba" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "b24b97c538b71b6de0ce9d84e47df27b6ecafd76" },
