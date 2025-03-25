@@ -49,5 +49,5 @@ git -C $HOME/dotfiles-nix/ pull
 echo -e "\n-- Updating afmt repository with jj..."
 (
     cd "$HOME/projects/afmt/" || exit 1
-    jj bto
+    jj git fetch;jj bto
 )
