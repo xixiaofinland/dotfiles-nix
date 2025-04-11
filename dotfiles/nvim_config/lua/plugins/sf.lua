@@ -11,6 +11,7 @@ return {
     config = function()
         require('sf').setup({
             enable_hotkeys = true,
+            auto_display_code_sign = false,
         })
 
         vim.keymap.set('n', '<leader>e', '<CMD>e ~/.config/nvim/lua/plugins/sf.lua<CR>',
