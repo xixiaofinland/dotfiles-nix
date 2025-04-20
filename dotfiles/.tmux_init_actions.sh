@@ -46,8 +46,8 @@ fi
 echo -e "-- Pull dotfiles..."
 git -C $HOME/dotfiles-nix/ pull
 
-echo -e "\n-- Updating afmt repository with jj..."
-(
-    cd "$HOME/projects/afmt/" || exit 1
-    jj git fetch;jj rebase -s main -d main@origin;jj bto
-)
+# echo -e "\n-- Updating afmt repository with jj..."
+# (
+#     cd "$HOME/projects/afmt/" || exit 1
+#     jj git fetch;jj rebase -s main -d main@origin;jj bto
+# )
