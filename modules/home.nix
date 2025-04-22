@@ -34,8 +34,7 @@ in {
     tree
     zoxide
     pure-prompt
-
-    #node
+    gnumake
     nodejs_22
 
     # git
