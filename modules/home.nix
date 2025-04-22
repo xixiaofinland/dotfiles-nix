@@ -309,15 +309,15 @@ in {
         ll = ["log" "-r" "(master..@):: | (master..@)-"];
         lm = ["log" "-r" "mine()"];
         bto = ["bookmark" "track" "glob:*@origin"];
+        pull = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          "'jj git fetch && jj rebase -s @ -d trunk()'"
+        ];
       };
-      pull = [
-        "util"
-        "exec"
-        "--"
-        "bash"
-        "-c"
-        "'jj git fetch && jj rebase -s @ -d trunk()'"
-      ];
     };
   };
 
