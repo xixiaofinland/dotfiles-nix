@@ -168,8 +168,6 @@
           cargo-deny
           cargo-tarpaulin
           rust-analyzer
-
-          nodejs_22
           jdk
           parallel
           wasm-bindgen-cli
@@ -221,7 +219,6 @@
       sf = let
         packages = with pkgs; [
           jdk
-          nodejs_22
           pmd
           universal-ctags
         ];
@@ -238,7 +235,6 @@
       tree = let
         packages = with pkgs; [
           tree-sitter
-          nodejs_22
           prettierd
           emscripten
         ];
@@ -278,7 +274,6 @@
             ]))
           cmake
           gcc
-          nodejs_22 # Often useful for visualization or web interfaces
         ];
       in
         pkgs.mkShell {

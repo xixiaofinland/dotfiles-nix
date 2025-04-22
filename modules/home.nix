@@ -35,6 +35,9 @@ in {
     zoxide
     pure-prompt
 
+    #node
+    nodejs_22
+
     # git
     jujutsu
 
