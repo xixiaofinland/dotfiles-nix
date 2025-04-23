@@ -291,7 +291,7 @@ in {
 
   programs.jujutsu = {
     enable = true;
-    ediff = true;
+    # ediff = true;
     settings = {
       user = {
         email = "xi.xiao007@gmail.com";
