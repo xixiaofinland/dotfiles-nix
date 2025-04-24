@@ -17,7 +17,6 @@ return {
     vim.keymap.set('n', '<leader>e', '<CMD>e ~/.config/nvim/lua/plugins/sf.lua<CR>',
       { desc = 'Open sf config' })
 
-    -- Assuming the afmt binary is placed under path "~"
     local function format_apex()
       local filepath = vim.api.nvim_buf_get_name(0)
       if filepath == "" then
