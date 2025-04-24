@@ -250,7 +250,7 @@ in {
     initExtra = ''
       autoload -U promptinit; promptinit
       prompt pure
-      export PATH="$HOME/.local/bin:$PATH" # afmt CLI is here
+      export PATH="$HOME/.local/bin:$PATH"
     '';
     shellAliases = {
       gs = "git status";
