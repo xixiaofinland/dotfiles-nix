@@ -43,8 +43,15 @@ return {
     build = "make tiktoken",                          -- Only on MacOS or Linux
     config = function()
       require("CopilotChat").setup({});
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>ao', '<cmd>CopilotChatToggle<CR>',
+        { desc = 'Toggle chat window' })
+
       vim.keymap.set({ 'n', 'v' }, '<leader>ap', '<cmd>CopilotChatPrompts<CR>',
         { desc = 'Select prompt templates' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>am', '<cmd>CopilotChatModels<CR>',
+        { desc = 'Select chat model' })
     end
   },
 }
