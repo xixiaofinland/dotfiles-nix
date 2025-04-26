@@ -10,6 +10,9 @@ return {
             position = "right",
           }
         },
+        suggestion = {
+          enabled = false, --I use fang2hou/blink-copilot instead
+        },
       })
     end,
   },
