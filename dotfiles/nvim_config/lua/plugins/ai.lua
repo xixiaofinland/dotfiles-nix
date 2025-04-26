@@ -12,7 +12,25 @@ return {
         },
         suggestion = {
           enabled = false, --I use fang2hou/blink-copilot instead
+
         },
+        should_attach = function(_, _)
+          -- Always return false to prevent automatic attachment
+          return false
+        end,
+
+        vim.keymap.set("n", "<leader>act", function()
+          local client = require("copilot.client")
+          if client.buf_is_attached(0) then
+            require("copilot.command").detach()
+            vim.notify("Copilot detached from buffer", vim.log.levels.INFO)
+          else
+            require("copilot.command").attach({ force = true })
+            vim.notify("Copilot attached to buffer", vim.log.levels.INFO)
+          end
+        end, {
+          desc = "Toggle Copilot LSP",
+        })
       })
     end,
   },
