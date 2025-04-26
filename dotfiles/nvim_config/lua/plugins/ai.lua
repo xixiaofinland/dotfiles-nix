@@ -19,7 +19,7 @@ return {
           return false
         end,
 
-        vim.keymap.set("n", "<leader>act", function()
+        vim.keymap.set("n", "<leader>at", function()
           local client = require("copilot.client")
           if client.buf_is_attached(0) then
             require("copilot.command").detach()
@@ -41,9 +41,10 @@ return {
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
     build = "make tiktoken",                          -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    -- See Commands section for default commands if you want to lazy load on them
+    config = function()
+      require("CopilotChat").setup({});
+      vim.keymap.set({ 'n', 'v' }, '<leader>ap', '<cmd>CopilotChatPrompts<CR>',
+        { desc = 'Select prompt templates' })
+    end
   },
 }
