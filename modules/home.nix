@@ -247,7 +247,7 @@ in {
         # "z"  # conflicts with zoxide
       ];
     };
-    initExtra = ''
+    initContent = ''
       autoload -U promptinit; promptinit
       prompt pure
       export PATH="$HOME/.local/bin:$PATH"
