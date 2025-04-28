@@ -117,6 +117,10 @@
           }
           {
             nix = {
+              package = pkgs.nixVersions.latest; # pull in the nix binary from cache, NixOS doesn't need to do so
+              extraOptions = ''
+                experimental-features = nix-command flakes
+              '';
               settings = {
                 trusted-substituters = [
                   "https://xixiaofinland.cachix.org"
