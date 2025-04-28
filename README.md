@@ -42,7 +42,7 @@ This repository contains my personal configuration files (dotfiles) managed usin
 
    In MacOS:
     ```bash
-    nix run nix-darwin -- switch --flake ~/dotfiles-nix/
+    darwin-rebuild switch --flake ~/dotfiles-nix
     darwin-rebuild --list-generations # list previous builds
     darwin-rebuild switch --switch-generation 124 # roll back to the number 124 from the above list
     ```
