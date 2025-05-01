@@ -31,13 +31,13 @@ vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
-vim.keymap.set('n', '<leader>cf', function()
+vim.keymap.set('n', '<leader>cn', function()
   local file_name = vim.fn.expand("%:t")
   vim.fn.setreg('*', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
 end, { desc = 'Copy file name' })
 
-vim.keymap.set('n', '<leader>cF', function()
+vim.keymap.set('n', '<leader>cN', function()
   local file_name = vim.fn.expand("%:p")
   vim.fn.setreg('*', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
