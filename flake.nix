@@ -254,7 +254,7 @@
 
       nvim = let
         packages = with pkgs; [
-          gnumake
+          # gnumake
         ];
       in
         pkgs.mkShell {
