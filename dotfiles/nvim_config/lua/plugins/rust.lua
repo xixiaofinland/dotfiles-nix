@@ -8,7 +8,7 @@ return {
         server = {
           settings = {
             ["rust-analyzer"] = {
-              checkOnSave = { command = "clippy" },
+              -- checkOnSave = { command = "clippy" },
               files = {
                 watcher = "client", -- default "server" doesn't work in macOS
               },
