@@ -34,7 +34,7 @@
   "precognition.nvim": { "branch": "main", "commit": "80ac0a99064eba71894dd164e891cc5d7e05827e" },
   "rustaceanvim": { "branch": "master", "commit": "01b28c60abde5cb79c0129e66c465699e78b0e6d" },
   "screenkey.nvim": { "branch": "dev", "commit": "357ed2dcd0c71b41faf56d8e446c7858b3f96c74" },
-  "sf.nvim": { "branch": "main", "commit": "bbe0b63e6d6a6dd0f7f08653b1176371ef81418f" },
+  "sf.nvim": { "branch": "main", "commit": "49064dc52db2bba6c85ebf17326c5d08d987ebc7" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "b24b97c538b71b6de0ce9d84e47df27b6ecafd76" },
   "undotree": { "branch": "master", "commit": "b951b87b46c34356d44aa71886aecf9dd7f5788a" },
   "vim-fugitive": { "branch": "master", "commit": "4a745ea72fa93bb15dd077109afbb3d1809383f2" },
