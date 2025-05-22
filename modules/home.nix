@@ -266,6 +266,7 @@ in {
       frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
       fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
 
+      cr = "cargo r";
       dr = "RUST_LOG=debug cargo r";
       tr = "RUST_BACKTRACE=1 cargo r";
       rr = "cargo r -- tests/battle_test/hello.cls";
