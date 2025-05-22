@@ -36,4 +36,4 @@ require 'extra'
 
 -- lsp
 vim.lsp.enable({ "lua_ls", "nil_ls", "apex_ls" })
-require("lsp.on_attach")
+require("lsp_on_attach")
