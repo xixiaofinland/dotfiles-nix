@@ -5,6 +5,7 @@ return {
     vim.fn.expand("$HOME/apex-jorje-lsp.jar"),
   },
   filetypes = { "apex" },
+  root_markers = { 'sfdx-project.json', '.git' },
   settings = {
     apex = {
       apex_enable_semantic_errors = false,
