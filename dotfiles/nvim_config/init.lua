@@ -35,5 +35,10 @@ require 'opts'
 require 'extra'
 
 -- lsp
+vim.lsp.config('apex_ls', {
+  on_init = function()
+    print('apex_ls now runs in the background')
+  end,
+})
+
 vim.lsp.enable({ "lua_ls", "nil_ls", "apex_ls" })
-require("lsp_on_attach")
