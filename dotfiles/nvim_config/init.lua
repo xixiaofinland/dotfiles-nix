@@ -33,3 +33,6 @@ require "globals"
 require 'keys'
 require 'opts'
 require 'extra'
+
+-- lsp
+vim.lsp.enable({ "lua_ls", "nil_ls", "apex_ls" })

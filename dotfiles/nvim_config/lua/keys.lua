@@ -125,3 +125,7 @@ vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
 
 -- Duplicate a line and comment out the first line
 vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
+
+-- LSP key
+vim.keymap.set('n', '<leader>fl', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
+  { noremap = true, silent = true, desc = 'background light/dark' })
