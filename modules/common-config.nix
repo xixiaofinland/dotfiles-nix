@@ -13,6 +13,6 @@
     curl
   ];
 
-  programs.fish.enable = true;
   environment.shells = with pkgs; [fish];
+  programs.fish.enable = true;
 }
