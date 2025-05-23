@@ -20,12 +20,4 @@
 
   # bug: https://github.com/NixOS/nix/issues/7273
   nix.settings.auto-optimise-store = false;
-  users.users.xixiao = {
-    name = "xixiao";
-    home = "/Users/xixiao";
-    shell = pkgs.fish;
-  };
-
-  # Ensure fish is available
-  environment.systemPackages = [pkgs.fish];
 }
