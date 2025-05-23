@@ -110,7 +110,7 @@ x = 10
 y = 5
 
 [terminal.shell]
-program = "/bin/fish"
+program = "/bin/zsh"
 args = ["-l"]
 
 [bell]
