@@ -191,6 +191,8 @@ return {
 
           -- No leader keys
           { mode = 'n', keys = '\\' },
+          { mode = 'n', keys = 'g' },
+          { mode = 'x', keys = 'g' },
           { mode = 'n', keys = 'z' },
           { mode = 'x', keys = 'z' },
           { mode = 'n', keys = '<C-w>' },
