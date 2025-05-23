@@ -117,13 +117,15 @@ in {
 
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
+    enableFishIntegration = true;
     enableBashIntegration = true;
   };
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
+    # enableFishIntegration = true;
     nix-direnv.enable = true;
   };
 
@@ -232,26 +234,8 @@ in {
     '';
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    syntaxHighlighting.enable = true;
-    autosuggestion.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "";
-      plugins = [
-        "git"
-        "nvm"
-        "npm"
-        "fzf"
-        # "z"  # conflicts with zoxide
-      ];
-    };
-    initContent = ''
-      autoload -U promptinit; promptinit
-      prompt pure
-      export PATH="$HOME/.local/bin:$PATH"
-    '';
     shellAliases = {
       gs = "git status";
       e = "exit";
@@ -264,24 +248,83 @@ in {
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
       frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
-      fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
-
+      # fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
       cr = "cargo r";
       dr = "RUST_LOG=debug cargo r";
       tr = "RUST_BACKTRACE=1 cargo r";
       rr = "cargo r -- tests/battle_test/hello.cls";
-      tt = "cargo test --test test --  --show-output";
-      tp = "cargo test prettier --  --show-output";
-      tm = "cargo test static --  --show-output";
-      te = "cargo test comments --  --show-output";
-      dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
+      tt = "cargo test --test test -- --show-output";
+      tp = "cargo test prettier -- --show-output";
+      tm = "cargo test static -- --show-output";
+      te = "cargo test comments -- --show-output";
+      dtp = "RUST_BACKTRACE=1 cargo test prettier -- --show-output";
       aa = "git add .; git commit -am '+'";
       app = "git push";
       serve = "simple-http-server -i -p 9999 ./";
-
       dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
     };
+
+    shellInit = ''
+      set -gx PATH $HOME/.local/bin $PATH
+    '';
+
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+    '';
+
+    # loginShell = true;
   };
+
+  # programs.zsh = {
+  #   enable = true;
+  #   syntaxHighlighting.enable = true;
+  #   autosuggestion.enable = true;
+  #   oh-my-zsh = {
+  #     enable = true;
+  #     theme = "";
+  #     plugins = [
+  #       "git"
+  #       "nvm"
+  #       "npm"
+  #       "fzf"
+  #       # "z"  # conflicts with zoxide
+  #     ];
+  #   };
+  #   initContent = ''
+  #     autoload -U promptinit; promptinit
+  #     prompt pure
+  #     export PATH="$HOME/.local/bin:$PATH"
+  #   '';
+  #   shellAliases = {
+  #     gs = "git status";
+  #     e = "exit";
+  #     c = "clear";
+  #     n = "nvim";
+  #     ls = "eza";
+  #     t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
+  #     cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
+  #     ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
+  #     cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
+  #     cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
+  #     frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
+  #     fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
+  #
+  #     cr = "cargo r";
+  #     dr = "RUST_LOG=debug cargo r";
+  #     tr = "RUST_BACKTRACE=1 cargo r";
+  #     rr = "cargo r -- tests/battle_test/hello.cls";
+  #     tt = "cargo test --test test --  --show-output";
+  #     tp = "cargo test prettier --  --show-output";
+  #     tm = "cargo test static --  --show-output";
+  #     te = "cargo test comments --  --show-output";
+  #     dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
+  #     aa = "git add .; git commit -am '+'";
+  #     app = "git push";
+  #     serve = "simple-http-server -i -p 9999 ./";
+  #
+  #     dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
+  #   };
+  # };
 
   programs.neovim = {
     enable = true;

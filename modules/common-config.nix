@@ -13,6 +13,6 @@
     curl
   ];
 
-  programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
+  programs.fish.enable = true;
+  environment.shells = with pkgs; [fish];
 }

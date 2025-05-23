@@ -9,7 +9,7 @@
 
   security.sudo.enable = true;
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
 
   time.timeZone = "Europe/Helsinki";
 
