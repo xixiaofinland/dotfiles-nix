@@ -107,10 +107,10 @@
           ./modules/common-config.nix
           ./modules/mac-config.nix
           {
-            users.users.${mac-user} = {
-              shell = pkgs.fish;
-              home = "/Users/${mac-user}";
-            };
+            # users.users.${mac-user} = {
+            #   shell = pkgs.fish;
+            #   home = "/Users/${mac-user}";
+            # };
           }
           home-manager.darwinModules.home-manager
           {
