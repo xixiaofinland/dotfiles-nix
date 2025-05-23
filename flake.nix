@@ -108,7 +108,7 @@
           ./modules/mac-config.nix
           {
             users.users.${mac-user} = {
-              shell = pkgs.fish;
+              # shell = pkgs.fish;
               home = "/Users/${mac-user}";
             };
           }

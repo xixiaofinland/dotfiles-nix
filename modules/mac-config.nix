@@ -20,4 +20,8 @@
 
   # bug: https://github.com/NixOS/nix/issues/7273
   nix.settings.auto-optimise-store = false;
+
+  users.users.xixiao = {
+    shell = pkgs.fish;
+  };
 }
