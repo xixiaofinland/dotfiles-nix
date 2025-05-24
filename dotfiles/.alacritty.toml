@@ -109,9 +109,9 @@ dynamic_padding = true
 x = 10
 y = 5
 
-# [terminal.shell]
-# program = "/bin/zsh"
-# args = ["-l"]
+[terminal.shell]
+program = "/etc/profiles/per-user/xixiao/bin/fish"
+args = ["-l"]
 
 [bell]
 animation = "EaseOutExpo"
