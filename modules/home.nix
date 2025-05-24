@@ -270,6 +270,7 @@ in {
 
     interactiveShellInit = ''
       set -g fish_greeting ""
+      function __fish_command_not_found_handler; end
     '';
 
     # loginShell = true;
