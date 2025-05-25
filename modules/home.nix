@@ -236,6 +236,17 @@ in {
 
   programs.fish = {
     enable = true;
+    plugins = [
+      {
+        name = "pure";
+        src = pkgs.fetchFromGitHub {
+          owner = "pure-fish";
+          repo = "pure";
+          rev = "v4.11.2";
+          sha256 = "sha256-rQIHJCtY83eZOJaoy58QcnFufqZITGO7ZvxROktD8D8=";
+        };
+      }
+    ];
     shellAliases = {
       gs = "git status";
       e = "exit";
