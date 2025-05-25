@@ -241,6 +241,15 @@ in {
         name = "pure";
         src = pkgs.fishPlugins.pure.src;
       }
+      {
+        name = "fzf.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "refs/tags/v10.3"; # or latest stable tag
+          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM="; # fill this in via nix build error
+        };
+      }
     ];
     shellAliases = {
       gs = "git status";
