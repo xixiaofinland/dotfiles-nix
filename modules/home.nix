@@ -239,12 +239,7 @@ in {
     plugins = [
       {
         name = "pure";
-        src = pkgs.fetchFromGitHub {
-          owner = "pure-fish";
-          repo = "pure";
-          rev = "v4.11.2";
-          sha256 = "sha256-rQIHJCtY83eZOJaoy58QcnFufqZITGO7ZvxROktD8D8=";
-        };
+        src = pkgs.fishPlugins.pure.src;
       }
     ];
     shellAliases = {
@@ -282,6 +277,11 @@ in {
     interactiveShellInit = ''
       set -g fish_greeting ""
       function __fish_command_not_found_handler; end
+
+      # pure theme
+      set -g pure_enable_git true
+      set -g pure_show_jobs true
+      set -g pure_enable_nixdevshell true
 
       zoxide init fish | source
     '';
