@@ -55,6 +55,12 @@ action = "Paste"
 key = "V"
 mods = "Command|Shift"
 action = "Paste"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+action = "None"
+
 #   { key = "H", mods = "Alt", action = "SendString", chars = "\x1bh" }
 #   { key = "J", mods = "Alt", action = "SendString", chars = "\x1bj" }
 #   { key = "K", mods = "Alt", action = "SendString", chars = "\x1bk" }
