@@ -33,7 +33,7 @@ in {
     ripgrep
     tree
     zoxide
-    pure-prompt
+    # pure-prompt
     gnumake
     nodejs_22
 
@@ -271,6 +271,19 @@ in {
     interactiveShellInit = ''
       set -g fish_greeting ""
       function __fish_command_not_found_handler; end
+
+      set -l env_info (
+        if test -n "$IN_NIX_SHELL"
+          echo -n "[nix-shell] "
+        else if test -n "$DIRENV_DIR"
+          if test -f "flake.nix"
+            echo -n "[flake] "
+          else
+            echo -n "[direnv] "
+          end
+        end
+      )
+
       zoxide init fish | source
     '';
 
