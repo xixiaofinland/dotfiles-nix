@@ -262,21 +262,21 @@ in {
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
-      frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
       # fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
       cr = "cargo r";
-      dr = "RUST_LOG=debug cargo r";
-      tr = "RUST_BACKTRACE=1 cargo r";
-      rr = "cargo r -- tests/battle_test/hello.cls";
-      tt = "cargo test --test test -- --show-output";
-      tp = "cargo test prettier -- --show-output";
-      tm = "cargo test static -- --show-output";
-      te = "cargo test comments -- --show-output";
-      dtp = "RUST_BACKTRACE=1 cargo test prettier -- --show-output";
-      aa = "git add .; git commit -am '+'";
-      app = "git push";
-      serve = "simple-http-server -i -p 9999 ./";
-      dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
+      # dr = "RUST_LOG=debug cargo r";
+      # tr = "RUST_BACKTRACE=1 cargo r";
+      # rr = "cargo r -- tests/battle_test/hello.cls";
+      # tt = "cargo test --test test -- --show-output";
+      # tp = "cargo test prettier -- --show-output";
+      # tm = "cargo test static -- --show-output";
+      # te = "cargo test comments -- --show-output";
+      # dtp = "RUST_BACKTRACE=1 cargo test prettier -- --show-output";
+      # aa = "git add .; git commit -am '+'";
+      # app = "git push";
+      # serve = "simple-http-server -i -p 9999 ./";
+      # dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
+      # frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
     };
 
     shellInit = ''
@@ -291,6 +291,14 @@ in {
       set -g pure_enable_git true
       set -g pure_show_jobs true
       set -g pure_enable_nixdevshell true
+
+      abbr -a gs git status
+      abbr -a gco git checkout
+      abbr -a aa "git add .; git commit -am '+'"
+      abbr -a app git push
+
+      abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
+      abbr -a serve "simple-http-server -i -p 9999 ./"
 
       zoxide init fish | source
 
