@@ -293,6 +293,12 @@ in {
       set -g pure_enable_nixdevshell true
 
       zoxide init fish | source
+
+      # Your custom function
+      function multicd
+          echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
+      end
+      abbr --add dotdot --regex '^\.\.+$' --function multicd
     '';
 
     # loginShell = true;
