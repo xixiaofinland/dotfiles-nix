@@ -252,7 +252,6 @@ in {
       # }
     ];
     shellAliases = {
-      gs = "git status";
       e = "exit";
       c = "clear";
       n = "nvim";
@@ -263,7 +262,6 @@ in {
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
       # fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
-      cr = "cargo r";
       # dr = "RUST_LOG=debug cargo r";
       # tr = "RUST_BACKTRACE=1 cargo r";
       # rr = "cargo r -- tests/battle_test/hello.cls";
@@ -296,6 +294,7 @@ in {
       abbr -a gco git checkout
       abbr -a aa "git add .; git commit -am '+'"
       abbr -a app git push
+      abbr -a cr cargo r
 
       abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
       abbr -a serve "simple-http-server -i -p 9999 ./"
