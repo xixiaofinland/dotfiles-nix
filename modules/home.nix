@@ -291,6 +291,7 @@ in {
       set -g pure_enable_nixdevshell true
 
       abbr -a gs git status
+      abbr -a gp git push
       abbr -a gco git checkout
       abbr -a aa "git add .; git commit -am '+'"
       abbr -a app git push
