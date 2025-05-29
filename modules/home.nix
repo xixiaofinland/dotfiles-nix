@@ -255,7 +255,6 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
-      ls = "eza";
       t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
       cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
@@ -290,6 +289,8 @@ in {
       set -g pure_show_jobs true
       set -g pure_enable_nixdevshell true
 
+      # custom abbrs
+      abbr -a ls eza
       abbr -a gs git status
       abbr -a gp git push
       abbr -a gco git checkout
