@@ -128,4 +128,8 @@ vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
 
 -- LSP key
 vim.keymap.set('n', '<leader>fl', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
-  { noremap = true, silent = true, desc = 'background light/dark' })
+  { noremap = true, silent = true, desc = 'format file' })
+
+vim.keymap.set('n', 'D', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'code action' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'rename' })
