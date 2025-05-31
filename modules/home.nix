@@ -297,6 +297,7 @@ in {
       abbr -a aa "git add .; git commit -am '+'"
       abbr -a app git push
       abbr -a cr cargo r
+      abbr -a cb cargo b
 
       abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
       abbr -a serve "simple-http-server -i -p 9999 ./"
