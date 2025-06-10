@@ -271,25 +271,23 @@
           '';
         };
 
-      llm = let
+      python = let
         packages = with pkgs; [
           (python311.withPackages (ps:
             with ps; [
               pip
-              # virtualenv
-              # numpy
-              # pandas
-              # scikit-learn
+              ipython
+              ruff
             ]))
           cmake
           gcc
         ];
       in
         pkgs.mkShell {
-          name = "LLM";
+          name = "Python";
           packages = packages;
           shellHook = ''
-            echo "🧠🤖🧠🤖 hello LLM development!"
+            echo "🧠🤖🧠🤖 hello Python development!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
 
             # Create/activate venv if it doesn't exist
