@@ -289,21 +289,6 @@
           shellHook = ''
             echo "🧠🤖🧠🤖 hello Python development!"
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-
-            # Create/activate venv if it doesn't exist
-            if [ ! -d ".venv" ]; then
-              echo "Creating new Python virtual environment in .venv..."
-              python -m venv .venv
-            fi
-
-            # Activate the virtual environment
-            source .venv/bin/activate
-
-            # Update pip
-            pip install --upgrade pip
-
-            echo ""
-            echo "Virtual environment activated."
           '';
         };
 
