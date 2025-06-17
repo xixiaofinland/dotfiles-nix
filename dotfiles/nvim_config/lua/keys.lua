@@ -14,16 +14,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
--- P is in the native vim already
--- vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste without losing the copy' })
-
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
-vim.keymap.set('n', ']<Space>', ':<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "\'[-1"<CR>',
-  { desc = 'Add empty line below', silent = true, noremap = true })
-vim.keymap.set('n', '[<Space>', ':<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "\']+1"<CR>',
-  { desc = 'Add empty line above', silent = true, noremap = true })
 
 -- My own habit;
 
