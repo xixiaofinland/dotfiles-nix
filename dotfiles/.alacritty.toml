@@ -106,7 +106,6 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-opacity = 0.9
 decorations = "Buttonless"
 blur = true
 option_as_alt = "OnlyLeft"
