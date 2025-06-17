@@ -15,7 +15,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste without losing the copy' })
+-- P is in the native vim already
+-- vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste without losing the copy' })
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
