@@ -74,7 +74,11 @@ Sometimes the sudo permission is gone mysteriously
 - `wsl --list --verbose`
 - `wsl -d NixOS -u root`
 - `ls -l /run/wrappers/bin/sudo`
-- `sudo chmod 4755 /run/wrappers/bin/sudo` 
+- `sudo chmod 4755 /run/wrappers/bin/sudo`
+
+### LSP
+
+`:chec vim.lsp` to see what's active LSPs in the current buffer. Read the log file content mentioned in this floating diagnosis page.
 
 ## Contributing
 
