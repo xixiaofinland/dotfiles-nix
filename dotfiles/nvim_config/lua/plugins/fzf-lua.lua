@@ -53,9 +53,9 @@ return {
             end
           })
         end,
-        'core lsp docs')
+        'Lsp Meth/Fn/Struct/Enum')
       -- nmap("<leader>fM", fzf.lsp_document_symbols, 'lsp docs')
-      nmap("<leader>fM", fzf.lsp_workspace_symbols, 'lsp docs')
+      nmap("<leader>fM", fzf.lsp_workspace_symbols, 'workspace symbols')
       nmap('<leader>/', fzf.grep_curbuf, 'search current buffer')
       nmap('<leader>fc', fzf.command_history, 'command history')
       nmap('<leader>fh', fzf.helptags, 'help')
