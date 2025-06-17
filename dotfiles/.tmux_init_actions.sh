@@ -6,7 +6,7 @@ curl -s https://zenquotes.io/api/random | jq -r '.[0] | "\(.q) - \(.a)"' > "$HOM
 
 # 2. Apex LSP update
 
-FILE_URL="https://github.com/forcedotcom/salesforcedx-vscode/raw/refs/heads/main/packages/salesforcedx-vscode-apex/jars/apex-jorje-lsp.jar"
+FILE_URL="https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/refs/heads/main/packages/salesforcedx-vscode-apex/jars/apex-jorje-lsp.jar"
 
 SAVE_PATH="$HOME/apex-jorje-lsp.jar"
 
