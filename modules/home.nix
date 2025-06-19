@@ -62,24 +62,6 @@ in {
     ".ignore".source = ../dotfiles/.ignore;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
-    # by pass this direnv bug: https://github.com/direnv/direnv/issues/73
-    # ".direnvrc".text = ''
-    #   export_alias() {
-    #     local name=$1
-    #     shift
-    #     local alias_dir=$PWD/.direnv/aliases
-    #     local target="$alias_dir/$name"
-    #     mkdir -p "$alias_dir"
-    #     PATH_add "$alias_dir"
-    #     echo "#!/etc/profiles/per-user/$USER/bin/zsh -e" > "$target"
-    #     echo "$@" >> "$target"
-    #     chmod +x "$target"
-    #   }
-    # '';
-    # ".config/nvim" = {
-    #   source = ../../dotfiles/nvim;
-    #   recursive = true;
-    # };
   };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
@@ -109,11 +91,6 @@ in {
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
   };
-
-  # programs.cachix = {
-  #   enable = true;
-  #   caches = [ "xixiaofinland" "cachix" "nixpkgs" ];
-  # };
 
   programs.zoxide = {
     enable = true;
@@ -241,15 +218,6 @@ in {
         name = "pure";
         src = pkgs.fishPlugins.pure.src;
       }
-      # {
-      #   name = "fzf.fish";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "PatrickF1";
-      #     repo = "fzf.fish";
-      #     rev = "refs/tags/v10.3"; # or latest stable tag
-      #     sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM="; # fill this in via nix build error
-      #   };
-      # }
     ];
     shellAliases = {
       e = "exit";
@@ -314,57 +282,6 @@ in {
     # loginShell = true;
   };
 
-  # programs.zsh = {
-  #   enable = true;
-  #   syntaxHighlighting.enable = true;
-  #   autosuggestion.enable = true;
-  #   oh-my-zsh = {
-  #     enable = true;
-  #     theme = "";
-  #     plugins = [
-  #       "git"
-  #       "nvm"
-  #       "npm"
-  #       "fzf"
-  #       # "z"  # conflicts with zoxide
-  #     ];
-  #   };
-  #   initContent = ''
-  #     autoload -U promptinit; promptinit
-  #     prompt pure
-  #     export PATH="$HOME/.local/bin:$PATH"
-  #   '';
-  #   shellAliases = {
-  #     gs = "git status";
-  #     e = "exit";
-  #     c = "clear";
-  #     n = "nvim";
-  #     ls = "eza";
-  #     t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
-  #     cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
-  #     ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
-  #     cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
-  #     cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
-  #     frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
-  #     fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
-  #
-  #     cr = "cargo r";
-  #     dr = "RUST_LOG=debug cargo r";
-  #     tr = "RUST_BACKTRACE=1 cargo r";
-  #     rr = "cargo r -- tests/battle_test/hello.cls";
-  #     tt = "cargo test --test test --  --show-output";
-  #     tp = "cargo test prettier --  --show-output";
-  #     tm = "cargo test static --  --show-output";
-  #     te = "cargo test comments --  --show-output";
-  #     dtp = "RUST_BACKTRACE=1 cargo test prettier --  --show-output";
-  #     aa = "git add .; git commit -am '+'";
-  #     app = "git push";
-  #     serve = "simple-http-server -i -p 9999 ./";
-  #
-  #     dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
-  #   };
-  # };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -408,5 +325,4 @@ in {
 
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
-  # nix.settings.trusted-users = ["nixos" "xixiao"];
 }
