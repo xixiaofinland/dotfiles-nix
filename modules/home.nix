@@ -271,6 +271,7 @@ in {
       abbr -a serve "simple-http-server -i -p 9999 ./"
 
       zoxide init fish | source
+      jj util completion fish | source
 
       # custom functions
       function multicd
@@ -278,8 +279,6 @@ in {
       end
       abbr --add dotdot --regex '^\.\.+$' --function multicd
     '';
-
-    # loginShell = true;
   };
 
   programs.neovim = {
