@@ -279,6 +279,21 @@ in {
           echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
       end
       abbr --add dotdot --regex '^\.\.+$' --function multicd
+
+      # Support both git and jj in prompt branch info section
+      # Rename Pure's original function to keep it intact
+      functions -c _pure_prompt_git _pure_prompt_git_original
+
+      # Create our wrapper
+      function _pure_prompt_git --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
+          # Don't show git info if we're in a jj repository
+          if test -d .jj
+              return
+          end
+
+          # Call the original Pure function
+          _pure_prompt_git_original $argv
+      end;
     '';
   };
 
