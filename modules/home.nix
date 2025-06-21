@@ -266,6 +266,7 @@ in {
       abbr -a app git push
       abbr -a cr cargo r
       abbr -a cb cargo b
+      abbr -a js jj st
 
       abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
       abbr -a serve "simple-http-server -i -p 9999 ./"
@@ -286,8 +287,18 @@ in {
 
       # Create our wrapper
       function _pure_prompt_git --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
-          # Don't show git info if we're in a jj repository
           if test -d .jj
+              # Show parent's description (where you'll squash to)
+              set -l parent_desc (jj log -r @- --no-graph -T 'description.first_line()' 2>/dev/null)
+              if test -n "$parent_desc"; and test "$parent_desc" != ""
+                  set_color brblack
+                  echo " -> '$parent_desc'"  # Arrow indicates "squashing into"
+                  set_color normal
+              else
+                  set_color brblack
+                  echo " jj:@-"
+                  set_color normal
+              end
               return
           end
 
