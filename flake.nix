@@ -42,6 +42,7 @@
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
     mac-sys = "x86_64-darwin";
+    lib = nixpkgs.lib;
     overlays = [
       rust-overlay.overlays.default
       (
@@ -67,6 +68,8 @@
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (lib.getName pkg) ["obsidian"];
         };
         modules = [
           ./modules/common-config.nix
@@ -102,6 +105,8 @@
         system = "${mac-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (lib.getName pkg) ["obsidian"];
         };
         modules = [
           ./modules/common-config.nix

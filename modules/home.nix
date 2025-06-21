@@ -53,6 +53,8 @@ in {
 
     # salesforce
     sf
+
+    obsidian
   ];
 
   home.file = {
