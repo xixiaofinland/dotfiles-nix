@@ -120,7 +120,13 @@ in {
       tmuxPlugins.cpu
     ];
     extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
+      # Terminal settings
+      set -g default-terminal "tmux-256color"
+      set -sa terminal-features ",xterm-256color:RGB"
+      set -sa terminal-features ",alacritty:RGB"
+      set -ga terminal-features ",xterm-256color:usstyle"
+      set -ga terminal-features ",alacritty:usstyle"
+
       set -g mouse on
       set-option -g detach-on-destroy off
 
