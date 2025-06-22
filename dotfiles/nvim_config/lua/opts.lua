@@ -6,8 +6,6 @@
 -- vim.cmd[[ hi Pmenu guibg=NONE ctermbg=NONE ]]      -- optional: popup menu
 -- vim.cmd[[ hi EndOfBuffer guibg=NONE ctermbg=NONE ]] -- optional: hide ~ lines
 
-vim.opt_local.conceallevel = 1
-
 -- Delay this setting as it doesn't work consistently when it's in mini.lua
 -- Need to remember removing this when mini.cursorline is not in use anymore
 vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {})
