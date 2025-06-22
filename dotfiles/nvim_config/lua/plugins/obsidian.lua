@@ -28,4 +28,8 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("obsidian").setup(opts)
+    vim.opt.conceallevel = 1
+  end,
 }
