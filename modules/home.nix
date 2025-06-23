@@ -300,11 +300,11 @@ in {
               set -l parent_desc (jj log -r @- --no-graph -T 'description.first_line()' 2>/dev/null)
               if test -n "$parent_desc"; and test "$parent_desc" != ""
                   set_color brblack
-                  echo " -> '$parent_desc'"  # Arrow indicates "squashing into"
+                  echo " @- $parent_desc"
                   set_color normal
               else
                   set_color brblack
-                  echo " jj:@-"
+                  echo " @-"
                   set_color normal
               end
               return
