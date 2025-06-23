@@ -13,7 +13,7 @@ return {
   -- },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "MeanderingProgrammer/markdown.nvim",
+    -- "MeanderingProgrammer/markdown.nvim",
   },
   ---@module 'obsidian'
   ---@type obsidian.config.ClientOpts
@@ -28,16 +28,51 @@ return {
         path = "~/notes/work",
       },
     },
-    daily_notes = {
-      folder = "daily",
-      date_format = "%Y-%m-%d",
+    completion = {
+      nvim_cmp = false, -- disable nvim-cmp
+      blink = true,     -- enable blink.cmp
+      min_chars = 2,
     },
+    -- daily_notes = {
+    --   folder = "daily",
+    --   date_format = "%Y-%m-%d",
+    -- },
+    -- templates = {
+    --   subdir = "templates",
+    --   date_format = "%Y-%m-%d",
+    --   time_format = "%H:%M",
+    -- },
+    note_frontmatter_func = function(_)
+      return {
+        tags = {}, -- start empty; you can manually add like { "rust", "todo" }
+      }
+    end,
+    note_id_func = function(title)
+      return title -- makes filename = title.md
+    end,
     ui = {
-      enable = false,
+      enable = true, -- enable UI features including concealment
+      update_debounce = 200,
+      max_file_length = 5000,
     },
   },
-  -- config = function(_, opts)
-  --   require("obsidian").setup(opts)
-  --   vim.opt.conceallevel = 1
-  -- end,
+  config = function(_, opts)
+    require("obsidian").setup(opts)
+    vim.opt.conceallevel = 2
+
+    -- Follow link under cursor
+    -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow Obsidian link" })
+
+    -- picker notes
+    vim.keymap.set("n", "of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch to note" })
+
+    -- Create or open link from word under cursor
+    vim.keymap.set("n", "on", function()
+      vim.cmd('normal! viw')
+      vim.cmd('ObsidianLinkNew')
+    end, { desc = "Create link from word under cursor" })
+
+    -- Create or open link
+    vim.keymap.set("n", "<leader>oN", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
+  end,
 }
