@@ -64,8 +64,11 @@ return {
     -- Follow link under cursor
     -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow link" })
 
+    -- picker links in the current note
+    vim.keymap.set("n", "<leader>of", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
+
     -- picker notes
-    vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
+    -- vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
 
     -- Create or open link from word under cursor
     vim.keymap.set("n", "<leader>on", function()
