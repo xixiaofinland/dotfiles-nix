@@ -22,6 +22,10 @@ return {
         name = "personal",
         path = "~/notes/",
       },
+      {
+        name = "work",
+        path = "~/notes/work",
+      },
     },
   },
   config = function(_, opts)
