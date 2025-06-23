@@ -42,11 +42,13 @@ return {
     --   date_format = "%Y-%m-%d",
     --   time_format = "%H:%M",
     -- },
-    note_frontmatter_func = function(_)
-      return {
-        tags = {}, -- start empty; you can manually add like { "rust", "todo" }
-      }
-    end,
+    -- note_frontmatter_func = function(_)
+    --   return {
+    --     tags = {}, -- start empty; you can manually add like { "rust", "todo" }
+    --   }
+    -- end,
+    note_frontmatter_func = function(_) return nil end,
+
     note_id_func = function(title)
       return title -- makes filename = title.md
     end,
