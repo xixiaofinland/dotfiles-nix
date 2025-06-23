@@ -65,16 +65,16 @@ return {
     -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow link" })
 
     -- picker notes
-    vim.keymap.set("n", "of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
+    vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
 
     -- Create or open link from word under cursor
-    vim.keymap.set("n", "on", function()
+    vim.keymap.set("n", "<leader>on", function()
       vim.cmd('normal! viw')
       vim.cmd('ObsidianLinkNew')
     end, { desc = "Create link from word under cursor" })
 
     -- Create or open link
-    vim.keymap.set("n", "<leader>oN", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
+    vim.keymap.set("v", "<leader>on", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
 
     -- Pick Backlinks
     vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Pick backlinks" })
