@@ -42,12 +42,11 @@ return {
     --   date_format = "%Y-%m-%d",
     --   time_format = "%H:%M",
     -- },
-    -- note_frontmatter_func = function(_)
-    --   return {
-    --     tags = {}, -- start empty; you can manually add like { "rust", "todo" }
-    --   }
-    -- end,
-    note_frontmatter_func = function(_) return nil end,
+    note_frontmatter_func = function(_)
+      return {
+        -- tags = {},
+      }
+    end,
 
     note_id_func = function(title)
       return title -- makes filename = title.md
@@ -63,10 +62,10 @@ return {
     vim.opt.conceallevel = 2
 
     -- Follow link under cursor
-    -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow Obsidian link" })
+    -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow link" })
 
     -- picker notes
-    vim.keymap.set("n", "of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch to note" })
+    vim.keymap.set("n", "of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
 
     -- Create or open link from word under cursor
     vim.keymap.set("n", "on", function()
@@ -76,5 +75,8 @@ return {
 
     -- Create or open link
     vim.keymap.set("n", "<leader>oN", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
+
+    -- Pick Backlinks
+    vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Pick backlinks" })
   end,
 }
