@@ -28,9 +28,12 @@ return {
         path = "~/notes/work",
       },
     },
+    daily_notes = {
+      folder = "daily",
+      date_format = "%Y-%m-%d",
+    },
+    ui = {
+      enable = false,
+    },
   },
-  config = function(_, opts)
-    require("obsidian").setup(opts)
-    vim.opt.conceallevel = 1
-  end,
 }
