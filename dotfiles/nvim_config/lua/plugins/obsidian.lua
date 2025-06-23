@@ -13,6 +13,7 @@ return {
   -- },
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "MeanderingProgrammer/markdown.nvim",
   },
   ---@module 'obsidian'
   ---@type obsidian.config.ClientOpts
