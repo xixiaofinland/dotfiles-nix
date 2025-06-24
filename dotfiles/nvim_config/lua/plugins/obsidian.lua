@@ -1,22 +1,12 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  version = "*", -- recommended, use latest release instead of latest commit
+  version = "*",
   lazy = true,
   ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  -- event = {
-  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-  --   -- refer to `:h file-pattern` for more examples
-  --   "BufReadPre path/to/my-vault/*.md",
-  --   "BufNewFile path/to/my-vault/*.md",
-  -- },
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- "MeanderingProgrammer/markdown.nvim",
   },
-  ---@module 'obsidian'
-  ---@type obsidian.config.ClientOpts
   opts = {
     workspaces = {
       {
@@ -33,15 +23,6 @@ return {
       blink = true,     -- enable blink.cmp
       min_chars = 2,
     },
-    -- daily_notes = {
-    --   folder = "daily",
-    --   date_format = "%Y-%m-%d",
-    -- },
-    -- templates = {
-    --   subdir = "templates",
-    --   date_format = "%Y-%m-%d",
-    --   time_format = "%H:%M",
-    -- },
     note_frontmatter_func = function(_)
       return {
         -- tags = {},
@@ -75,11 +56,5 @@ return {
 
     -- Pick Backlinks
     vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Pick backlinks" })
-
-    -- Follow link under cursor
-    -- vim.keymap.set("n", "<leader>og", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow link" })
-
-    -- picker notes
-    -- vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Pick notes" })
   end,
 }
