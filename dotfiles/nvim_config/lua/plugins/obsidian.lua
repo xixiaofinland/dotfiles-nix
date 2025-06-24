@@ -3,6 +3,7 @@ return {
   version = "*",
   lazy = true,
   ft = "markdown",
+  cmd = { "ObsidianQuickSwitch" }, -- globally avail
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- "MeanderingProgrammer/markdown.nvim",
@@ -43,7 +44,7 @@ return {
     vim.opt.conceallevel = 2
 
     -- picker links in the current note
-    vim.keymap.set("n", "<leader>of", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
+    vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
 
     -- Create or open link
     vim.keymap.set("v", "<leader>on", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
