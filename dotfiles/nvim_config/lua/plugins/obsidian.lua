@@ -43,7 +43,10 @@ return {
     require("obsidian").setup(opts)
     vim.opt.conceallevel = 2
 
-    -- picker links in the current note
+    -- Pick files
+    vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
+
+    -- Pick links in the current note
     vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
 
     -- Create or open link
