@@ -125,3 +125,6 @@ vim.keymap.set('n', '<leader>fl', function() vim.lsp.buf.format({ timeout_ms = 2
 vim.keymap.set('n', 'D', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'code action' })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'rename' })
+
+-- Obsidian pick files
+vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
