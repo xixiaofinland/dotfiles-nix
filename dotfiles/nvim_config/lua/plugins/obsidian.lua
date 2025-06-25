@@ -34,14 +34,14 @@ return {
       return title -- makes filename = title.md
     end,
     ui = {
-      enable = true, -- enable UI features including concealment
-      update_debounce = 200,
-      max_file_length = 5000,
+      enable = false,
+      -- update_debounce = 200,
+      -- max_file_length = 5000,
     },
   },
   config = function(_, opts)
     require("obsidian").setup(opts)
-    vim.opt.conceallevel = 2
+    -- vim.opt.conceallevel = 2
 
     -- pick links in the current note
     vim.keymap.set("n", "<leader>nl", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
