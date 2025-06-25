@@ -44,18 +44,18 @@ return {
     vim.opt.conceallevel = 2
 
     -- pick links in the current note
-    vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
+    vim.keymap.set("n", "<leader>nl", "<cmd>ObsidianLinks<cr>", { desc = "Pick links" })
 
     -- Create or open link
-    vim.keymap.set("v", "<leader>on", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
+    vim.keymap.set("v", "<leader>nn", "<cmd>ObsidianLinkNew<CR>", { desc = "Open or create link" })
 
     -- Create or open link from word under cursor
-    vim.keymap.set("n", "<leader>on", function()
+    vim.keymap.set("n", "<leader>nn", function()
       vim.cmd('normal! viw')
       vim.cmd('ObsidianLinkNew')
     end, { desc = "Create link from word under cursor" })
 
     -- Pick Backlinks
-    vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Pick backlinks" })
+    vim.keymap.set("n", "<leader>nb", "<cmd>ObsidianBacklinks<CR>", { desc = "Pick backlinks" })
   end,
 }
