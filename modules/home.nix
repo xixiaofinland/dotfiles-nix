@@ -33,7 +33,6 @@ in {
     ripgrep
     tree
     zoxide
-    # pure-prompt
     gnumake
     nodejs_22
 
