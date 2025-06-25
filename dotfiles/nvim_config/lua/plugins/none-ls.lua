@@ -12,7 +12,7 @@ return {
           extra_args = { "--plugin=prettier-plugin-apex", "--write" },
         }),
 
-        none_ls.builtins.formatting.prettierd.with({
+        none_ls.builtins.formatting.prettier.with({
           filetypes = { "html", "javascript" },
         }),
 
