@@ -10,6 +10,13 @@ return {
           formatter = "path.filename_first",
           path_shorten = 5,
         },
+        keymap = {
+          fzf = {
+            ["ctrl-a"] = "up",
+            ["ctrl-e"] = "down",
+            ["ctrl-u"] = "accept",
+          }
+        }
       })
 
       local nmap = function(keys, func, desc)
