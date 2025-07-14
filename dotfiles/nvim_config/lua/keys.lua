@@ -158,3 +158,9 @@ elseif vim.fn.has('mac') == 1 then
     cache_enabled = 0,
   }
 end
+
+vim.keymap.set('n', '<PageDown>', '<C-d>', { noremap = true })
+vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true })
+
+vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
+vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
