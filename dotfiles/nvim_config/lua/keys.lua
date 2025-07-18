@@ -119,7 +119,7 @@ vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
 vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
 
 -- LSP key
-vim.keymap.set('n', '<leader>fl', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
+vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
   { noremap = true, silent = true, desc = 'format file' })
 
 vim.keymap.set('n', 'D', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
