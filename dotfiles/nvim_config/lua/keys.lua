@@ -164,3 +164,7 @@ vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true })
 
 vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
 vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
+
+-- Lua
+vim.keymap.set("n", "<PageUp>", "<C-u>")
+vim.keymap.set("n", "<PageDown>", "<C-d>")
