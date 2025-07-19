@@ -10,8 +10,6 @@ vim.keymap.set('n', 'j', [[(v:count > 1 ? "m'" . v:count : "g") . 'j']], { expr 
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -166,5 +164,5 @@ vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
 vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
 
 -- Lua
-vim.keymap.set("n", "<PageUp>", "<C-u>")
-vim.keymap.set("n", "<PageDown>", "<C-d>")
+vim.keymap.set("n", "<PageUp>", "<C-u>zz")
+vim.keymap.set("n", "<PageDown>", "<C-d>zz")
