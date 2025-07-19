@@ -163,6 +163,18 @@ vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true })
 vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
 vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
 
--- Lua
 vim.keymap.set("n", "<PageUp>", "<C-u>zz")
 vim.keymap.set("n", "<PageDown>", "<C-d>zz")
+
+vim.keymap.set("n", "^", function()
+  if vim.fn.col('.') == 1 then
+    return '^'
+  else
+    local first_non_blank = vim.fn.match(vim.fn.getline('.'), '\\S') + 1
+    if vim.fn.col('.') == first_non_blank then
+      return '0'
+    else
+      return '^'
+    end
+  end
+end, { expr = true, desc = "Smart start-of-line" })
