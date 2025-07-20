@@ -187,9 +187,7 @@ in {
       bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
       bind \' split-window -h -c "#{pane_current_path}"
-      bind \\ split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
-      bind = split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
       bind q killp
 
