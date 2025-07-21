@@ -12,14 +12,6 @@
     extraGroups = ["wheel" "networkmanager" "video" "audio"];
   };
 
-  # home-manager.users.finxxi = import ../home.nix;
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-  };
-
   # ── Hyprland Wayland session ─────────────
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
