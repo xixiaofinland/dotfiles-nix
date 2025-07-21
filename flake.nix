@@ -37,7 +37,7 @@
     sfdx-nix,
   }: let
     nixos-user = "nixos";
-    nixos-hostname = "nixos";
+    nixos-wsl-hostname = "nixos";
     nixos-sys = "x86_64-linux";
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
@@ -54,6 +54,31 @@
         }
       )
     ];
+    baseModules = [
+      ./modules/common-config.nix
+      ./modules/nixos-config.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users."${nixos-user}" = import ./modules/home.nix;
+      }
+      {
+        nix.settings = {
+          substituters = [
+            "https://xixiaofinland.cachix.org"
+            "https://cachix.cachix.org"
+            "https://nixpkgs.cachix.org"
+          ];
+          trusted-public-keys = [
+            "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+            "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+            "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+          ];
+          trusted-users = ["nixos"];
+        };
+      }
+    ];
     forAllSystems = function:
       nixpkgs.lib.genAttrs [
         "${nixos-sys}"
@@ -64,39 +89,24 @@
         }));
   in {
     nixosConfigurations = {
-      "${nixos-hostname}" = nixpkgs.lib.nixosSystem rec {
+      "${nixos-wsl-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
           config.allowUnfreePredicate = pkg:
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
-        modules = [
-          ./modules/common-config.nix
-          ./modules/nixos-config.nix
-          nixos-wsl.nixosModules.wsl
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${nixos-user}" = import ./modules/home.nix;
-          }
-          {
-            nix.settings = {
-              substituters = [
-                "https://xixiaofinland.cachix.org"
-                "https://cachix.cachix.org"
-                "https://nixpkgs.cachix.org"
-              ];
-              trusted-public-keys = [
-                "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-                "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-                "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-              ];
-              trusted-users = ["nixos"];
-            };
-          }
-        ];
+        modules = baseModules ++ [nixos-wsl.nixosModules.wsl];
+      };
+
+      "hyperland" = nixpkgs.lib.nixosSystem rec {
+        system = "${nixos-sys}";
+        pkgs = import nixpkgs {
+          inherit system overlays sfdx-nix;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (lib.getName pkg) ["obsidian"];
+        };
+        modules = baseModules ++ [./modules/hyperland-config.nix];
       };
     };
 

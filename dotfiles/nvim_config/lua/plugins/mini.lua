@@ -56,6 +56,10 @@ return {
       })
 
       require('mini.files').setup({
+        mappings = {
+          close = '<Esc>',
+        },
+
         windows = {
           width_focus = 40,
           preview = true,

@@ -10,8 +10,6 @@ vim.keymap.set('n', 'j', [[(v:count > 1 ? "m'" . v:count : "g") . 'j']], { expr 
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -119,7 +117,7 @@ vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
 vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
 
 -- LSP key
-vim.keymap.set('n', '<leader>fl', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
+vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
   { noremap = true, silent = true, desc = 'format file' })
 
 vim.keymap.set('n', 'D', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
@@ -128,3 +126,55 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent =
 
 -- Obsidian pick files
 vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
+
+-- Platform-specific clipboard configuration
+vim.opt.clipboard = "unnamedplus"
+if vim.fn.has('wsl') == 1 then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+elseif vim.fn.has('mac') == 1 then
+  vim.g.clipboard = {
+    name = 'macOS-clipboard',
+    copy = {
+      ['+'] = 'pbcopy',
+      ['*'] = 'pbcopy',
+    },
+    paste = {
+      ['+'] = 'pbpaste',
+      ['*'] = 'pbpaste',
+    },
+    cache_enabled = 0,
+  }
+end
+
+vim.keymap.set('n', '<PageDown>', '<C-d>', { noremap = true })
+vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true })
+
+vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
+vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
+
+vim.keymap.set("n", "<PageUp>", "<C-u>zz")
+vim.keymap.set("n", "<PageDown>", "<C-d>zz")
+
+vim.keymap.set("n", "^", function()
+  if vim.fn.col('.') == 1 then
+    return '^'
+  else
+    local first_non_blank = vim.fn.match(vim.fn.getline('.'), '\\S') + 1
+    if vim.fn.col('.') == first_non_blank then
+      return '0'
+    else
+      return '^'
+    end
+  end
+end, { expr = true, desc = "Smart start-of-line" })
