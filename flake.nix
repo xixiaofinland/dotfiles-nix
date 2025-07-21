@@ -96,7 +96,15 @@
           config.allowUnfreePredicate = pkg:
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
-        modules = baseModules ++ [nixos-wsl.nixosModules.wsl];
+        modules =
+          baseModules
+          ++ [
+            nixos-wsl.nixosModules.wsl
+            {
+              wsl.enable = true;
+              wsl.defaultUser = "nixos";
+            }
+          ];
       };
 
       "hyperland" = nixpkgs.lib.nixosSystem rec {

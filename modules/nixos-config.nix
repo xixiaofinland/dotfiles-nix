@@ -4,9 +4,6 @@
   pkgs,
   ...
 }: {
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
-
   security.sudo.enable = true;
 
   users.defaultUserShell = pkgs.fish;
