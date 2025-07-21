@@ -37,7 +37,7 @@
     sfdx-nix,
   }: let
     nixos-user = "nixos";
-    nixos-hostname = "nixos";
+    nixos-wsl-hostname = "nixos";
     nixos-sys = "x86_64-linux";
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
@@ -89,7 +89,7 @@
         }));
   in {
     nixosConfigurations = {
-      "${nixos-hostname}" = nixpkgs.lib.nixosSystem rec {
+      "${nixos-wsl-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
