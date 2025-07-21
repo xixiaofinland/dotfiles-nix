@@ -8,12 +8,12 @@
   users.users.nixos = {
     isNormalUser = true;
     shell = pkgs.fish;
+    initialPassword = "changeme";
     extraGroups = ["wheel" "networkmanager" "video" "audio"];
   };
 
   # home-manager.users.finxxi = import ../home.nix;
 
-  programs.hyprland.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;
