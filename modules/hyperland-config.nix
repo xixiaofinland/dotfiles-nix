@@ -3,6 +3,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   networking.hostName = "hyprland";
 
   users.users.nixos = {
