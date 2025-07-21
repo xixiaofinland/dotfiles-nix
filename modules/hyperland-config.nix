@@ -3,6 +3,23 @@
   lib,
   ...
 }: {
+  networking.hostName = "hyprland";
+
+  users.users.nixos = {
+    isNormalUser = true;
+    shell = pkgs.fish;
+    extraGroups = ["wheel" "networkmanager" "video" "audio"];
+  };
+
+  # home-manager.users.finxxi = import ../home.nix;
+
+  programs.hyprland.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  };
+
   # ── Hyprland Wayland session ─────────────
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;

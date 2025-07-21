@@ -57,7 +57,6 @@
     baseModules = [
       ./modules/common-config.nix
       ./modules/nixos-config.nix
-      # nixos-wsl.nixosModules.wsl
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
