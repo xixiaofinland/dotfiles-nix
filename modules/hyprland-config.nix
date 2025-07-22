@@ -54,13 +54,6 @@
   # ── Fix for some Electron apps in Wayland ─
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-
-  programs.hyprland = {
-    enable = true;
-    nvidiaPatches = true;   # required for proprietary driver
-    xwayland.enable = true; # optional but useful
-  };
-
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
