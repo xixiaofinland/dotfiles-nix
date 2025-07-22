@@ -130,17 +130,15 @@ in {
       set-option -g detach-on-destroy off
 
       unbind C-b
-      set -g prefix C-a
-      bind C-a send-prefix
+      set -g prefix C-n
+      bind C-n send-prefix
 
       set -g history-limit 10000
 
       bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
       bind u switch-client -l
-      bind C-u switch-client -l
       bind o display-popup -E "finter"
-      bind C-o display-popup -E "finter"
 
       bind J resize-pane -D 10
       bind K resize-pane -U 10
