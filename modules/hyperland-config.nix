@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hyperland-pc-hardware-configuration.nix
   ];
 
   networking.hostName = "${hostName}";
