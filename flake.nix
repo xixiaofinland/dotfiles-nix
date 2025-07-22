@@ -169,9 +169,6 @@
                 ];
                 trusted-users = ["root" "xixiao"];
               };
-              # extraOptions = ''
-              #   trusted-users = ["root" "nixos" "xixiao"];
-              # '';
             };
           }
         ];
