@@ -38,6 +38,8 @@
   }: let
     nixos-wsl-user = "nixos";
     nixos-wsl-hostname = "nixos";
+    hyperland-pc-user = "finxxi";
+    hyperland-pc-hostname = "hyperland-pc";
     nixos-sys = "x86_64-linux";
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
@@ -54,14 +56,14 @@
         }
       )
     ];
-    baseModules = [
+    baseModules = userName: [
       ./modules/common-config.nix
       ./modules/nixos-config.nix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${nixos-wsl-user}" = import ./modules/home.nix;
+        home-manager.users."${userName}" = import ./modules/home.nix;
       }
       {
         nix.settings = {
@@ -75,7 +77,7 @@
             "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
             "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
           ];
-          trusted-users = ["nixos"];
+          trusted-users = [userName];
         };
       }
     ];
@@ -97,7 +99,7 @@
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
         modules =
-          baseModules
+          baseModules nixos-wsl-user
           ++ [
             nixos-wsl.nixosModules.wsl
             {
@@ -114,7 +116,7 @@
           config.allowUnfreePredicate = pkg:
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
-        modules = baseModules ++ [./modules/hyperland-config.nix];
+        modules = baseModules hyperland-pc-user ++ [./modules/hyperland-config.nix];
       };
     };
 
