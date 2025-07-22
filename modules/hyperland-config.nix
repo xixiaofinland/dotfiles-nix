@@ -10,7 +10,6 @@
   ];
 
   networking.hostName = "${hostName}";
-  networking.networkmanager.enable = true;
 
   users.users.${user} = {
     isNormalUser = true;
@@ -47,10 +46,6 @@
     grim
     slurp # screenshot tools
     wl-clipboard # clipboard support
-    networkmanager
-    wpa_supplicant
-    iw
-    nmcli
   ];
 
   # ── Fix for some Electron apps in Wayland ─
