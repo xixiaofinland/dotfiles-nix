@@ -12,7 +12,7 @@
 
   system.stateVersion = "24.05";
 
-  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.configurationLimit = 6;
   nix.gc = {
     automatic = true;
     dates = "weekly";
