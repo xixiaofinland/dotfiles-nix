@@ -56,14 +56,14 @@
         }
       )
     ];
-    nixos-baseModules = userName: [
+    nixos-baseModules = userName: homeModule: [
       ./modules/common-config.nix
       ./modules/nixos-config.nix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${userName}" = import ./modules/home.nix;
+        home-manager.users."${userName}" = import homeModule;
       }
       {
         nix.settings = {
@@ -99,7 +99,7 @@
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
         modules =
-          nixos-baseModules nixos-wsl-user
+          nixos-baseModules nixos-wsl-user ./modules/home.nix
           ++ [
             nixos-wsl.nixosModules.wsl
             {
@@ -121,7 +121,7 @@
           hostName = hyperland-pc-hostname;
         };
         modules =
-          nixos-baseModules hyperland-pc-user ++ [./modules/hyperland-config.nix];
+          nixos-baseModules hyperland-pc-user ./modules/home-hyprland.nix ++ [./modules/hyperland-config.nix];
       };
     };
 
