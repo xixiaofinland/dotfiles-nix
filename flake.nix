@@ -36,7 +36,7 @@
     rust-overlay,
     sfdx-nix,
   }: let
-    nixos-user = "nixos";
+    nixos-wsl-user = "nixos";
     nixos-wsl-hostname = "nixos";
     nixos-sys = "x86_64-linux";
     mac-user = "xixiao";
@@ -61,7 +61,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${nixos-user}" = import ./modules/home.nix;
+        home-manager.users."${nixos-wsl-user}" = import ./modules/home.nix;
       }
       {
         nix.settings = {
