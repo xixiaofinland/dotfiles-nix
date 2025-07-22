@@ -109,7 +109,7 @@
           ];
       };
 
-      "hyperland" = nixpkgs.lib.nixosSystem rec {
+      "${hyperland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
