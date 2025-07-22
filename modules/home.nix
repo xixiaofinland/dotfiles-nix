@@ -335,9 +335,8 @@ in {
         editor = "nvim";
         default-command = ["log" "--limit" "5"];
       };
-      git = {
-        push-bookmark-prefix = "xx/push-";
-        # git.private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
+      templates = {
+        git_push_bookmark = ''"xx/push-" ++ change_id.short()'';
       };
       aliases = {
         l = ["log" "-r" "(main..@):: | (main..@)-"];
