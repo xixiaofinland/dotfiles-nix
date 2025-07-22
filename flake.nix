@@ -56,7 +56,7 @@
         }
       )
     ];
-    baseModules = userName: [
+    nixos-baseModules = userName: [
       ./modules/common-config.nix
       ./modules/nixos-config.nix
       home-manager.nixosModules.home-manager
@@ -99,7 +99,7 @@
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
         modules =
-          baseModules nixos-wsl-user
+          nixos-baseModules nixos-wsl-user
           ++ [
             nixos-wsl.nixosModules.wsl
             {
@@ -121,7 +121,7 @@
           hostName = hyperland-pc-hostname;
         };
         modules =
-          baseModules hyperland-pc-user ++ [./modules/hyperland-config.nix];
+          nixos-baseModules hyperland-pc-user ++ [./modules/hyperland-config.nix];
       };
     };
 
