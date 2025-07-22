@@ -53,41 +53,4 @@
 
   # ── Fix for some Electron apps in Wayland ─
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.nvidia_x11
-  ];
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "rivafb"
-    "nvidiafb"
-    "rivatv"
-    "nv"
-    "uvcvideo"
-  ];
-  services.xserver.videoDrivers = [
-    "nvidia"
-    "intel"
-  ];
-
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.latest; # `latest` is `555.58.02` currently
-
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
 }
