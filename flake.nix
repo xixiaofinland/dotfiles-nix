@@ -121,7 +121,7 @@
           hostName = hyprland-pc-hostname;
         };
         modules =
-          nixos-baseModules hyprland-pc-user ./modules/home-hyprland.nix ++ [./modules/home-hyprland.nix];
+          nixos-baseModules hyprland-pc-user ./modules/home.nix ++ [./hyprland-config.nix];
       };
     };
 
