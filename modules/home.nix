@@ -140,7 +140,7 @@ in {
       bind l switch-client -l
       bind d display-popup -E "finter"
       bind = split-window -v -c "#{pane_current_path}"
-      bind t split-window -h -c "#{pane_current_path}"
+      bind h split-window -h -c "#{pane_current_path}"
       bind s new-window -c "#{pane_current_path}"
       bind q killp
 
