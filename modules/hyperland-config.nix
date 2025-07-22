@@ -11,6 +11,19 @@
 
   networking.hostName = "${hostName}";
 
+  # Enable networking
+  networking.wireless.enable = true;
+  
+  # Configure your WiFi network
+  networking.wireless.networks = {
+    "5-home" = {
+      psk = "your-wifi-password";
+    };
+  };
+  
+  # Enable wpa_supplicant
+  networking.wireless.userControlled.enable = true;
+
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;
