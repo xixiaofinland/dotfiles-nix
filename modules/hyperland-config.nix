@@ -30,13 +30,13 @@
   };
 
   # ── Optional: greetd for auto-login GUI (TTY alternative)
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "Hyprland";
-      user = user;
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings.default_session = {
+  #     command = "Hyprland";
+  #     user = user;
+  #   };
+  # };
 
   # ── Essential GUI packages (minimal bar + launcher) ─
   environment.systemPackages = with pkgs; [
