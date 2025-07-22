@@ -38,8 +38,8 @@
   }: let
     nixos-wsl-user = "nixos";
     nixos-wsl-hostname = "nixos";
-    hyperland-pc-user = "finxxi";
-    hyperland-pc-hostname = "hyperland-pc";
+    hyprland-pc-user = "finxxi";
+    hyprland-pc-hostname = "hyprland-pc";
     nixos-sys = "x86_64-linux";
     mac-user = "xixiao";
     mac-hostname = "Xis-MacBook-Pro";
@@ -109,7 +109,7 @@
           ];
       };
 
-      "${hyperland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
+      "${hyprland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
@@ -117,11 +117,11 @@
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
         specialArgs = {
-          user = hyperland-pc-user;
-          hostName = hyperland-pc-hostname;
+          user = hyprland-pc-user;
+          hostName = hyprland-pc-hostname;
         };
         modules =
-          nixos-baseModules hyperland-pc-user ./modules/home-hyprland.nix ++ [./modules/home-hyprland.nix];
+          nixos-baseModules hyprland-pc-user ./modules/home-hyprland.nix ++ [./modules/home-hyprland.nix];
       };
     };
 
