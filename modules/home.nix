@@ -130,15 +130,19 @@ in {
       set-option -g detach-on-destroy off
 
       unbind C-b
-      set -g prefix C-n
-      bind C-n send-prefix
+      set -g prefix C-a
+      bind C-a send-prefix
 
       set -g history-limit 10000
 
       bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
-      bind . switch-client -l
-      bind \' display-popup -E "finter"
+      bind l switch-client -l
+      bind d display-popup -E "finter"
+      bind = split-window -v -c "#{pane_current_path}"
+      bind t split-window -h -c "#{pane_current_path}"
+      bind s new-window -c "#{pane_current_path}"
+      bind q killp
 
       bind J resize-pane -D 10
       bind K resize-pane -U 10
@@ -185,11 +189,6 @@ in {
       bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind -T copy-mode-vi V send -X select-line
       bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
-
-      bind = split-window -v -c "#{pane_current_path}"
-      bind - split-window -h -c "#{pane_current_path}"
-      bind c new-window -c "#{pane_current_path}"
-      bind q killp
 
       # No delay for escape key press
       set -sg escape-time 0
