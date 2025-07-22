@@ -1,15 +1,17 @@
 {
   pkgs,
   lib,
+  user,
+  hostName,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "hyprland";
+  networking.hostName = "${hostName}";
 
-  users.users.nixos = {
+  users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;
     initialPassword = "changeme";
@@ -32,7 +34,7 @@
     enable = true;
     settings.default_session = {
       command = "Hyprland";
-      user = "nixos";
+      user = user;
     };
   };
 

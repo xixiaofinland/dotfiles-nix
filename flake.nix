@@ -116,7 +116,15 @@
           config.allowUnfreePredicate = pkg:
             builtins.elem (lib.getName pkg) ["obsidian"];
         };
-        modules = baseModules hyperland-pc-user ++ [./modules/hyperland-config.nix];
+        modules =
+          baseModules hyperland-pc-user
+          ++ [
+            ./modules/hyperland-config.nix
+            {
+              user = hyperland-pc-user;
+              hostName = hyperland-pc-hostname;
+            }
+          ];
       };
     };
 
