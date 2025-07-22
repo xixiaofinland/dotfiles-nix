@@ -53,4 +53,28 @@
 
   # ── Fix for some Electron apps in Wayland ─
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true;   # required for proprietary driver
+    xwayland.enable = true; # optional but useful
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    # pick one:
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # or: openKernelModule = true;   # for the “open” driver
+  };
+
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+
+environment.variables = {
+  __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  LIBVA_DRIVER_NAME        = "nvidia";
+  WLR_NO_HARDWARE_CURSORS  = "1";   # fixes white boxes/flicker
+};
+
 }
