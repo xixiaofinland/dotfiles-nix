@@ -58,8 +58,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     # pick one:
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # or: openKernelModule = true;   # for the “open” driver
+    openKernelModule = true;   # for the “open” driver
   };
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];
