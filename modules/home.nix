@@ -137,8 +137,8 @@ in {
 
       bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
-      bind u switch-client -l
-      bind o display-popup -E "finter"
+      bind . switch-client -l
+      bind ' display-popup -E "finter"
 
       bind J resize-pane -D 10
       bind K resize-pane -U 10
