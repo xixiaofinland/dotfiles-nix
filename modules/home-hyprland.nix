@@ -11,7 +11,7 @@
   ];
 
   xdg.configFile = {
-    "hypr/hyprland.conf".source = ../dotfiles/hyprland.conf;
+    "hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
   };
 
   programs.waybar.enable = true;
