@@ -116,7 +116,7 @@ x = 10
 y = 5
 
 [terminal.shell]
-program = "/etc/profiles/per-user/xixiao/bin/fish"
+program = "fish"
 args = ["-l"]
 
 [bell]
