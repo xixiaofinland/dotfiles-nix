@@ -12,7 +12,8 @@
 
   system.stateVersion = "24.05";
 
-  boot.loader.systemd-boot.configurationLimit = 6;
+  system.nixos.label = "Hyprland";
+  boot.loader.systemd-boot.configurationLimit = 5;
   nix.gc = {
     automatic = true;
     dates = "weekly";
