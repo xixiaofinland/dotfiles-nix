@@ -43,6 +43,9 @@
     MOZ_ENABLE_WAYLAND = "1";     # Not for Brave, but good for Firefox
   };
 
+  # ── Fix for some Electron apps in Wayland ─
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Hyprland + XWayland
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
@@ -55,14 +58,11 @@
   };
 
   # ── Optional: greetd for auto-login GUI (TTY alternative)
-  # services.greetd = {
-  #   enable = true;
-  #   settings.default_session = {
-  #     command = "Hyprland";
-  #     user = user;
-  #   };
-  # };
-
-  # ── Fix for some Electron apps in Wayland ─
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "Hyprland";
+      user = user;
+    };
+  };
 }
