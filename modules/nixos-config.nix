@@ -12,7 +12,7 @@
 
   system.stateVersion = "24.05";
 
-  system.nixos.label = "|";
+  system.nixos.label = "-";
   boot.loader.systemd-boot.configurationLimit = 5;
   nix.gc = {
     automatic = true;
