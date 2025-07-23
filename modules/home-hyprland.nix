@@ -10,6 +10,7 @@
     wl-clipboard
 
     alacritty
+    brave
     pkgs.nerd-fonts.jetbrains-mono
   ];
 
