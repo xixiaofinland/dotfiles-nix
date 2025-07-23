@@ -10,7 +10,7 @@
     wl-clipboard
 
     alacritty
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.nerd-fonts.jetbrains-mono
   ];
 
   programs.waybar.enable = true;
