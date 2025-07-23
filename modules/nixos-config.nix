@@ -5,6 +5,9 @@
   ...
 }: {
   security.sudo.enable = true;
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=30
+  '';
 
   users.defaultUserShell = pkgs.fish;
 
