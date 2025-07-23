@@ -11,12 +11,12 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1eac5fc1-65f9-4b4d-9f0b-3c2badd3bc63";
+    { device = "/dev/disk/by-uuid/224ca4bd-55cf-4e8d-9ec6-434b26cc1b9c";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/4CE4-C1F1";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/BA6D-3B58";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -29,7 +29,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp10s0f3u2.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0f3u2.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
