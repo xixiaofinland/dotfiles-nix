@@ -8,7 +8,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/224ca4bd-55cf-4e8d-9ec6-434b26cc1b9c";
