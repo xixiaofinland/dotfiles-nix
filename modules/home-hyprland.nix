@@ -10,10 +10,6 @@
     wl-clipboard
   ];
 
-  xdg.configFile = {
-    "hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
-  };
-
   programs.waybar.enable = true;
   programs.wofi.enable = true;
   programs.foot.enable = true;
