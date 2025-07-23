@@ -63,6 +63,7 @@ in {
     ".ignore".source = ../dotfiles/.ignore;
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
+    ".config/hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
   };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
