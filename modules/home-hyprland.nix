@@ -8,6 +8,8 @@
     grim
     slurp
     wl-clipboard
+
+    alacritty
   ];
 
   programs.waybar.enable = true;
