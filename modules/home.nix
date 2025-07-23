@@ -139,7 +139,7 @@ in {
       bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
       bind u switch-client -l
-      bind d display-popup -E "finter"
+      bind o display-popup -E "finter"
       bind = split-window -v -c "#{pane_current_path}"
       bind h split-window -h -c "#{pane_current_path}"
       bind s new-window -c "#{pane_current_path}"

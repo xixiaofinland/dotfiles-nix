@@ -113,10 +113,10 @@
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
-          config = {         
-                # Fixme: Nvida install still gives error
-                # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
-                allowUnfree = true;
+          config = {
+            # Fixme: Nvida install still gives error
+            # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
+            allowUnfree = true;
           };
         };
         specialArgs = {
