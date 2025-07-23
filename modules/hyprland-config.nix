@@ -39,6 +39,8 @@
     GBM_BACKEND = "nvidia-drm";
     __GL_GSYNC_ALLOWED = "0";
     WLR_RENDERER_ALLOW_SOFTWARE = "1"; # fallback renderer
+    NIXOS_OZONE_WL = "1";         # Enable Wayland for Electron apps
+    MOZ_ENABLE_WAYLAND = "1";     # Not for Brave, but good for Firefox
   };
 
   # Hyprland + XWayland
