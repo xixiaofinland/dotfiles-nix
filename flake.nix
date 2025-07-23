@@ -113,10 +113,10 @@
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
-          config = {
-                allowUnfree = true;
-      # Or use: allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
-           };
+          config = {         
+                allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
+                #allowUnfree = true;
+          };
         };
         specialArgs = {
           user = hyprland-pc-user;
