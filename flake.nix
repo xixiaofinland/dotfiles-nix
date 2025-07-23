@@ -114,7 +114,7 @@
         pkgs = import nixpkgs {
           inherit system overlays sfdx-nix;
           config.allowUnfreePredicate = pkg:
-            builtins.elem (lib.getName pkg) ["obsidian"];
+            builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
         };
         specialArgs = {
           user = hyprland-pc-user;
