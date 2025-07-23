@@ -61,16 +61,6 @@
   #   };
   # };
 
-  # ── Essential GUI packages (minimal bar + launcher) ─
-  environment.systemPackages = with pkgs; [
-    waybar # status bar
-    wofi # launcher
-    foot # terminal
-    grim
-    slurp # screenshot tools
-    wl-clipboard # clipboard support
-  ];
-
   # ── Fix for some Electron apps in Wayland ─
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
