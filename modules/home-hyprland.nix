@@ -14,5 +14,4 @@
 
   programs.waybar.enable = true;
   programs.wofi.enable = true;
-  programs.foot.enable = true;
 }
