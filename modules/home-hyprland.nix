@@ -13,6 +13,7 @@
     brave
     pkgs.nerd-fonts.jetbrains-mono
     blueman # GUI Bluetooth manager
+    udiskie
   ];
 
   programs.waybar.enable = true;

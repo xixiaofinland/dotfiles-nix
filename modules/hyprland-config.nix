@@ -18,6 +18,9 @@
   hardware.bluetooth.enable = true; # enables kernel support
   hardware.bluetooth.powerOnBoot = true; # auto-turn on
 
+  services.udisks2.enable = true; # System-level service
+  services.dbus.enable = true; # Needed for all desktop interaction
+
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;
