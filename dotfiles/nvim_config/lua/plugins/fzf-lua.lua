@@ -4,12 +4,20 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       local actions = require "fzf-lua.actions"
+
       require("fzf-lua").setup({
         defaults = {
           file_icons = "mini",
           formatter = "path.filename_first",
           path_shorten = 5,
         },
+        actions = {
+          files = {
+            ["default"] = actions.file_edit_or_qf,
+            ["ctrl-s"]  = actions.file_split,
+            ["ctrl-t"]  = actions.file_vsplit,
+          }
+        }
       })
 
       local nmap = function(keys, func, desc)
