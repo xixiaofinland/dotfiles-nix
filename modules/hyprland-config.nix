@@ -16,6 +16,7 @@
 
   hardware.bluetooth.enable = true; # enables kernel support
   hardware.bluetooth.powerOnBoot = true; # auto-turn on
+  hardware.pulseaudio.enable = false;
 
   users.users.${user} = {
     isNormalUser = true;
@@ -43,9 +44,6 @@
     MOZ_ENABLE_WAYLAND = "1"; # Not for Brave, but good for Firefox
   };
 
-  # ── Fix for some Electron apps in Wayland ─
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   # Hyprland + XWayland
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
@@ -72,6 +70,7 @@
   # PipeWire support for Bluetooth
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
