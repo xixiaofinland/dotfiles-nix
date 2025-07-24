@@ -24,6 +24,9 @@
     pavucontrol # audio control
 
     udiskie
+
+    pamixer # Audio vol up/down
+    pulsemixer # optional TUI tool
   ];
 
   programs.waybar.enable = true;
