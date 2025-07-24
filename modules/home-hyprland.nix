@@ -1,18 +1,28 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    pkgs.nerd-fonts.jetbrains-mono
+
     dunst # notification daemon
+
     brightnessctl # screen brightness control
-    pavucontrol # audio control
+
     networkmanagerapplet
+
     swaylock-effects # lock screen (optional)
+
     grim
     slurp
     wl-clipboard
 
     alacritty
     brave
-    pkgs.nerd-fonts.jetbrains-mono
+
     blueman # GUI Bluetooth manager
+    bluez-tools
+    pulseaudio # optional, but useful tools
+
+    pavucontrol # audio control
+
     udiskie
   ];
 

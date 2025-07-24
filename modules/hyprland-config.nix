@@ -14,12 +14,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  services.blueman.enable = true; # optional GUI manager (recommended for desktops)
   hardware.bluetooth.enable = true; # enables kernel support
   hardware.bluetooth.powerOnBoot = true; # auto-turn on
-
-  services.udisks2.enable = true; # System-level service
-  services.dbus.enable = true; # Needed for all desktop interaction
 
   users.users.${user} = {
     isNormalUser = true;
@@ -27,9 +23,6 @@
     initialPassword = "changeme";
     extraGroups = ["wheel" "networkmanager" "video" "audio"];
   };
-
-  # Use proprietary Nvidia drivers
-  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -64,6 +57,9 @@
     extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
+  # Use proprietary Nvidia drivers
+  services.xserver.videoDrivers = ["nvidia"];
+
   # ── Optional: greetd for auto-login GUI (TTY alternative)
   services.greetd = {
     enable = true;
@@ -72,4 +68,24 @@
       user = user;
     };
   };
+
+  # PipeWire support for Bluetooth
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    extraConfig.pipewire."bluez5" = {
+      "enabled" = true;
+      "properties" = {
+        "bluez5.auto-connect" = ["a2dp_sink"];
+      };
+    };
+  };
+
+  # Bluetooth service
+  services.blueman.enable = true; # optional GUI manager (recommended for desktops)
+
+  services.udisks2.enable = true; # System-level service
+  services.dbus.enable = true; # Needed for all desktop interaction
 }
