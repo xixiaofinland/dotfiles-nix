@@ -142,7 +142,7 @@ in {
       bind d display-popup -E "finter"
       bind = split-window -v -c "#{pane_current_path}"
       bind h split-window -h -c "#{pane_current_path}"
-      bind s new-window -c "#{pane_current_path}"
+      bind \' new-window -c "#{pane_current_path}"
       bind q killp
 
       bind J resize-pane -D 10
@@ -192,7 +192,7 @@ in {
       bind -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
       # No delay for escape key press
-      set -sg escape-time 0
+      set -sg escape-time 1
 
       # Reload tmux config
       bind r source-file ~/.config/tmux/tmux.conf
