@@ -14,6 +14,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.blueman.enable = true; # optional GUI manager (recommended for desktops)
+  hardware.bluetooth.enable = true; # enables kernel support
+  hardware.bluetooth.powerOnBoot = true; # auto-turn on
+
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;

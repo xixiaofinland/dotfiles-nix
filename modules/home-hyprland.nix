@@ -12,6 +12,7 @@
     alacritty
     brave
     pkgs.nerd-fonts.jetbrains-mono
+    blueman # GUI Bluetooth manager
   ];
 
   programs.waybar.enable = true;
