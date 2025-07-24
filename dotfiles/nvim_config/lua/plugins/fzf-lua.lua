@@ -13,8 +13,9 @@ return {
         },
         actions = {
           files = {
-            ["default"] = actions.file_edit_or_qf,
-            ["ctrl-s"]  = actions.file_split,
+            true,
+            -- ["default"] = actions.file_edit_or_qf,
+            -- ["ctrl-s"]  = actions.file_split,
             ["ctrl-t"]  = actions.file_vsplit,
           }
         }
