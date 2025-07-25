@@ -16,6 +16,7 @@ return {
             true,
             -- ["default"] = actions.file_edit_or_qf,
             -- ["ctrl-s"]  = actions.file_split,
+            ["ctrl-h"]  = actions.file_vsplit,
             ["ctrl-t"]  = actions.file_vsplit,
           }
         }
