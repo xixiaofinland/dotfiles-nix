@@ -1,15 +1,25 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["network"],
-  "modules-right": ["clock"],
+  "modules-left": ["hyprland/workspaces", "network", "pulseaudio"],
+  "modules-right": ["clock", "tray"],
 
   "network": {
     "interface": "wlp10s0f3u2",
     "format": "📶 {essid} ({signalStrength}%)"
   },
 
+  "pulseaudio": {
+    "format": "🔊 {volume}%",
+    "format-muted": "🔇 muted"
+  },
+
   "clock": {
     "format": "🕒 {:%H:%M}"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
   }
 }

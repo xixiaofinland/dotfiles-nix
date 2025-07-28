@@ -8,3 +8,14 @@ window#waybar {
   background-color: #222;
   border-bottom: 1px solid #444;
 }
+
+#workspaces button {
+  padding: 0 6px;
+  color: #888;
+}
+
+#workspaces button.active {
+  color: white;
+  font-weight: bold;
+  background: #444;
+}
