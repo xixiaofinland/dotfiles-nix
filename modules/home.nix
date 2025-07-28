@@ -7,7 +7,6 @@
   finter = pkgs.rustPlatform.buildRustPackage rec {
     pname = "finter";
     version = "0.1.15";
-    useFetchCargoVendor = true;
     src = pkgs.fetchCrate {
       inherit pname version;
       sha256 = "sha256-YWP5xkAlKZTZuncepG/hj5VwwTRyMKJZaBgICtwA+PU=";
