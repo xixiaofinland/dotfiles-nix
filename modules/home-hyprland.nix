@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     pkgs.nerd-fonts.jetbrains-mono
 
-    dunst # notification daemon
+    mako # notification daemon
 
     brightnessctl # screen brightness control
 
