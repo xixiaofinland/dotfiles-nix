@@ -14,9 +14,12 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.enableAllFirmware = true;
+  hardware.firmware = with pkgs; [linux-firmware];
+  boot.kernelModules = ["rt2800usb"];
+
   hardware.bluetooth.enable = true; # enables kernel support
   hardware.bluetooth.powerOnBoot = true; # auto-turn on
-  hardware.pulseaudio.enable = false;
 
   users.users.${user} = {
     isNormalUser = true;
@@ -84,6 +87,7 @@
 
   # Bluetooth service
   services.blueman.enable = true; # optional GUI manager (recommended for desktops)
+  services.pulseaudio.enable = false;
 
   services.udisks2.enable = true; # System-level service
   services.dbus.enable = true; # Needed for all desktop interaction

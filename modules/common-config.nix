@@ -11,6 +11,7 @@
     wget
     git
     curl
+    usbutils
   ];
 
   # environment.shells = with pkgs; [fish];
