@@ -1,0 +1,15 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["network"],
+  "modules-right": ["clock"],
+
+  "network": {
+    "interface": "wlp10s0f3u2",
+    "format": "📶 {essid} ({signalStrength}%)"
+  },
+
+  "clock": {
+    "format": "🕒 {:%H:%M}"
+  }
+}

@@ -1,0 +1,10 @@
+* {
+  font-family: JetBrainsMono, sans-serif;
+  font-size: 14px;
+  color: white;
+}
+
+window#waybar {
+  background-color: #222;
+  border-bottom: 1px solid #444;
+}
