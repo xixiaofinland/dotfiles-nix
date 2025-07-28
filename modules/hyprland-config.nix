@@ -101,4 +101,12 @@
       ExecStart = "${pkgs.bash}/bin/bash -c 'sleep 10 && ${pkgs.bluez}/bin/bluetoothctl connect 54:B7:E5:4E:1A:D7'";
     };
   };
+
+  systemd.user.services.udiskie = {
+    description = "Auto-mount USB devices";
+    wantedBy = ["default.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.udiskie}/bin/udiskie --no-notify";
+    };
+  };
 }
