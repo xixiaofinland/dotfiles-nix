@@ -4,7 +4,7 @@
 
     xfce.thunar # file manager
 
-    libnotify # notify-send cli
+    libnotify
     mako # notification daemon
 
     brightnessctl # screen brightness control
@@ -37,12 +37,11 @@
   programs.waybar.enable = true;
   programs.wofi.enable = true;
 
-  # services.mako = {
-  #   enable = true;
-  #   settings = {
-  #     default = {
-  #       default-timeout = 5000;
-  #     };
-  #   };
-  # };
+  services.mako = {
+    enable = true;
+    settings = {
+      default-timeout = 5000;
+      anchor = "top-right";
+    };
+  };
 }
