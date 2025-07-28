@@ -91,4 +91,14 @@
 
   services.udisks2.enable = true; # System-level service
   services.dbus.enable = true; # Needed for all desktop interaction
+
+  systemd.user.services.bluetooth-autoconnect = {
+    description = "Auto-connect Stanmore Bluetooth speaker with delay";
+    after = ["graphical-session.target"];
+    wantedBy = ["default.target"];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'sleep 10 && ${pkgs.bluez}/bin/bluetoothctl connect 54:B7:E5:4E:1A:D7'";
+    };
+  };
 }
