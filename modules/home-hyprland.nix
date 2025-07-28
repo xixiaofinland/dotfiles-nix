@@ -1,7 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    pkgs.nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
 
+    xfce.thunar # file manager
+
+    libnotify # notify-send cli
     mako # notification daemon
 
     brightnessctl # screen brightness control
