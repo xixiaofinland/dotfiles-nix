@@ -19,7 +19,6 @@
 
     blueman # GUI Bluetooth manager
     bluez-tools
-    pulseaudio # optional, but useful tools
 
     pavucontrol # audio control
 
