@@ -18,6 +18,7 @@
     brave
 
     blueman # GUI Bluetooth manager
+    bluez
     bluez-tools
 
     pavucontrol # audio control
