@@ -36,4 +36,13 @@
 
   programs.waybar.enable = true;
   programs.wofi.enable = true;
+
+  # services.mako = {
+  #   enable = true;
+  #   settings = {
+  #     default = {
+  #       default-timeout = 5000;
+  #     };
+  #   };
+  # };
 }
