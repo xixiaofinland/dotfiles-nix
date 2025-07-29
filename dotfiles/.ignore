@@ -1,12 +1,4 @@
 node_modules
-
-# Ignore all -meta.xml files
-*-meta.xml
-
-# But NOT if inside objectTranslations/
-!objectTranslations/**/*-meta.xml
-
-!package.xml
 .direnv
 sf_cache
 *.cpp
