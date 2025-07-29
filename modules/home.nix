@@ -229,27 +229,11 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
-      # t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
-      # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:win1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
       # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
       cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
       cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
-      # fzsh = "cd ~; mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history";
-      # dr = "RUST_LOG=debug cargo r";
-      # tr = "RUST_BACKTRACE=1 cargo r";
-      # rr = "cargo r -- tests/battle_test/hello.cls";
-      # tt = "cargo test --test test -- --show-output";
-      # tp = "cargo test prettier -- --show-output";
-      # tm = "cargo test static -- --show-output";
-      # te = "cargo test comments -- --show-output";
-      # dtp = "RUST_BACKTRACE=1 cargo test prettier -- --show-output";
-      # aa = "git add .; git commit -am '+'";
-      # app = "git push";
-      # serve = "simple-http-server -i -p 9999 ./";
-      # dbms = "jj bookmark list | cut -d':' -f1 | grep -v '^main$' | grep -v '^@' | xargs -I{} jj bookmark delete '{}'; jj git push --deleted";
-      # frepo = "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull";
     };
 
     shellInit = ''
