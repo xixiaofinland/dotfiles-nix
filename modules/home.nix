@@ -63,8 +63,8 @@ in {
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
     ".config/hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
-    ".config/waybar/config".source = ../dotfiles/waybar/config;
-    ".config/waybar/style.css".source = ../dotfiles/waybar/style.css;
+    ".config/hypr/waybar/config".source = ../dotfiles/waybar/config;
+    ".config/hypr/waybar/style.css".source = ../dotfiles/waybar/style.css;
   };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
