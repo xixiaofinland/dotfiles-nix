@@ -63,8 +63,8 @@ in {
     ".config/direnv/direnv.toml".source = ../dotfiles/direnv/direnv.toml;
     ".tmux_init_actions.sh".source = ../dotfiles/.tmux_init_actions.sh;
     ".config/hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
-    ".config/hypr/waybar/config".source = ../dotfiles/waybar/config;
-    ".config/hypr/waybar/style.css".source = ../dotfiles/waybar/style.css;
+    ".config/waybar/config".source = ../dotfiles/hypr/waybar/config;
+    ".config/waybar/style.css".source = ../dotfiles/hypr/waybar/style.css;
   };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
@@ -229,7 +229,9 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
-      t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
+      # t = "tmux new-session -d -s 0 -n win -c ~/dotfiles-nix/; tmux send-keys -t 0:win 'sh $HOME/.tmux_init_actions.sh' Enter; tmux attach -t 0:win";
+      # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:win1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
+      # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
       cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
       ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
       cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
@@ -282,6 +284,18 @@ in {
       COMPLETE=fish jj | source
 
       # custom functions
+
+      function t
+        tmux has-session -t 0 2>/dev/null
+        or begin
+          tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/
+          tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter
+          tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/
+        end
+        tmux select-window -t 0:1
+        tmux attach -t 0
+      end
+
       function multicd
           echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
       end
