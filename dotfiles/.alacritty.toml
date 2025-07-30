@@ -23,6 +23,7 @@ args = ["-l"]
 [window]
 decorations = "Buttonless"
 blur = true
+opacity = 0.85
 option_as_alt = "OnlyLeft"
 dynamic_padding = true
 padding = { x = 10, y = 5 }
