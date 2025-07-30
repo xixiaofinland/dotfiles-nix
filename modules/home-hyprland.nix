@@ -31,6 +31,8 @@
     pamixer # Audio vol up/down
     pulsemixer # optional TUI tool
 
+    hyprpaper
+
     unzip
   ];
 
