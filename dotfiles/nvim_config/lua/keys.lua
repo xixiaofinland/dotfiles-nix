@@ -16,7 +16,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- My own habit;
 
-vim.keymap.set('n', '<leader>fn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
+vim.keymap.set('n', '<leader>hn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
 vim.keymap.set('n', '<leader>cn', function()
@@ -126,6 +126,11 @@ vim.keymap.set('n', '<Esc>', function()
   end
 end, { noremap = true, silent = true, desc = 'Close floating windows' })
 
+-- Save and quit
+vim.keymap.set('n', '##', ':x<CR>', { noremap = true, silent = true, desc = 'Save and quit' })
+
+-- Quit without saving
+vim.keymap.set('n', 'QQ', ':q!<CR>', { noremap = true, silent = true, desc = 'Force quit' })
 
 -- Obsidian pick files
 vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
