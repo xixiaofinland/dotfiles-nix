@@ -65,10 +65,18 @@ in {
     ".config/hypr/hyprland.conf".source = ../dotfiles/hypr/hyprland.conf;
     ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper.conf;
     ".config/hypr/random_wall.sh".source = ../dotfiles/hypr/random_wallpaper.sh;
-    "Wallpapers".source = ../dotfiles/Wallpapers;
+    "Wallpapers" = {
+      source = ../dotfiles/Wallpapers;
+      recursive = true;
+    };
     ".config/waybar/config".source = ../dotfiles/hypr/waybar/config;
     ".config/waybar/style.css".source = ../dotfiles/hypr/waybar/style.css;
   };
+
+  # home.file."Wallpapers".source = builtins.path {
+  #   path = ../dotfiles/Wallpapers;
+  #   name = "Wallpapers";
+  # };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
   xdg.configFile."nvim" = {

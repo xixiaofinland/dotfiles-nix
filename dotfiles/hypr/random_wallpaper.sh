@@ -2,8 +2,8 @@
 WALL_DIR="$HOME/Wallpapers"
 MONITOR="DP-2"
 
-# Pick a random wallpaper
-WALL=$(find "$WALL_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)
+# Pick a random wallpaper (follow symlinks)
+WALL=$(find -L "$WALL_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)
 
 # Abort if none found
 if [[ -z "$WALL" ]]; then
