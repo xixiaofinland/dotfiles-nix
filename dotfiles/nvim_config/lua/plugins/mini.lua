@@ -57,7 +57,11 @@ return {
 
       require('mini.files').setup({
         mappings = {
-          close = '<Esc>',
+          close       = '<Esc>',
+          go_in       = '<Right>',   -- Right arrow to go into directories
+          go_in_plus  = '<CR>',      -- Enter to go in AND open files
+          go_out      = '<Left>',    -- Left arrow to go back/up
+          go_out_plus = '<S-Left>',  -- Shift+Left for go_out_plus
         },
 
         windows = {
@@ -76,6 +80,7 @@ return {
           end)
 
           MiniFiles.set_target_window(new_target)
+          MiniFiles.go_in({ close_on_file = true })
         end
 
         local desc = 'Split ' .. direction
@@ -87,7 +92,7 @@ return {
         callback = function(args)
           local buf_id = args.data.buf_id
           map_split(buf_id, '<C-s>', 'belowright horizontal')
-          map_split(buf_id, '<C-v>', 'belowright vertical')
+          map_split(buf_id, '<C-h>', 'belowright vertical')
         end,
       })
 
@@ -114,7 +119,18 @@ return {
 
       local minifiles_toggle = function()
         if not MiniFiles.close() then
-          MiniFiles.open(vim.api.nvim_buf_get_name(0))
+          local current_file = vim.api.nvim_buf_get_name(0)
+          local path
+
+          if current_file == '' or current_file:match('^%w+://') then
+            -- Use current working directory for special buffers (like Mini.start)
+            path = vim.fn.getcwd()
+          else
+            -- Use current file for normal buffers
+            path = current_file
+          end
+
+          MiniFiles.open(path)
           MiniFiles.reveal_cwd()
         end
       end
