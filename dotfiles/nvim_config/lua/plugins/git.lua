@@ -2,7 +2,7 @@ return {
   {
     'sindrets/diffview.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>hv', vim.cmd.DiffviewOpen, { desc = 'open diff window' })
+      vim.keymap.set('n', '<leader>ho', vim.cmd.DiffviewOpen, { desc = 'open diff window' })
       vim.keymap.set('n', '<leader>hc', vim.cmd.DiffviewClose, { desc = 'close diff window' })
     end
   },
