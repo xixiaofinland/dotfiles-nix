@@ -14,9 +14,6 @@ return {
       auto_display_code_sign = false,
     })
 
-    vim.keymap.set('n', '<leader>e', '<CMD>e ~/.config/nvim/lua/plugins/sf.lua<CR>',
-      { desc = 'Open sf config' })
-
     local function format_apex()
       local filepath = vim.api.nvim_buf_get_name(0)
       if filepath == "" then
