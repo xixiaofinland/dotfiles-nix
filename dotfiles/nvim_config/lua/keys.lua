@@ -16,8 +16,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- My own habit;
 
-vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
-
 vim.keymap.set('n', '<leader>fn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
@@ -104,12 +102,6 @@ vim.keymap.set('n', '\\B', toggleBackground, { noremap = true, silent = true, de
 
 local opts = { noremap = true, silent = true }
 
--- Alt + h/j/k/l in insert mode;
-vim.keymap.set('i', '<M-h>', '<Left>', opts)
-vim.keymap.set('i', '<M-j>', '<Down>', opts)
-vim.keymap.set('i', '<M-k>', '<Up>', opts)
-vim.keymap.set('i', '<M-l>', '<Right>', opts)
-
 -- insert mode <C-e> delete till end of word;
 vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
 
@@ -123,6 +115,17 @@ vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'code action' })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'rename' })
+vim.keymap.set('n', 'H', vim.lsp.buf.hover, { noremap = true, silent = true, desc = 'LSP hover doc' })
+
+-- Close all floating windows
+vim.keymap.set('n', '<Esc>', function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative ~= '' then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end, { noremap = true, silent = true, desc = 'Close floating windows' })
+
 
 -- Obsidian pick files
 vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
