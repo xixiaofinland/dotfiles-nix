@@ -35,6 +35,8 @@ in {
     gnumake
     nodejs_22
 
+    alacritty
+
     # git
     jujutsu
 

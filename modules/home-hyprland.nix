@@ -17,7 +17,6 @@
     slurp
     wl-clipboard
 
-    alacritty
     brave
 
     blueman # GUI Bluetooth manager
