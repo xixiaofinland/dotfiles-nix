@@ -2,6 +2,12 @@
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
 
+    # chinese character support
+    noto-fonts-cjk-sans
+    noto-fonts
+    wqy_zenhei
+    wqy_microhei
+
     xfce.thunar # file manager
 
     libnotify
@@ -34,6 +40,7 @@
 
     unzip
   ];
+  fonts.fontconfig.enable = true;
 
   programs.waybar.enable = true;
   programs.wofi.enable = true;
