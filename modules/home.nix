@@ -154,20 +154,11 @@ in {
 
       bind u switch-client -l
       bind d display-popup -E "finter"
-      bind = split-window -v -c "#{pane_current_path}"
+      # bind = split-window -v -c "#{pane_current_path}"
       bind h split-window -h -c "#{pane_current_path}"
       bind \' new-window -c "#{pane_current_path}"
+      bind = new-window -c "#{pane_current_path}"
       bind q killp
-
-      bind J resize-pane -D 10
-      bind K resize-pane -U 10
-      bind H resize-pane -L 10
-      bind L resize-pane -R 10
-
-      bind M-j resize-pane -D
-      bind M-k resize-pane -U
-      bind M-h resize-pane -L
-      bind M-l resize-pane -R
 
       # Automatically set window title
       set-option -g allow-rename on
