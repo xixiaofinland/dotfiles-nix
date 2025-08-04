@@ -3,7 +3,7 @@ return {
   version = "*",
   lazy = true,
   ft = "markdown",
-  cmd = { "ObsidianQuickSwitch" }, -- globally avail
+  cmd = { "Obsidian quick_switch" }, -- globally avail
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- "MeanderingProgrammer/markdown.nvim",
