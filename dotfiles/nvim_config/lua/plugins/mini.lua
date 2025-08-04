@@ -58,10 +58,10 @@ return {
       require('mini.files').setup({
         mappings = {
           close       = '<Esc>',
-          go_in       = '<Right>',   -- Right arrow to go into directories
-          go_in_plus  = '<CR>',      -- Enter to go in AND open files
-          go_out      = '<Left>',    -- Left arrow to go back/up
-          go_out_plus = '<S-Left>',  -- Shift+Left for go_out_plus
+          go_in       = '<Right>',  -- Right arrow to go into directories
+          go_in_plus  = '<CR>',     -- Enter to go in AND open files
+          go_out      = '<Left>',   -- Left arrow to go back/up
+          go_out_plus = '<S-Left>', -- Shift+Left for go_out_plus
         },
 
         windows = {
@@ -171,12 +171,12 @@ return {
       })
 
       require('mini.bracketed').setup({
-        -- diagnostic = { suffix = 'd', options = { severity = vim.diagnostic.severity.ERROR } },
+        diagnostic = { suffix = 'u', options = {} },
 
         -- disabled ones which I don't use;
-        undo    = { suffix = '', options = {} },
-        window  = { suffix = '', options = {} },
-        comment = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
+        undo       = { suffix = '', options = {} },
+        window     = { suffix = '', options = {} },
+        comment    = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
       })
       local severity_error = vim.diagnostic.severity.ERROR
       nmap(']e', function() MiniBracketed.diagnostic('forward', { severity = severity_error }) end, 'next error')
