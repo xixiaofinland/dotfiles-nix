@@ -39,6 +39,7 @@
     hyprpaper
 
     unzip
+    anki
   ];
   fonts.fontconfig.enable = true;
 
