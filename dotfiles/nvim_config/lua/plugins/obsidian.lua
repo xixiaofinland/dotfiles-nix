@@ -38,11 +38,10 @@ return {
       -- update_debounce = 200,
       -- max_file_length = 5000,
     },
+    legacy_commands = false
   },
   config = function(_, opts)
-    require("obsidian").setup(opts) {
-      legacy_commands = false
-    }
+    require("obsidian").setup(opts)
     -- vim.opt.conceallevel = 2
 
     -- pick links in the current note
