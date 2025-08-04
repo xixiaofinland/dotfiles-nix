@@ -40,7 +40,9 @@ return {
     },
   },
   config = function(_, opts)
-    require("obsidian").setup(opts)
+    require("obsidian").setup(opts) {
+      legacy_commands = false
+    }
     -- vim.opt.conceallevel = 2
 
     -- pick links in the current note
