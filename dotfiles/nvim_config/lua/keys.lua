@@ -133,7 +133,7 @@ vim.keymap.set('n', '##', ':x<CR>', { noremap = true, silent = true, desc = 'Sav
 vim.keymap.set('n', 'QQ', ':q!<CR>', { noremap = true, silent = true, desc = 'Force quit' })
 
 -- Obsidian pick files
-vim.keymap.set("n", "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch notes" })
+vim.keymap.set("n", "<leader>nf", "<cmd>Obsidian quick_switch<cr>", { desc = "Quick switch notes" })
 
 -- Platform-specific clipboard configuration
 vim.opt.clipboard = "unnamedplus"
