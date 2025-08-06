@@ -255,6 +255,8 @@ in {
       set -g pure_enable_nixdevshell true
 
       # custom abbrs
+      abbr -a l eza -la
+      abbr -a la eza -la
       abbr -a ls eza
       abbr -a gs git status
       abbr -a gp git push
