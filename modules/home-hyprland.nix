@@ -40,6 +40,8 @@
 
     unzip
     anki
+    transmission_4-qt
+    vlc
   ];
   fonts.fontconfig.enable = true;
 
