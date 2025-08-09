@@ -40,7 +40,9 @@
 
     unzip
     anki
-    transmission_4-qt
+    # transmission_4-qt
+    # qbittorrent-enhanced
+    qbittorrent
     vlc
     evince #pdf reader
   ];
