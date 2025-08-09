@@ -42,7 +42,7 @@
     anki
     transmission_4-qt
     vlc
-    mupdf
+    evince #pdf reader
   ];
   fonts.fontconfig.enable = true;
 
