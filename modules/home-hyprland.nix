@@ -42,6 +42,7 @@
     anki
     transmission_4-qt
     vlc
+    mupdf
   ];
   fonts.fontconfig.enable = true;
 
