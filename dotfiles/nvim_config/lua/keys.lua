@@ -112,10 +112,11 @@ vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
 vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
   { noremap = true, silent = true, desc = 'format file' })
 
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
+vim.keymap.set('n', 'L', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
+vim.keymap.set('n', 'H', vim.lsp.buf.hover, { noremap = true, silent = true, desc = 'LSP hover doc' })
+
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'code action' })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'rename' })
-vim.keymap.set('n', 'H', vim.lsp.buf.hover, { noremap = true, silent = true, desc = 'LSP hover doc' })
 
 -- Close all floating windows
 vim.keymap.set('n', '<Esc>', function()
