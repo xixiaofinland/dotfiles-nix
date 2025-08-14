@@ -22,8 +22,8 @@ return {
 
     vim.keymap.set("n", "<C-p>", function() harpoon:list():select(1) end)
     vim.keymap.set("n", "<C-d>", function() harpoon:list():select(2) end)
-    vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
-    vim.keymap.set("n", "<C-x>", function() harpoon:list():select(4) end)
+    vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+    vim.keymap.set("n", "<C-t>", function() harpoon:list():select(4) end)
 
     -- for index = 1, 6 do
     --   vim.keymap.set("n", "<leader>h" .. index, function()
