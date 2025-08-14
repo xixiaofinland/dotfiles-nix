@@ -16,7 +16,7 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = name .. "add" })
-    vim.keymap.set("n", "<leader>ht", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
       { desc = name .. "list" })
 
 
