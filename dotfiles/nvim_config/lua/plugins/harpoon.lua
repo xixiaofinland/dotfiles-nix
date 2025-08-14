@@ -19,16 +19,11 @@ return {
     vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
       { desc = name .. "list" })
 
-
     vim.keymap.set("n", "<C-p>", function() harpoon:list():select(1) end)
     vim.keymap.set("n", "<C-d>", function() harpoon:list():select(2) end)
     vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
     vim.keymap.set("n", "<C-t>", function() harpoon:list():select(4) end)
-
-    -- for index = 1, 6 do
-    --   vim.keymap.set("n", "<leader>h" .. index, function()
-    --     harpoon:list():select(index)
-    --   end, { desc = name .. "move to #" .. index })
-    -- end
+    vim.keymap.set("n", "<C-g>", function() harpoon:list():select(5) end)
+    vim.keymap.set("n", "<C-m>", function() harpoon:list():select(6) end)
   end
 }
