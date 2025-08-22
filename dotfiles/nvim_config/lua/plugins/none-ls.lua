@@ -16,6 +16,8 @@ return {
           filetypes = { "html", "javascript" },
         }),
 
+        none_ls.builtins.formatting.black,
+
         none_ls.builtins.diagnostics.pmd.with({
           command = "pmd",
           filetypes = { "apex" },
