@@ -1,0 +1,104 @@
+# ── Font ────────────────────────────────────────────────
+[font]
+size = 12.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 2 }
+
+# ── Cursor ──────────────────────────────────────────────
+[cursor]
+style = "Block"
+unfocused_hollow = false
+vi_mode_style = "Beam"
+
+# ── Shell ───────────────────────────────────────────────
+[terminal.shell]
+program = "fish"
+args = ["-l"]
+
+# ── Window ──────────────────────────────────────────────
+[window]
+decorations = "Buttonless"
+blur = true
+opacity = 0.85
+option_as_alt = "OnlyLeft"
+dynamic_padding = true
+padding = { x = 10, y = 5 }
+
+# ── Mouse ───────────────────────────────────────────────
+[mouse]
+hide_when_typing = true
+
+# ── Selection ───────────────────────────────────────────
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+# ── Bell ────────────────────────────────────────────────
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+
+# ── General ─────────────────────────────────────────────
+[general]
+live_config_reload = true
+
+# ── Keyboard Bindings ───────────────────────────────────
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Command"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+action = "None"
+
+# ── Colors (Kanagawa Wave) ──────────────────────────────
+[colors.primary]
+background = '#1f1f28'
+foreground = '#dcd7ba'
+
+[colors.cursor]
+text = 'CellBackground'
+cursor = '#ffffff'
+
+[colors.normal]
+black   = '#090618'
+red     = '#c34043'
+green   = '#76946a'
+yellow  = '#c0a36e'
+blue    = '#7e9cd8'
+magenta = '#957fb8'
+cyan    = '#6a9589'
+white   = '#c8c093'
+
+[colors.bright]
+black   = '#727169'
+red     = '#e82424'
+green   = '#98bb6c'
+yellow  = '#e6c384'
+blue    = '#7fb4ca'
+magenta = '#938aa9'
+cyan    = '#7aa89f'
+white   = '#dcd7ba'
+
+[colors.selection]
+background = '#2d4f67'
+foreground = '#c8c093'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#ffa066'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ff5d62'

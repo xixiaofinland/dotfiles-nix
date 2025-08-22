@@ -1,0 +1,40 @@
+[user]
+	email = tdxiaoxi2@gmail.com
+	name = xi xiao
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+[mergetool "nvim"]
+	cmd = nvim -c "DiffviewOpen"
+[merge]
+	tool = nvim
+[mergetool]
+	prompt = false
+	keepBackup = false
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[alias]
+    recom = "!f() { \
+        current_branch=$(git branch --show-current); \
+        if [ \"$current_branch\" = \"main\" ] || [ \"$current_branch\" = \"master\" ]; then \
+            echo \"You are on the main branch.\"; \
+            exit 1; \
+        fi; \
+        git reset --soft origin/main && \
+        git commit -a; \
+    }; f"
+    cleanup = "!f() { \
+        current_branch=$(git branch --show-current); \
+        if [ \"$current_branch\" = \"main\" ] || [ \"$current_branch\" = \"master\" ]; then \
+            echo \"You are on the main branch. No feature branch to delete.\"; \
+            exit 1; \
+        fi; \
+        git checkout main && \
+        git pull && \
+        git branch -d \"$current_branch\"; \
+    }; f"
+

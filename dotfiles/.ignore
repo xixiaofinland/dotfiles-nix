@@ -1,0 +1,10 @@
+node_modules
+.direnv
+sf_cache
+*.cpp
+*.h
+*.c
+tags
+.sfdx
+.jj
+.sf

@@ -1,0 +1,33 @@
+* {
+  font-family: JetBrainsMono, sans-serif;
+  font-size: 13px;
+  color: #eeeeee;
+  padding: 0 6px;
+}
+
+window#waybar {
+  background-color: #1e1e2e;
+  border-bottom: 1px solid #44475a;
+}
+
+#workspaces button {
+  color: #888;
+  border: none;
+  padding: 4px 8px;
+}
+
+#workspaces button.active {
+  background: #44475a;
+  color: white;
+  font-weight: bold;
+}
+
+#pulseaudio,
+#clock,
+#network,
+#tray {
+  margin: 0 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: #2e2e3e;
+}
