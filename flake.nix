@@ -240,20 +240,21 @@
           '';
         };
 
-      rust-nightly = let
-        packages = with pkgs; [
-          rust-bin.nightly.latest.default
-          rust-analyzer
-        ];
-      in
-        pkgs.mkShell {
-          name = "Rust-nightly";
-          packages = packages;
-          shellHook = ''
-            echo "🦀🦀🦀🦀 hello Rust Nightly!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # rust-nightly = let
+      #   packages = with pkgs; [
+      #     rust-bin.nightly.latest.default
+      #     rust-analyzer
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Rust-nightly";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "🦀🦀🦀🦀 hello Rust Nightly!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
+      #
 
       sf = let
         packages = with pkgs; [
@@ -271,21 +272,21 @@
           '';
         };
 
-      tree = let
-        packages = with pkgs; [
-          tree-sitter
-          prettierd
-          emscripten
-        ];
-      in
-        pkgs.mkShell {
-          name = "tree-sitter";
-          packages = packages;
-          shellHook = ''
-            echo "🌳🌳🌳🌳 hello Tree-sitter!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # tree = let
+      #   packages = with pkgs; [
+      #     tree-sitter
+      #     prettierd
+      #     emscripten
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "tree-sitter";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "🌳🌳🌳🌳 hello Tree-sitter!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
 
       nvim = let
         packages = with pkgs; [
@@ -303,12 +304,23 @@
 
       python = let
         packages = with pkgs; [
-          (python311.withPackages (ps:
+          (python312.withPackages (ps:
             with ps; [
-              pip
               ipython
+              pip
+              virtualenv
+              # editor/test tooling
+              black
+              isort
               ruff
+              pytest
+              debugpy
+              # jupyter kernel (optional)
+              ipykernel
             ]))
+          # LSPs & helpers as binaries (no pip needed)
+          pyright
+          # Native build deps when wheels aren’t available
           cmake
         ];
       in
