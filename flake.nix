@@ -310,7 +310,6 @@
               ruff
             ]))
           cmake
-          gcc
         ];
       in
         pkgs.mkShell {
