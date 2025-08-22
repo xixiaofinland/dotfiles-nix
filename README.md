@@ -17,14 +17,10 @@ This repository contains my personal configuration files (dotfiles) managed usin
     - Nix-darwin (for MacOS): [Github repo](https://github.com/LnL7/nix-darwin)
 
 2. **Clone the Repository**:
-
-```bash
-git clone --recurse-submodules git@github.com:xixiaofinland/dotfiles-nix.git ~/dotfiles-nix
-# (if you forgot --recurse)
-git submodule update --init --recursive
-cd ~/dotfiles-nix
-```
-
+    ```bash
+    git clone https://github.com/xixiaofinland/dotfiles-nix.git ~/dotfiles-nix
+    cd ~/dotfiles-nix
+    ```
 3. **Activate Flakes**:
    - If you used the official Nix installation guide, make sure to enable flakes by adding `experimental-features = nix-command flakes` to your `~/.config/nix/nix.conf`, or whatever way to enable the the `flake` feature.
    - If you used the 3rd party script, `flake` should have been auto-enabled for you.
