@@ -316,6 +316,10 @@ in {
               return
           end
 
+          if test -n "$VIRTUAL_ENV"
+            echo "(venv: (basename $VIRTUAL_ENV)) "
+          end
+
           # Call the original Pure function
           _pure_prompt_git_original $argv
       end;

@@ -190,3 +190,12 @@ vim.keymap.set("n", "^", function()
     end
   end
 end, { expr = true, desc = "Smart start-of-line" })
+
+-- display LSPs like :LspInfo
+vim.api.nvim_create_user_command("Lsps", function()
+  local names = {}
+  for _, c in ipairs(vim.lsp.get_clients({bufnr = 0})) do
+    table.insert(names, c.name)
+  end
+  print("Attached LSPs: " .. table.concat(names, ", "))
+end, {})
