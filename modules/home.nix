@@ -270,6 +270,9 @@ in {
       abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
       abbr -a serve "simple-http-server -i -p 9999 ./"
 
+      abbr -a wp-pull "git subtree pull --prefix dotfiles/Wallpapers git@github.com:xixiaofinland/Wallpapers.git main --squash"
+      abbr -a wp-push "git subtree push --prefix dotfiles/Wallpapers git@github.com:xixiaofinland/Wallpapers.git main"
+
       zoxide init fish | source
 
       COMPLETE=fish jj | source
