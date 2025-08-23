@@ -12,6 +12,9 @@
     git
     curl
     usbutils
+
+    aichat
+    llm
   ];
 
   # environment.shells = with pkgs; [fish];
