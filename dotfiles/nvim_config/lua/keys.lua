@@ -192,10 +192,13 @@ vim.keymap.set("n", "^", function()
 end, { expr = true, desc = "Smart start-of-line" })
 
 -- display LSPs like :LspInfo
-vim.api.nvim_create_user_command("Lsps", function()
+
+vim.keymap.set("n", "<leader>pl", function()
   local names = {}
-  for _, c in ipairs(vim.lsp.get_clients({bufnr = 0})) do
+  for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     table.insert(names, c.name)
   end
   print("Attached LSPs: " .. table.concat(names, ", "))
-end, {})
+end, { desc = 'List active LSPs' })
+
+vim.keymap.set("n", "<leader>pL", "<Cmd>check vim.lsp<CR>", { desc = 'List detaild LSPs' })

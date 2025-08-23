@@ -1,13 +1,13 @@
 # Dotfiles with Nix
 
-This repository contains my personal configuration files (dotfiles) managed using Nix Flakes. It supports both macOS and NixOS on a WSL2 subsystem in Windows.
+This repository contains my personal configuration files (dotfiles) managed using Nix Flakes. It supports both macOS and NixOS.
 
 ⚠️ It's important to understand what the code does before applying to your own system. It has a learning curve to use Nix, take action rigorously.
 
 ## Features
 
 - **Nix Flakes**: Manage dependencies and configurations.
-- **Cross-Platform**: Works on macOS and NixOS (WSL2).
+- **Cross-Platform**: Works on macOS and NixOS.
 - **Custom Modules**: Modular configuration for easy customization.
 
 ## Installation
@@ -66,15 +66,6 @@ trusted-users = root xixiao
 trusted-substituters = https://xixiaofinland.cachix.org https://cachix.cachix.org https://nixpkgs.cachix.org
 trusted-public-keys = xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM= nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 ```
-
-### NixOS in Win WSL2
-
-Sometimes the sudo permission is gone mysteriously
-
-- `wsl --list --verbose`
-- `wsl -d NixOS -u root`
-- `ls -l /run/wrappers/bin/sudo`
-- `sudo chmod 4755 /run/wrappers/bin/sudo`
 
 ### LSP
 
