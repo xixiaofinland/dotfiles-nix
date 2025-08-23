@@ -35,7 +35,7 @@ This repository contains my personal configuration files (dotfiles) managed usin
    ```
    In NixOS:
     ```bash
-    sudo nixos-rebuild switch --flake ~/dotfiles-nix/
+    sudo nixos-rebuild switch --flake ~/dotfiles-nix/.#hyprland-pc
     sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
     sudo nix-env --switch-generation 93 --profile /nix/var/nix/profiles/system
     ```

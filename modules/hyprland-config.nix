@@ -109,4 +109,13 @@
       ExecStart = "${pkgs.udiskie}/bin/udiskie --no-notify";
     };
   };
+
+  # Ollama service
+  services.ollama = {
+    enable = true;
+    # Uncomment one if you want GPU acceleration:
+    acceleration = "cuda";   # NVIDIA
+    # acceleration = "rocm";   # AMD
+    # acceleration = "metal";  # Apple Silicon
+  };
 }
