@@ -44,7 +44,7 @@
     # qbittorrent-enhanced
     qbittorrent
     vlc
-    evince #pdf reader
+    kdePackages.okular #pdf reader
   ];
   fonts.fontconfig.enable = true;
 

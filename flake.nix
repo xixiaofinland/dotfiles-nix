@@ -91,23 +91,23 @@
         }));
   in {
     nixosConfigurations = {
-      "${nixos-wsl-hostname}" = nixpkgs.lib.nixosSystem rec {
-        system = "${nixos-sys}";
-        pkgs = import nixpkgs {
-          inherit system overlays sfdx-nix;
-          config.allowUnfreePredicate = pkg:
-            builtins.elem (lib.getName pkg) ["obsidian"];
-        };
-        modules =
-          nixos-baseModules nixos-wsl-user ./modules/home.nix
-          ++ [
-            nixos-wsl.nixosModules.wsl
-            {
-              wsl.enable = true;
-              wsl.defaultUser = "nixos";
-            }
-          ];
-      };
+      # "${nixos-wsl-hostname}" = nixpkgs.lib.nixosSystem rec {
+      #   system = "${nixos-sys}";
+      #   pkgs = import nixpkgs {
+      #     inherit system overlays sfdx-nix;
+      #     config.allowUnfreePredicate = pkg:
+      #       builtins.elem (lib.getName pkg) ["obsidian"];
+      #   };
+      #   modules =
+      #     nixos-baseModules nixos-wsl-user ./modules/home.nix
+      #     ++ [
+      #       nixos-wsl.nixosModules.wsl
+      #       {
+      #         wsl.enable = true;
+      #         wsl.defaultUser = "nixos";
+      #       }
+      #     ];
+      # };
 
       "${hyprland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
