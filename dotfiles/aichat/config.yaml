@@ -8,6 +8,4 @@ wrap: no                         # Controls text wrapping (no, auto, <max-width>
 wrap_code: false                 # Enables or disables wrapping of code blocks
 
 model: openai:gpt-5-mini
-clients:
-- type: openai
-  # api_key:
+# https://github.com/sigoden/aichat/wiki/Environment-Variables
