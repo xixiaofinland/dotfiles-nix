@@ -24,13 +24,13 @@ vim.keymap.set('n', '<leader>hn', function() return ':e ' .. vim.fn.expand '%:p:
 
 vim.keymap.set('n', '<leader>hc', function()
   local file_name = vim.fn.expand("%:t")
-  vim.fn.setreg('*', file_name)
+  vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
 end, { desc = 'Copy file name' })
 
 vim.keymap.set('n', '<leader>hC', function()
   local file_name = vim.fn.expand("%:p")
-  vim.fn.setreg('*', file_name)
+  vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
 end, { desc = 'Copy File name full path' })
 
