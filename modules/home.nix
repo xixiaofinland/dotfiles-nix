@@ -73,6 +73,15 @@ in {
     };
     ".config/waybar/config".source = ../dotfiles/hypr/waybar/config;
     ".config/waybar/style.css".source = ../dotfiles/hypr/waybar/style.css;
+
+    # Platform-specific config path for aichat
+    ${
+      if pkgs.stdenv.isDarwin
+      then "Library/Application Support/aichat/config.yaml"
+      else ".config/aichat/config.yaml"
+    } = {
+      source = ../dotfiles/aichat/config.yaml;
+    };
   };
 
   # home.file."Wallpapers".source = builtins.path {
