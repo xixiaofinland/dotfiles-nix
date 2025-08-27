@@ -120,21 +120,6 @@ in {
 
   programs.aichat = {
     enable = true;
-    # settings = {
-    #   stream = false;
-    #   save = true; # persist message history
-    #   keybindings = "vi";
-    #   editor = "nvim";
-    #   wrap = "no";
-    #   wrap_code = false;
-    #
-    #   model = "openai:gpt-5";
-    #   clients = [
-    #     {
-    #       type = "openai";
-    #     }
-    #   ];
-    # };
   };
 
   programs.zoxide = {
@@ -145,8 +130,6 @@ in {
 
   programs.direnv = {
     enable = true;
-    # enableZshIntegration = true;
-    # enableFishIntegration = true;
     nix-direnv.enable = true;
   };
 
@@ -181,11 +164,8 @@ in {
       bind x run-shell 'tmux switch-client -n \; kill-session -t "#S"'
 
       bind u switch-client -l
-      bind t display-popup -E "finter"
-      bind d display-popup -E "finter"
-      # bind = split-window -v -c "#{pane_current_path}"
-      bind h split-window -h -c "#{pane_current_path}"
-      bind \' new-window -c "#{pane_current_path}"
+      bind f display-popup -E "finter"
+      bind l split-window -h -c "#{pane_current_path}"
       bind = new-window -c "#{pane_current_path}"
       bind q killp
 
