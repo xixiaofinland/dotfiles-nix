@@ -102,7 +102,16 @@ in {
     '';
   };
 
-  xdg.configFile."aichat" = {
+  # Linux (NixOS) → ~/.config/aichat
+  xdg.configFile."aichat" = lib.mkIf pkgs.stdenv.isLinux {
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat";
+    recursive = true;
+  };
+
+  # macOS → ~/Library/Application Support/aichat
+  home.file."Library/Application Support/aichat" = lib.mkIf pkgs.stdenv.isDarwin {
     source =
       config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat";
