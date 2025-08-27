@@ -56,6 +56,11 @@ in {
     aichat
   ];
 
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
+
   home.file = {
     ".finter".source = ../dotfiles/.finter;
     ".gitconfig".source = ../dotfiles/.gitconfig;
@@ -72,15 +77,6 @@ in {
     };
     ".config/waybar/config".source = ../dotfiles/hypr/waybar/config;
     ".config/waybar/style.css".source = ../dotfiles/hypr/waybar/style.css;
-
-    # Platform-specific config path for aichat
-    ${
-      if pkgs.stdenv.isDarwin
-      then "Library/Application Support/aichat/config.yaml"
-      else ".config/aichat/config.yaml"
-    } = {
-      source = ../dotfiles/aichat/config.yaml;
-    };
   };
 
   # trade impurity for convenience as I need to update nvim config quite frequently!
@@ -106,28 +102,33 @@ in {
     '';
   };
 
-  home.sessionVariables = {
-    LANG = "en_US.UTF-8";
-    LC_ALL = "en_US.UTF-8";
+  # Config (static)
+  xdg.configFile."aichat/config.yaml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat/config.yaml";
+
+  # State (mutable, tracked in repo)
+  xdg.dataFile."aichat" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat/data";
+    recursive = true;
   };
 
   programs.aichat = {
     enable = true;
-    settings = {
-      stream = false;
-      save = true; # persist message history
-      keybindings = "vi";
-      editor = "nvim";
-      wrap = "no";
-      wrap_code = false;
-
-      model = "openai:gpt-5";
-      clients = [
-        {
-          type = "openai";
-        }
-      ];
-    };
+    # settings = {
+    #   stream = false;
+    #   save = true; # persist message history
+    #   keybindings = "vi";
+    #   editor = "nvim";
+    #   wrap = "no";
+    #   wrap_code = false;
+    #
+    #   model = "openai:gpt-5";
+    #   clients = [
+    #     {
+    #       type = "openai";
+    #     }
+    #   ];
+    # };
   };
 
   programs.zoxide = {
