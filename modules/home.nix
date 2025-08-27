@@ -102,13 +102,10 @@ in {
     '';
   };
 
-  # Config (static)
-  xdg.configFile."aichat/config.yaml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat/config.yaml";
-
-  # State (mutable, tracked in repo)
-  xdg.dataFile."aichat" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat/data";
+  xdg.configFile."aichat" = {
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles-nix/dotfiles/aichat";
     recursive = true;
   };
 
