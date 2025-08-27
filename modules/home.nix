@@ -34,8 +34,8 @@ in {
     zoxide
     gnumake
     nodejs_22
-
     alacritty
+    obsidian
 
     # git
     jujutsu
@@ -49,12 +49,11 @@ in {
 
     # lua
     lua-language-server
-    #luajitPackages.luarocks
 
     # salesforce
     sf
 
-    obsidian
+    aichat
   ];
 
   home.file = {
@@ -84,11 +83,6 @@ in {
     };
   };
 
-  # home.file."Wallpapers".source = builtins.path {
-  #   path = ../dotfiles/Wallpapers;
-  #   name = "Wallpapers";
-  # };
-
   # trade impurity for convenience as I need to update nvim config quite frequently!
   xdg.configFile."nvim" = {
     source =
@@ -117,9 +111,27 @@ in {
     LC_ALL = "en_US.UTF-8";
   };
 
+  programs.aichat = {
+    enable = true;
+    settings = {
+      stream = false;
+      save = true; # persist message history
+      keybindings = "vi";
+      editor = "nvim";
+      wrap = "no";
+      wrap_code = false;
+
+      model = "openai:gpt-5";
+      clients = [
+        {
+          type = "openai";
+        }
+      ];
+    };
+  };
+
   programs.zoxide = {
     enable = true;
-    # enableZshIntegration = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
