@@ -277,6 +277,7 @@ in {
       set -g fish_greeting ""
       function __fish_command_not_found_handler; end
 
+      set -g fish_emoji_width 1
       set -g pure_symbol_nix "*" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
 
       # pure theme
