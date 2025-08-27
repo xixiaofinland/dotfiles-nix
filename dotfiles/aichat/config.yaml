@@ -7,7 +7,7 @@ editor: nvim                     # Specifies the command used to edit input buff
 wrap: no                         # Controls text wrapping (no, auto, <max-width>)
 wrap_code: false                 # Enables or disables wrapping of code blocks
 
-model: openai:gpt-5-mini
+model: openai:gpt-5
 clients:
 - type: openai
 # https://github.com/sigoden/aichat/wiki/Environment-Variables
