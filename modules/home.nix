@@ -47,6 +47,10 @@ in {
 
     # salesforce
     sf
+    (pkgs.writeShellScriptBin "aichat" ''
+      export OPENAI_API_KEY="$(${pkgs.rbw}/bin/rbw get openai-api-key)"
+      exec ${pkgs.aichat}/bin/aichat "$@"
+    '')
   ];
 
   home.sessionVariables = {
@@ -111,17 +115,14 @@ in {
     recursive = true;
   };
 
-  programs.aichat = {
-    enable = true;
-  };
-
   programs.rbw = {
     enable = true;
     settings = {
       email = "xi.xiao007@gmail.com";
-      base_url = "https://vault.bitwarden.com";
-      identity_url = "https://identity.bitwarden.com";
-      # pinentry = "${pkgs.pinentry}/bin/pinentry";
+      pinentry =
+        if pkgs.stdenv.isDarwin
+        then pkgs.pinentry_mac
+        else pkgs.pinentry;
     };
   };
 
