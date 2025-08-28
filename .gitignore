@@ -3,3 +3,5 @@
 /nix/store/
 result
 .env
+dotfiles/aichat/messages.md
+
