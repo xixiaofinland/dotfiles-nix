@@ -16,8 +16,8 @@ return {
           try_as_border = true,
         },
         mappings = {
-          goto_top = '[s',
-          goto_bottom = ']s',
+          goto_top = '[p',
+          goto_bottom = ']p',
         }
       })
 
@@ -171,17 +171,20 @@ return {
       })
 
       require('mini.bracketed').setup({
+        indent     = { suffix = 'i', options = {} },
+        comment    = { suffix = 'g', options = {} },
+
         -- nvim has the default `d`
-        diagnostic = { suffix = '', options = {} },
+        diagnostic = { sufeix = '', options = {} },
 
         -- disabled ones which I don't use;
+        location   = { suffix = ' ', options = {} },
         undo       = { suffix = '', options = {} },
         window     = { suffix = '', options = {} },
-        comment    = { suffix = '', options = {} }, -- it conflicts with diff hunk move in Nvim diff mode
       })
       local severity_error = vim.diagnostic.severity.ERROR
-      nmap(']e', function() MiniBracketed.diagnostic('forward', { severity = severity_error }) end, 'next error')
-      nmap('[e', function() MiniBracketed.diagnostic('backward', { severity = severity_error }) end, 'previous error')
+      nmap(']l', function() MiniBracketed.diagnostic('forward', { severity = severity_error }) end, 'next error')
+      nmap('[l', function() MiniBracketed.diagnostic('backward', { severity = severity_error }) end, 'previous error')
 
 
       local hipatterns = require('mini.hipatterns')
