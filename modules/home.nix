@@ -23,7 +23,6 @@ in {
   home.packages = with pkgs; [
     cachix
     eza
-    tldr
     bat
     fd
     fzf
@@ -31,14 +30,10 @@ in {
     nh
     ripgrep
     tree
-    zoxide
     gnumake
     nodejs_22
     alacritty
     obsidian
-
-    # git
-    jujutsu
 
     # custom
     finter
@@ -52,8 +47,6 @@ in {
 
     # salesforce
     sf
-
-    aichat
   ];
 
   home.sessionVariables = {
@@ -120,6 +113,16 @@ in {
 
   programs.aichat = {
     enable = true;
+  };
+
+  programs.rbw = {
+    enable = true;
+    settings = {
+      email = "xi.xiao007@gmail.com";
+      base_url = "https://vault.bitwarden.com";
+      identity_url = "https://identity.bitwarden.com";
+      # pinentry = "${pkgs.pinentry}/bin/pinentry";
+    };
   };
 
   programs.zoxide = {
