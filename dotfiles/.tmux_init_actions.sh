@@ -43,6 +43,8 @@ fi
 
 # 3. repos pull
 
+rbw unlock
+
 echo -e "-- Pull dotfiles..."
 git -C $HOME/dotfiles-nix/ pull
 
