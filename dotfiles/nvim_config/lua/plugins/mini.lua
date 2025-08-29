@@ -178,7 +178,7 @@ return {
         diagnostic = { sufeix = '', options = {} },
 
         -- disabled ones which I don't use;
-        location   = { suffix = ' ', options = {} },
+        location   = { suffix = '', options = {} },
         undo       = { suffix = '', options = {} },
         window     = { suffix = '', options = {} },
       })
