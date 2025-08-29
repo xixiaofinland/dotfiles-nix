@@ -4,4 +4,5 @@
 result
 .env
 dotfiles/aichat/messages.md
+dotfiles/aichat/sessions/
 
