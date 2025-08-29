@@ -263,6 +263,9 @@ in {
       set -g fish_greeting ""
       function __fish_command_not_found_handler; end
 
+      # point ssh to rbw-agent
+      set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+
       set -g fish_emoji_width 1
       set -g pure_symbol_nix "*" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
 
