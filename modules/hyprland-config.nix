@@ -111,11 +111,8 @@
   };
 
   # Ollama service
-  services.ollama = {
-    enable = true;
-    # Uncomment one if you want GPU acceleration:
-    acceleration = "cuda";   # NVIDIA
-    # acceleration = "rocm";   # AMD
-    # acceleration = "metal";  # Apple Silicon
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "cuda";   # NVIDIA
+  # };
 }

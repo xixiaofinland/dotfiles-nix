@@ -39,7 +39,7 @@
     hyprpaper
 
     unzip
-    anki
+    anki-bin
     # transmission_4-qt
     # qbittorrent-enhanced
     qbittorrent
