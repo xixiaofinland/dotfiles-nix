@@ -3,7 +3,8 @@
 /nix/store/
 result
 .env
+*.log
+
 dotfiles/aichat/messages.md
 dotfiles/aichat/sessions/
-*.log
 
