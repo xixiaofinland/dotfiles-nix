@@ -1,12 +1,3 @@
--- vim.cmd('packadd cfilter')
-
--- transparent bg
--- vim.cmd[[ hi Normal guibg=NONE ctermbg=NONE ]]
--- vim.cmd[[ hi NormalNC guibg=NONE ctermbg=NONE ]]
--- vim.cmd[[ hi Pmenu guibg=NONE ctermbg=NONE ]]      -- optional: popup menu
--- vim.cmd[[ hi EndOfBuffer guibg=NONE ctermbg=NONE ]] -- optional: hide ~ lines
-
--- Delay this setting as it doesn't work consistently when it's in mini.lua
 -- Need to remember removing this when mini.cursorline is not in use anymore
 vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {})
 
@@ -30,7 +21,6 @@ vim.opt.scrolloff = 10
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
--- vim.api.nvim_set_hl(0, 'CursorLineNr', { bold = true, ctermfg = 11, foreground = 'Yellow' })
 
 vim.opt.foldenable = false
 
