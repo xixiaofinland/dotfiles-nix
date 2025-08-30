@@ -58,8 +58,8 @@ local toggle = function(character)
     return api.nvim_set_current_line(line .. character)
   end
 end
-vim.keymap.set('n', '<leader>,', function() toggle(',') end, { noremap = true, silent = true, desc = '","' })
-vim.keymap.set('n', '<leader>;', function() toggle(';') end, { noremap = true, silent = true, desc = '";"' })
+vim.keymap.set('n', '<leader>,', function() toggle(',') end, { silent = true, desc = '","' })
+vim.keymap.set('n', '<leader>;', function() toggle(';') end, { silent = true, desc = '";"' })
 
 -- toggle diagnostics;
 
@@ -74,7 +74,7 @@ local toggleDiagnostics = function()
     print("Diagnostics disabled")
   end
 end
-vim.keymap.set('n', '\\d', toggleDiagnostics, { noremap = true, silent = true, desc = 'diagnostics' })
+vim.keymap.set('n', '\\d', toggleDiagnostics, { silent = true, desc = 'diagnostics' })
 
 -- toggle line num;
 
@@ -88,38 +88,23 @@ local toggleLineNum = function()
     vim.wo.relativenumber = true
   end
 end
-vim.keymap.set('n', '\\n', toggleLineNum, { noremap = true, silent = true, desc = 'lineNum' })
-
--- toggle background;
-
-function toggleBackground()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
-  else
-    vim.o.background = "dark"
-  end
-end
-
-vim.keymap.set('n', '\\B', toggleBackground, { noremap = true, silent = true, desc = 'background light/dark' })
-
-
-local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '\\n', toggleLineNum, { silent = true, desc = 'lineNum' })
 
 -- insert mode <C-e> delete till end of word;
-vim.keymap.set('i', '<C-e>', '<C-o>de', opts)
+vim.keymap.set('i', '<C-e>', '<C-o>de', { silent = true })
 
 -- Duplicate a line and comment out the first line
 vim.keymap.set('n', 'yp', 'yy<cmd>normal gcc<CR>p')
 
 -- LSP key
 vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
-  { noremap = true, silent = true, desc = 'format file' })
+  { silent = true, desc = 'format file' })
 
-vim.keymap.set('n', 'L', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'show diagnostic' })
-vim.keymap.set('n', 'H', vim.lsp.buf.hover, { noremap = true, silent = true, desc = 'LSP hover doc' })
+vim.keymap.set('n', 'L', vim.diagnostic.open_float, { silent = true, desc = 'show diagnostic' })
+vim.keymap.set('n', 'H', vim.lsp.buf.hover, { silent = true, desc = 'LSP hover doc' })
 
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'code action' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'rename' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { silent = true, desc = 'code action' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = 'rename' })
 
 -- Close all floating windows
 vim.keymap.set('n', '<Esc>', function()
@@ -128,13 +113,13 @@ vim.keymap.set('n', '<Esc>', function()
       vim.api.nvim_win_close(win, false)
     end
   end
-end, { noremap = true, silent = true, desc = 'Close floating windows' })
+end, { silent = true, desc = 'Close floating windows' })
 
 -- Save and quit
-vim.keymap.set('n', '##', ':x<CR>', { noremap = true, silent = true, desc = 'Save and quit' })
+vim.keymap.set('n', '##', ':x<CR>', { silent = true, desc = 'Save and quit' })
 
 -- Quit without saving
-vim.keymap.set('n', 'QQ', ':q!<CR>', { noremap = true, silent = true, desc = 'Force quit' })
+vim.keymap.set('n', 'QQ', ':q!<CR>', { silent = true, desc = 'Force quit' })
 
 -- Obsidian pick files
 vim.keymap.set("n", "<leader>nf", "<cmd>Obsidian quick_switch<cr>", { desc = "Quick switch notes" })
