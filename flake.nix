@@ -36,8 +36,6 @@
     rust-overlay,
     sfdx-nix,
   }: let
-    nixos-wsl-user = "nixos";
-    nixos-wsl-hostname = "nixos";
     hyprland-pc-user = "finxxi";
     hyprland-pc-hostname = "hyprland-pc";
     nixos-sys = "x86_64-linux";
@@ -52,7 +50,6 @@
           sf = sfdx-nix.packages.${final.system}.sf;
           rustToolchainStable = final.rust-bin.stable.latest.default;
           rustToolchainNightly = final.rust-bin.nightly.latest.default;
-          rustToolchain0625 = final.rust-bin.nightly."2024-06-25".default;
         }
       )
     ];
@@ -91,24 +88,6 @@
         }));
   in {
     nixosConfigurations = {
-      # "${nixos-wsl-hostname}" = nixpkgs.lib.nixosSystem rec {
-      #   system = "${nixos-sys}";
-      #   pkgs = import nixpkgs {
-      #     inherit system overlays sfdx-nix;
-      #     config.allowUnfreePredicate = pkg:
-      #       builtins.elem (lib.getName pkg) ["obsidian"];
-      #   };
-      #   modules =
-      #     nixos-baseModules nixos-wsl-user ./modules/home.nix
-      #     ++ [
-      #       nixos-wsl.nixosModules.wsl
-      #       {
-      #         wsl.enable = true;
-      #         wsl.defaultUser = "nixos";
-      #       }
-      #     ];
-      # };
-
       "${hyprland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
