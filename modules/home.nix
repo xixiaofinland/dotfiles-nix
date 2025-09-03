@@ -121,7 +121,7 @@ in {
     enable = true;
     settings = {
       email = "xi.xiao007@gmail.com";
-      lock_timeout = 28800; # 8h
+      lock_timeout = 43200; # 12h
       pinentry =
         if pkgs.stdenv.isDarwin
         then pkgs.pinentry_mac
