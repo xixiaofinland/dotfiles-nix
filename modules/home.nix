@@ -48,7 +48,7 @@ in {
     # salesforce
     sf
 
-    # aichat doesn't support from external apps
+    # aichat doesn't support keys imported from external apps, thus the wrapper
     (pkgs.writeShellScriptBin "aichat" ''
       export OPENAI_API_KEY="$(${pkgs.rbw}/bin/rbw get openai-api-key)"
       exec ${pkgs.aichat}/bin/aichat "$@"
