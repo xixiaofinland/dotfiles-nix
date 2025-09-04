@@ -296,6 +296,8 @@
               debugpy
               # jupyter kernel (optional)
               ipykernel
+              jupyterlab
+              notebook # optional, for legacy jupyter notebook UI
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
