@@ -2,11 +2,6 @@
   description = "A simple NixOS flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-wsl = {
-      url = "github:nix-community/nixos-wsl";
-      # inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -175,33 +170,33 @@
           '';
         };
 
-      afmt = let
-        packages = with pkgs; [
-          # rust-bin.stable.latest.default
-          (rust-bin.stable.latest.default.override {
-            extensions = ["rust-src"];
-            targets = ["wasm32-unknown-unknown"];
-          })
-          cargo-audit
-          cargo-deny
-          cargo-tarpaulin
-          rust-analyzer
-          jdk
-          parallel
-          wasm-bindgen-cli
-          wasm-pack
-          simple-http-server
-          prettierd
-        ];
-      in
-        pkgs.mkShell {
-          name = "Afmt";
-          packages = packages;
-          shellHook = ''
-            echo "🚀🚀🚀🚀 Hello Afmt!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # afmt = let
+      #   packages = with pkgs; [
+      #     # rust-bin.stable.latest.default
+      #     (rust-bin.stable.latest.default.override {
+      #       extensions = ["rust-src"];
+      #       targets = ["wasm32-unknown-unknown"];
+      #     })
+      #     cargo-audit
+      #     cargo-deny
+      #     cargo-tarpaulin
+      #     rust-analyzer
+      #     jdk
+      #     parallel
+      #     wasm-bindgen-cli
+      #     wasm-pack
+      #     simple-http-server
+      #     prettierd
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Afmt";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "🚀🚀🚀🚀 Hello Afmt!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
 
       blog = let
         packages = with pkgs; [
@@ -267,52 +262,52 @@
       #     '';
       #   };
 
-      nvim = let
-        packages = with pkgs; [
-          # gnumake
-        ];
-      in
-        pkgs.mkShell {
-          name = "Nvim";
-          packages = packages;
-          shellHook = ''
-            echo "🅽 🅽 🅽 🅽  hello Nvim!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # nvim = let
+      #   packages = with pkgs; [
+      #     # gnumake
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Nvim";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "🅽 🅽 🅽 🅽  hello Nvim!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
 
-      python = let
-        packages = with pkgs; [
-          (python312.withPackages (ps:
-            with ps; [
-              ipython
-              pip
-              virtualenv
-              # editor/test tooling
-              black
-              isort
-              ruff
-              pytest
-              debugpy
-              # jupyter kernel (optional)
-              ipykernel
-              jupyterlab
-              notebook # optional, for legacy jupyter notebook UI
-            ]))
-          # LSPs & helpers as binaries (no pip needed)
-          pyright
-          # Native build deps when wheels aren’t available
-          cmake
-        ];
-      in
-        pkgs.mkShell {
-          name = "Python";
-          packages = packages;
-          shellHook = ''
-            echo "🧠🤖🧠🤖 hello Python development!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-          '';
-        };
+      # python = let
+      #   packages = with pkgs; [
+      #     (python312.withPackages (ps:
+      #       with ps; [
+      #         ipython
+      #         pip
+      #         virtualenv
+      #         # editor/test tooling
+      #         black
+      #         isort
+      #         ruff
+      #         pytest
+      #         debugpy
+      #         # jupyter kernel (optional)
+      #         ipykernel
+      #         jupyterlab
+      #         notebook # optional, for legacy jupyter notebook UI
+      #       ]))
+      #     # LSPs & helpers as binaries (no pip needed)
+      #     pyright
+      #     # Native build deps when wheels aren’t available
+      #     cmake
+      #   ];
+      # in
+      #   pkgs.mkShell {
+      #     name = "Python";
+      #     packages = packages;
+      #     shellHook = ''
+      #       echo "🧠🤖🧠🤖 hello Python development!"
+      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+      #     '';
+      #   };
     });
   };
 }
