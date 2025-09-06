@@ -277,38 +277,38 @@
       #     '';
       #   };
 
-      # python = let
-      #   packages = with pkgs; [
-      #     (python312.withPackages (ps:
-      #       with ps; [
-      #         ipython
-      #         pip
-      #         virtualenv
-      #         # editor/test tooling
-      #         black
-      #         isort
-      #         ruff
-      #         pytest
-      #         debugpy
-      #         # jupyter kernel (optional)
-      #         ipykernel
-      #         jupyterlab
-      #         notebook # optional, for legacy jupyter notebook UI
-      #       ]))
-      #     # LSPs & helpers as binaries (no pip needed)
-      #     pyright
-      #     # Native build deps when wheels aren’t available
-      #     cmake
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "Python";
-      #     packages = packages;
-      #     shellHook = ''
-      #       echo "🧠🤖🧠🤖 hello Python development!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
+      python = let
+        packages = with pkgs; [
+          (python312.withPackages (ps:
+            with ps; [
+              ipython
+              pip
+              virtualenv
+              # editor/test tooling
+              black
+              isort
+              ruff
+              pytest
+              debugpy
+              # jupyter kernel (optional)
+              ipykernel
+              jupyterlab
+              notebook # optional, for legacy jupyter notebook UI
+            ]))
+          # LSPs & helpers as binaries (no pip needed)
+          pyright
+          # Native build deps when wheels aren’t available
+          cmake
+        ];
+      in
+        pkgs.mkShell {
+          name = "Python";
+          packages = packages;
+          shellHook = ''
+            echo "🧠🤖🧠🤖 hello Python development!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
     });
   };
 }
