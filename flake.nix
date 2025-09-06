@@ -26,7 +26,6 @@
     flake-utils,
     home-manager,
     nixpkgs,
-    nixos-wsl,
     nix-darwin,
     rust-overlay,
     sfdx-nix,
