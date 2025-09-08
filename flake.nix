@@ -298,6 +298,8 @@
               ipykernel
               jupyterlab
               notebook # optional, for legacy jupyter notebook UI
+              numpy
+              matplotlib
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
