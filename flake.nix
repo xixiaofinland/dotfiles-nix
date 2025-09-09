@@ -294,25 +294,73 @@
               ruff
               pytest
               debugpy
-              # jupyter kernel (optional)
-              ipykernel
+              # jupyter kernel (base, pip can add more)
               jupyterlab
-              notebook # optional, for legacy jupyter notebook UI
-              numpy
-              matplotlib
+              notebook
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
-          # Native build deps when wheels aren’t available
+          # Native build deps when wheels aren't available
           cmake
+          pkg-config
+          # System libraries needed for native Python packages
+          gcc-unwrapped.lib
+          stdenv.cc.cc.lib
+          zlib
+          # Additional libraries often needed for ML packages
+          libffi
+          openssl
         ];
       in
         pkgs.mkShell {
-          name = "Python";
+          name = "Python ML";
           packages = packages;
+
+          # Environment variables for native compilation
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.gcc-unwrapped.lib
+            pkgs.stdenv.cc.cc.lib
+            pkgs.zlib
+            pkgs.libffi
+            pkgs.openssl
+          ];
+
+          # Help pip find system libraries during compilation
+          NIX_CFLAGS_COMPILE = "-I${pkgs.zlib.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.openssl.dev}/include";
+          NIX_LDFLAGS = "-L${pkgs.zlib}/lib -L${pkgs.libffi}/lib -L${pkgs.openssl.out}/lib";
+
           shellHook = ''
-            echo "🧠🤖🧠🤖 hello Python development!"
-            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+            echo "🧠🤖 hello Python ML devshell!"
+            # 1️⃣ Create .venv if missing
+            if [ ! -d .venv ]; then
+              echo "📦 Creating local .venv..."
+              python -m venv .venv
+            fi
+            # 2️⃣ Activate .venv
+            source .venv/bin/activate
+
+            # 3️⃣ Only upgrade tools if needed
+            if [ ! -f .venv/.setup_complete ]; then
+              echo "🔧 Setting up Python environment..."
+              pip install --upgrade pip setuptools wheel
+
+              # 4️⃣ Install requirements (including ipykernel + ML packages)
+              if [ -f requirements.txt ]; then
+                echo "📥 Installing Python packages from requirements.txt..."
+                pip install -r requirements.txt
+              fi
+
+              # 5️⃣ Register Jupyter kernel
+              echo "📝 Registering ML venv kernel..."
+              jupyter kernelspec uninstall ml-venv -y 2>/dev/null || true
+              python -m ipykernel install --user --name=ml-venv --display-name "Python ML (.venv)"
+
+              # Mark setup as complete
+              touch .venv/.setup_complete
+              echo "✅ ML environment ready with Jupyter kernel registered!"
+            else
+              echo "✅ ML environment already set up!"
+            fi
           '';
         };
     });
