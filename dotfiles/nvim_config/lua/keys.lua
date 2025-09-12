@@ -176,6 +176,11 @@ vim.keymap.set("n", "^", function()
   end
 end, { expr = true, desc = "Smart start-of-line" })
 
+-- marks
+vim.keymap.set('n', '<leader>mp', ':mark p<CR>')
+vim.keymap.set('n', '<leader>md', ':mark d<CR>')
+vim.keymap.set('n', '<leader>mn', ':mark n<CR>')
+
 -- display LSPs like :LspInfo
 
 vim.keymap.set("n", "<leader>pl", function()
