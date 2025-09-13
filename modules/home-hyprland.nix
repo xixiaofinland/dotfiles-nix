@@ -26,8 +26,6 @@
     # wl-screenrec # not work with Nvidia GPU
     wf-recorder
 
-    davinci-resolve
-
     brave
 
     blueman # GUI Bluetooth manager
