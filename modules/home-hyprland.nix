@@ -23,6 +23,8 @@
     slurp
     wl-clipboard
 
+    wl-screenrec
+
     brave
 
     blueman # GUI Bluetooth manager
