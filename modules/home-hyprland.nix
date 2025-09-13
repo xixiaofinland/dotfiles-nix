@@ -24,6 +24,7 @@
     wl-clipboard
 
     wl-screenrec
+    davinci-resolve
 
     brave
 
