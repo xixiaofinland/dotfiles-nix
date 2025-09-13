@@ -23,7 +23,9 @@
     slurp
     wl-clipboard
 
-    wl-screenrec
+    # wl-screenrec # not work with Nvidia GPU
+    wf-recorder
+
     davinci-resolve
 
     brave
