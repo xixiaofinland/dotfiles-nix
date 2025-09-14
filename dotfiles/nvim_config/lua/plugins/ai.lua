@@ -43,19 +43,34 @@ return {
     build = "make tiktoken",                          -- Only on MacOS or Linux
     config = function()
       require("CopilotChat").setup({
+        model = 'claude-sonnet-4',
         prompts = {
           StickyRust = {
             prompt = [[
-            > #glob:src/**/*.rs
-            > You are a Rust coding assistant.
-            > Always provide clear explanations and reasoning.
-            > If a file references other modules, ask me to add them with #file or #glob.
-            > Focus on safe Rust practices and idiomatic patterns.
+              > #buffers
+              > You are a Rust coding assistant.
+              > Always provide clear explanations and reasoning.
+              > If a file references other modules, ask me to add them with #file or #glob.
+              > Focus on safe Rust practices and idiomatic patterns.
           ]],
             system_prompt =
             'You are a Rust coding assistant that helps me understand and work with Rust code efficiently.',
-            -- mapping = '<leader>csr', -- optional keybinding
-            description = 'Sticky Rust assistant that keeps buffers and project context across session.'
+            description = ''
+          },
+
+          StickyApex = {
+            prompt = [[
+                > #buffers
+                > You are an Apex coding assistant.
+                > Always provide clear explanations and reasoning.
+                > If a class is referenced in the current context but not present in loaded files,
+                > tell me explicitly which file you need and ask me to add it using #file or #glob.
+                > Focus on Salesforce best practices, Apex idioms, and proper triggers, classes, and test coverage.
+                > Persist this context across the chat session.
+              ]],
+            system_prompt =
+            'You are an Apex assistant that helps me work with classes in Salesforce projects efficiently.',
+            description = ''
           }
         }
       });
