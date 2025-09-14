@@ -65,8 +65,7 @@ return {
                 > Always provide clear explanations and reasoning.
                 > If a class is referenced in the current context but not present in loaded files,
                 > tell me explicitly which file you need and ask me to add it using #file or #glob.
-                > Focus on Salesforce best practices, Apex idioms, and proper triggers, classes, and test coverage.
-                > Persist this context across the chat session.
+                > Focus on Clean Code, Salesforce best practices, Apex idioms, and proper triggers, classes, and test coverage.
               ]],
             system_prompt =
             'You are an Apex assistant that helps me work with classes in Salesforce projects efficiently.',
