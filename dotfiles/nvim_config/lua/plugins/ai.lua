@@ -42,7 +42,23 @@ return {
     },
     build = "make tiktoken",                          -- Only on MacOS or Linux
     config = function()
-      require("CopilotChat").setup({});
+      require("CopilotChat").setup({
+        prompts = {
+          StickyRust = {
+            prompt = [[
+            > #glob:src/**/*.rs
+            > You are a Rust coding assistant.
+            > Always provide clear explanations and reasoning.
+            > If a file references other modules, ask me to add them with #file or #glob.
+            > Focus on safe Rust practices and idiomatic patterns.
+          ]],
+            system_prompt =
+            'You are a Rust coding assistant that helps me understand and work with Rust code efficiently.',
+            -- mapping = '<leader>csr', -- optional keybinding
+            description = 'Sticky Rust assistant that keeps buffers and project context across session.'
+          }
+        }
+      });
 
       vim.keymap.set({ 'n', 'v' }, '<leader>ao', '<cmd>CopilotChatToggle<CR>',
         { desc = 'Toggle chat window' })
