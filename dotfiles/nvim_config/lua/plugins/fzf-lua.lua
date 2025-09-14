@@ -75,7 +75,7 @@ return {
       nmap('<leader>gb', fzf.git_branches, 'git branches')
       nmap("<leader>gr", function()
         fzf.lsp_references({
-          jump_to_single_result = true,
+          jump1 = true,
           ignore_current_line = true,
           ignoreDecleration = true,
         })
