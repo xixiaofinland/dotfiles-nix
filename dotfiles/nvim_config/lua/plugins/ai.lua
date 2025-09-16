@@ -74,6 +74,9 @@ return {
         }
       });
 
+      vim.keymap.set({ 'n', 'v' }, '<C-d>', '<cmd>CopilotChatStop<CR>',
+        { desc = 'Stop chat output' })
+
       vim.keymap.set({ 'n', 'v' }, '<leader>ao', '<cmd>CopilotChatToggle<CR>',
         { desc = 'Toggle chat window' })
 
