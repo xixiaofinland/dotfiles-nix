@@ -14,9 +14,8 @@ return {
         actions = {
           files = {
             true,
-            -- ["default"] = actions.file_edit_or_qf,
-            -- ["ctrl-s"]  = actions.file_split,
-            ["ctrl-e"]  = actions.file_vsplit,
+            ["alt-o"]  = require('fzf-lua').actions.file_edit, -- in multi-selection, open as buffers
+            ["ctrl-e"] = actions.file_vsplit,
           }
         }
       })
