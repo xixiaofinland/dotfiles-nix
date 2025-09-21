@@ -164,6 +164,8 @@
         packages = with pkgs; [
           rust-bin.stable.latest.default
           rust-analyzer
+
+          cargo-tarpaulin
         ];
       in
         pkgs.mkShell {
