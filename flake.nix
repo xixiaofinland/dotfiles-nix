@@ -165,7 +165,9 @@
           rust-bin.stable.latest.default
           rust-analyzer
 
+          clang
           cargo-tarpaulin
+          cargo-watch
         ];
       in
         pkgs.mkShell {
