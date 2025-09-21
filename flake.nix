@@ -168,6 +168,8 @@
           clang
           cargo-tarpaulin
           cargo-watch
+          cargo-expand
+          mold
         ];
       in
         pkgs.mkShell {
