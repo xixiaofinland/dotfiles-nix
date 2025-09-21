@@ -2,8 +2,16 @@ return {
   {
     'sindrets/diffview.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>ho', vim.cmd.DiffviewOpen, { desc = 'open diff window' })
-      vim.keymap.set('n', '<leader>hc', vim.cmd.DiffviewClose, { desc = 'close diff window' })
+      local toggle_diffview = function()
+        local has_view = require('diffview.lib').get_current_view()
+        if has_view then
+          vim.cmd.DiffviewClose()
+        else
+          vim.cmd.DiffviewOpen()
+        end
+      end
+
+      vim.keymap.set('n', '<leader>w', toggle_diffview, { desc = 'toggle diffview' })
     end
   },
 
