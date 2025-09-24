@@ -303,6 +303,11 @@
               # jupyter kernel (base, pip can add more)
               jupyterlab
               notebook
+
+              # scientific/ML libs
+              numpy
+              matplotlib
+              ipympl   # <- enables %matplotlib widget
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
