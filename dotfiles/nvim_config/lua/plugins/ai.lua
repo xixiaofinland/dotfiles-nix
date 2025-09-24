@@ -47,7 +47,6 @@ return {
         prompts = {
           StickyRust = {
             prompt = [[
-              > #buffers
               > You are a Rust coding assistant.
               > Always provide clear explanations and reasoning.
               > If a file references other modules, ask me to add them with #file or #glob.
@@ -60,7 +59,6 @@ return {
 
           StickyApex = {
             prompt = [[
-                > #buffers
                 > You are an Apex coding assistant.
                 > Always provide clear explanations and reasoning.
                 > If a class is referenced in the current context but not present in loaded files,
