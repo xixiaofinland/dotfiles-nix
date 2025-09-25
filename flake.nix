@@ -170,6 +170,9 @@
           cargo-watch
           cargo-expand
           mold
+
+          # temp for zero-to-prod
+          docker
         ];
       in
         pkgs.mkShell {
