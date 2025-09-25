@@ -170,6 +170,9 @@
           cargo-watch
           cargo-expand
           mold
+
+          # temp
+          postgresql
         ];
       in
         pkgs.mkShell {
@@ -307,7 +310,7 @@
               # scientific/ML libs
               numpy
               matplotlib
-              ipympl   # <- enables %matplotlib widget
+              ipympl # <- enables %matplotlib widget
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
