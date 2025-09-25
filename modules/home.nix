@@ -257,7 +257,7 @@ in {
     };
 
     shellInit = ''
-      set -gx PATH $HOME/.local/bin $PATH
+      set -gx PATH $HOME/.cargo/bin $HOME/.local/bin $PATH
     '';
 
     interactiveShellInit = ''
