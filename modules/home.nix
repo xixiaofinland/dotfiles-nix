@@ -366,7 +366,6 @@ in {
       ui = {
         paginate = "never";
         editor = "nvim";
-        merge-editor = "nvim";
         default-command = ["log" "--limit" "5"];
       };
       templates = {
