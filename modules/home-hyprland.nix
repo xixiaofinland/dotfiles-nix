@@ -48,6 +48,10 @@
     qbittorrent
     vlc
     kdePackages.okular #pdf reader
+
+    # Docker CLI tools
+    docker
+    docker-compose
   ];
   fonts.fontconfig.enable = true;
 
