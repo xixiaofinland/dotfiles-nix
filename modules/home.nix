@@ -272,7 +272,8 @@ in {
       # Set SSH_AUTH_SOCK for rbw agent
       if test (uname) = "Darwin"
         set -l tmpdir (string trim -r -c / "$TMPDIR")
-        set -gx SSH_AUTH_SOCK "$tmpdir/rbw-(id -u)/ssh-agent-socket"
+        set -l uid (id -u)
+        set -gx SSH_AUTH_SOCK "$tmpdir/rbw-$uid/ssh-agent-socket"
       else
         # Linux: use XDG_RUNTIME_DIR
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
