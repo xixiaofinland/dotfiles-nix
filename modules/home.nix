@@ -25,7 +25,6 @@ in {
     eza
     bat
     fd
-    fzf
     jq
     nh
     ripgrep
@@ -235,6 +234,11 @@ in {
       set -gu default-command
       set -g default-shell "$SHELL"
     '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   programs.fish = {
