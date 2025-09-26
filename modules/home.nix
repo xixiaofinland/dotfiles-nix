@@ -264,8 +264,15 @@ in {
       set -g fish_greeting ""
       function __fish_command_not_found_handler; end
 
-      # point ssh to rbw-agent
-      set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+
+      # Set SSH_AUTH_SOCK for rbw agent
+      if test (uname) = "Darwin"
+        # macOS: find rbw socket in /var/folders
+        set -gx SSH_AUTH_SOCK (find /var/folders -name "ssh-agent-socket" -path "*/rbw-*/*" 2>/dev/null | head -1)
+      else
+        # Linux: use XDG_RUNTIME_DIR
+        set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+      end
 
       set -g fish_emoji_width 1
       set -g pure_symbol_nix "*" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
