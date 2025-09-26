@@ -267,8 +267,7 @@ in {
 
       # Set SSH_AUTH_SOCK for rbw agent
       if test (uname) = "Darwin"
-        # macOS: find rbw socket in /var/folders
-        set -gx SSH_AUTH_SOCK (find /var/folders -name "ssh-agent-socket" -path "*/rbw-*/*" 2>/dev/null | head -1)
+        set -gx SSH_AUTH_SOCK "$TMPDIR/rbw-(id -u)/ssh-agent-socket"
       else
         # Linux: use XDG_RUNTIME_DIR
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
