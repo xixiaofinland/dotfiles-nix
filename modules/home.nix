@@ -379,6 +379,7 @@ in {
         paginate = "never";
         editor = "nvim";
         default-command = ["log" "--limit" "5"];
+        diff-editor = ["nvim" "-c" "DiffEditor $left $right $output"];
       };
       templates = {
         git_push_bookmark = ''"xx/push-" ++ change_id.short()'';
@@ -387,14 +388,14 @@ in {
         l = ["log" "-r" "(main..@):: | (main..@)-"];
         ll = ["log" "-r" "(master..@):: | (master..@)-"];
         lm = ["log" "-r" "mine()"];
-        bto = ["bookmark" "track" "glob:*@origin"];
+        # bto = ["bookmark" "track" "glob:*@origin"];
         pull = [
           "util"
           "exec"
           "--"
           "bash"
           "-c"
-          "jj git fetch && jj rebase -s @ -d 'trunk()'"
+          "jj git fetch && jj rebase -s @- -d 'trunk()'"
         ];
       };
     };
