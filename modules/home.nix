@@ -379,7 +379,6 @@ in {
         paginate = "never";
         editor = "nvim";
         default-command = ["log" "--limit" "5"];
-        diff-editor = ["nvim" "-c" "DiffEditor $left $right $output"];
       };
       templates = {
         git_push_bookmark = ''"xx/push-" ++ change_id.short()'';
