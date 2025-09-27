@@ -394,7 +394,7 @@ in {
           "--"
           "bash"
           "-c"
-          "jj git fetch && jj rebase -s @- -d 'trunk()'"
+          "jj git fetch && jj rebase -s @- -d main@origin"
         ];
       };
     };
