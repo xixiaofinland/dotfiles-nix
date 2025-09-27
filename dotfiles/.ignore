@@ -1,10 +1,49 @@
-node_modules
-.direnv
+# My own
 sf_cache
+.sf
+.sfdx
+node_modules
+
+.jj
+tags
+.direnv
+
 *.cpp
 *.h
 *.c
-tags
-.sfdx
-.jj
-.sf
+
+# Version control
+.git
+.svn
+.hg
+
+# Build outputs and dependencies
+target/          # Rust
+dist/
+build/
+out/
+bin/
+obj/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.DS_Store        # macOS
+Thumbs.db        # Windows
+
+# Language-specific
+__pycache__/     # Python
+*.pyc
+.pytest_cache/
+venv/
+env/
+.env
+.gradle/
+
+
+# OS files
+.DS_Store
+.Spotlight-V100
+.Trashes
+desktop.ini

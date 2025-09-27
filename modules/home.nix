@@ -239,6 +239,9 @@ in {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
+    defaultCommand = "rg --files --hidden --follow";
+    fileWidgetCommand = "rg --files --hidden --follow"; # Ctrl+T (files)
+    changeDirWidgetCommand = "fd --type d --hidden --follow"; # Alt+C (directories)
   };
 
   programs.fish = {
