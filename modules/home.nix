@@ -384,8 +384,10 @@ in {
         git_push_bookmark = ''"xx/push-" ++ change_id.short()'';
       };
       aliases = {
-        l = ["log" "-r" "(main..@):: | (main..@)-"];
-        ll = ["log" "-r" "(master..@):: | (master..@)-"];
+        # l = ["log" "-r" "(main..@):: | (main..@)-"];
+        l = ["log" "-r" "(main@origin..@):: | (main@origin..@)-"];
+        # ll = ["log" "-r" "(master..@):: | (master..@)-"];
+        ll = ["log" "-r" "(master@origin..@):: | (master@origin..@)-"];
         lm = ["log" "-r" "mine()"];
         # bto = ["bookmark" "track" "glob:*@origin"];
         pull = [
@@ -394,7 +396,7 @@ in {
           "--"
           "bash"
           "-c"
-          "jj git fetch && jj rebase -s @- -d main@origin"
+          "jj git fetch && jj rebase -d main@origin"
         ];
       };
     };
