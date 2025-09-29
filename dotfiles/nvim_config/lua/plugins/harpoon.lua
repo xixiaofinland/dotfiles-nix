@@ -9,7 +9,7 @@ return {
 
     harpoon:extend({
       UI_CREATE = function(cx)
-        vim.keymap.set("n", "<C-h>", function()
+        vim.keymap.set("n", "<C-e>", function()
           harpoon.ui:select_menu_item({ vsplit = true })
         end, { buffer = cx.bufnr })
       end,
