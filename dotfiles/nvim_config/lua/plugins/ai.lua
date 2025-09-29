@@ -84,6 +84,12 @@ return {
 
       vim.keymap.set({ 'n', 'v' }, '<leader>am', '<cmd>CopilotChatModels<CR>',
         { desc = 'Select chat model' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>as', '<cmd>CopilotChatSave<CR>',
+        { desc = 'Save session' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>al', '<cmd>CopilotChatLoad<CR>',
+        { desc = 'Load session' })
     end
   },
 }
