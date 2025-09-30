@@ -53,7 +53,7 @@
     docker
     docker-compose
 
-    alacritty
+    pinta # picture tool
   ];
   fonts.fontconfig.enable = true;
 

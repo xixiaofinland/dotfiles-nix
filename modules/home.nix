@@ -32,6 +32,7 @@ in {
     gnumake
     nodejs_22
     obsidian
+    alacritty
 
     # custom
     finter
