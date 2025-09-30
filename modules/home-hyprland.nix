@@ -52,6 +52,8 @@
     # Docker CLI tools
     docker
     docker-compose
+
+    alacritty
   ];
   fonts.fontconfig.enable = true;
 

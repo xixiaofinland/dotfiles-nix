@@ -31,7 +31,6 @@ in {
     tree
     gnumake
     nodejs_22
-    alacritty
     obsidian
 
     # custom
