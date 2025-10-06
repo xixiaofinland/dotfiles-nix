@@ -282,7 +282,7 @@ in {
       end
 
       set -g fish_emoji_width 1
-      set -g pure_symbol_nix "*" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
+      set -g pure_symbol_nix "n" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
 
       # pure theme
       set -g pure_enable_git true
