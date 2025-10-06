@@ -281,8 +281,8 @@ in {
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
       end
 
-      set -g fish_emoji_width 1
-      set -g pure_symbol_nix "n" # the original emoji is a double-width Unicode glyph. Fish sometimes miscalculate its display width
+      # set -g pure_enable_nixdevshell true
+      set -g pure_symbol_nixdevshell_prefix '-'
 
       # pure theme
       set -g pure_enable_git true
