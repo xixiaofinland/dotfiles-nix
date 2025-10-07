@@ -387,7 +387,8 @@ in {
       };
       aliases = {
         # l = ["log" "-r" "(main..@):: | (main..@)-"];
-        l = ["log" "-r" "(main@origin..@):: | (main@origin..@)-"];
+        # l = ["log" "-r" "(main@origin..@):: | (main@origin..@)-"];
+        l = ["log" "-r" "all()" "-n" "10"];
         # ll = ["log" "-r" "(master..@):: | (master..@)-"];
         ll = ["log" "-r" "(master@origin..@):: | (master@origin..@)-"];
         lm = ["log" "-r" "mine()"];
