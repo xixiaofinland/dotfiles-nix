@@ -37,9 +37,13 @@ return {
       enable = false,
       -- update_debounce = 200,
       -- max_file_length = 5000,
+      checkboxes = {
+        [" "] = { char = "☐", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+      },
     },
 
-    legacy_commands = false
+    legacy_commands = false,
   },
 
   config = function(_, opts)
