@@ -1,5 +1,14 @@
 -- General for Nvim
 
+-- Navigate wildmenu with up/down arrows
+vim.keymap.set('c', '<Down>', function()
+  return vim.fn.wildmenumode() == 1 and '<Right>' or '<Down>'
+end, { expr = true })
+
+vim.keymap.set('c', '<Up>', function()
+  return vim.fn.wildmenumode() == 1 and '<Left>' or '<Up>'
+end, { expr = true })
+
 -- Solve two jumping issues using relative line-num in one go:
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 -- https://www.reddit.com/r/neovim/comments/1b4xefk/comment/kt5n8xl/

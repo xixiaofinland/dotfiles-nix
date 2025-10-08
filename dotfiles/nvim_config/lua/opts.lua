@@ -1,6 +1,9 @@
 -- Need to remember removing this when mini.cursorline is not in use anymore
 vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {})
 
+vim.o.wildmode = "longest:full,full"
+vim.o.wildignorecase = true  -- Case-insensitive completion
+
 vim.diagnostic.config({
   virtual_text = false,
 })
