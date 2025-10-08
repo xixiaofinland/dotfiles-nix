@@ -26,23 +26,22 @@ return {
     },
 
     frontmatter = {
-      func = function(_)
-        return {
-          -- tags = {},
-        }
-      end
+      enabled = false,
     },
 
     note_id_func = function(title)
       return title -- makes filename = title.md
     end,
+
     ui = {
       enable = false,
       -- update_debounce = 200,
       -- max_file_length = 5000,
     },
+
     legacy_commands = false
   },
+
   config = function(_, opts)
     require("obsidian").setup(opts)
     -- vim.opt.conceallevel = 2
