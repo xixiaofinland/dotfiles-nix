@@ -24,11 +24,14 @@ return {
       blink = true,     -- enable blink.cmp
       min_chars = 2,
     },
-    note_frontmatter_func = function(_)
-      return {
-        -- tags = {},
-      }
-    end,
+
+    frontmatter = {
+      func = function(_)
+        return {
+          -- tags = {},
+        }
+      end
+    },
 
     note_id_func = function(title)
       return title -- makes filename = title.md
