@@ -43,7 +43,7 @@ return {
     build = "make tiktoken",                          -- Only on MacOS or Linux
     config = function()
       require("CopilotChat").setup({
-        model = 'claude-sonnet-4',
+        model = 'claude-sonnet-4.5',
         prompts = {
           StickyRust = {
             prompt = [[
