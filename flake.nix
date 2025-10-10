@@ -276,19 +276,19 @@
       #     '';
       #   };
 
-      # nvim = let
-      #   packages = with pkgs; [
-      #     # gnumake
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "Nvim";
-      #     packages = packages;
-      #     shellHook = ''
-      #       echo "🅽 🅽 🅽 🅽  hello Nvim!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
+      nvim = let
+        packages = with pkgs; [
+          gnumake
+        ];
+      in
+        pkgs.mkShell {
+          name = "Nvim";
+          packages = packages;
+          shellHook = ''
+            echo "🅽 🅽 🅽 🅽  hello Nvim!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
 
       python = let
         packages = with pkgs; [
