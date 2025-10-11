@@ -1,7 +1,7 @@
 return {
   'xixiaofinland/sf.nvim',
   -- branch = 'feature/logs',
-  -- dir = '~/projects/sf.nvim',
+  -- dir = '~/Projects/sf.nvim',
 
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
