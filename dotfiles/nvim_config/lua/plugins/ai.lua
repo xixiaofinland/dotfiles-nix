@@ -64,7 +64,7 @@ return {
                 > If a class is referenced in the current context but not present in loaded files,
                 > tell me explicitly which file you need and ask me to add it using #file or #glob.
                 > Focus on Clean Code, Salesforce best practices, Apex idioms, and proper triggers, classes, and test coverage.
-                > Generate only small code templates in case it helps understanding. Only generate detailed code when specifically requested you to do so
+                > Only generate code when specifically requesting you to do so
               ]],
             system_prompt =
             'You are an Apex assistant that helps me work with classes in Salesforce projects efficiently.',
