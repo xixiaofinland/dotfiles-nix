@@ -54,3 +54,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { buffer = bufnr, desc = "toggle inlay hints [LSP]" })
   end,
 })
+
+
+-- enter key in quickfix window doesn't jump to the line instead it does nothing.
+-- vanila nvim without plugins works as expected
+-- I can't find which plugin interferes here, so I add this to overwrite back to default of the enter key
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function(event)
+    vim.keymap.set('n', '<CR>', '<CR>', { buffer = event.buf, remap = false })
+  end,
+})
