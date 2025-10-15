@@ -15,6 +15,7 @@ return {
           files = {
             true,
             ["alt-o"]  = require('fzf-lua').actions.file_edit, -- in multi-selection, open as buffers
+            ["ctrl-q"]  = actions.file_sel_to_qf, -- in single-selection, can send it to quicklist
             ["ctrl-e"] = actions.file_vsplit,
           }
         }
@@ -25,20 +26,6 @@ return {
           desc = desc .. ' [Fzf]'
         end
         vim.keymap.set('n', keys, func, { desc = desc })
-      end
-
-      local create_ctags = function()
-        -- need to install universial ctags;
-        local cmd = 'ctags --extras=+q --langmap=java:.cls.trigger -f ./tags -R **/main/default/classes/**'
-        vim.fn.jobstart(cmd, {
-          on_exit = function(_, code, _)
-            if code == 0 then
-              vim.notify("Tags updated successfully.", vim.log.levels.INFO)
-            else
-              vim.notify("Error updating tags.", vim.log.levels.ERROR)
-            end
-          end
-        })
       end
 
       local fzf = require('fzf-lua')
