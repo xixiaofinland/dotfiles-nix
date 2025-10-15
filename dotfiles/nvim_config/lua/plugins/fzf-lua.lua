@@ -32,6 +32,7 @@ return {
       fzf.register_ui_select()
 
       nmap('<leader>hh', fzf.files, 'files')
+      nmap('<leader>hq', fzf.quickfix, 'qf')
       nmap('<leader>hr', fzf.resume, 'resume')
       nmap('<leader>hd', fzf.diagnostics_document, 'diagnostics')
       -- nmap('<leader>fD', function() fzf.files({ cwd = vim.fn.stdpath 'config' }) end, 'dotfiles')
