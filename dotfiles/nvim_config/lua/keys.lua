@@ -1,5 +1,9 @@
 -- General for Nvim
 
+local nmap = function(lhs, rhs, desc)
+  vim.keymap.set('n', lhs, rhs, { desc = desc })
+end
+
 -- Navigate wildmenu with up/down arrows
 vim.keymap.set('c', '<Down>', function()
   return vim.fn.wildmenumode() == 1 and '<Right>' or '<Down>'
@@ -18,38 +22,37 @@ vim.keymap.set('n', 'j', [[(v:count > 1 ? "m'" . v:count : "g") . 'j']], { expr 
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+nmap("J", "mzJ`z", nil)
+nmap("n", "nzzzv", nil)
+nmap("N", "Nzzzv", nil)
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- My own habit;
 
 -- C-v is the paste action in my alacritty, so use this for square cursor
-vim.keymap.set("n", "<C-b>", "<C-v>")
+nmap("<C-b>", "<C-v>", nil)
 
 vim.keymap.set('n', '<leader>hn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
-vim.keymap.set('n', '<leader>hc', function()
+nmap('<leader>hc', function()
   local file_name = vim.fn.expand("%:t")
   vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
-end, { desc = 'Copy file name' })
+end, 'Copy file name')
 
-vim.keymap.set('n', '<leader>hC', function()
+nmap('<leader>hC', function()
   local file_name = vim.fn.expand("%:p")
   vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
-end, { desc = 'Copy File name full path' })
+end, 'Copy File name full path')
 
-vim.keymap.set("n", "\\v",
-  function()
-    local curr = vim.diagnostic.config().virtual_text
-    vim.diagnostic.config({
-      virtual_text = not curr
-    })
-  end, { desc = "virtual text" })
+nmap("\\v", function()
+  local curr = vim.diagnostic.config().virtual_text
+  vim.diagnostic.config({
+    virtual_text = not curr
+  })
+end, "virtual text")
 
 -- toggle ending ; and ,
 
@@ -67,8 +70,8 @@ local toggle = function(character)
     return api.nvim_set_current_line(line .. character)
   end
 end
-vim.keymap.set('n', '<leader>,', function() toggle(',') end, { silent = true, desc = '","' })
-vim.keymap.set('n', '<leader>;', function() toggle(';') end, { silent = true, desc = '";"' })
+nmap('<leader>,', function() toggle(',') end, '","')
+nmap('<leader>;', function() toggle(';') end, '";"')
 
 -- toggle diagnostics;
 
@@ -83,7 +86,7 @@ local toggleDiagnostics = function()
     print("Diagnostics disabled")
   end
 end
-vim.keymap.set('n', '\\d', toggleDiagnostics, { silent = true, desc = 'diagnostics' })
+nmap('\\d', toggleDiagnostics, 'diagnostics')
 
 -- toggle line num;
 
@@ -97,41 +100,40 @@ local toggleLineNum = function()
     vim.wo.relativenumber = true
   end
 end
-vim.keymap.set('n', '\\n', toggleLineNum, { silent = true, desc = 'lineNum' })
+nmap('\\n', toggleLineNum, 'lineNum')
 
 -- insert mode <C-e> delete till end of word;
 vim.keymap.set('i', '<C-e>', '<C-o>de', { silent = true })
 
 -- Duplicate a line and comment out the first line
-vim.keymap.set('n', 'yp', 'yy<cmd>normal gcc<CR>p')
+nmap('yp', 'yy<cmd>normal gcc<CR>p', nil)
 
 -- LSP key
-vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end,
-  { silent = true, desc = 'format file' })
+nmap('<leader>ff', function() vim.lsp.buf.format({ timeout_ms = 2500 }) end, 'format file')
 
-vim.keymap.set('n', 'L', vim.diagnostic.open_float, { silent = true, desc = 'show diagnostic' })
-vim.keymap.set('n', 'H', vim.lsp.buf.hover, { silent = true, desc = 'LSP hover doc' })
+nmap('L', vim.diagnostic.open_float, 'show diagnostic')
+nmap('H', vim.lsp.buf.hover, 'LSP hover doc')
 
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { silent = true, desc = 'code action' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = 'rename' })
+nmap('<leader>ca', vim.lsp.buf.code_action, 'code action')
+nmap('<leader>rn', vim.lsp.buf.rename, 'rename')
 
 -- Close all floating windows
-vim.keymap.set('n', '<Esc>', function()
+nmap('<Esc>', function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     if vim.api.nvim_win_get_config(win).relative ~= '' then
       vim.api.nvim_win_close(win, false)
     end
   end
-end, { silent = true, desc = 'Close floating windows' })
+end, 'Close floating windows')
 
 -- Save and quit
-vim.keymap.set('n', '##', ':x<CR>', { silent = true, desc = 'Save and quit' })
+nmap('##', ':x<CR>', 'Save and quit')
 
 -- Quit without saving
-vim.keymap.set('n', 'QQ', ':q!<CR>', { silent = true, desc = 'Force quit' })
+nmap('QQ', ':q!<CR>', 'Force quit')
 
 -- Obsidian pick files
-vim.keymap.set("n", "<leader>nf", "<cmd>Obsidian quick_switch<cr>", { desc = "Quick switch notes" })
+nmap("<leader>nf", "<cmd>Obsidian quick_switch<cr>", "Quick switch notes")
 
 -- Platform-specific clipboard configuration
 vim.opt.clipboard = "unnamedplus"
@@ -163,14 +165,14 @@ elseif vim.fn.has('mac') == 1 then
   }
 end
 
-vim.keymap.set('n', '<PageDown>', '<C-d>')
-vim.keymap.set('n', '<PageUp>', '<C-u>')
+nmap('<PageDown>', '<C-d>', nil)
+nmap('<PageUp>', '<C-u>', nil)
 
-vim.keymap.set("n", "<C-s>", "<Cmd>w<CR>")
+nmap("<C-s>", "<Cmd>w<CR>", nil)
 vim.keymap.set({ "i", "v" }, "<C-s>", "<Esc><Cmd>w<CR>")
 
-vim.keymap.set("n", "<PageUp>", "<C-u>zz")
-vim.keymap.set("n", "<PageDown>", "<C-d>zz")
+nmap("<PageUp>", "<C-u>zz", nil)
+nmap("<PageDown>", "<C-d>zz", nil)
 
 vim.keymap.set("n", "^", function()
   if vim.fn.col('.') == 1 then
@@ -186,18 +188,23 @@ vim.keymap.set("n", "^", function()
 end, { expr = true, desc = "Smart start-of-line" })
 
 -- marks
-vim.keymap.set('n', '<leader>mp', ':mark p<CR>')
-vim.keymap.set('n', '<leader>md', ':mark d<CR>')
-vim.keymap.set('n', '<leader>mn', ':mark n<CR>')
+nmap('<leader>mp', ':mark p<CR>', nil)
+nmap('<leader>md', ':mark d<CR>', nil)
+nmap('<leader>mn', ':mark n<CR>', nil)
 
 -- display LSPs like :LspInfo
 
-vim.keymap.set("n", "<leader>pl", function()
+nmap("<leader>pl", function()
   local names = {}
   for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     table.insert(names, c.name)
   end
   print("Attached LSPs: " .. table.concat(names, ", "))
-end, { desc = 'List active LSPs' })
+end, 'List active LSPs')
 
-vim.keymap.set("n", "<leader>pL", "<Cmd>check vim.lsp<CR>", { desc = 'List detaild LSPs' })
+nmap("<leader>pL", "<Cmd>check vim.lsp<CR>", 'List detaild LSPs')
+
+-- Paste linewise before/after current line
+-- Usage: `yiw` to yank a word and `]p` to put it on the next line.
+nmap('[p', '<Cmd>exe "put! " . v:register<CR>', 'Paste Above')
+nmap(']p', '<Cmd>exe "put "  . v:register<CR>', 'Paste Below')
