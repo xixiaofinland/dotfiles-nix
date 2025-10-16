@@ -16,8 +16,8 @@ return {
           try_as_border = true,
         },
         mappings = {
-          goto_top = '[p',
-          goto_bottom = ']p',
+          goto_top = '[s',
+          goto_bottom = ']s',
         }
       })
 
