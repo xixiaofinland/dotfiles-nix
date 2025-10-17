@@ -190,19 +190,16 @@ return {
 
       hipatterns.setup({
         highlighters = {
-          -- TODO / todo
           todo_upper = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
           todo_lower = { pattern = '%f[%w]()todo()%f[%W]', group = 'MiniHipatternsTodo' },
 
-          -- FIXME / fixme
           fixme_upper = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
           fixme_lower = { pattern = '%f[%w]()fixme()%f[%W]', group = 'MiniHipatternsFixme' },
 
-          -- NOTE / note
+          ofi_upper = { pattern = '%f[%w]()OFI()%f[%W]', group = 'MiniHipatternsNote' },
           note_upper = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
           note_lower = { pattern = '%f[%w]()note()%f[%W]', group = 'MiniHipatternsNote' },
 
-          -- HACK / hack
           hack_upper = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
           hack_lower = { pattern = '%f[%w]()hack()%f[%W]', group = 'MiniHipatternsHack' },
 
