@@ -14,9 +14,11 @@ return {
         actions = {
           files = {
             true,
-            ["alt-o"]  = require('fzf-lua').actions.file_edit, -- in multi-selection, open as buffers
-            ["ctrl-q"]  = actions.file_sel_to_qf, -- in single-selection, can send it to quicklist
+            ["alt-o"]  = actions.file_edit,      -- in multi-selection, open as buffers
+            ["ctrl-q"] = actions.file_sel_to_qf, -- in single-selection, can send it to quicklist
             ["ctrl-e"] = actions.file_vsplit,
+            ["alt-i"]  = actions.toggle_ignore,
+            ["alt-."]  = actions.toggle_hidden,
           }
         }
       })
