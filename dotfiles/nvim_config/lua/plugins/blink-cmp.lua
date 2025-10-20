@@ -83,6 +83,11 @@ return {
           },
         },
       },
+      -- Setup completion by filetype
+      per_filetype = {
+        text = { "dictionary" },
+        markdown = { "thesaurus" },
+      },
     },
 
     -- Disable cmdline

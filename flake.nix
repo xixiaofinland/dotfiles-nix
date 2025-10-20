@@ -249,6 +249,7 @@
           jdk
           pmd
           universal-ctags
+          ctags-lsp
         ];
       in
         pkgs.mkShell {
