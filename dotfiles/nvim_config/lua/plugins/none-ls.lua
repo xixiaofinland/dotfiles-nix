@@ -3,30 +3,35 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local none_ls = require("null-ls")
+    local formatting = none_ls.builtins.formatting
+
     none_ls.setup({
       sources = {
-        none_ls.builtins.formatting.alejandra,
+        -- Nix formatter
+        formatting.alejandra,
 
-        none_ls.builtins.formatting.prettier.with({
+        -- Python formatter
+        formatting.black,
+
+        formatting.prettier.with({
           filetypes = { "apex" },
           extra_args = { "--plugin=prettier-plugin-apex", "--write" },
         }),
 
-        none_ls.builtins.formatting.prettier.with({
-          filetypes = { "html", "javascript" },
+        formatting.prettierd.with({
+          filetypes = { "html", "javascript", "typescript", "markdown", "yaml", "css", "scss", "less", "json" },
         }),
 
-        none_ls.builtins.formatting.black,
-
+        -- PMD diagnostics for Apex
         none_ls.builtins.diagnostics.pmd.with({
           command = "pmd",
           filetypes = { "apex" },
           args = function(params)
             return {
-              "-f", "json",                 -- JSON output for null-ls to parse
+              "-f", "json", -- JSON output for null-ls to parse
               "-R", "apex_ruleset.xml",
               "--no-cache",
-              "-d", params.bufname,     -- only check this file
+              "-d", params.bufname, -- only check this file
             }
           end,
         }),
@@ -34,7 +39,7 @@ return {
         -- none_ls.builtins.diagnostics.pmd.with({
         --   -- pmd v6
         --   filetypes = { "apex" },
-        --   extra_args = { "--rulesets", "apex_ruleset.xml", },
+        --   extra_args = { "--rulesets", "apex_ruleset.xml" },
         --
         --   -- -- pmd v7 needs to define the wrapper (ref: https://github.com/nvimtools/none-ls.nvim/issues/47)
         --   -- -- #!/usr/bin/env bash
@@ -42,7 +47,7 @@ return {
         --   -- filetypes = { "apex" },
         --   -- args = { "--format", "json", "--dir", "$ROOT", "--rulesets", "apex_ruleset.xml", "--no-cache", "--no-progress" }
         -- }),
-      }
+      },
     })
   end,
 }
