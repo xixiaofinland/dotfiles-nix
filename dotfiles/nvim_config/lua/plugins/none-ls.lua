@@ -13,13 +13,17 @@ return {
         -- Python formatter
         formatting.black,
 
-        formatting.prettier.with({
-          filetypes = { "apex" },
-          extra_args = { "--plugin=prettier-plugin-apex", "--write" },
-        }),
+        -- formatting.prettier.with({
+        --   filetypes = { "apex" },
+        --   extra_args = { "--plugin=prettier-plugin-apex", "--write" },
+        -- }),
 
+        -- note: for apex format in `prettired`, make sure .prettierrc has this section below
+        -- "plugins": [
+        --   "prettier-plugin-apex",
+        -- ],
         formatting.prettierd.with({
-          filetypes = { "html", "javascript", "typescript", "markdown", "yaml", "css", "scss", "less", "json" },
+          filetypes = { "apex", "html", "javascript", "typescript", "markdown", "yaml", "css", "scss", "less", "json" },
         }),
 
         -- PMD diagnostics for Apex
