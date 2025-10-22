@@ -11,7 +11,7 @@
 
   networking.hostName = "${hostName}";
 
-  # Enable networking
+  # Enable networking and use nmtui or nmcli to setup wireless/wifi
   networking.networkmanager.enable = true;
 
   hardware.enableAllFirmware = true;
