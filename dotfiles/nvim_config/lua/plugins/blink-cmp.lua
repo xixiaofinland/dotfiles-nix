@@ -37,6 +37,11 @@ return {
       --   text = { "path", "buffer", "dictionary", "copilot" }
       -- },
       providers = {
+        lsp = {
+          -- Overwrite the default (fallbacks = {'buffer'}) which diables buffer source when lsp is available
+          -- I want to have buffer source available all the time.
+          fallbacks = {}
+        },
         buffer = {
           score_offset = -1, -- increase, default was -3
         },
