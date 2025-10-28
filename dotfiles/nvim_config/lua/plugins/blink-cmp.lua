@@ -31,7 +31,8 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary', 'copilot' },
+      -- default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary', 'copilot' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
       -- per_filetype = {
       --   markdown = { "path", "buffer", "dictionary", "copilot" },
       --   text = { "path", "buffer", "dictionary", "copilot" }
@@ -50,17 +51,17 @@ return {
           module = "blink-copilot",
           async = true,
         },
-        dictionary = {
-          name = "blink-cmp-words",
-          module = "blink-cmp-words.dictionary",
-          opts = {
-            -- The number of characters required to trigger completion.
-            -- Set this higher if completion is slow, 3 is default.
-            dictionary_search_threshold = 3,
-            score_offset = -5,
-            definition_pointers = { "!", "&", "^" },
-          },
-        },
+        -- dictionary = {
+        --   name = "blink-cmp-words",
+        --   module = "blink-cmp-words.dictionary",
+        --   opts = {
+        --     -- The number of characters required to trigger completion.
+        --     -- Set this higher if completion is slow, 3 is default.
+        --     dictionary_search_threshold = 3,
+        --     score_offset = -5,
+        --     definition_pointers = { "!", "&", "^" },
+        --   },
+        -- },
       },
       menu = {
         -- use mini icons
