@@ -1,13 +1,7 @@
 return {
   'saghen/blink.cmp',
-  dependencies = { 'rafamadriz/friendly-snippets', 'fang2hou/blink-copilot', "archie-judd/blink-cmp-words" },
-
-  -- use a release tag to download pre-built binaries
+  dependencies = { 'fang2hou/blink-copilot', 'archie-judd/blink-cmp-words' },
   version = '*',
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -28,15 +22,8 @@ return {
       nerd_font_variant = 'mono'
     },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      -- default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary', 'copilot' },
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
-      -- per_filetype = {
-      --   markdown = { "path", "buffer", "dictionary", "copilot" },
-      --   text = { "path", "buffer", "dictionary", "copilot" }
-      -- },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary', 'copilot' },
       providers = {
         lsp = {
           -- Overwrite the default (fallbacks = {'buffer'}) which diables buffer source when lsp is available
@@ -51,17 +38,16 @@ return {
           module = "blink-copilot",
           async = true,
         },
-        -- dictionary = {
-        --   name = "blink-cmp-words",
-        --   module = "blink-cmp-words.dictionary",
-        --   opts = {
-        --     -- The number of characters required to trigger completion.
-        --     -- Set this higher if completion is slow, 3 is default.
-        --     dictionary_search_threshold = 3,
-        --     score_offset = -5,
-        --     definition_pointers = { "!", "&", "^" },
-        --   },
-        -- },
+        dictionary = {
+          name = "blink-cmp-words",
+          module = "blink-cmp-words.dictionary",
+          opts = {
+            -- The number of characters required to trigger completion.
+            dictionary_search_threshold = 5,
+            score_offset = -5,
+            definition_pointers = { "!", "&", "^" },
+          },
+        },
       },
       menu = {
         -- use mini icons
@@ -90,7 +76,6 @@ return {
       }
     },
 
-    -- Disable cmdline
     cmdline = {
       enabled = false
     },
