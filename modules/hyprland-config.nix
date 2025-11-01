@@ -25,12 +25,13 @@
     isNormalUser = true;
     shell = pkgs.fish;
     initialPassword = "changeme";
-    extraGroups = ["wheel" "networkmanager" "video" "audio" "docker"];
+    extraGroups = ["wheel" "networkmanager" "video" "audio"];
+    # extraGroups = ["wheel" "networkmanager" "video" "audio" "docker"];
   };
 
   # Docker daemon configuration
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
+  # virtualisation.docker.enable = true;
+  # virtualisation.docker.enableOnBoot = true;
 
   hardware.nvidia = {
     modesetting.enable = true;

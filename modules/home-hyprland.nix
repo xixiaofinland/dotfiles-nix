@@ -50,8 +50,8 @@
     kdePackages.okular #pdf reader
 
     # Docker CLI tools
-    docker
-    docker-compose
+    # docker
+    # docker-compose
 
     alacritty
 
