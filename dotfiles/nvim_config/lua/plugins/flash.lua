@@ -1,9 +1,39 @@
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  ---@type Flash.Config
-  opts = {},
-  -- stylua: ignore
+  opts = {
+    labels = "pdlxnthkwgmj",
+    modes = {
+      char = {
+        char_actions = function()
+          return {
+            [";"] = "next",
+            ["F"] = "left",
+            ["f"] = "right",
+            ["T"] = "left",
+            ["t"] = "right",
+          }
+        end,
+        keys = { "f", "F", "t", "T", ";" },
+        highlight = {
+          backdrop = false,
+        },
+        jump_labels = false,
+        multi_line = false,
+      },
+      search = {
+        enabled = true,
+      },
+    },
+    prompt = {
+      win_config = {
+        border = "none",
+      },
+    },
+    search = {
+      wrap = true,
+    },
+  },
   keys = {
     { "m",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
     { "M",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
