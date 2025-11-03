@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
 
-    # chinese character support
+    # Chinese character support
     noto-fonts-cjk-sans
     noto-fonts
     wqy_zenhei
@@ -22,9 +22,7 @@
     grim
     slurp
     wl-clipboard
-
-    # wl-screenrec # not work with Nvidia GPU
-    wf-recorder
+    wf-recorder # screen recorder
 
     brave
 
@@ -36,27 +34,24 @@
 
     udiskie
 
-    pamixer # Audio vol up/down
+    pamixer # Audio volume control
     pulsemixer # optional TUI tool
 
     hyprpaper
 
     unzip
     anki-bin
-    # transmission_4-qt
-    # qbittorrent-enhanced
     qbittorrent
-    vlc
-    kdePackages.okular #pdf reader
+    kdePackages.okular # PDF reader
+    pinta # picture tool
+
+    alacritty
 
     # Docker CLI tools
     # docker
     # docker-compose
-
-    alacritty
-
-    pinta # picture tool
   ];
+
   fonts.fontconfig.enable = true;
 
   programs.waybar.enable = true;
@@ -68,5 +63,12 @@
       default-timeout = 5000;
       anchor = "top-right";
     };
+  };
+
+  # Fix VLC freeze on Wayland
+  programs.vlc = {
+    enable = true;
+    package = pkgs.vlc;
+    extraWrapperArgs = ["--set" "QT_QPA_PLATFORM" "xcb"];
   };
 }
