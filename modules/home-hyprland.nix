@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # Wrapped VLC to fix unresponsive UI under Wayland
+  vlc-xwayland = pkgs.symlinkJoin {
+    name = "vlc-xwayland";
+    paths = [pkgs.vlc];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/vlc \
+        --set QT_QPA_PLATFORM xcb
+    '';
+  };
+in {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
 
@@ -47,6 +58,8 @@
 
     alacritty
 
+    vlc-xwayland
+
     # Docker CLI tools
     # docker
     # docker-compose
@@ -63,12 +76,5 @@
       default-timeout = 5000;
       anchor = "top-right";
     };
-  };
-
-  # Fix VLC freeze on Wayland
-  programs.vlc = {
-    enable = true;
-    package = pkgs.vlc;
-    extraWrapperArgs = ["--set" "QT_QPA_PLATFORM" "xcb"];
   };
 }
