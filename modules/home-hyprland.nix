@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  # Wrapped VLC to fix unresponsive UI under Wayland
+  # Wrapped VLC to fix unresponsive UI bug under Wayland
   vlc-xwayland = pkgs.symlinkJoin {
     name = "vlc-xwayland";
     paths = [pkgs.vlc];
