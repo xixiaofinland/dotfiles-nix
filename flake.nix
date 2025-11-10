@@ -130,7 +130,7 @@
           }
           {
             nix = {
-              package = pkgs.nixStable; # pull in the nix binary from cache, NixOS doesn't need to do so
+              package = pkgs.nixVersions.stable; # pull in the nix binary from cache, NixOS doesn't need to do so
               extraOptions = ''
                 experimental-features = nix-command flakes
               '';
