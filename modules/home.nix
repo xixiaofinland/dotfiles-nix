@@ -124,7 +124,7 @@ in {
       pinentry =
         if pkgs.stdenv.isDarwin
         then pkgs.pinentry_mac
-        else pkgs.pinentry;
+        else pkgs.pinentry-tty;
     };
   };
 
