@@ -3,6 +3,10 @@ return {
   event = "VeryLazy",
   opts = {
     labels = "pdlxnthkwgmj",
+    jump = {
+      register = true, -- Save to search register so 'n/N' can continue
+      nohlsearch = true,
+    },
     modes = {
       char = {
         char_actions = function()
@@ -35,10 +39,12 @@ return {
     },
   },
   keys = {
-    { "m",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-    { "M",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-    { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-    { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    { "m", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+    { "M", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+    { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+    { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    -- { "gn", mode = { "n" }, function() require("flash").jump_forward() end,  desc = "Next Flash Match" },
+    -- { "gN", mode = { "n" }, function() require("flash").jump_backward() end, desc = "Previous Flash Match" },
+    -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
   },
 }
