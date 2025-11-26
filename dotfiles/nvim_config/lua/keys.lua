@@ -35,13 +35,13 @@ nmap("<C-b>", "<C-v>", nil)
 vim.keymap.set('n', '<leader>hn', function() return ':e ' .. vim.fn.expand '%:p:h' .. '/' end,
   { expr = true, desc = 'New a file' })
 
-nmap('<leader>hc', function()
+nmap('<leader>fc', function()
   local file_name = vim.fn.expand("%:t")
   vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
 end, 'Copy file name')
 
-nmap('<leader>hC', function()
+nmap('<leader>fC', function()
   local file_name = vim.fn.expand("%:p")
   vim.fn.setreg('+', file_name)
   vim.notify(string.format('"%s" copied.', file_name), vim.log.levels.INFO)
