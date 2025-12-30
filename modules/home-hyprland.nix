@@ -60,8 +60,6 @@ in {
 
     vlc-xwayland
 
-    aria2c # http downloader
-
     # Docker CLI tools
     # docker
     # docker-compose
