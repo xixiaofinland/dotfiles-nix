@@ -404,8 +404,16 @@
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath systemLibs;
           shellHook = ''
             echo "🏭 Industrial AI Phase 1 (Python Brain)"
-            if [ ! -d .venv-ml ]; then python -m venv .venv-ml; fi
+
+            # Create the venv with access to Nix packages
+            if [ ! -d .venv-ml ]; then
+              python -m venv --system-site-packages .venv-ml
+            fi
+
             source .venv-ml/bin/activate
+
+            # This ensures Python looks at Nix packages first
+            export PYTHONPATH="$PYTHONPATH:$(python -c 'import site; print(site.getsitepackages()[0])')"
             export PYTHONDONTWRITEBYTECODE=1
           '';
         };
