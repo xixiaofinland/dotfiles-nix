@@ -378,6 +378,37 @@
             fi
           '';
         };
+
+      ml = let
+        pythonEnv = pkgs.python312.withPackages (ps:
+          with ps; [
+            torch
+            torchvision
+            onnx
+            onnxruntime # AI Core
+            numpy
+            matplotlib
+            pillow
+            scikit-learn
+            pandas # Science
+            ipython
+            black
+            ruff
+            pytest # Dev Tools
+          ]);
+        systemLibs = with pkgs; [stdenv.cc.cc.lib zlib libGL glib libffi openssl];
+      in
+        pkgs.mkShell {
+          name = "Python Industrial AI";
+          packages = [pythonEnv pkgs.pyright pkgs.cmake pkgs.pkg-config] ++ systemLibs;
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath systemLibs;
+          shellHook = ''
+            echo "🏭 Industrial AI Phase 1 (Python Brain)"
+            if [ ! -d .venv-ml ]; then python -m venv .venv-ml; fi
+            source .venv-ml/bin/activate
+            export PYTHONDONTWRITEBYTECODE=1
+          '';
+        };
     });
   };
 }
