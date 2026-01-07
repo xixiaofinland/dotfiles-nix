@@ -395,6 +395,9 @@
             black
             ruff
             pytest # Dev Tools
+
+            matplotlib
+            pillow
           ]);
         systemLibs = with pkgs; [stdenv.cc.cc.lib zlib libGL glib libffi openssl];
       in
