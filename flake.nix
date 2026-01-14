@@ -184,33 +184,63 @@
           '';
         };
 
-      # afmt = let
-      #   packages = with pkgs; [
-      #     # rust-bin.stable.latest.default
-      #     (rust-bin.stable.latest.default.override {
-      #       extensions = ["rust-src"];
-      #       targets = ["wasm32-unknown-unknown"];
-      #     })
-      #     cargo-audit
-      #     cargo-deny
-      #     cargo-tarpaulin
-      #     rust-analyzer
-      #     jdk
-      #     parallel
-      #     wasm-bindgen-cli
-      #     wasm-pack
-      #     simple-http-server
-      #     prettierd
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "Afmt";
-      #     packages = packages;
-      #     shellHook = ''
-      #       echo "🚀🚀🚀🚀 Hello Afmt!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
+      anomaly-rust = let
+        nativeLibs = with pkgs; [
+          openssl
+          onnxruntime
+          zlib
+        ];
+      in
+        pkgs.mkShell {
+          name = "Rust";
+
+          # Add tools needed for building C-linked crates
+          nativeBuildInputs = with pkgs; [
+            pkg-config
+            cmake
+            rust-bin.stable.latest.default
+          ];
+
+          buildInputs = nativeLibs ++ [pkgs.rust-analyzer];
+
+          # Critical environment variables
+          ORT_DYLIB_PATH = "${pkgs.onnxruntime}/lib/libonnxruntime.so";
+          PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath nativeLibs;
+
+          shellHook = ''
+            echo "🏭 Industrial AI Environment: ONNX Dynamic Loading Enabled"
+            export ORT_DYLIB_PATH="${pkgs.onnxruntime}/lib/libonnxruntime.so"
+          '';
+        };
+
+      afmt = let
+        packages = with pkgs; [
+          # rust-bin.stable.latest.default
+          (rust-bin.stable.latest.default.override {
+            extensions = ["rust-src"];
+            targets = ["wasm32-unknown-unknown"];
+          })
+          cargo-audit
+          cargo-deny
+          cargo-tarpaulin
+          rust-analyzer
+          jdk
+          parallel
+          wasm-bindgen-cli
+          wasm-pack
+          simple-http-server
+          prettierd
+        ];
+      in
+        pkgs.mkShell {
+          name = "Afmt";
+          packages = packages;
+          shellHook = ''
+            echo "🚀🚀🚀🚀 Hello Afmt!"
+            echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
+          '';
+        };
 
       blog = let
         packages = with pkgs; [
