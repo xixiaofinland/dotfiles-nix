@@ -47,8 +47,9 @@ in {
     # salesforce
     sf
 
-    # AI
+    # AI coding
     codex
+    opencode
   ];
 
   home.sessionVariables = {
