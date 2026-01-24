@@ -331,13 +331,13 @@
               ipython
               pip
               virtualenv
-              # editor/test tooling
+
               black
               isort
               ruff
               pytest
               debugpy
-              # jupyter kernel (base, pip can add more)
+
               jupyterlab
               notebook
               ipykernel
@@ -347,6 +347,7 @@
               matplotlib
               ipympl # <- enables %matplotlib widget
               pandas
+              scikit-learn
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
