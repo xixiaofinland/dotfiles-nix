@@ -340,11 +340,13 @@
               # jupyter kernel (base, pip can add more)
               jupyterlab
               notebook
+              ipykernel
 
               # scientific/ML libs
               numpy
               matplotlib
               ipympl # <- enables %matplotlib widget
+              pandas
             ]))
           # LSPs & helpers as binaries (no pip needed)
           pyright
@@ -381,11 +383,13 @@
             echo "🧠🤖 hello Python ML devshell!"
             # 1️⃣ Create .venv if missing
             if [ ! -d .venv ]; then
-              echo "📦 Creating local .venv..."
-              python -m venv .venv
+              echo "📦 Creating local .venv with system packages..."
+              python -m venv --system-site-packages .venv
             fi
+
             # 2️⃣ Activate .venv
             source .venv/bin/activate
+            export PIP_REQUIRE_VIRTUALENV=true
 
             # 3️⃣ Only upgrade tools if needed
             if [ ! -f .venv/.setup_complete ]; then
