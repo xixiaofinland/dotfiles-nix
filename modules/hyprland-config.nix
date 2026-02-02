@@ -59,8 +59,8 @@
   # ── xdg-desktop-portal for screen share, file picker, etc.
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    config.common.default = "hyprland";
   };
 
   # Use proprietary Nvidia drivers
@@ -70,7 +70,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "Hyprland";
+      command = "start-hyprland";
       user = user;
     };
   };

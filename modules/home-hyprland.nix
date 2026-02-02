@@ -19,7 +19,7 @@ in {
     wqy_zenhei
     wqy_microhei
 
-    xfce.thunar # file manager
+    thunar # file manager
 
     libnotify
     mako # notification daemon
