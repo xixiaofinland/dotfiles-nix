@@ -12,6 +12,7 @@
   users.defaultUserShell = pkgs.fish;
 
   time.timeZone = "Europe/Helsinki";
+  services.timesyncd.enable = true;
 
   system.stateVersion = "24.05";
 
