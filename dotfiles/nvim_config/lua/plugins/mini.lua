@@ -92,7 +92,7 @@ return {
         callback = function(args)
           local buf_id = args.data.buf_id
           map_split(buf_id, '<C-s>', 'belowright horizontal')
-          map_split(buf_id, '<C-e>', 'belowright vertical')
+          map_split(buf_id, '<C-h>', 'belowright vertical')
         end,
       })
 
