@@ -49,7 +49,7 @@ in {
 
     # AI coding
     codex
-    opencode
+    github-copilot-cli
   ];
 
   home.sessionVariables = {
