@@ -48,6 +48,7 @@ in {
     sf
 
     # AI coding
+    python312
     codex
     github-copilot-cli
   ];
