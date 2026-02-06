@@ -114,6 +114,7 @@
             allowUnfreePredicate = pkg:
               builtins.elem (lib.getName pkg) ["obsidian"];
             # allowUnsupportedSystem = true; # todo: opencode too new issue, fix this for long term
+            allowUnfree = true;
           };
         };
         modules = [
