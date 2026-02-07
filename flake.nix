@@ -185,9 +185,6 @@
           cargo-watch
           cargo-expand
           mold
-
-          # temp
-          postgresql
         ];
       in
         pkgs.mkShell {
