@@ -4,20 +4,20 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1760728748,
-        "narHash": "sha256-b/vD0QAEKkj+T+Y1qmKJ+Mb/Jko/sST7JgxHzrk40GA=",
+        "lastModified": 1770484093,
+        "narHash": "sha256-cg9U6V7IyKAQhnvNjLneFWvE8BOvuGerH3LpfdD1sLo=",
         "owner": "openai",
         "repo": "codex",
-        "rev": "44ceaf085b0ffafe127a050fd5d35797b8ab1fc9",
+        "rev": "16e7cf05d24ee33c895ca08437eb6b4b784cd7a6",
         "type": "github"
       },
       "original": {
         "owner": "openai",
         "repo": "codex",
-        "rev": "44ceaf085b0ffafe127a050fd5d35797b8ab1fc9",
         "type": "github"
       }
     },
@@ -101,11 +101,32 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay",
+        "rust-overlay": "rust-overlay_2",
         "sfdx-nix": "sfdx-nix"
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "codex-cli",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769828398,
+        "narHash": "sha256-zmnvRUm15QrlKH0V1BZoiT3U+Q+tr+P5Osi8qgtL9fY=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a1d32c90c8a4ea43e9586b7e5894c179d5747425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
