@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  codex-cli,
   ...
 }: let
   finter = pkgs.rustPlatform.buildRustPackage rec {
@@ -21,7 +22,9 @@
   nvimConfigDir = "${config.home.homeDirectory}/dotfiles-nix/dotfiles/nvim_config";
 in {
   home.packages = with pkgs; [
-    cachix
+    python312
+    nodejs_22
+
     eza
     bat
     fd
@@ -30,27 +33,25 @@ in {
     ripgrep
     tree
     gnumake
-    nodejs_22
-    obsidian
     prettierd
-
-    # custom
     finter
 
-    # nix
+    cachix
+    obsidian
+
+    # langs
     alejandra
     nil
-
-    # lua
     lua-language-server
-
-    # salesforce
     sf
 
     # AI coding
-    python312
-    codex
     github-copilot-cli
+    codex
+    # todo: this codex below is the official one and needs to compile locally.
+    # but it doesn't work at the moment
+    # https://github.com/openai/codex/issues/11020
+    # codex-cli.packages.${pkgs.system}.default
   ];
 
   home.sessionVariables = {

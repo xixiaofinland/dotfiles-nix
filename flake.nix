@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    codex-cli = {
+      url = "github:openai/codex";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -29,6 +33,7 @@
     nix-darwin,
     rust-overlay,
     sfdx-nix,
+    codex-cli,
   }: let
     hyprland-pc-user = "finxxi";
     hyprland-pc-hostname = "hyprland-pc";
@@ -55,6 +60,9 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users."${userName}" = import homeModule;
+        home-manager.extraSpecialArgs = {
+          inherit codex-cli;
+        };
       }
       {
         nix.settings = {
@@ -131,6 +139,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${mac-user}" = import ./modules/home.nix;
+            home-manager.extraSpecialArgs = {
+              inherit codex-cli;
+            };
           }
           {
             nix = {
