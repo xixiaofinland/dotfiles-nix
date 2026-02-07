@@ -52,11 +52,15 @@ in {
     # but it doesn't work at the moment
     # https://github.com/openai/codex/issues/11020
     # codex-cli.packages.${pkgs.system}.default
+
+    # Note: Tools installed manually by npm to NPM_CONFIG_PREFIX
+    # npm install -g @anthropic-ai/claude-code
   ];
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
+    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
   };
 
   home.file = {
@@ -248,7 +252,7 @@ in {
     };
 
     shellInit = ''
-      set -gx PATH $HOME/.cargo/bin $HOME/.local/bin $PATH
+      set -gx PATH $HOME/.npm-global/bin $HOME/.cargo/bin $HOME/.local/bin $PATH
     '';
 
     interactiveShellInit = ''
