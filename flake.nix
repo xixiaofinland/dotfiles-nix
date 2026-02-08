@@ -23,7 +23,6 @@
 
   outputs = {
     self,
-    flake-utils,
     home-manager,
     nixpkgs,
     nix-darwin,
@@ -37,6 +36,20 @@
     mac-hostname = "Xis-MacBook-Pro";
     mac-sys = "x86_64-darwin";
     lib = nixpkgs.lib;
+    cacheSubstituters = [
+      "https://cache.nixos.org" # Official cache first
+      "https://nix-community.cachix.org" # Community cache second
+      "https://xixiaofinland.cachix.org" # Your personal cache
+      "https://cachix.cachix.org" # Generic cachix
+      "https://nixpkgs.cachix.org" # Last resort
+    ];
+    cacheTrustedPublicKeys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+    ];
     overlays = [
       rust-overlay.overlays.default
       (
@@ -47,34 +60,60 @@
         }
       )
     ];
+    mkPkgs = {
+      system,
+      allowUnfree ? true,
+      allowUnfreePredicate ? null,
+    }:
+      import nixpkgs {
+        inherit system overlays;
+        config =
+          {
+            inherit allowUnfree;
+          }
+          // (lib.optionalAttrs (allowUnfreePredicate != null) {
+            inherit allowUnfreePredicate;
+          });
+      };
+    mkHomeManagerNixosModule = userName: homeModule: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."${userName}" = import homeModule;
+    };
+    mkHomeManagerDarwinModule = userName: homeModule: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."${userName}" = import homeModule;
+    };
+    mkNixosCacheModule = userName: {
+      nix.settings = {
+        substituters = cacheSubstituters;
+        trusted-public-keys = cacheTrustedPublicKeys;
+        trusted-users = [userName];
+      };
+    };
+    mkDarwinNixModule = {
+      pkgs,
+      trustedUsers,
+    }: {
+      nix = {
+        package = pkgs.nixVersions.stable; # pull in the nix binary from cache, NixOS doesn't need to do so
+        extraOptions = ''
+          experimental-features = nix-command flakes
+        '';
+        settings = {
+          trusted-substituters = cacheSubstituters;
+          trusted-public-keys = cacheTrustedPublicKeys;
+          trusted-users = trustedUsers;
+        };
+      };
+    };
     nixos-baseModules = userName: homeModule: [
       ./modules/common-config.nix
       ./modules/nixos-config.nix
       home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${userName}" = import homeModule;
-      }
-      {
-        nix.settings = {
-          substituters = [
-            "https://cache.nixos.org" # Official cache first
-            "https://nix-community.cachix.org" # Community cache second
-            "https://xixiaofinland.cachix.org" # Your personal cache
-            "https://cachix.cachix.org" # Generic cachix
-            "https://nixpkgs.cachix.org" # Last resort
-          ];
-          trusted-public-keys = [
-            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-            "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-            "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-          ];
-          trusted-users = [userName];
-        };
-      }
+      (mkHomeManagerNixosModule userName homeModule)
+      (mkNixosCacheModule userName)
     ];
     forAllSystems = function:
       nixpkgs.lib.genAttrs [
@@ -89,14 +128,11 @@
     nixosConfigurations = {
       "${hyprland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
-        pkgs = import nixpkgs {
-          # inherit system overlays sfdx-nix;
-          inherit system overlays;
-          config = {
-            # Fixme: Nvida install still gives error
-            # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
-            allowUnfree = true;
-          };
+        pkgs = mkPkgs {
+          inherit system;
+          # Fixme: Nvida install still gives error
+          # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
+          allowUnfree = true;
         };
         specialArgs = {
           user = hyprland-pc-user;
@@ -110,15 +146,12 @@
     darwinConfigurations = {
       "${mac-hostname}" = nix-darwin.lib.darwinSystem rec {
         system = "${mac-sys}";
-        pkgs = import nixpkgs {
-          # inherit system overlays sfdx-nix;
-          inherit system overlays;
-          config = {
-            allowUnfreePredicate = pkg:
-              builtins.elem (lib.getName pkg) ["obsidian"];
-            # allowUnsupportedSystem = true; # todo: opencode too new issue, fix this for long term
-            allowUnfree = true;
-          };
+        pkgs = mkPkgs {
+          inherit system;
+          allowUnfreePredicate = pkg:
+            builtins.elem (lib.getName pkg) ["obsidian"];
+          # allowUnsupportedSystem = true; # todo: opencode too new issue, fix this for long term
+          allowUnfree = true;
         };
         modules = [
           ./modules/common-config.nix
@@ -130,36 +163,11 @@
             };
           }
           home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${mac-user}" = import ./modules/home.nix;
-          }
-          {
-            nix = {
-              package = pkgs.nixVersions.stable; # pull in the nix binary from cache, NixOS doesn't need to do so
-              extraOptions = ''
-                experimental-features = nix-command flakes
-              '';
-              settings = {
-                trusted-substituters = [
-                  "https://cache.nixos.org" # Official cache first
-                  "https://nix-community.cachix.org" # Community cache second
-                  "https://xixiaofinland.cachix.org" # Your personal cache
-                  "https://cachix.cachix.org" # Generic cachix
-                  "https://nixpkgs.cachix.org" # Last resort
-                ];
-                trusted-public-keys = [
-                  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-                  "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
-                  "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-                  "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-                ];
-                trusted-users = ["root" "xixiao"];
-              };
-            };
-          }
+          (mkHomeManagerDarwinModule mac-user ./modules/home.nix)
+          (mkDarwinNixModule {
+            inherit pkgs;
+            trustedUsers = ["root" "xixiao"];
+          })
         ];
       };
     };
