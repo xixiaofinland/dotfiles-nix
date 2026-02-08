@@ -43,7 +43,6 @@ in {
     alejandra
     nil
     lua-language-server
-    sf
 
     # AI coding
     github-copilot-cli
@@ -55,7 +54,8 @@ in {
     # https://github.com/openai/codex/issues/11020
     # codex-cli.packages.${pkgs.system}.default
 
-    # note: Tools installed manually by npm to NPM_CONFIG_PREFIX
+    # note: these are not managed by flake
+    # npm i -g @salesforce/cli
     # npm i -g @openai/codex
     # npm i -g @anthropic-ai/claude-code
   ];

@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "codex-cli": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1770484093,
-        "narHash": "sha256-cg9U6V7IyKAQhnvNjLneFWvE8BOvuGerH3LpfdD1sLo=",
-        "owner": "openai",
-        "repo": "codex",
-        "rev": "16e7cf05d24ee33c895ca08437eb6b4b784cd7a6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "openai",
-        "repo": "codex",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -96,37 +75,14 @@
     },
     "root": {
       "inputs": {
-        "codex-cli": "codex-cli",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay_2",
-        "sfdx-nix": "sfdx-nix"
+        "rust-overlay": "rust-overlay"
       }
     },
     "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "codex-cli",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769828398,
-        "narHash": "sha256-zmnvRUm15QrlKH0V1BZoiT3U+Q+tr+P5Osi8qgtL9fY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "a1d32c90c8a4ea43e9586b7e5894c179d5747425",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -143,29 +99,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "sfdx-nix": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769915916,
-        "narHash": "sha256-wmbaiRlP6lhhkJku7Ciq0YFQa+4THSVOYTSz+4gl3+g=",
-        "owner": "xixiaofinland",
-        "repo": "sfdx-nix",
-        "rev": "7ad4aa8312dd23535a9293f74314b859e2cc9a17",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xixiaofinland",
-        "repo": "sfdx-nix",
         "type": "github"
       }
     },

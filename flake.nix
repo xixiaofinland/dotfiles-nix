@@ -14,15 +14,11 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sfdx-nix = {
-      url = "github:xixiaofinland/sfdx-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    codex-cli = {
-      url = "github:openai/codex";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sfdx-nix = {
+    #   url = "github:xixiaofinland/sfdx-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-utils.follows = "flake-utils";
+    # };
   };
 
   outputs = {
@@ -32,8 +28,7 @@
     nixpkgs,
     nix-darwin,
     rust-overlay,
-    sfdx-nix,
-    codex-cli,
+    # sfdx-nix,
   }: let
     hyprland-pc-user = "finxxi";
     hyprland-pc-hostname = "hyprland-pc";
@@ -46,7 +41,7 @@
       rust-overlay.overlays.default
       (
         final: prev: {
-          sf = sfdx-nix.packages.${final.system}.sf;
+          # sf = sfdx-nix.packages.${final.system}.sf;
           rustToolchainStable = final.rust-bin.stable.latest.default;
           rustToolchainNightly = final.rust-bin.nightly.latest.default;
         }
@@ -60,9 +55,6 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users."${userName}" = import homeModule;
-        home-manager.extraSpecialArgs = {
-          inherit codex-cli;
-        };
       }
       {
         nix.settings = {
@@ -90,14 +82,16 @@
         "${mac-sys}"
       ] (system:
         function (import nixpkgs {
-          inherit system overlays sfdx-nix;
+          # inherit system overlays sfdx-nix;
+          inherit system overlays;
         }));
   in {
     nixosConfigurations = {
       "${hyprland-pc-hostname}" = nixpkgs.lib.nixosSystem rec {
         system = "${nixos-sys}";
         pkgs = import nixpkgs {
-          inherit system overlays sfdx-nix;
+          # inherit system overlays sfdx-nix;
+          inherit system overlays;
           config = {
             # Fixme: Nvida install still gives error
             # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
@@ -117,7 +111,8 @@
       "${mac-hostname}" = nix-darwin.lib.darwinSystem rec {
         system = "${mac-sys}";
         pkgs = import nixpkgs {
-          inherit system overlays sfdx-nix;
+          # inherit system overlays sfdx-nix;
+          inherit system overlays;
           config = {
             allowUnfreePredicate = pkg:
               builtins.elem (lib.getName pkg) ["obsidian"];
@@ -139,9 +134,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${mac-user}" = import ./modules/home.nix;
-            home-manager.extraSpecialArgs = {
-              inherit codex-cli;
-            };
           }
           {
             nix = {
