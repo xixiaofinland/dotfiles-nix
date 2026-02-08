@@ -247,11 +247,9 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
+      cc = "claude";
+      co = "codex";
       # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
-      cs = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ status";
-      ca = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ add";
-      # cc = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ commit -am '+'";
-      # cpp = "git --git-dir=$HOME/dotfiles-nix/.git/ --work-tree=$HOME/dotfiles-nix/ push";
     };
 
     shellInit = ''
@@ -286,16 +284,8 @@ in {
       abbr -a la eza -la
       abbr -a ls eza
       abbr -a gs git status
-      abbr -a gp git push
-      abbr -a gco git checkout
       abbr -a aa "git add .; git commit -am '+'"
       abbr -a app git push
-      abbr -a cr cargo r
-      abbr -a cb cargo b
-      abbr -a js jj st
-
-      abbr -a frepo "find .git/objects/ -type f -empty | xargs rm; git fetch -p; git fsck --full; git pull"
-      abbr -a serve "simple-http-server -i -p 9999 ./"
 
       abbr -a wp-pull "git subtree pull --prefix dotfiles/Wallpapers git@github.com:xixiaofinland/Wallpapers.git main --squash"
       abbr -a wp-push "git subtree push --prefix dotfiles/Wallpapers git@github.com:xixiaofinland/Wallpapers.git main"
