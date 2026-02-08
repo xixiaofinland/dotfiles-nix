@@ -232,7 +232,10 @@ in {
       abbr -a l eza -la
       abbr -a la eza -la
       abbr -a ls eza
+
       abbr -a gs git status
+      abbr -a js jj status
+
       abbr -a aa "git add .; git commit -am '+'"
       abbr -a app git push
 
