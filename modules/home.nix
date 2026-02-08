@@ -45,19 +45,12 @@ in {
     lua-language-server
 
     # AI coding
-    github-copilot-cli
-    # claude-code
-    # codex
-
-    # todo: this official codex below is the official one and needs to compile locally.
-    # but it doesn't work at the moment
-    # https://github.com/openai/codex/issues/11020
-    # codex-cli.packages.${pkgs.system}.default
 
     # note: these are not managed by flake
     # npm i -g @salesforce/cli
     # npm i -g @openai/codex
     # npm i -g @anthropic-ai/claude-code
+    # npm i -g @github/copilot
   ];
 
   home.sessionVariables = {
