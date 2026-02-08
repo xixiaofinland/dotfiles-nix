@@ -47,13 +47,15 @@ in {
 
     # AI coding
     github-copilot-cli
-    codex
+    # claude-code
+    # codex
+
     # todo: this codex below is the official one and needs to compile locally.
     # but it doesn't work at the moment
     # https://github.com/openai/codex/issues/11020
     # codex-cli.packages.${pkgs.system}.default
 
-    # Note: Tools installed manually by npm to NPM_CONFIG_PREFIX
+    # note: Tools installed manually by npm to NPM_CONFIG_PREFIX
     # npm install -g @anthropic-ai/claude-code
   ];
 
