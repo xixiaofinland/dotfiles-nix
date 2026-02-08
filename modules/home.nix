@@ -273,17 +273,6 @@ in {
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
       end
 
-      if command -v rbw >/dev/null
-        if rbw unlocked >/dev/null 2>&1
-          set -gx ANTHROPIC_API_KEY (rbw get "Anthropic API Key")
-        end
-      end
-
-      function load_anthropic_api_key --description "Load key from rbw"
-        rbw unlock >/dev/null; or return
-        set -gx ANTHROPIC_API_KEY (rbw get "Anthropic API Key")
-      end
-
       # set -g pure_enable_nixdevshell true
       set -g pure_symbol_nixdevshell_prefix '-'
 
