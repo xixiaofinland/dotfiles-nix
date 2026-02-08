@@ -50,13 +50,14 @@ in {
     # claude-code
     # codex
 
-    # todo: this codex below is the official one and needs to compile locally.
+    # todo: this official codex below is the official one and needs to compile locally.
     # but it doesn't work at the moment
     # https://github.com/openai/codex/issues/11020
     # codex-cli.packages.${pkgs.system}.default
 
     # note: Tools installed manually by npm to NPM_CONFIG_PREFIX
-    # npm install -g @anthropic-ai/claude-code
+    # npm i -g @openai/codex
+    # npm i -g @anthropic-ai/claude-code
   ];
 
   home.sessionVariables = {
