@@ -240,7 +240,7 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
-      cc = "claude";
+      cl = "claude";
       co = "codex";
       # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
     };
