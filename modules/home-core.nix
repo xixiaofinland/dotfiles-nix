@@ -201,6 +201,7 @@ in {
     };
 
     shellInit = ''
+      set -gx NPM_CONFIG_PREFIX "$HOME/.npm-global"
       set -gx PATH $HOME/.npm-global/bin $HOME/.cargo/bin $HOME/.local/bin $PATH
     '';
 
