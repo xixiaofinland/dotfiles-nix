@@ -2,8 +2,6 @@
 
 This repository contains my personal configuration files (dotfiles) managed using Nix Flakes. It supports both macOS and NixOS.
 
-⚠️ It's important to understand what the code does before applying to your own system. It has a learning curve to use Nix, take action rigorously.
-
 ## Features
 
 - **Nix Flakes**: Manage dependencies and configurations.
