@@ -1,5 +1,5 @@
 [user]
-	email = tdxiaoxi2@gmail.com
+	email = xi.xiao007@gmail.com
 	name = xi xiao
 [core]
 	editor = nvim
@@ -37,4 +37,3 @@
         git pull && \
         git branch -d \"$current_branch\"; \
     }; f"
-
