@@ -41,12 +41,13 @@ in {
     lua-language-server
 
     # AI coding
-    github-copilot-cli # can't use its node package as it's dynamic links which Nix doesn't support
 
     # note: these are not managed by flake, as their version moves too fast :D
     # npm i -g @salesforce/cli
+
     # npm i -g @openai/codex
     # npm i -g @anthropic-ai/claude-code
+    # npm i -g @github/copilot
     # npm i -g opencode-ai
   ];
 
