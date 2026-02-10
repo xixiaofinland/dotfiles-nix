@@ -41,12 +41,13 @@ in {
     lua-language-server
 
     # AI coding
-    github-copilot-cli # can't use its npm package as it's dynamic links which Nix doesn't support
+    github-copilot-cli # can't use its node package as it's dynamic links which Nix doesn't support
 
-    # note: these are not managed by flake
+    # note: these are not managed by flake, as their version moves too fast :D
     # npm i -g @salesforce/cli
     # npm i -g @openai/codex
     # npm i -g @anthropic-ai/claude-code
+    # npm i -g opencode-ai
   ];
 
   home.sessionVariables = {
@@ -195,8 +196,6 @@ in {
       e = "exit";
       c = "clear";
       n = "nvim";
-      cl = "claude";
-      co = "codex";
       # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
     };
 
@@ -232,6 +231,9 @@ in {
       abbr -a l eza -la
       abbr -a la eza -la
       abbr -a ls eza
+
+      abbr -a cl claude
+      abbr -a co codex
 
       abbr -a gs git status
       abbr -a js jj status
