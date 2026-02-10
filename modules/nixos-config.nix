@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  programs.nix-ld.enable = true; # in order for some npm installed tools to work
+
   security.sudo.enable = true;
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=30

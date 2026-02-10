@@ -14,11 +14,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # sfdx-nix = {
-    #   url = "github:xixiaofinland/sfdx-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.flake-utils.follows = "flake-utils";
-    # };
   };
 
   outputs = {
@@ -27,7 +22,6 @@
     nixpkgs,
     nix-darwin,
     rust-overlay,
-    # sfdx-nix,
   }: let
     hyprland-pc-user = "finxxi";
     hyprland-pc-hostname = "hyprland-pc";
@@ -121,7 +115,6 @@
         "${mac-sys}"
       ] (system:
         function (import nixpkgs {
-          # inherit system overlays sfdx-nix;
           inherit system overlays;
         }));
   in {
@@ -130,7 +123,6 @@
         system = "${nixos-sys}";
         pkgs = mkPkgs {
           inherit system;
-          # Fixme: Nvida install still gives error
           # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["obsidian" "nvidia-x11"];
           allowUnfree = true;
         };
@@ -269,22 +261,6 @@
           '';
         };
 
-      # rust-nightly = let
-      #   packages = with pkgs; [
-      #     rust-bin.nightly.latest.default
-      #     rust-analyzer
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "Rust-nightly";
-      #     packages = packages;
-      #     shellHook = ''
-      #       echo "🦀🦀🦀🦀 hello Rust Nightly!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
-      #
-
       sf = let
         packages = with pkgs; [
           jdk
@@ -301,22 +277,6 @@
             echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
           '';
         };
-
-      # tree = let
-      #   packages = with pkgs; [
-      #     tree-sitter
-      #     prettierd
-      #     emscripten
-      #   ];
-      # in
-      #   pkgs.mkShell {
-      #     name = "tree-sitter";
-      #     packages = packages;
-      #     shellHook = ''
-      #       echo "🌳🌳🌳🌳 hello Tree-sitter!"
-      #       echo "Packages: ${builtins.concatStringsSep "" (map (p: "  ${p.name or p.pname or "unknown"}") packages)}"
-      #     '';
-      #   };
 
       nvim = let
         packages = with pkgs; [
@@ -422,48 +382,6 @@
             else
               echo "✅ ML environment already set up!"
             fi
-          '';
-        };
-
-      ml = let
-        pythonEnv = pkgs.python312.withPackages (ps:
-          with ps; [
-            torch
-            torchvision
-            onnx
-            onnxruntime # AI Core
-            numpy
-            matplotlib
-            pillow
-            scikit-learn
-            pandas # Science
-            ipython
-            black
-            ruff
-            pytest # Dev Tools
-
-            matplotlib
-            pillow
-          ]);
-        systemLibs = with pkgs; [stdenv.cc.cc.lib zlib libGL glib libffi openssl];
-      in
-        pkgs.mkShell {
-          name = "Python Industrial AI";
-          packages = [pythonEnv pkgs.pyright pkgs.cmake pkgs.pkg-config] ++ systemLibs;
-          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath systemLibs;
-          shellHook = ''
-            echo "🏭 Industrial AI Phase 1 (Python Brain)"
-
-            # Create the venv with access to Nix packages
-            if [ ! -d .venv-ml ]; then
-              python -m venv --system-site-packages .venv-ml
-            fi
-
-            source .venv-ml/bin/activate
-
-            # This ensures Python looks at Nix packages first
-            export PYTHONPATH="$PYTHONPATH:$(python -c 'import site; print(site.getsitepackages()[0])')"
-            export PYTHONDONTWRITEBYTECODE=1
           '';
         };
     });
