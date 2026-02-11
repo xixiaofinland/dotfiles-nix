@@ -1,14 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  
+
   // Theme and appearance
   "theme": "opencode",
   "autoupdate": true,
-  
+
   // Model configuration
   "model": "anthropic/claude-sonnet-4.5",
   "small_model": "anthropic/claude-haiku-4.5",
-  
+
   // TUI settings
   "tui": {
     "scroll_speed": 3,
@@ -17,7 +17,7 @@
     },
     "diff_style": "auto"
   },
-  
+
   // Tools configuration
   "tools": {
     "write": true,
@@ -27,7 +27,7 @@
     "glob": true,
     "grep": true
   },
-  
+
   // Custom commands for common tasks
   "command": {
     "test": {
@@ -36,7 +36,7 @@
       "agent": "build"
     }
   },
-  
+
   // Formatters
   "formatter": {
     "alejandra": {
@@ -45,10 +45,19 @@
     },
     "prettier": {
       "command": ["prettierd", "$FILE"],
-      "extensions": [".js", ".ts", ".jsx", ".tsx", ".json", ".md", ".yaml", ".yml"]
+      "extensions": [
+        ".js",
+        ".ts",
+        ".jsx",
+        ".tsx",
+        ".json",
+        ".md",
+        ".yaml",
+        ".yml"
+      ]
     }
   },
-  
+
   // Permissions - allow most operations, ask for destructive ones
   "permission": {
     "bash": "allow",
@@ -56,18 +65,16 @@
     "write": "allow",
     "read": "allow"
   },
-  
+
   // Instructions - reference project docs
-  "instructions": [
-    "AGENTS.md"
-  ],
-  
+  "instructions": ["AGENTS.md"],
+
   // Compaction settings
   "compaction": {
     "auto": true,
     "prune": true
   },
-  
+
   // Watcher - ignore common build artifacts and temporary files
   "watcher": {
     "ignore": [
@@ -79,7 +86,7 @@
       ".venv/**"
     ]
   },
-  
+
   // Sharing settings
   "share": "manual"
 }
