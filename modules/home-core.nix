@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   finter = pkgs.rustPlatform.buildRustPackage rec {
     pname = "finter";
     version = "0.1.15";
@@ -194,10 +191,6 @@ in {
       }
     ];
     shellAliases = {
-      e = "exit";
-      c = "clear";
-      n = "nvim";
-      o = "opencode";
       # t = "tmux new-session -d -s 0 -n win1 -c ~/dotfiles-nix/; tmux send-keys -t 0:1 'sh $HOME/.tmux_init_actions.sh' Enter; tmux new-window -t 0:2 -n win2 -c ~/dotfiles-nix/; tmux attach -t 0";
     };
 
@@ -230,6 +223,11 @@ in {
       set -g pure_enable_nixdevshell true
 
       # custom abbrs
+      abbr -a e exit
+      abbr -a c clear
+      abbr -a n nvim
+      abbr -a o opencode
+
       abbr -a l eza -la
       abbr -a la eza -la
       abbr -a ls eza
