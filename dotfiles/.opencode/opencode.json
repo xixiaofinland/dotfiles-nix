@@ -1,0 +1,85 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  
+  // Theme and appearance
+  "theme": "opencode",
+  "autoupdate": true,
+  
+  // Model configuration
+  "model": "anthropic/claude-sonnet-4.5",
+  "small_model": "anthropic/claude-haiku-4.5",
+  
+  // TUI settings
+  "tui": {
+    "scroll_speed": 3,
+    "scroll_acceleration": {
+      "enabled": true
+    },
+    "diff_style": "auto"
+  },
+  
+  // Tools configuration
+  "tools": {
+    "write": true,
+    "edit": true,
+    "bash": true,
+    "read": true,
+    "glob": true,
+    "grep": true
+  },
+  
+  // Custom commands for common tasks
+  "command": {
+    "test": {
+      "template": "Run tests for the current project with coverage if available. Show any failures and suggest fixes.",
+      "description": "Run tests with coverage",
+      "agent": "build"
+    }
+  },
+  
+  // Formatters
+  "formatter": {
+    "alejandra": {
+      "command": ["alejandra", "$FILE"],
+      "extensions": [".nix"]
+    },
+    "prettier": {
+      "command": ["prettierd", "$FILE"],
+      "extensions": [".js", ".ts", ".jsx", ".tsx", ".json", ".md", ".yaml", ".yml"]
+    }
+  },
+  
+  // Permissions - allow most operations, ask for destructive ones
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "write": "allow",
+    "read": "allow"
+  },
+  
+  // Instructions - reference project docs
+  "instructions": [
+    "AGENTS.md"
+  ],
+  
+  // Compaction settings
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  
+  // Watcher - ignore common build artifacts and temporary files
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      ".direnv/**",
+      "result/**",
+      ".git/**",
+      "*.lock",
+      ".venv/**"
+    ]
+  },
+  
+  // Sharing settings
+  "share": "manual"
+}

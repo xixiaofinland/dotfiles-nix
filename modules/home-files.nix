@@ -17,5 +17,9 @@
     };
     ".config/waybar/config".source = ../dotfiles/hypr/waybar/config;
     ".config/waybar/style.css".source = ../dotfiles/hypr/waybar/style.css;
+    ".config/opencode" = {
+      source = ../dotfiles/.opencode;
+      recursive = true;
+    };
   };
 }
