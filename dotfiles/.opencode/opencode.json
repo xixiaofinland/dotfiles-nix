@@ -53,7 +53,9 @@
         ".json",
         ".md",
         ".yaml",
-        ".yml"
+        ".yml",
+        ".cls",
+        ".trigger"
       ]
     }
   },
